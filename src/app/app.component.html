@@ -1,3 +1,77 @@
 <h1>
   {{title}}
 </h1>
+
+<div>
+
+  <h4>draggable state</h4>
+  <div>start: {{ started }}</div>
+  <div>end: {{ ended }}</div>
+  <div>effect: {{ effect }}</div>
+
+  <hr/>
+
+  <h4>dropzone state</h4>
+  <div>dragover:
+    <pre>{{ dragover | json }}</pre>
+  </div>
+  <div>drop:
+    <pre>{{ dropData | json }}</pre>
+  </div>
+
+</div>
+
+<div>
+
+  <section style="margin: 20px;">
+
+    <div *ngFor="let draggable of draggables"
+         [dndDraggable]="draggable.data"
+         [dndEffectAllowed]="draggable.effectAllowed"
+         [dndDisableIf]="draggable.disable"
+         (dndStart)="started = true; ended = false; dragover = undefined; dropData = undefined;"
+         (dndCopied)="effect = 'copied'"
+         (dndLinked)="effect = 'linked'"
+         (dndMoved)="effect = 'moved'"
+         (dndCanceled)="effect = 'canceled'"
+         (dndEnd)="ended = true; started = false">
+      <div *ngIf="draggable.handle"
+           dndHandle>DRAG HANDLE
+      </div>
+      draggable ({{draggable.effectAllowed}}) <span [hidden]="!draggable.disable"> DISABLED</span>
+    </div>
+
+  </section>
+
+  <div style="border: 1px orangered solid; border-radius: 5px; padding: 15px;"
+       #placeholder>placeholder
+  </div>
+
+  <section dndDropzone
+           (dndDragover)="dragover = $event"
+           (dndDrop)="dropData = $event"
+           [dndPlaceholder]="placeholder">
+    dropzone
+
+    <section dndDropzone
+             (dndDragover)="dragover = $event"
+             (dndDrop)="dropData = $event"
+             [dndPlaceholder]="placeholder">
+      dropzone 2
+
+      <div class="dropzone-content">some other content in dropzone</div>
+
+    </section>
+
+    <section dndDropzone
+             (dndDragover)="dragover = $event"
+             (dndDrop)="dropData = $event">
+      dropzone 3 without placeholder
+
+      <div class="dropzone-content">some other content in dropzone</div>
+
+    </section>
+
+  </section>
+
+</div>
