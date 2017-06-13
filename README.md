@@ -3,7 +3,6 @@
 # NgxDragDrop
 
 Port of [angular-drag-drop-lists](https://github.com/marceljuenemann/angular-drag-and-drop-lists) but without the lists :wink:
-Credits go to contributors of this repository.
 
 This has `dropzones` though :+1:
 The idea is that the directive does not handle lists internally so the `dndDropzone` can be general purpose.
@@ -166,6 +165,14 @@ export declare class DndDropzoneDirective implements OnInit {
     readonly dndDrop: EventEmitter<DndDropEvent>;
 }
 ```
+
+### Why?
+
+Native drag and drop API's are not behaving the same way across browsers.
+
+The directives contained in this module enable declarative drag and drop that "just works" across browsers in a consistent way.
+
+Credits go to the author and contributors of [angular-drag-drop-lists](https://github.com/marceljuenemann/angular-drag-and-drop-lists). 
 
 ### Maintenance
 
