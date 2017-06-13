@@ -1,10 +1,12 @@
+**This project is currently under heavy construction!**
+
 # NgxDragDrop
 
 Port of [angular-drag-drop-lists](https://github.com/marceljuenemann/angular-drag-and-drop-lists) but without the lists :D
 
 We have `dropzones` though :+1:
 
-This project is currently under heavy construction!
+For touch support please use this [polyfill](https://github.com/timruffles/ios-html5-drag-drop-shim/tree/rewrite).
 
 ## How to install
 

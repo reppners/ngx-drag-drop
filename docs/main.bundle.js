@@ -1,9 +1,9 @@
 webpackJsonp([1,4],{
 
-/***/ 139:
+/***/ 134:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(46)(false);
+exports = module.exports = __webpack_require__(47)(false);
 // imports
 
 
@@ -18,33 +18,33 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 140:
+/***/ 135:
 /***/ (function(module, exports) {
 
 module.exports = "<h1>\n  {{title}}\n</h1>\n\n<div>\n\n  <h4>draggable state</h4>\n  <div>start: {{ started }}</div>\n  <div>end: {{ ended }}</div>\n  <div>effect: {{ effect }}</div>\n\n  <hr/>\n\n  <h4>dropzone state</h4>\n  <div>dragover:\n    <pre>{{ dragover | json }}</pre>\n  </div>\n  <div>drop:\n    <pre>{{ dropData | json }}</pre>\n  </div>\n\n</div>\n\n<div>\n\n  <section style=\"margin: 20px;\">\n\n    <div *ngFor=\"let draggable of draggables\"\n         [dndDraggable]=\"draggable.data\"\n         [dndEffectAllowed]=\"draggable.effectAllowed\"\n         [dndDisableIf]=\"draggable.disable\"\n         (dndStart)=\"started = true; ended = false; dragover = undefined; dropData = undefined;\"\n         (dndCopied)=\"effect = 'copied'\"\n         (dndLinked)=\"effect = 'linked'\"\n         (dndMoved)=\"effect = 'moved'\"\n         (dndCanceled)=\"effect = 'canceled'\"\n         (dndEnd)=\"ended = true; started = false\">\n      <div *ngIf=\"draggable.handle\"\n           dndHandle>DRAG HANDLE\n      </div>\n      draggable ({{draggable.effectAllowed}}) <span [hidden]=\"!draggable.disable\"> DISABLED</span>\n    </div>\n\n  </section>\n\n  <div style=\"border: 1px orangered solid; border-radius: 5px; padding: 15px;\"\n       #placeholder>placeholder\n  </div>\n\n  <section dndDropzone\n           (dndDragover)=\"dragover = $event\"\n           (dndDrop)=\"dropData = $event\"\n           [dndPlaceholder]=\"placeholder\">\n    dropzone\n\n    <section dndDropzone\n             (dndDragover)=\"dragover = $event\"\n             (dndDrop)=\"dropData = $event\"\n             [dndPlaceholder]=\"placeholder\">\n      dropzone 2\n\n      <div class=\"dropzone-content\">some other content in dropzone</div>\n\n    </section>\n\n    <section dndDropzone\n             (dndDragover)=\"dragover = $event\"\n             (dndDrop)=\"dropData = $event\">\n      dropzone 3 without placeholder\n\n      <div class=\"dropzone-content\">some other content in dropzone</div>\n\n    </section>\n\n  </section>\n\n</div>\n"
 
 /***/ }),
 
-/***/ 165:
+/***/ 159:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(73);
+module.exports = __webpack_require__(72);
 
 
 /***/ }),
 
-/***/ 21:
+/***/ 20:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return DROP_EFFECTS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return MIME_TYPE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return EDGE_MIME_TYPE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return MSIE_MIME_TYPE; });
-/* harmony export (immutable) */ __webpack_exports__["h"] = getMimeType;
-/* harmony export (immutable) */ __webpack_exports__["l"] = setDragData;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return DROP_EFFECTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return MIME_TYPE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return EDGE_MIME_TYPE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return MSIE_MIME_TYPE; });
+/* harmony export (immutable) */ __webpack_exports__["g"] = getMimeType;
+/* harmony export (immutable) */ __webpack_exports__["k"] = setDragData;
 /* harmony export (immutable) */ __webpack_exports__["d"] = getDropData;
-/* harmony export (immutable) */ __webpack_exports__["g"] = filterEffects;
+/* harmony export (immutable) */ __webpack_exports__["f"] = filterEffects;
 /* harmony export (immutable) */ __webpack_exports__["b"] = getDirectChildElement;
 /* harmony export (immutable) */ __webpack_exports__["c"] = shouldPositionPlaceholderBeforeElement;
 var DROP_EFFECTS = ["move", "copy", "link"];
@@ -128,12 +128,12 @@ function shouldPositionPlaceholderBeforeElement(event, element, horizontal) {
 
 /***/ }),
 
-/***/ 49:
+/***/ 29:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dnd_utils__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dnd_utils__ = __webpack_require__(20);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DndHandleDirective; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -179,233 +179,23 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 50:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dnd_utils__ = __webpack_require__(21);
-/* harmony export (immutable) */ __webpack_exports__["e"] = startDrag;
-/* harmony export (immutable) */ __webpack_exports__["f"] = endDrag;
-/* harmony export (immutable) */ __webpack_exports__["d"] = setDropEffect;
-/* harmony export (immutable) */ __webpack_exports__["c"] = getDropEffect;
-/* harmony export (immutable) */ __webpack_exports__["b"] = getItemType;
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return dndState; });
-
-var _dndState = {
-    isDragging: false,
-    dropEffect: "none",
-    effectAllowed: "all",
-    type: undefined
-};
-function startDrag(event, effectAllowed, type) {
-    _dndState.isDragging = true;
-    _dndState.dropEffect = "none";
-    _dndState.effectAllowed = effectAllowed;
-    _dndState.type = type;
-    event.dataTransfer.effectAllowed = effectAllowed;
-}
-function endDrag() {
-    _dndState.isDragging = false;
-    _dndState.dropEffect = undefined;
-    _dndState.effectAllowed = undefined;
-    _dndState.type = undefined;
-}
-function setDropEffect(event, dropEffect) {
-    _dndState.dropEffect = dropEffect;
-    event.dataTransfer.dropEffect = dropEffect;
-}
-function getDropEffect(event, effectAllowed) {
-    var effects = __WEBPACK_IMPORTED_MODULE_0__dnd_utils__["f" /* DROP_EFFECTS */];
-    effects = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__dnd_utils__["g" /* filterEffects */])(effects, event.dataTransfer.effectAllowed);
-    if (_dndState.isDragging) {
-        effects = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__dnd_utils__["g" /* filterEffects */])(effects, dndState.effectAllowed);
-    }
-    if (effectAllowed) {
-        effects = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__dnd_utils__["g" /* filterEffects */])(effects, effectAllowed);
-    }
-    // MacOS automatically filters dataTransfer.effectAllowed depending on the modifier keys,
-    // therefore the following modifier keys will only affect other operating systems.
-    if (effects.length === 0) {
-        return "none";
-    }
-    if (event.ctrlKey && effects.indexOf("copy") !== -1) {
-        return "copy";
-    }
-    if (event.altKey && effects.indexOf("link") !== -1) {
-        return "link";
-    }
-    return effects[0];
-}
-function getItemType(event) {
-    if (_dndState.isDragging) {
-        return _dndState.type;
-    }
-    var mimeType = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__dnd_utils__["h" /* getMimeType */])(event);
-    if (mimeType === __WEBPACK_IMPORTED_MODULE_0__dnd_utils__["i" /* MSIE_MIME_TYPE */]
-        || mimeType === __WEBPACK_IMPORTED_MODULE_0__dnd_utils__["j" /* EDGE_MIME_TYPE */]) {
-        return undefined;
-    }
-    return (mimeType && mimeType.substr(__WEBPACK_IMPORTED_MODULE_0__dnd_utils__["k" /* MIME_TYPE */].length + 1)) || undefined;
-}
-var dndState = _dndState;
-//# sourceMappingURL=dnd-state.js.map
-
-/***/ }),
-
-/***/ 72:
+/***/ 30:
 /***/ (function(module, exports) {
 
-function webpackEmptyContext(req) {
-	throw new Error("Cannot find module '" + req + "'.");
-}
-webpackEmptyContext.keys = function() { return []; };
-webpackEmptyContext.resolve = webpackEmptyContext;
-module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 72;
-
+//# sourceMappingURL=dnd-types.js.map
 
 /***/ }),
 
-/***/ 73:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(85);
-
-
-
-
-if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* enableProdMode */])();
-}
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */]);
-//# sourceMappingURL=main.js.map
-
-/***/ }),
-
-/***/ 80:
+/***/ 51:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = "dnd works!";
-        this.draggables = [
-            {
-                data: "testdata",
-                effectAllowed: "copy",
-                disable: false,
-                handle: false,
-            },
-            {
-                data: "testdata",
-                effectAllowed: "move",
-                disable: false,
-                handle: false,
-            },
-            {
-                data: "testdata",
-                effectAllowed: "link",
-                disable: false,
-                handle: false,
-            },
-            {
-                data: "testdata",
-                effectAllowed: "copy",
-                disable: true,
-                handle: false,
-            },
-            {
-                data: "testdata",
-                effectAllowed: "copy",
-                disable: false,
-                handle: true,
-            }
-        ];
-    }
-    return AppComponent;
-}());
-AppComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* Component */])({
-        selector: "dnd-root",
-        template: __webpack_require__(140),
-        styles: [__webpack_require__(139)]
-    })
-], AppComponent);
-
-//# sourceMappingURL=app.component.js.map
-
-/***/ }),
-
-/***/ 81:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__html_drag_and_drop_drag_and_drop_module__ = __webpack_require__(84);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-var AppModule = (function () {
-    function AppModule() {
-    }
-    return AppModule;
-}());
-AppModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* NgModule */])({
-        declarations: [
-            __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]
-        ],
-        imports: [
-            __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_5__html_drag_and_drop_drag_and_drop_module__["a" /* DragAndDropModule */]
-        ],
-        providers: [],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
-    })
-], AppModule);
-
-//# sourceMappingURL=app.module.js.map
-
-/***/ }),
-
-/***/ 82:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dnd_utils__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dnd_handle_directive__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dnd_state__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dnd_utils__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dnd_handle_directive__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dnd_state__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dnd_types__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dnd_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__dnd_types__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DndDraggableDirective; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -416,6 +206,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -453,7 +244,7 @@ var DndDraggableDirective = (function () {
         }
         // initialize global state
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__dnd_state__["e" /* startDrag */])(event, this.dndEffectAllowed);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__dnd_utils__["l" /* setDragData */])(event, { data: this.dndDraggable, type: this.dndType }, __WEBPACK_IMPORTED_MODULE_3__dnd_state__["a" /* dndState */].effectAllowed);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__dnd_utils__["k" /* setDragData */])(event, { data: this.dndDraggable, type: this.dndType }, __WEBPACK_IMPORTED_MODULE_3__dnd_state__["a" /* dndState */].effectAllowed);
         // set css
         this.renderer.addClass(this.elementRef.nativeElement, this.dndDraggingClass);
         window.setTimeout(function () {
@@ -507,7 +298,7 @@ __decorate([
 ], DndDraggableDirective.prototype, "dndDraggable", void 0);
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["h" /* Input */])(),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__dnd_utils__["EffectAllowed"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__dnd_utils__["EffectAllowed"]) === "function" && _a || Object)
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__dnd_types__["EffectAllowed"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__dnd_types__["EffectAllowed"]) === "function" && _a || Object)
 ], DndDraggableDirective.prototype, "dndEffectAllowed", void 0);
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["h" /* Input */])(),
@@ -581,13 +372,15 @@ var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
 
 /***/ }),
 
-/***/ 83:
+/***/ 52:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dnd_utils__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dnd_state__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dnd_utils__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dnd_state__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dnd_types__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dnd_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__dnd_types__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DndDropzoneDirective; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -598,6 +391,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -734,6 +528,7 @@ var DndDropzoneDirective = (function () {
             var dropIndex = this.getPlaceholderIndex();
             this.dndDrop.emit({
                 event: event,
+                dropEffect: dropEffect,
                 data: data.data,
                 index: dropIndex
             });
@@ -762,7 +557,7 @@ __decorate([
 ], DndDropzoneDirective.prototype, "dndDropzone", void 0);
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["h" /* Input */])(),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__dnd_utils__["DropEffect"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__dnd_utils__["DropEffect"]) === "function" && _a || Object)
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__dnd_types__["EffectAllowed"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__dnd_types__["EffectAllowed"]) === "function" && _a || Object)
 ], DndDropzoneDirective.prototype, "dndEffectAllowed", void 0);
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["h" /* Input */])(),
@@ -828,16 +623,235 @@ var _a, _b, _c, _d, _e, _f;
 
 /***/ }),
 
-/***/ 84:
+/***/ 53:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dnd_utils__ = __webpack_require__(20);
+/* harmony export (immutable) */ __webpack_exports__["e"] = startDrag;
+/* harmony export (immutable) */ __webpack_exports__["f"] = endDrag;
+/* harmony export (immutable) */ __webpack_exports__["d"] = setDropEffect;
+/* harmony export (immutable) */ __webpack_exports__["c"] = getDropEffect;
+/* harmony export (immutable) */ __webpack_exports__["b"] = getItemType;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return dndState; });
+
+var _dndState = {
+    isDragging: false,
+    dropEffect: "none",
+    effectAllowed: "all",
+    type: undefined
+};
+function startDrag(event, effectAllowed, type) {
+    _dndState.isDragging = true;
+    _dndState.dropEffect = "none";
+    _dndState.effectAllowed = effectAllowed;
+    _dndState.type = type;
+    event.dataTransfer.effectAllowed = effectAllowed;
+}
+function endDrag() {
+    _dndState.isDragging = false;
+    _dndState.dropEffect = undefined;
+    _dndState.effectAllowed = undefined;
+    _dndState.type = undefined;
+}
+function setDropEffect(event, dropEffect) {
+    _dndState.dropEffect = dropEffect;
+    event.dataTransfer.dropEffect = dropEffect;
+}
+function getDropEffect(event, effectAllowed) {
+    var effects = __WEBPACK_IMPORTED_MODULE_0__dnd_utils__["e" /* DROP_EFFECTS */];
+    effects = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__dnd_utils__["f" /* filterEffects */])(effects, event.dataTransfer.effectAllowed);
+    if (_dndState.isDragging) {
+        effects = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__dnd_utils__["f" /* filterEffects */])(effects, _dndState.effectAllowed);
+    }
+    if (effectAllowed) {
+        effects = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__dnd_utils__["f" /* filterEffects */])(effects, effectAllowed);
+    }
+    // MacOS automatically filters dataTransfer.effectAllowed depending on the modifier keys,
+    // therefore the following modifier keys will only affect other operating systems.
+    if (effects.length === 0) {
+        return "none";
+    }
+    if (event.ctrlKey && effects.indexOf("copy") !== -1) {
+        return "copy";
+    }
+    if (event.altKey && effects.indexOf("link") !== -1) {
+        return "link";
+    }
+    return effects[0];
+}
+function getItemType(event) {
+    if (_dndState.isDragging) {
+        return _dndState.type;
+    }
+    var mimeType = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__dnd_utils__["g" /* getMimeType */])(event);
+    if (mimeType === __WEBPACK_IMPORTED_MODULE_0__dnd_utils__["h" /* MSIE_MIME_TYPE */]
+        || mimeType === __WEBPACK_IMPORTED_MODULE_0__dnd_utils__["i" /* EDGE_MIME_TYPE */]) {
+        return undefined;
+    }
+    return (mimeType && mimeType.substr(__WEBPACK_IMPORTED_MODULE_0__dnd_utils__["j" /* MIME_TYPE */].length + 1)) || undefined;
+}
+var dndState = _dndState;
+//# sourceMappingURL=dnd-state.js.map
+
+/***/ }),
+
+/***/ 71:
+/***/ (function(module, exports) {
+
+function webpackEmptyContext(req) {
+	throw new Error("Cannot find module '" + req + "'.");
+}
+webpackEmptyContext.keys = function() { return []; };
+webpackEmptyContext.resolve = webpackEmptyContext;
+module.exports = webpackEmptyContext;
+webpackEmptyContext.id = 71;
+
+
+/***/ }),
+
+/***/ 72:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(80);
+
+
+
+
+if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* enableProdMode */])();
+}
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */]);
+//# sourceMappingURL=main.js.map
+
+/***/ }),
+
+/***/ 77:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dnd_draggable_directive__ = __webpack_require__(82);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dnd_dropzone_directive__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dnd_handle_directive__ = __webpack_require__(49);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DragAndDropModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var AppComponent = (function () {
+    function AppComponent() {
+        this.title = "dnd works!";
+        this.draggables = [
+            {
+                data: "testdata",
+                effectAllowed: "copy",
+                disable: false,
+                handle: false,
+            },
+            {
+                data: "testdata",
+                effectAllowed: "move",
+                disable: false,
+                handle: false,
+            },
+            {
+                data: "testdata",
+                effectAllowed: "link",
+                disable: false,
+                handle: false,
+            },
+            {
+                data: "testdata",
+                effectAllowed: "copy",
+                disable: true,
+                handle: false,
+            },
+            {
+                data: "testdata",
+                effectAllowed: "copy",
+                disable: false,
+                handle: true,
+            }
+        ];
+    }
+    return AppComponent;
+}());
+AppComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
+        selector: "dnd-root",
+        template: __webpack_require__(135),
+        styles: [__webpack_require__(134)]
+    })
+], AppComponent);
+
+//# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ 78:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_component__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dnd_index__ = __webpack_require__(79);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+var AppModule = (function () {
+    function AppModule() {
+    }
+    return AppModule;
+}());
+AppModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* NgModule */])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */]
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
+            __WEBPACK_IMPORTED_MODULE_3__dnd_index__["DndModule"]
+        ],
+        providers: [],
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_2__app_component__["a" /* AppComponent */]]
+    })
+], AppModule);
+
+//# sourceMappingURL=app.module.js.map
+
+/***/ }),
+
+/***/ 79:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dnd_draggable_directive__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dnd_dropzone_directive__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dnd_handle_directive__ = __webpack_require__(29);
+/* unused harmony namespace reexport */
+/* unused harmony namespace reexport */
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dnd_types__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dnd_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__dnd_types__);
+/* unused harmony namespace reexport */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DndModule", function() { return DndModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -849,12 +863,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var DragAndDropModule = (function () {
-    function DragAndDropModule() {
+
+
+
+
+var DndModule = (function () {
+    function DndModule() {
     }
-    return DragAndDropModule;
+    return DndModule;
 }());
-DragAndDropModule = __decorate([
+DndModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* NgModule */])({
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* CommonModule */]
@@ -870,13 +888,13 @@ DragAndDropModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_4__dnd_handle_directive__["a" /* DndHandleDirective */]
         ]
     })
-], DragAndDropModule);
+], DndModule);
 
-//# sourceMappingURL=drag-and-drop.module.js.map
+//# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 85:
+/***/ 80:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -893,5 +911,5 @@ var environment = {
 
 /***/ })
 
-},[165]);
+},[159]);
 //# sourceMappingURL=main.bundle.js.map
