@@ -54,10 +54,9 @@ export class DndDropzoneDirective implements OnInit {
 
   public ngOnInit():void {
 
-    if ( this.dndPlaceholder !== null ) {
+    if ( this.dndPlaceholder ) {
 
       this.dndPlaceholder.remove();
-      this.dndPlaceholder = this.dndPlaceholder.cloneNode( true ) as Element;
     }
   }
 

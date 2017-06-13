@@ -56,8 +56,13 @@
     <section dndDropzone
              (dndDragover)="dragover = $event"
              (dndDrop)="dropData = $event"
-             [dndPlaceholder]="placeholder">
+             [dndPlaceholder]="placeholder2">
+
       dropzone 2
+
+      <div style="border: 1px orangered solid; border-radius: 5px; padding: 15px;"
+           #placeholder2>placeholder2
+      </div>
 
       <div class="dropzone-content">some other content in dropzone</div>
 
