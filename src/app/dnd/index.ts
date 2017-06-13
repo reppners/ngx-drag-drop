@@ -4,6 +4,11 @@ import { DndDraggableDirective } from "./dnd-draggable.directive";
 import { DndDropzoneDirective } from "./dnd-dropzone.directive";
 import { DndHandleDirective } from "./dnd-handle.directive";
 
+export * from "./dnd-draggable.directive";
+export * from "./dnd-dropzone.directive";
+export * from "./dnd-handle.directive";
+export * from "./dnd-types";
+
 @NgModule( {
   imports: [
     CommonModule
@@ -19,5 +24,5 @@ import { DndHandleDirective } from "./dnd-handle.directive";
     DndHandleDirective
   ]
 } )
-export class DragAndDropModule {
+export class DndModule {
 }

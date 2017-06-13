@@ -1,34 +1,53 @@
 # NgxDragDrop
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.6.
-
 Port of [angular-drag-drop-lists](https://github.com/marceljuenemann/angular-drag-and-drop-lists) but without the lists :D
 
 We have `dropzones` though :+1:
 
 This project is currently under heavy construction!
 
-## Development server
+## How to install
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+`npm install ngx-drag-drop`
 
-## Code scaffolding
+```JS
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+import { AppComponent } from './app.component';
 
-## Build
+import { DndModule } from 'ngx-drag-drop';
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    
+    DndModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
-## Running unit tests
+## API
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`TODO`
 
-## Running end-to-end tests
+### Maintenance
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.6.
+For the library build it uses the workflow from [generator-angular2-library](https://github.com/jvandemo/generator-angular2-library).
 
-## Further help
+#### Library
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* build library with `npm run build:lib`
+* publish library with `npm publish dist`
+
+#### Docs
+
+* build docs site with `npm run build`
+* commit and push changes in `docs` to `master`

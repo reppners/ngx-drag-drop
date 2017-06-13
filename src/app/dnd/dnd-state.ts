@@ -1,15 +1,7 @@
-import {
-  DROP_EFFECTS,
-  DropEffect,
-  EDGE_MIME_TYPE,
-  EffectAllowed,
-  filterEffects,
-  getMimeType,
-  MIME_TYPE,
-  MSIE_MIME_TYPE
-} from "./dnd-utils";
+import { DROP_EFFECTS, EDGE_MIME_TYPE, filterEffects, getMimeType, MIME_TYPE, MSIE_MIME_TYPE } from "./dnd-utils";
+import { DropEffect, EffectAllowed } from "./dnd-types";
 
-interface DndState {
+export interface DndState {
   isDragging:boolean;
   dropEffect?:DropEffect;
   effectAllowed?:EffectAllowed;
@@ -56,7 +48,7 @@ export function getDropEffect( event:DragEvent, effectAllowed?:EffectAllowed | D
 
   if ( _dndState.isDragging ) {
 
-    effects = filterEffects( effects, dndState.effectAllowed );
+    effects = filterEffects( effects, _dndState.effectAllowed );
   }
 
   if ( effectAllowed ) {

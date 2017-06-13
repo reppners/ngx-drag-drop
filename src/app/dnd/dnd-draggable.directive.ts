@@ -11,9 +11,10 @@ import {
   Renderer2,
   SimpleChanges
 } from "@angular/core";
-import { DndEvent, EffectAllowed, setDragData } from "./dnd-utils";
+import { DndEvent, setDragData } from "./dnd-utils";
 import { DndHandleDirective } from "./dnd-handle.directive";
 import { dndState, endDrag, startDrag } from "./dnd-state";
+import { EffectAllowed } from "./dnd-types";
 
 @Directive( {
   selector: "[dndDraggable]"
@@ -39,28 +40,28 @@ export class DndDraggableDirective implements OnChanges {
   public dndDraggingSourceClass = "dndDraggingSource";
 
   @Output()
-  public dndStart:EventEmitter<DndEvent> = new EventEmitter<DndEvent>();
+  public readonly dndStart:EventEmitter<DndEvent> = new EventEmitter<DndEvent>();
 
   @Output()
-  public dndEnd:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  public readonly dndEnd:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  public dndMoved:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  public readonly dndMoved:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  public dndCopied:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  public readonly dndCopied:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  public dndLinked:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  public readonly dndLinked:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  public dndCanceled:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  public readonly dndCanceled:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @HostBinding( "attr.draggable" )
   private draggable = true;
 
   @ContentChild( DndHandleDirective )
-  private dndHandle?:DndHandleDirective;
+  private readonly dndHandle?:DndHandleDirective;
 
   constructor( private elementRef:ElementRef,
                private renderer:Renderer2 ) {

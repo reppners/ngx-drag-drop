@@ -1,10 +1,8 @@
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { HttpModule } from "@angular/http";
 import { BrowserModule } from "@angular/platform-browser";
 
 import { AppComponent } from "./app.component";
-import { DragAndDropModule } from "./html-drag-and-drop/drag-and-drop.module";
+import { DndModule } from "./dnd/index";
 
 @NgModule( {
   declarations: [
@@ -12,9 +10,7 @@ import { DragAndDropModule } from "./html-drag-and-drop/drag-and-drop.module";
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,
-    DragAndDropModule
+    DndModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]

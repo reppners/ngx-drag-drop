@@ -2,16 +2,17 @@ import { Directive, ElementRef, EventEmitter, HostListener, Input, OnInit, Outpu
 import {
   DndEvent,
   DragDropData,
-  DropEffect,
   getDirectChildElement,
   getDropData,
   shouldPositionPlaceholderBeforeElement
 } from "./dnd-utils";
 import { dndState, getDropEffect, getItemType, setDropEffect } from "./dnd-state";
+import { DropEffect, EffectAllowed } from "./dnd-types";
 
 export interface DndDropEvent {
   event:DragEvent;
-  data:any;
+  dropEffect:DropEffect;
+  data?:any;
   index?:number;
 }
 
@@ -24,7 +25,7 @@ export class DndDropzoneDirective implements OnInit {
   public dndDropzone?:string[];
 
   @Input()
-  public dndEffectAllowed:DropEffect;
+  public dndEffectAllowed:EffectAllowed;
 
   @Input()
   public dndDisableIf:boolean = false;
@@ -42,10 +43,10 @@ export class DndDropzoneDirective implements OnInit {
   public dndDragoverClass:string = "dndDragover";
 
   @Output()
-  public dndDragover:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  public readonly dndDragover:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  public dndDrop:EventEmitter<DndDropEvent> = new EventEmitter<DndDropEvent>();
+  public readonly dndDrop:EventEmitter<DndDropEvent> = new EventEmitter<DndDropEvent>();
 
   constructor( private elementRef:ElementRef,
                private renderer:Renderer2 ) {
@@ -240,6 +241,7 @@ export class DndDropzoneDirective implements OnInit {
       const dropIndex = this.getPlaceholderIndex();
       this.dndDrop.emit( {
         event: event,
+        dropEffect: dropEffect,
         data: data.data,
         index: dropIndex
       } );

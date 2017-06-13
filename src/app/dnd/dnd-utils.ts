@@ -1,11 +1,7 @@
-export type DragEffect = "move" | "copy" | "link" | "copyMove" | "copyLink" | "linkMove";
-
-export type EffectAllowed = DragEffect | "all";
-
-export type DropEffect = "move" | "copy" | "link" | "none";
+import { DropEffect, EffectAllowed } from "./dnd-types";
 
 export interface DragDropData {
-  data:any;
+  data?:any;
   type?:string;
 }
 
