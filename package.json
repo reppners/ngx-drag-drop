@@ -43,6 +43,7 @@
     "codelyzer": "~2.0.0",
     "core-js": "^2.4.1",
     "del": "^2.2.2",
+    "drag-drop-polyfill": "git://github.com/timruffles/ios-html5-drag-drop-shim.git#rewrite",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-rollup": "^2.11.0",

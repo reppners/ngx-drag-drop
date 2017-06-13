@@ -1,6 +1,6 @@
 webpackJsonp([1,4],{
 
-/***/ 134:
+/***/ 136:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(47)(false);
@@ -18,14 +18,14 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 135:
+/***/ 137:
 /***/ (function(module, exports) {
 
 module.exports = "<h1>\n  {{title}}\n</h1>\n\n<div>\n\n  <h4>draggable state</h4>\n  <div>start: {{ started }}</div>\n  <div>end: {{ ended }}</div>\n  <div>effect: {{ effect }}</div>\n\n  <hr/>\n\n  <h4>dropzone state</h4>\n  <div>dragover:\n    <pre>{{ dragover | json }}</pre>\n  </div>\n  <div>drop:\n    <pre>{{ dropData | json }}</pre>\n  </div>\n\n</div>\n\n<div>\n\n  <section style=\"margin: 20px;\">\n\n    <div *ngFor=\"let draggable of draggables\"\n         [dndDraggable]=\"draggable.data\"\n         [dndEffectAllowed]=\"draggable.effectAllowed\"\n         [dndDisableIf]=\"draggable.disable\"\n         (dndStart)=\"started = true; ended = false; dragover = undefined; dropData = undefined;\"\n         (dndCopied)=\"effect = 'copied'\"\n         (dndLinked)=\"effect = 'linked'\"\n         (dndMoved)=\"effect = 'moved'\"\n         (dndCanceled)=\"effect = 'canceled'\"\n         (dndEnd)=\"ended = true; started = false\">\n      <div *ngIf=\"draggable.handle\"\n           dndHandle>DRAG HANDLE\n      </div>\n      draggable ({{draggable.effectAllowed}}) <span [hidden]=\"!draggable.disable\"> DISABLED</span>\n    </div>\n\n  </section>\n\n  <div style=\"border: 1px orangered solid; border-radius: 5px; padding: 15px;\"\n       #placeholder>placeholder\n  </div>\n\n  <section dndDropzone\n           (dndDragover)=\"dragover = $event\"\n           (dndDrop)=\"dropData = $event\"\n           [dndPlaceholder]=\"placeholder\">\n    dropzone\n\n    <section dndDropzone\n             (dndDragover)=\"dragover = $event\"\n             (dndDrop)=\"dropData = $event\"\n             [dndPlaceholder]=\"placeholder\">\n      dropzone 2\n\n      <div class=\"dropzone-content\">some other content in dropzone</div>\n\n    </section>\n\n    <section dndDropzone\n             (dndDragover)=\"dragover = $event\"\n             (dndDrop)=\"dropData = $event\">\n      dropzone 3 without placeholder\n\n      <div class=\"dropzone-content\">some other content in dropzone</div>\n\n    </section>\n\n  </section>\n\n</div>\n"
 
 /***/ }),
 
-/***/ 159:
+/***/ 161:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(72);
@@ -785,8 +785,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
         selector: "dnd-root",
-        template: __webpack_require__(135),
-        styles: [__webpack_require__(134)]
+        template: __webpack_require__(137),
+        styles: [__webpack_require__(136)]
     })
 ], AppComponent);
 
@@ -911,5 +911,5 @@ var environment = {
 
 /***/ })
 
-},[159]);
+},[161]);
 //# sourceMappingURL=main.bundle.js.map

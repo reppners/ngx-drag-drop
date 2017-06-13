@@ -1,11 +1,12 @@
-**This project is currently under heavy construction!**
+**This project is currently under development!**
 
 # NgxDragDrop
 
 Port of [angular-drag-drop-lists](https://github.com/marceljuenemann/angular-drag-and-drop-lists) but without the lists :wink:
 Credits go to contributors of this repository.
 
-We have `dropzones` though :+1:
+This has `dropzones` though :+1:
+The idea is that the directive does not handle lists internally so the `dndDropzone` can be general purpose.
 
 For touch support please use this [polyfill](https://github.com/timruffles/ios-html5-drag-drop-shim/tree/rewrite).
 
