@@ -1,7 +1,25 @@
 {
   "name": "ngx-drag-drop",
   "version": "0.1.0-alpha.0",
+  "description": "Angular directives using the native HTML Drag And Drop API",
+  "homepage": "https://reppners.github.io/ngx-drag-drop/",
+  "author": {
+    "name": "Stefan Steinhart",
+    "email": "stefanreppner@googlemail.com"
+  },
   "license": "MIT",
+  "keywords": [
+    "angular",
+    "html",
+    "drag",
+    "drop",
+    "dragdrop",
+    "dragndrop",
+    "dnd",
+    "directive",
+    "touch"
+  ],
+  "main": "./index.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
