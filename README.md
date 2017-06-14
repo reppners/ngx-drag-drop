@@ -36,6 +36,8 @@ import { DndModule, DndDropEvent } from 'ngx-drag-drop';
 export class AppModule { 
   
   draggable = {
+    // note that data is handled with JSON.stringify/JSON.parse
+    // only set simple data or POJO's as methods will be lost 
     data: "myDragData",
     effectAllowed: "all",
     disable: false,
@@ -44,42 +46,42 @@ export class AppModule {
   
   onDragStart(event:DragEvent) {
 
-    console.log("drag started");
+    console.log("drag started", JSON.stringify(event, null, 2));
   }
   
   onDragEnd(event:DragEvent) {
     
-    console.log("drag ended");
+    console.log("drag ended", JSON.stringify(event, null, 2));
   }
   
   onDraggableCopied(event:DragEvent) {
     
-    console.log("draggable copied");
+    console.log("draggable copied", JSON.stringify(event, null, 2));
   }
   
   onDraggableLinked(event:DragEvent) {
       
-    console.log("draggable linked");
+    console.log("draggable linked", JSON.stringify(event, null, 2));
   }
     
   onDraggableMoved(event:DragEvent) {
     
-    console.log("draggable moved");
+    console.log("draggable moved", JSON.stringify(event, null, 2));
   }
       
   onDragCanceled(event:DragEvent) {
     
-    console.log("drag cancelled");
+    console.log("drag cancelled", JSON.stringify(event, null, 2));
   }
   
   onDragover(event:DragEvent) {
     
-    console.log("dragover");
+    console.log("dragover", JSON.stringify(event, null, 2));
   }
   
   onDrop(event:DndDropEvent) {
   
-    console.log("dropped");
+    console.log("dropped", JSON.stringify(event, null, 2));
   }
 }
 ```
@@ -88,13 +90,14 @@ export class AppModule {
 <div [dndDraggable]="draggable.data"
      [dndEffectAllowed]="draggable.effectAllowed"
      [dndDisableIf]="draggable.disable"
-     (dndStart)="onDragStart()"
-     (dndCopied)="onDraggableCopied()"
-     (dndLinked)="onDraggableLinked()"
-     (dndMoved)="onDraggableMoved()"
-     (dndCanceled)="onDragCanceled()"
-     (dndEnd)="onDragEnd()">
+     (dndStart)="onDragStart($event)"
+     (dndCopied)="onDraggableCopied($event)"
+     (dndLinked)="onDraggableLinked($event)"
+     (dndMoved)="onDraggableMoved($event)"
+     (dndCanceled)="onDragCanceled($event)"
+     (dndEnd)="onDragEnd($event)">
       
+    <!--if [dndHandle] is used inside dndDraggable drag can only start from the handle-->
     <div *ngIf="draggable.handle"
          dndHandle>HANDLE
     </div>
@@ -127,41 +130,94 @@ export type DropEffect = "move" | "copy" | "link" | "none";
 export type EffectAllowed = DropEffect | "move" | "copy" | "link" | "copyMove" | "copyLink" | "linkMove" | "all";
 ```
 
-
 ```TS
 export declare class DndDraggableDirective {
+
+    // the data attached to the drag
     dndDraggable: any;
+    
+    // the allowed drop effect
     dndEffectAllowed: EffectAllowed;
+    
+    // optionally set the type of dragged data to restrict dropping on compatible dropzones
     dndType?: string;
+    
+    // conditionally disable the draggability
     dndDisableIf: boolean;
-    dndDraggingClass: string;
-    dndDraggingSourceClass: string;
-    readonly dndStart: EventEmitter<DndEvent>;
+    
+    // set a custom class that is applied to the dragged element
+    dndDraggingClass: string = "dndDragging";
+    
+    // set a custom class that is applied to the src element on drag
+    dndDraggingSourceClass: string = "dndDraggingSource";
+    
+    // emits on drag start
+    readonly dndStart: EventEmitter<DragEvent>;
+    
+    // emits on drag end
     readonly dndEnd: EventEmitter<DragEvent>;
+    
+    // emits when the dragged item has been dropped with effect "move"
     readonly dndMoved: EventEmitter<DragEvent>;
+    
+    // emits when the dragged item has been dropped with effect "copy"
     readonly dndCopied: EventEmitter<DragEvent>;
+    
+    // emits when the dragged item has been dropped with effect "link"
     readonly dndLinked: EventEmitter<DragEvent>;
+    
+    // emits when the drag is canceled
     readonly dndCanceled: EventEmitter<DragEvent>;
 }
 ```
 
 ```TS
 export interface DndDropEvent {
+
+    // the original drag event
     event: DragEvent;
+    
+    // the actual drop effect
     dropEffect: DropEffect;
+    
+    // the data set on the draggable
     data?: any;
+    
+    // the index where the draggable was dropped in a dropzone
+    // set only when using a placeholder
     index?: number;
 }
 
-export declare class DndDropzoneDirective implements OnInit {
+export declare class DndDropzoneDirective {
+
+    // optionally restrict the allowed types
     dndDropzone?: string[];
+    
+    // set the allowed drop effect
     dndEffectAllowed: EffectAllowed;
+    
+    // conditionally disable the dropzone
     dndDisableIf: boolean;
+    
+    // if draggables that were not started
+    // from [dndDraggable] are allowed to be dropped
     dndAllowExternal: boolean;
+    
+    // if its a horizontal list this influences how the placeholder position
+    // is calculated
     dndHorizontal: boolean;
+    
+    // optionally pass a placeholder to indicate the drop position
     dndPlaceholder: Element | null;
-    dndDragoverClass: string;
+    
+    // set the class applied to the dropzone
+    // when a draggable is dragged over it
+    dndDragoverClass: string = "dndDragover";
+    
+    // emits when a draggable is dragged over the dropzone
     readonly dndDragover: EventEmitter<DragEvent>;
+    
+    // emits on successful drop
     readonly dndDrop: EventEmitter<DndDropEvent>;
 }
 ```
