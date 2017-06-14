@@ -1,6 +1,6 @@
 {
   "name": "ngx-drag-drop",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "Angular directives using the native HTML Drag And Drop API",
   "homepage": "https://reppners.github.io/ngx-drag-drop/",
   "author": {
@@ -25,6 +25,8 @@
     "start": "ng serve",
     "build": "ng build",
     "build:lib": "gulp build",
+    "publish:stable": "npm publish dist",
+    "publish:next": "npm publish dist --tag next",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
