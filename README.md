@@ -1,3 +1,8 @@
+[![npm](https://img.shields.io/npm/v/ngx-drag-drop.svg)](https://www.npmjs.com/package/ngx-drag-drop)
+[![GitHub issues](https://img.shields.io/github/issues/reppners/ngx-drag-drop.svg)](https://github.com/reppners/ngx-drag-drop/issues)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/reppners/ngx-drag-drop.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
+
+
 **This project is currently under development!**
 
 # NgxDragDrop
