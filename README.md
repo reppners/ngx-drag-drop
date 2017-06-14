@@ -145,10 +145,10 @@ export declare class DndDraggableDirective {
     // conditionally disable the draggability
     dndDisableIf: boolean;
     
-    // set a custom class that is applied to the dragged element
+    // set a custom class that is applied while dragging
     dndDraggingClass: string = "dndDragging";
     
-    // set a custom class that is applied to the src element on drag
+    // set a custom class that is applied to only the src element while dragging
     dndDraggingSourceClass: string = "dndDraggingSource";
     
     // emits on drag start
@@ -199,8 +199,8 @@ export declare class DndDropzoneDirective {
     // conditionally disable the dropzone
     dndDisableIf: boolean;
     
-    // if draggables that were not started
-    // from [dndDraggable] are allowed to be dropped
+    // if draggables that are not [dndDraggable] are allowed to be dropped
+    // set to true if dragged text, images or files should be handled
     dndAllowExternal: boolean;
     
     // if its a horizontal list this influences how the placeholder position
