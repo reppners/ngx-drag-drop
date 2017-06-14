@@ -16,7 +16,10 @@
     <pre>{{ dragover | json }}</pre>
   </div>
   <div>drop:
-    <pre>{{ dropData | json }}</pre>
+    <pre>{{ dropEvent | json }}</pre>
+    <pre>{{ dropEventFiles | json }}</pre>
+    <pre>{{ dropEventTypes | json }}</pre>
+    <pre>{{ dropEventContent | json }}</pre>
   </div>
 
 </div>
@@ -49,13 +52,13 @@
 
   <section dndDropzone
            (dndDragover)="dragover = $event"
-           (dndDrop)="dropData = $event"
+           (dndDrop)="onDrop($event)"
            [dndPlaceholder]="placeholder">
     dropzone
 
     <section dndDropzone
              (dndDragover)="dragover = $event"
-             (dndDrop)="dropData = $event"
+             (dndDrop)="onDrop($event)"
              [dndPlaceholder]="placeholder2">
 
       dropzone 2
@@ -69,14 +72,19 @@
     </section>
 
     <section dndDropzone
+             [dndAllowExternal]="true"
              (dndDragover)="dragover = $event"
-             (dndDrop)="dropData = $event">
-      dropzone 3 without placeholder
+             (dndDrop)="onDrop($event)">
 
-      <div class="dropzone-content">some other content in dropzone</div>
+      dropzone 3 without placeholder and allows externals to be dropped
 
     </section>
 
   </section>
+
+  <img src="https://i.imgflip.com/1quv8v.jpg"/>
+  <a href="https://imgflip.com/i/1quv8v">Made with imgflip</a>
+
+  <div><span>just some text to select and drag</span></div>
 
 </div>

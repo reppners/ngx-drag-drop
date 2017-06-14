@@ -40,7 +40,7 @@ export class DndDraggableDirective implements OnChanges {
   public dndDraggingSourceClass = "dndDraggingSource";
 
   @Output()
-  public readonly dndStart:EventEmitter<DndEvent> = new EventEmitter<DndEvent>();
+  public readonly dndStart:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
   public readonly dndEnd:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
@@ -69,7 +69,7 @@ export class DndDraggableDirective implements OnChanges {
 
   public ngOnChanges( changes:SimpleChanges ):void {
 
-    if ( changes.dndDisableIf ) {
+    if( changes.dndDisableIf ) {
 
       this.draggable = !changes.dndDisableIf.currentValue;
     }
@@ -78,12 +78,12 @@ export class DndDraggableDirective implements OnChanges {
   @HostListener( "dragstart", [ "$event" ] )
   private onDragStart( event:DndEvent ) {
 
-    if ( this.draggable === false ) {
+    if( this.draggable === false ) {
       return false;
     }
 
     // check if there is dnd handle and if the dnd handle was used to start the drag
-    if ( typeof this.dndHandle !== "undefined"
+    if( typeof this.dndHandle !== "undefined"
       && typeof event._dndHandle === "undefined" ) {
 
       return false;
@@ -101,7 +101,7 @@ export class DndDraggableDirective implements OnChanges {
     }, 0 );
 
     // set dragimage if drag is started from dndHandle
-    if ( typeof event._dndHandle !== "undefined" ) {
+    if( typeof event._dndHandle !== "undefined" ) {
 
       const offX = /* event._dndHandle.offsetLeft + */ event.offsetX;
       const offY = /* event._dndHandle.offsetHeight + */ event.offsetY;
@@ -122,7 +122,7 @@ export class DndDraggableDirective implements OnChanges {
 
     let dropEffectEmitter:EventEmitter<DragEvent>;
 
-    switch ( dropEffect ) {
+    switch( dropEffect ) {
 
       case "copy":
         dropEffectEmitter = this.dndCopied;

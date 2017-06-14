@@ -6,7 +6,7 @@ import {
   getDropData,
   shouldPositionPlaceholderBeforeElement
 } from "./dnd-utils";
-import { dndState, getDropEffect, getItemType, setDropEffect } from "./dnd-state";
+import { dndState, getDndType, getDropEffect, setDropEffect } from "./dnd-state";
 import { DropEffect, EffectAllowed } from "./dnd-types";
 
 export interface DndDropEvent {
@@ -54,7 +54,7 @@ export class DndDropzoneDirective implements OnInit {
 
   public ngOnInit():void {
 
-    if ( this.dndPlaceholder ) {
+    if( this.dndPlaceholder ) {
 
       this.dndPlaceholder.remove();
     }
@@ -63,29 +63,28 @@ export class DndDropzoneDirective implements OnInit {
   private isDropAllowed( type?:string ):boolean {
 
     // dropzone is disabled -> deny it
-    if ( this.dndDisableIf === true ) {
+    if( this.dndDisableIf === true ) {
 
       return false;
     }
 
     // if drag did not start from our directive
     // and external drag sources are not allowed -> deny it
-    if ( dndState.isDragging === false
+    if( dndState.isDragging === false
       && this.dndAllowExternal === false ) {
 
       return false;
     }
 
     // no filtering by types -> allow it
-    if ( !this.dndDropzone ) {
+    if( !this.dndDropzone ) {
 
       return true;
     }
 
-    // get optional item type
-    if ( !type ) {
+    // no type set -> allow it
+    if( !type ) {
 
-      // no type set -> allow it
       return true;
     }
 
@@ -95,13 +94,13 @@ export class DndDropzoneDirective implements OnInit {
 
   private checkAndUpdatePlaceholderPosition( event:DragEvent ):void {
 
-    if ( this.dndPlaceholder === null ) {
+    if( this.dndPlaceholder === null ) {
 
       return;
     }
 
     // make sure the placeholder is in the DOM
-    if ( this.dndPlaceholder.parentNode !== this.elementRef.nativeElement ) {
+    if( this.dndPlaceholder.parentNode !== this.elementRef.nativeElement ) {
 
       this.renderer.appendChild( this.elementRef.nativeElement, this.dndPlaceholder );
     }
@@ -110,7 +109,7 @@ export class DndDropzoneDirective implements OnInit {
     const directChild = getDirectChildElement( this.elementRef.nativeElement, event.target as Element );
 
     // early exit if no direct child or direct child is placeholder
-    if ( directChild === null
+    if( directChild === null
       || directChild === this.dndPlaceholder ) {
 
       return;
@@ -118,10 +117,10 @@ export class DndDropzoneDirective implements OnInit {
 
     const positionPlaceholderBeforeDirectChild = shouldPositionPlaceholderBeforeElement( event, directChild, this.dndHorizontal );
 
-    if ( positionPlaceholderBeforeDirectChild ) {
+    if( positionPlaceholderBeforeDirectChild ) {
 
       // do insert before only if necessary
-      if ( directChild.previousSibling !== this.dndPlaceholder ) {
+      if( directChild.previousSibling !== this.dndPlaceholder ) {
 
         this.renderer.insertBefore( this.elementRef.nativeElement, this.dndPlaceholder, directChild );
       }
@@ -130,7 +129,7 @@ export class DndDropzoneDirective implements OnInit {
     else {
 
       // do insert after only if necessary
-      if ( directChild.nextSibling !== this.dndPlaceholder ) {
+      if( directChild.nextSibling !== this.dndPlaceholder ) {
 
         this.renderer.insertBefore( this.elementRef.nativeElement, this.dndPlaceholder, directChild.nextSibling );
       }
@@ -139,7 +138,7 @@ export class DndDropzoneDirective implements OnInit {
 
   private getPlaceholderIndex():number | undefined {
 
-    if ( this.dndPlaceholder === null ) {
+    if( this.dndPlaceholder === null ) {
 
       return undefined;
     }
@@ -153,7 +152,7 @@ export class DndDropzoneDirective implements OnInit {
 
     this.renderer.removeClass( this.elementRef.nativeElement, this.dndDragoverClass );
 
-    if ( this.dndPlaceholder !== null ) {
+    if( this.dndPlaceholder !== null ) {
 
       this.dndPlaceholder.remove();
     }
@@ -163,8 +162,8 @@ export class DndDropzoneDirective implements OnInit {
   private onDragEnter( event:DragEvent ) {
 
     // check if this drag event is allowed to drop on this dropzone
-    const type = getItemType( event );
-    if ( this.isDropAllowed( type ) === false ) {
+    const type = getDndType( event );
+    if( this.isDropAllowed( type ) === false ) {
 
       return;
     }
@@ -177,8 +176,8 @@ export class DndDropzoneDirective implements OnInit {
   private onDragOver( event:DragEvent ) {
 
     // check if this drag event is allowed to drop on this dropzone
-    const type = getItemType( event );
-    if ( this.isDropAllowed( type ) === false ) {
+    const type = getDndType( event );
+    if( this.isDropAllowed( type ) === false ) {
 
       return;
     }
@@ -187,7 +186,7 @@ export class DndDropzoneDirective implements OnInit {
 
     const dropEffect = getDropEffect( event, this.dndEffectAllowed );
 
-    if ( dropEffect === "none" ) {
+    if( dropEffect === "none" ) {
 
       this.cleanupDragoverState();
       return;
@@ -212,15 +211,15 @@ export class DndDropzoneDirective implements OnInit {
     try {
 
       // check if this drag event is allowed to drop on this dropzone
-      const type = getItemType( event );
-      if ( this.isDropAllowed( type ) === false ) {
+      const type = getDndType( event );
+      if( this.isDropAllowed( type ) === false ) {
 
         return;
       }
 
-      const data:DragDropData = getDropData( event );
+      const data:DragDropData = getDropData( event, dndState.isDragging );
 
-      if ( this.isDropAllowed( data.type ) === false ) {
+      if( this.isDropAllowed( data.type ) === false ) {
 
         return;
       }
@@ -232,7 +231,7 @@ export class DndDropzoneDirective implements OnInit {
 
       setDropEffect( event, dropEffect );
 
-      if ( dropEffect === "none" ) {
+      if( dropEffect === "none" ) {
 
         return;
       }
@@ -247,7 +246,8 @@ export class DndDropzoneDirective implements OnInit {
 
       event.stopPropagation();
 
-    }finally {
+    }
+    finally {
 
       this.cleanupDragoverState();
     }
@@ -257,11 +257,11 @@ export class DndDropzoneDirective implements OnInit {
   private onDragLeave( event:DndEvent ) {
 
     // check if still inside this dropzone and not yet handled by another dropzone
-    if ( typeof event._dndDragLeaveHandled === "undefined" ) {
+    if( typeof event._dndDragLeaveHandled === "undefined" ) {
 
       const newTarget = document.elementFromPoint( event.clientX, event.clientY );
 
-      if ( this.elementRef.nativeElement.contains( newTarget ) ) {
+      if( this.elementRef.nativeElement.contains( newTarget ) ) {
 
         event._dndDragLeaveHandled = true;
         return;
