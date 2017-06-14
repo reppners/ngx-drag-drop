@@ -482,7 +482,7 @@ var DndDropzoneDirective = (function () {
             return undefined;
         }
         var element = this.elementRef.nativeElement;
-        return Array.prototype.indexOf.call(element.childNodes, this.dndPlaceholder);
+        return Array.prototype.indexOf.call(element.children, this.dndPlaceholder);
     };
     DndDropzoneDirective.prototype.cleanupDragoverState = function () {
         this.renderer.removeClass(this.elementRef.nativeElement, this.dndDragoverClass);

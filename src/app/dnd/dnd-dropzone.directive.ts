@@ -145,7 +145,7 @@ export class DndDropzoneDirective implements OnInit {
 
     const element = this.elementRef.nativeElement as HTMLElement;
 
-    return Array.prototype.indexOf.call( element.childNodes, this.dndPlaceholder );
+    return Array.prototype.indexOf.call( element.children, this.dndPlaceholder );
   }
 
   private cleanupDragoverState() {
