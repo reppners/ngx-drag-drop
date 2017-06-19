@@ -21,7 +21,6 @@
     "annotateForClosureCompiler": true,
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
-    "flatModuleOutFile": "ngx-drag-drop.js",
     "flatModuleId": "ngx-drag-drop"
   },
   "files": [
