@@ -4,14 +4,24 @@
 
 # NgxDragDrop
 
+Set of Angular directives for declarative drag and drop using the HTML5 Drag-And-Drop API.
+
+* nesting
+* sortable lists by using placeholder element (vertical and horizontal)
+* dropzones optionally support external/native draggables (img, txt, file)
+* conditional drag/drop
+* typed drag/drop
+* utilize EffectAllowed
+* custom CSS classes
+* touch support by using a [polyfill](https://github.com/timruffles/ios-html5-drag-drop-shim/tree/rewrite)
+* AOT compatible
+
+Install with `npm install ngx-drag-drop@next --save`
+
 Port of [angular-drag-drop-lists](https://github.com/marceljuenemann/angular-drag-and-drop-lists) but without the lists :wink:
 
 This has `dropzones` though :+1:
 The idea is that the directive does not handle lists internally so the `dndDropzone` can be general purpose.
-
-For touch support please use this [polyfill](https://github.com/timruffles/ios-html5-drag-drop-shim/tree/rewrite).
-
-Install with `npm install ngx-drag-drop@next --save`
 
 ## Usage
 
@@ -244,7 +254,7 @@ export declare class DndDropzoneDirective {
 
 ### Why?
 
-Native drag and drop API's are not behaving the same way across browsers.
+HTML Drag-And-Drop API implementations are not behaving the same way across browsers.
 
 The directives contained in this module enable declarative drag and drop that "just works" across browsers in a consistent way.
 
