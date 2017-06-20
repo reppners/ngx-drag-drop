@@ -2,9 +2,6 @@
 [![GitHub issues](https://img.shields.io/github/issues/reppners/ngx-drag-drop.svg)](https://github.com/reppners/ngx-drag-drop/issues)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/reppners/ngx-drag-drop.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 
-
-**This project is currently under development!**
-
 # NgxDragDrop
 
 Port of [angular-drag-drop-lists](https://github.com/marceljuenemann/angular-drag-and-drop-lists) but without the lists :wink:
@@ -14,31 +11,58 @@ The idea is that the directive does not handle lists internally so the `dndDropz
 
 For touch support please use this [polyfill](https://github.com/timruffles/ios-html5-drag-drop-shim/tree/rewrite).
 
+Install with `npm install ngx-drag-drop@next --save`
+
 ## Usage
 
-`npm install ngx-drag-drop`
-
-```JS
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-
-import { DndModule, DndDropEvent } from 'ngx-drag-drop';
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
+`app.component.html`
+```HTML
+<!--a draggable element-->
+<div [dndDraggable]="draggable.data"
+     [dndEffectAllowed]="draggable.effectAllowed"
+     [dndDisableIf]="draggable.disable"
+     (dndStart)="onDragStart($event)"
+     (dndCopied)="onDraggableCopied($event)"
+     (dndLinked)="onDraggableLinked($event)"
+     (dndMoved)="onDraggableMoved($event)"
+     (dndCanceled)="onDragCanceled($event)"
+     (dndEnd)="onDragEnd($event)">
+      
+    <!--if [dndHandle] is used inside dndDraggable drag can only start from the handle-->
+    <div *ngIf="draggable.handle"
+         dndHandle>HANDLE
+    </div>
     
-    DndModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { 
+    draggable ({{draggable.effectAllowed}}) <span [hidden]="!draggable.disable">DISABLED</span>
+    
+</div>
+
+<!--a dropzone-->
+<!--to allow dropping content that is not [dndDraggable] set dndAllowExternal to true-->
+<section dndDropzone
+         (dndDragover)="onDragover($event)"
+         (dndDrop)="onDrop($event)">
+      
+    dropzone 
+    
+    <!--optional placeholder element for dropzone-->
+    <!--will be removed from DOM on init-->
+    <div style="border: 1px orangered solid; border-radius: 5px; padding: 15px;"
+         #placeholder>
+        placeholder
+    </div>
+
+</section>
+```
+
+`app.component`
+```JS
+import { Component } from '@angular/core';
+
+import { DndDropEvent } from 'ngx-drag-drop';
+
+@Component()
+export class AppComponent {
   
   draggable = {
     // note that data is handled with JSON.stringify/JSON.parse
@@ -91,38 +115,29 @@ export class AppModule {
 }
 ```
 
-```HTML
-<div [dndDraggable]="draggable.data"
-     [dndEffectAllowed]="draggable.effectAllowed"
-     [dndDisableIf]="draggable.disable"
-     (dndStart)="onDragStart($event)"
-     (dndCopied)="onDraggableCopied($event)"
-     (dndLinked)="onDraggableLinked($event)"
-     (dndMoved)="onDraggableMoved($event)"
-     (dndCanceled)="onDragCanceled($event)"
-     (dndEnd)="onDragEnd($event)">
-      
-    <!--if [dndHandle] is used inside dndDraggable drag can only start from the handle-->
-    <div *ngIf="draggable.handle"
-         dndHandle>HANDLE
-    </div>
-    
-    draggable ({{draggable.effectAllowed}}) <span [hidden]="!draggable.disable">DISABLED</span>
-    
-</div>
+`app.module`
 
-<div style="border: 1px orangered solid; border-radius: 5px; padding: 15px;"
-     #placeholder>
-    placeholder
-</div>
+```JS
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-<section dndDropzone
-         (dndDragover)="onDragover($event)"
-         (dndDrop)="onDrop($event)">
-      
-    dropzone 
+import { DndModule } from 'ngx-drag-drop';
 
-</section>
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    DndModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { 
+}
 ```
 
 ## API
@@ -242,8 +257,9 @@ For the library build it uses the workflow from [generator-angular2-library](htt
 
 #### Library
 
+* assure correct version is set in `package.json`
 * build library with `npm run build:lib`
-* publish library with `npm publish dist`
+* publish library with `npm run publish:stable` (use `npm run publish:next` for pre-releases)
 
 #### Docs
 
