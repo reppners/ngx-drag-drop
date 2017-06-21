@@ -109,4 +109,9 @@ export function getDndType( event:DragEvent ):string | undefined {
   return mimeType.substr( CUSTOM_MIME_TYPE.length + 1 ) || undefined;
 }
 
+export function isExternalDrag():boolean {
+
+  return _dndState.isDragging === false;
+}
+
 export const dndState:Readonly<DndState> = _dndState as Readonly<DndState>;

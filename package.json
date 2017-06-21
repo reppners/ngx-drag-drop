@@ -2,6 +2,10 @@
   "name": "ngx-drag-drop",
   "version": "1.0.0-beta.0",
   "description": "Angular directives using the native HTML Drag And Drop API",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reppners/ngx-drag-drop.git"
+  },
   "homepage": "https://reppners.github.io/ngx-drag-drop/",
   "author": {
     "name": "Stefan Steinhart",
@@ -32,14 +36,19 @@
     "e2e": "ng e2e"
   },
   "devDependencies": {
+    "@angular/animations": "^4.2.3",
     "@angular/cli": "1.0.6",
-    "@angular/common": "^4.0.0",
-    "@angular/compiler": "^4.0.0",
-    "@angular/compiler-cli": "^4.0.0",
-    "@angular/core": "^4.0.0",
-    "@angular/platform-browser": "^4.0.0",
-    "@angular/platform-browser-dynamic": "^4.0.0",
-    "@angular/router": "^4.0.0",
+    "@angular/common": "^4.2.0",
+    "@angular/compiler": "^4.2.0",
+    "@angular/compiler-cli": "^4.2.0",
+    "@angular/core": "^4.2.0",
+    "@angular/flex-layout": "^2.0.0-beta.8",
+    "@angular/forms": "^4.2.3",
+    "@angular/http": "^4.2.3",
+    "@angular/material": "^2.0.0-beta.7",
+    "@angular/platform-browser": "^4.2.0",
+    "@angular/platform-browser-dynamic": "^4.2.0",
+    "@angular/router": "^4.2.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",

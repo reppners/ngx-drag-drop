@@ -7,7 +7,7 @@ export interface DragDropData {
 
 export interface DndEvent extends DragEvent {
   _dndHandle?:HTMLElement;
-  _dndDragLeaveHandled?:true;
+  _dndDropzoneActive?:true;
 }
 
 export const DROP_EFFECTS = [ "move", "copy", "link" ] as DropEffect[];
@@ -76,13 +76,13 @@ export function setDragData( event:DragEvent, data:DragDropData, effectAllowed:E
   }
 }
 
-export function getDropData( event:DragEvent, dragIsInternal:boolean ):DragDropData {
+export function getDropData( event:DragEvent, dragIsExternal:boolean ):DragDropData {
 
   // check if the mime type is well known
   const mimeType = getWellKnownMimeType( event );
 
   // drag did not originate from [dndDraggable]
-  if( dragIsInternal === false ) {
+  if( dragIsExternal === true ) {
 
     if( mimeType !== null
       && mimeTypeIsCustom( mimeType ) ) {
@@ -139,10 +139,16 @@ export function shouldPositionPlaceholderBeforeElement( event:DragEvent, element
   if( horizontal ) {
 
     return ( event.clientX < bounds.left + bounds.width / 2 );
-
   }
-  else {
 
-    return ( event.clientY < bounds.top + bounds.height / 2 );
-  }
+  return ( event.clientY < bounds.top + bounds.height / 2 );
+}
+
+export function setDragImage( event:DragEvent, dragImage:Element ):void {
+
+  // TODO include dragImage padding/border into offset calculation?
+  const offX = event.offsetX;
+  const offY = event.offsetY;
+
+  (event.dataTransfer as any).setDragImage( dragImage, offX, offY );
 }

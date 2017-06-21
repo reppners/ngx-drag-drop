@@ -7,19 +7,21 @@ import {
   HostListener,
   Input,
   OnChanges,
+  OnInit,
   Output,
   Renderer2,
   SimpleChanges
 } from "@angular/core";
-import { DndEvent, setDragData } from "./dnd-utils";
+import { DndEvent, setDragData, setDragImage } from "./dnd-utils";
 import { DndHandleDirective } from "./dnd-handle.directive";
 import { dndState, endDrag, startDrag } from "./dnd-state";
 import { EffectAllowed } from "./dnd-types";
+import { DndElementRefDirective } from "./dnd-element-ref.directive";
 
 @Directive( {
   selector: "[dndDraggable]"
 } )
-export class DndDraggableDirective implements OnChanges {
+export class DndDraggableDirective implements OnInit, OnChanges {
 
   @Input()
   public dndDraggable:any;
@@ -63,12 +65,31 @@ export class DndDraggableDirective implements OnChanges {
   @ContentChild( DndHandleDirective )
   private readonly dndHandle?:DndHandleDirective;
 
+  @ContentChild( DndElementRefDirective )
+  private readonly dndDragImageRef?:DndElementRefDirective;
+
+  private dragImage:Element;
+
   constructor( private elementRef:ElementRef,
                private renderer:Renderer2 ) {
   }
 
+  public ngOnInit():void {
+
+    // evaluate custom drag image existence
+    if( typeof this.dndDragImageRef !== "undefined" ) {
+
+      this.dragImage = this.dndDragImageRef.elementRef.nativeElement as Element;
+    }
+    else {
+
+      this.dragImage = this.elementRef.nativeElement;
+    }
+  }
+
   public ngOnChanges( changes:SimpleChanges ):void {
 
+    // reevaluate dragability
     if( changes.dndDisableIf ) {
 
       this.draggable = !changes.dndDisableIf.currentValue;
@@ -79,6 +100,7 @@ export class DndDraggableDirective implements OnChanges {
   private onDragStart( event:DndEvent ) {
 
     if( this.draggable === false ) {
+
       return false;
     }
 
@@ -94,19 +116,22 @@ export class DndDraggableDirective implements OnChanges {
 
     setDragData( event, {data: this.dndDraggable, type: this.dndType}, dndState.effectAllowed );
 
-    // set css
-    this.renderer.addClass( this.elementRef.nativeElement, this.dndDraggingClass );
-    window.setTimeout( () => {
+    // add dragging source css class on first drag event
+    const unregister = this.renderer.listen( this.elementRef.nativeElement, "drag", () => {
+
       this.renderer.addClass( this.elementRef.nativeElement, this.dndDraggingSourceClass );
-    }, 0 );
+      unregister();
+    } );
 
+    // set dragging css class prior to setDragImage so styles are applied before
+    this.renderer.addClass( this.dragImage, this.dndDraggingClass );
+
+    // set custom dragimage if present
     // set dragimage if drag is started from dndHandle
-    if( typeof event._dndHandle !== "undefined" ) {
+    if( typeof this.dndDragImageRef !== "undefined"
+      || typeof event._dndHandle !== "undefined" ) {
 
-      const offX = /* event._dndHandle.offsetLeft + */ event.offsetX;
-      const offY = /* event._dndHandle.offsetHeight + */ event.offsetY;
-
-      (event.dataTransfer as any).setDragImage( this.elementRef.nativeElement, offX, offY );
+      setDragImage( event, this.dragImage );
     }
 
     this.dndStart.emit( event );
@@ -147,8 +172,7 @@ export class DndDraggableDirective implements OnChanges {
     // reset global state
     endDrag();
 
-    this.renderer.removeClass( this.elementRef.nativeElement, this.dndDraggingClass );
-    this.renderer.removeClass( this.elementRef.nativeElement, this.dndDraggingClass );
+    this.renderer.removeClass( this.dragImage, this.dndDraggingClass );
     // IE9 special hammering
     window.setTimeout( () => {
       this.renderer.removeClass( this.elementRef.nativeElement, this.dndDraggingSourceClass );
