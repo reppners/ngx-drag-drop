@@ -58,7 +58,7 @@ The idea is that the directive does not handle lists internally so the `dndDropz
     <!--optional placeholder element for dropzone-->
     <!--will be removed from DOM on init-->
     <div style="border: 1px orangered solid; border-radius: 5px; padding: 15px;"
-         #placeholder>
+         dndPlaceholderRef>
         placeholder
     </div>
 
@@ -210,6 +210,9 @@ export interface DndDropEvent {
     // the actual drop effect
     dropEffect: DropEffect;
     
+    // true if the drag did not origin from a [dndDraggable]
+    isExternal:boolean;
+    
     // the data set on the draggable
     data?: any;
     
@@ -236,9 +239,6 @@ export declare class DndDropzoneDirective {
     // if its a horizontal list this influences how the placeholder position
     // is calculated
     dndHorizontal: boolean;
-    
-    // optionally pass a placeholder to indicate the drop position
-    dndPlaceholder: Element | null;
     
     // set the class applied to the dropzone
     // when a draggable is dragged over it
