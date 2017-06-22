@@ -14,6 +14,7 @@ import { NativeComponent } from "./demo/native/native.component";
 import { HorizontalListComponent } from "./demo/horizontal-list/horizontal-list.component";
 import { TypedComponent } from "./demo/typed/typed.component";
 import { NestedComponent } from "./demo/nested/nested.component";
+import { DemoLinkComponent } from './demo-link/demo-link.component';
 
 @NgModule( {
   declarations: [
@@ -23,7 +24,8 @@ import { NestedComponent } from "./demo/nested/nested.component";
     NativeComponent,
     HorizontalListComponent,
     TypedComponent,
-    NestedComponent
+    NestedComponent,
+    DemoLinkComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,15 @@
 <md-toolbar color="primary"
             class="mat-elevation-z4">
+
   <span>{{title}}</span>
+
   <span fxFlex></span>
+
   <a md-icon-button
      href="https://github.com/reppners/ngx-drag-drop">
     <md-icon svgIcon="github"></md-icon>
   </a>
+
 </md-toolbar>
 
 <md-list fxFlex
@@ -16,11 +20,17 @@
 
   <dnd-simple></dnd-simple>
 
+  <dnd-demo-link fxFlexAlign="end"
+                 name="simple"></dnd-demo-link>
+
   <md-divider></md-divider>
 
   <h1 class="mat-title">Lists</h1>
 
   <dnd-list></dnd-list>
+
+  <dnd-demo-link fxFlexAlign="end"
+                 name="list"></dnd-demo-link>
 
   <md-divider></md-divider>
 
@@ -28,11 +38,17 @@
 
   <dnd-nested></dnd-nested>
 
+  <dnd-demo-link fxFlexAlign="end"
+                 name="nested"></dnd-demo-link>
+
   <md-divider></md-divider>
 
   <h1 class="mat-title">Horizontal</h1>
 
   <dnd-horizontal-list></dnd-horizontal-list>
+
+  <dnd-demo-link fxFlexAlign="end"
+                 name="horizontal-list"></dnd-demo-link>
 
   <md-divider></md-divider>
 
@@ -40,11 +56,17 @@
 
   <dnd-native></dnd-native>
 
+  <dnd-demo-link fxFlexAlign="end"
+                 name="native"></dnd-demo-link>
+
   <md-divider></md-divider>
 
   <h1 class="mat-title">Typed</h1>
 
   <dnd-typed></dnd-typed>
+
+  <dnd-demo-link fxFlexAlign="end"
+                 name="typed"></dnd-demo-link>
 
   <md-divider></md-divider>
 

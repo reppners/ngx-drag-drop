@@ -1,4 +1,22 @@
 
 :host {
+
   display: block;
+}
+
+md-card:not(:last-of-type):not(:first-of-type) {
+
+  margin: 8px 0;
+}
+
+.my-dropzone {
+
+  transition: all 300ms ease;
+}
+
+.custom-drag-over {
+
+  background-color: rgba(0, 0, 0, 0.3);
+
+  transform: scale(1.05);
 }

@@ -25,7 +25,7 @@ export class ListComponent {
     },
     {
       content: "Leftest",
-      effectAllowed: "copy",
+      effectAllowed: "copyMove",
       disable: false,
       handle: false
     },

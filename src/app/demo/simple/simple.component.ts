@@ -46,7 +46,7 @@ export class SimpleComponent {
     data: "testdata",
     effectAllowed: "copy",
     disable: false,
-    handle: false
+    handle: true
   };
 
   private currentDraggableEvent:DragEvent;

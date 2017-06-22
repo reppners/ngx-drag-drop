@@ -1,58 +1,90 @@
 <div fxLayout="row"
      class="layout-padding">
 
-  <md-list dndDropzone
-           (dndDrop)="onDrop($event, draggableListLeft)">
+  <div>
 
-    <md-list-item dndPlaceholderRef>
-      placeholder
-    </md-list-item>
+    <pre>dndEffectAllowed="copyMove"</pre>
 
-    <md-list-item *ngFor="let item of draggableListLeft"
-                  [dndDraggable]="item"
-                  [dndEffectAllowed]="item.effectAllowed"
-                  [dndDisableIf]="item.disable"
-                  (dndStart)="onDragStart($event)"
-                  (dndCopied)="onDragged(item, draggableListLeft, 'copy')"
-                  (dndLinked)="onDragged(item, draggableListLeft, 'link')"
-                  (dndMoved)="onDragged(item, draggableListLeft, 'move')"
-                  (dndCanceled)="onDragged(item, draggableListLeft, 'none')"
-                  (dndEnd)="onDragEnd($event)">
-      <md-icon *ngIf="item.handle"
-               md-list-icon
-               dndHandle>drag_handle
-      </md-icon>
-      <h1 md-line>{{item.content}}</h1>
-      <p md-line>effectAllowed: {{item.effectAllowed}}</p>
-    </md-list-item>
+    <md-list dndDropzone
+             dndEffectAllowed="copyMove"
+             (dndDrop)="onDrop($event, draggableListLeft)"
+             class="dndList">
 
-  </md-list>
 
-  <md-list dndDropzone
-           (dndDrop)="onDrop($event, draggableListRight)">
+      <md-list-item dndPlaceholderRef
+                    class="dndPlaceholder">
+      </md-list-item>
 
-    <md-list-item dndPlaceholderRef>
-      placeholder
-    </md-list-item>
+      <md-list-item *ngFor="let item of draggableListLeft"
+                    [dndDraggable]="item"
+                    [dndEffectAllowed]="item.effectAllowed"
+                    [dndDisableIf]="item.disable"
+                    (dndStart)="onDragStart($event)"
+                    (dndCopied)="onDragged(item, draggableListLeft, 'copy')"
+                    (dndLinked)="onDragged(item, draggableListLeft, 'link')"
+                    (dndMoved)="onDragged(item, draggableListLeft, 'move')"
+                    (dndCanceled)="onDragged(item, draggableListLeft, 'none')"
+                    (dndEnd)="onDragEnd($event)">
+        <md-icon *ngIf="item.handle"
+                 md-list-icon
+                 dndHandle>drag_handle
+        </md-icon>
+        <h1 md-line>{{item.content}}</h1>
+        <p md-line>effectAllowed: {{item.effectAllowed}}</p>
+      </md-list-item>
 
-    <md-list-item *ngFor="let item of draggableListRight"
-                  [dndDraggable]="item"
-                  [dndEffectAllowed]="item.effectAllowed"
-                  [dndDisableIf]="item.disable"
-                  (dndStart)="onDragStart($event)"
-                  (dndCopied)="onDragged(item, draggableListRight, 'copy')"
-                  (dndLinked)="onDragged(item, draggableListRight, 'link')"
-                  (dndMoved)="onDragged(item, draggableListRight, 'move')"
-                  (dndCanceled)="onDragged(item, draggableListRight, 'none')"
-                  (dndEnd)="onDragEnd($event)">
-      <md-icon *ngIf="item.handle"
-               md-list-icon
-               dndHandle>drag_handle
-      </md-icon>
-      <h1 md-line>{{item.content}}</h1>
-      <p md-line>effectAllowed: {{item.effectAllowed}}</p>
-    </md-list-item>
+    </md-list>
 
-  </md-list>
+  </div>
+
+  <div>
+
+    <pre>dndEffectAllowed="copyMove"</pre>
+
+    <md-list dndDropzone
+             dndEffectAllowed="copyMove"
+             (dndDrop)="onDrop($event, draggableListRight)"
+             class="dndList">
+
+
+      <md-list-item dndPlaceholderRef
+                    class="dndPlaceholder">
+      </md-list-item>
+
+      <md-list-item *ngFor="let item of draggableListRight"
+                    [dndDraggable]="item"
+                    [dndEffectAllowed]="item.effectAllowed"
+                    [dndDisableIf]="item.disable"
+                    (dndStart)="onDragStart($event)"
+                    (dndCopied)="onDragged(item, draggableListRight, 'copy')"
+                    (dndLinked)="onDragged(item, draggableListRight, 'link')"
+                    (dndMoved)="onDragged(item, draggableListRight, 'move')"
+                    (dndCanceled)="onDragged(item, draggableListRight, 'none')"
+                    (dndEnd)="onDragEnd($event)">
+        <md-icon *ngIf="item.handle"
+                 md-list-icon
+                 dndHandle>drag_handle
+        </md-icon>
+        <h1 md-line>{{item.content}}</h1>
+        <p md-line>effectAllowed: {{item.effectAllowed}}</p>
+      </md-list-item>
+
+    </md-list>
+
+  </div>
+
+  <div>
+
+    <pre>dndEffectAllowed="move"</pre>
+
+    <md-list dndDropzone
+             dndEffectAllowed="move"
+             (dndDrop)="onDrop($event)"
+             class="dndList">
+
+
+    </md-list>
+
+  </div>
 
 </div>

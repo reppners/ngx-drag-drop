@@ -10,7 +10,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 } )
 export class AppComponent {
 
-  title = "NgxDragDrop";
+  title = "NgxDragDrop Demo";
 
   dropEvent:DndDropEvent;
   dropEventFiles:any[];
