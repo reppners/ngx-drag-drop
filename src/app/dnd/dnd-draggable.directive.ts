@@ -1,4 +1,5 @@
 import {
+  AfterContentInit,
   ContentChild,
   Directive,
   ElementRef,
@@ -7,7 +8,6 @@ import {
   HostListener,
   Input,
   OnChanges,
-  OnInit,
   Output,
   Renderer2,
   SimpleChanges
@@ -21,7 +21,7 @@ import { DndElementRefDirective } from "./dnd-element-ref.directive";
 @Directive( {
   selector: "[dndDraggable]"
 } )
-export class DndDraggableDirective implements OnInit, OnChanges {
+export class DndDraggableDirective implements AfterContentInit, OnChanges {
 
   @Input()
   public dndDraggable:any;
@@ -74,7 +74,7 @@ export class DndDraggableDirective implements OnInit, OnChanges {
                private renderer:Renderer2 ) {
   }
 
-  public ngOnInit():void {
+  public ngAfterContentInit():void {
 
     // evaluate custom drag image existence
     if( typeof this.dndDragImageRef !== "undefined" ) {

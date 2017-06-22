@@ -1,11 +1,11 @@
 import {
+  AfterContentInit,
   ContentChild,
   Directive,
   ElementRef,
   EventEmitter,
   HostListener,
   Input,
-  OnInit,
   Output,
   Renderer2
 } from "@angular/core";
@@ -31,7 +31,7 @@ export interface DndDropEvent {
 @Directive( {
   selector: "[dndDropzone]"
 } )
-export class DndDropzoneDirective implements OnInit {
+export class DndDropzoneDirective implements AfterContentInit {
 
   @Input()
   public dndDropzone?:string[];
@@ -58,7 +58,7 @@ export class DndDropzoneDirective implements OnInit {
   public readonly dndDrop:EventEmitter<DndDropEvent> = new EventEmitter<DndDropEvent>();
 
   @ContentChild( DndElementRefDirective )
-  private readonly dndPlaceholder?:DndElementRefDirective;
+  private readonly dndPlaceholderRef?:DndElementRefDirective;
 
   private placeholder:Element | null = null;
 
@@ -66,11 +66,11 @@ export class DndDropzoneDirective implements OnInit {
                private renderer:Renderer2 ) {
   }
 
-  public ngOnInit():void {
+  public ngAfterContentInit():void {
 
-    if( typeof this.dndPlaceholder !== "undefined" ) {
+    if( typeof this.dndPlaceholderRef !== "undefined" ) {
 
-      this.placeholder = this.dndPlaceholder.elementRef.nativeElement as Element;
+      this.placeholder = this.dndPlaceholderRef.elementRef.nativeElement as Element;
       this.placeholder.remove();
     }
   }
