@@ -1,45 +1,13 @@
 
-[dndDraggable] {
+:host {
 
-  border: 1px gray solid;
-  padding: 5px;
-  cursor: pointer;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
 }
 
-[dndDraggable].dndDragging:not(.dndDraggingSource) {
+.scrollable {
 
-  box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.75);
-  border: 1px cornflowerblue solid;
-}
-
-[dndDraggable].dndDraggingSource {
-
-  opacity: .5;
-}
-
-[dndHandle] {
-
-  display: inline-block;
-  padding: 4px;
-  border: 1px solid darkgray;
-  border-radius: 50%;
-}
-
-[dndDropzone] {
-
-  border: 1px red solid;
-  min-height: 200px;
-  padding: 8px;
-  margin: 8px;
-}
-
-[dndDropzone].dndDragover {
-
-  border-color: green;
-}
-
-.dropzone-content {
-
-  border: 1px gray solid;
-  padding: 8px;
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
 }

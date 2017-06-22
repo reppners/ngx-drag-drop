@@ -1,0 +1,64 @@
+<div fxLayout="row"
+     class="layout-padding">
+
+  <section fxFlex
+           fxLayout="column">
+
+    <md-card *ngFor="let draggable of draggables"
+             [dndDraggable]="draggable.data"
+             [dndEffectAllowed]="draggable.effectAllowed"
+             [dndDisableIf]="draggable.disable"
+             (dndStart)="onDragStart($event)"
+             (dndCopied)="onDragged($event, 'copied')"
+             (dndLinked)="onDragged($event, 'linked')"
+             (dndMoved)="onDragged($event, 'moved')"
+             (dndCanceled)="onDragged($event, 'none')"
+             (dndEnd)="onDragEnd($event)">
+
+      <md-icon *ngIf="draggable.handle"
+               md-list-icon
+               dndHandle>drag_handle
+      </md-icon>
+
+      draggable ({{draggable.effectAllowed}})
+      <span [hidden]="!draggable.handle"> only with handle</span>
+      <span [hidden]="!draggable.disable"> DISABLED</span>
+
+    </md-card>
+
+    <md-card [dndDraggable]="draggableWithDragImage"
+             [dndEffectAllowed]="draggableWithDragImage.effectAllowed"
+             [dndDisableIf]="draggableWithDragImage.disable"
+             (dndStart)="onDragStart($event)"
+             (dndCopied)="onDragged($event, 'copied')"
+             (dndLinked)="onDragged($event, 'linked')"
+             (dndMoved)="onDragged($event, 'moved')"
+             (dndCanceled)="onDragged($event, 'none')"
+             (dndEnd)="onDragEnd($event)">
+
+      <md-icon *ngIf="draggableWithDragImage.handle"
+               md-list-icon
+               dndHandle>drag_handle
+      </md-icon>
+
+      draggable ({{draggableWithDragImage.effectAllowed}})
+      <span [hidden]="!draggableWithDragImage.handle"> only with handle</span>
+      <span [hidden]="!draggableWithDragImage.disable"> DISABLED</span>
+
+      <div dndDragImageRef>MY_CUSTOM_DRAG_IMAGE</div>
+
+    </md-card>
+
+  </section>
+
+  <section dndDropzone
+           (dndDragover)="dragover = $event"
+           (dndDrop)="onDrop($event)">
+
+    <div style="border: 1px orangered solid; border-radius: 5px; padding: 15px;"
+         dndPlaceholderRef>placeholder
+    </div>
+
+  </section>
+
+</div>

@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber";
+
+html, body {
+
+  margin: 0;
+
+  height: 100%;
+  width: 100%;
+
+  min-height: 100vh;
+
+  display: flex;
+  flex: 1;
+}
+
+.layout-padding {
+
+  padding: 8px;
+}
+
+.layout-padding > * {
+
+  margin: 8px;
+}
+
+[dndDraggable] {
+
+  cursor: pointer;
+}
+
+[dndHandle] {
+
+  display: inline-block;
+  padding: 4px;
+  border: 1px solid darkgray;
+  border-radius: 50%;
+}
+
+[dndDropzone] {
+
+  border: 1px red solid;
+  min-width: 200px;
+  min-height: 200px;
+}
+
+[dndDropzone].dndDragover {
+
+  border-color: green;
+}

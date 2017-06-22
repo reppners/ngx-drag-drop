@@ -1,90 +1,51 @@
-<h1>
-  {{title}}
-</h1>
+<md-toolbar color="primary"
+            class="mat-elevation-z4">
+  <span>{{title}}</span>
+  <span fxFlex></span>
+  <a md-icon-button
+     href="https://github.com/reppners/ngx-drag-drop">
+    <md-icon svgIcon="github"></md-icon>
+  </a>
+</md-toolbar>
 
-<div>
+<md-list fxFlex
+         fxLayout="column"
+         class="scrollable layout-padding">
 
-  <h4>draggable state</h4>
-  <div>start: {{ started }}</div>
-  <div>end: {{ ended }}</div>
-  <div>effect: {{ effect }}</div>
+  <h1 class="mat-title">Simple</h1>
 
-  <hr/>
+  <dnd-simple></dnd-simple>
 
-  <h4>dropzone state</h4>
-  <div>dragover:
-    <pre>{{ dragover | json }}</pre>
-  </div>
-  <div>drop:
-    <pre>{{ dropEvent | json }}</pre>
-    <pre>{{ dropEventFiles | json }}</pre>
-    <pre>{{ dropEventTypes | json }}</pre>
-    <pre>{{ dropEventContent | json }}</pre>
-  </div>
+  <md-divider></md-divider>
 
-</div>
+  <h1 class="mat-title">Lists</h1>
 
-<div>
+  <dnd-list></dnd-list>
 
-  <section style="margin: 20px;">
+  <md-divider></md-divider>
 
-    <div *ngFor="let draggable of draggables"
-         [dndDraggable]="draggable.data"
-         [dndEffectAllowed]="draggable.effectAllowed"
-         [dndDisableIf]="draggable.disable"
-         (dndStart)="started = true; ended = false; dragover = undefined; dropData = undefined;"
-         (dndCopied)="effect = 'copied'"
-         (dndLinked)="effect = 'linked'"
-         (dndMoved)="effect = 'moved'"
-         (dndCanceled)="effect = 'canceled'"
-         (dndEnd)="ended = true; started = false">
-      <div *ngIf="draggable.handle"
-           dndHandle>DRAG HANDLE
-      </div>
-      draggable ({{draggable.effectAllowed}}) <span [hidden]="!draggable.disable"> DISABLED</span>
-    </div>
+  <h1 class="mat-title">Nested</h1>
 
-  </section>
+  <dnd-nested></dnd-nested>
 
-  <div style="border: 1px orangered solid; border-radius: 5px; padding: 15px;"
-       #placeholder>placeholder
-  </div>
+  <md-divider></md-divider>
 
-  <section dndDropzone
-           (dndDragover)="dragover = $event"
-           (dndDrop)="onDrop($event)"
-           [dndPlaceholder]="placeholder">
-    dropzone
+  <h1 class="mat-title">Horizontal</h1>
 
-    <section dndDropzone
-             (dndDragover)="dragover = $event"
-             (dndDrop)="onDrop($event)"
-             [dndPlaceholder]="placeholder2">
+  <dnd-horizontal-list></dnd-horizontal-list>
 
-      dropzone 2
+  <md-divider></md-divider>
 
-      <div style="border: 1px orangered solid; border-radius: 5px; padding: 15px;"
-           #placeholder2>placeholder2
-      </div>
+  <h1 class="mat-title">Native</h1>
 
-      <div class="dropzone-content">some other content in dropzone</div>
+  <dnd-native></dnd-native>
 
-    </section>
+  <md-divider></md-divider>
 
-    <section dndDropzone
-             [dndAllowExternal]="true"
-             (dndDragover)="dragover = $event"
-             (dndDrop)="onDrop($event)">
+  <h1 class="mat-title">Typed</h1>
 
-      dropzone 3 without placeholder and allows externals to be dropped
+  <dnd-typed></dnd-typed>
 
-    </section>
+  <md-divider></md-divider>
 
-  </section>
-
-  <img src="https://i.imgflip.com/1quv8v.jpg"/>
-  <a href="https://imgflip.com/i/1quv8v">Made with imgflip</a>
-
-  <div><span>just some text to select and drag</span></div>
-
-</div>
+</md-list>
