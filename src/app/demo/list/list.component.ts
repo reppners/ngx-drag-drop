@@ -79,13 +79,14 @@ export class ListComponent {
     this.snackBarService.open( this.currentDragEffectMsg || `Drag ended!`, undefined, {duration: 2000} );
   }
 
-  onDrop( event:DndDropEvent, list:any[] ) {
+  onDrop( event:DndDropEvent, list?:any[] ) {
 
     this.snackBarService.dismiss();
     this.snackBarService.open( `Something dropped O.O` );
 
-    if( event.dropEffect === "copy"
-      || event.dropEffect === "move" ) {
+    if( list
+      && ( event.dropEffect === "copy"
+        || event.dropEffect === "move" ) ) {
 
       let index = event.index;
 
