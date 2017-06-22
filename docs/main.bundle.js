@@ -308,8 +308,9 @@ var ListComponent = (function () {
     ListComponent.prototype.onDrop = function (event, list) {
         this.snackBarService.dismiss();
         this.snackBarService.open("Something dropped O.O");
-        if (event.dropEffect === "copy"
-            || event.dropEffect === "move") {
+        if (list
+            && (event.dropEffect === "copy"
+                || event.dropEffect === "move")) {
             var index = event.index;
             if (typeof index === "undefined") {
                 index = list.length;
@@ -544,7 +545,8 @@ TypedComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dnd_draggable_directive__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dnd_dropzone_directive__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dnd_handle_directive__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dnd_element_ref_directive__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dnd_element_ref_directive__ = __webpack_require__(38);
+/* unused harmony namespace reexport */
 /* unused harmony namespace reexport */
 /* unused harmony namespace reexport */
 /* unused harmony namespace reexport */
@@ -558,6 +560,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -826,6 +829,40 @@ module.exports = __webpack_require__(118);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DndElementRefDirective; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var DndElementRefDirective = (function () {
+    function DndElementRefDirective(elementRef) {
+        this.elementRef = elementRef;
+    }
+    return DndElementRefDirective;
+}());
+DndElementRefDirective = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Directive */])({
+        selector: "[dndPlaceholderRef], [dndDragImageRef]"
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* ElementRef */]) === "function" && _a || Object])
+], DndElementRefDirective);
+
+var _a;
+//# sourceMappingURL=dnd-element-ref.directive.js.map
+
+/***/ }),
+
+/***/ 39:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return DROP_EFFECTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return CUSTOM_MIME_TYPE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return JSON_MIME_TYPE; });
@@ -959,46 +996,12 @@ function setDragImage(event, dragImage) {
 
 /***/ }),
 
-/***/ 53:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DndElementRefDirective; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var DndElementRefDirective = (function () {
-    function DndElementRefDirective(elementRef) {
-        this.elementRef = elementRef;
-    }
-    return DndElementRefDirective;
-}());
-DndElementRefDirective = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Directive */])({
-        selector: "[dndPlaceholderRef], [dndDragImageRef]"
-    }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* ElementRef */]) === "function" && _a || Object])
-], DndElementRefDirective);
-
-var _a;
-//# sourceMappingURL=dnd-element-ref.directive.js.map
-
-/***/ }),
-
 /***/ 54:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dnd_utils__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dnd_utils__ = __webpack_require__(39);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DndHandleDirective; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1056,12 +1059,12 @@ var _a, _b;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dnd_utils__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dnd_utils__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dnd_handle_directive__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dnd_state__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dnd_types__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dnd_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__dnd_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dnd_element_ref_directive__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dnd_element_ref_directive__ = __webpack_require__(38);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DndDraggableDirective; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1094,7 +1097,7 @@ var DndDraggableDirective = (function () {
         this.dndCanceled = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["i" /* EventEmitter */]();
         this.draggable = true;
     }
-    DndDraggableDirective.prototype.ngOnInit = function () {
+    DndDraggableDirective.prototype.ngAfterContentInit = function () {
         // evaluate custom drag image existence
         if (typeof this.dndDragImageRef !== "undefined") {
             this.dragImage = this.dndDragImageRef.elementRef.nativeElement;
@@ -1259,11 +1262,11 @@ var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dnd_utils__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dnd_utils__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dnd_state__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dnd_types__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dnd_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__dnd_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dnd_element_ref_directive__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dnd_element_ref_directive__ = __webpack_require__(38);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DndDropzoneDirective; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1291,9 +1294,9 @@ var DndDropzoneDirective = (function () {
         this.dndDrop = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["i" /* EventEmitter */]();
         this.placeholder = null;
     }
-    DndDropzoneDirective.prototype.ngOnInit = function () {
-        if (typeof this.dndPlaceholder !== "undefined") {
-            this.placeholder = this.dndPlaceholder.elementRef.nativeElement;
+    DndDropzoneDirective.prototype.ngAfterContentInit = function () {
+        if (typeof this.dndPlaceholderRef !== "undefined") {
+            this.placeholder = this.dndPlaceholderRef.elementRef.nativeElement;
             this.placeholder.remove();
         }
     };
@@ -1484,7 +1487,7 @@ __decorate([
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* ContentChild */])(__WEBPACK_IMPORTED_MODULE_4__dnd_element_ref_directive__["a" /* DndElementRefDirective */]),
     __metadata("design:type", typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__dnd_element_ref_directive__["a" /* DndElementRefDirective */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__dnd_element_ref_directive__["a" /* DndElementRefDirective */]) === "function" && _d || Object)
-], DndDropzoneDirective.prototype, "dndPlaceholder", void 0);
+], DndDropzoneDirective.prototype, "dndPlaceholderRef", void 0);
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* HostListener */])("dragenter", ["$event"]),
     __metadata("design:type", Function),
@@ -1525,7 +1528,7 @@ var _a, _b, _c, _d, _e, _f, _g, _h;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dnd_utils__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dnd_utils__ = __webpack_require__(39);
 /* harmony export (immutable) */ __webpack_exports__["e"] = startDrag;
 /* harmony export (immutable) */ __webpack_exports__["g"] = endDrag;
 /* harmony export (immutable) */ __webpack_exports__["d"] = setDropEffect;

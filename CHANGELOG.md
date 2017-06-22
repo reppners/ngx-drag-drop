@@ -1,3 +1,12 @@
+<a name="v1.0.0-beta.2"></a>
+# [v1.0.0-beta.2](https://github.com/reppners/ngx-drag-drop/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2017-06-22)
+
+### Bug Fixes
+
+* **DndElementRef:** access @ContentChild() in ngAfterContentInit to ensure its properly initialized
+* **DndModule:** re-export DndElementRef in index module
+
+
 <a name="v1.0.0-beta.1"></a>
 # [v1.0.0-beta.1](https://github.com/reppners/ngx-drag-drop/compare/v1.0.0-beta.0...v1.0.0-beta.1) (2017-06-22)
 
