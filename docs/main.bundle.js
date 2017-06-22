@@ -22,7 +22,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(139);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(142);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(151);
 
 
 
@@ -57,7 +57,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var AppComponent = (function () {
     function AppComponent(sanitizer, iconRegistry) {
-        this.title = "NgxDragDrop";
+        this.title = "NgxDragDrop Demo";
         iconRegistry.addSvgIcon("github", sanitizer.bypassSecurityTrustResourceUrl("assets/github.svg"));
     }
     return AppComponent;
@@ -65,8 +65,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Component */])({
         selector: "dnd-root",
-        template: __webpack_require__(213),
-        styles: [__webpack_require__(206)]
+        template: __webpack_require__(215),
+        styles: [__webpack_require__(207)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["e" /* DomSanitizer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["e" /* DomSanitizer */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MdIconRegistry */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MdIconRegistry */]) === "function" && _b || Object])
 ], AppComponent);
@@ -88,13 +88,14 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_material__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(141);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__dnd_index__ = __webpack_require__(149);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__demo_simple_simple_component__ = __webpack_require__(147);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__demo_list_list_component__ = __webpack_require__(144);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__demo_native_native_component__ = __webpack_require__(145);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__demo_horizontal_list_horizontal_list_component__ = __webpack_require__(143);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__demo_typed_typed_component__ = __webpack_require__(148);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__demo_nested_nested_component__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__dnd_index__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__demo_simple_simple_component__ = __webpack_require__(148);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__demo_list_list_component__ = __webpack_require__(145);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__demo_native_native_component__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__demo_horizontal_list_horizontal_list_component__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__demo_typed_typed_component__ = __webpack_require__(149);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__demo_nested_nested_component__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__demo_link_demo_link_component__ = __webpack_require__(143);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -102,6 +103,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -131,7 +133,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_11__demo_native_native_component__["a" /* NativeComponent */],
             __WEBPACK_IMPORTED_MODULE_12__demo_horizontal_list_horizontal_list_component__["a" /* HorizontalListComponent */],
             __WEBPACK_IMPORTED_MODULE_13__demo_typed_typed_component__["a" /* TypedComponent */],
-            __WEBPACK_IMPORTED_MODULE_14__demo_nested_nested_component__["a" /* NestedComponent */]
+            __WEBPACK_IMPORTED_MODULE_14__demo_nested_nested_component__["a" /* NestedComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__demo_link_demo_link_component__["a" /* DemoLinkComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -152,6 +155,47 @@ AppModule = __decorate([
 /***/ }),
 
 /***/ 143:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DemoLinkComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var DemoLinkComponent = (function () {
+    function DemoLinkComponent() {
+    }
+    DemoLinkComponent.prototype.ngOnInit = function () {
+        this.url = "https://github.com/reppners/ngx-drag-drop/tree/master/src/app/demo/" + this.name;
+    };
+    return DemoLinkComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* Input */])(),
+    __metadata("design:type", String)
+], DemoLinkComponent.prototype, "name", void 0);
+DemoLinkComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Component */])({
+        selector: "dnd-demo-link",
+        template: __webpack_require__(216),
+        styles: [__webpack_require__(208)]
+    }),
+    __metadata("design:paramtypes", [])
+], DemoLinkComponent);
+
+//# sourceMappingURL=demo-link.component.js.map
+
+/***/ }),
+
+/***/ 144:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -177,8 +221,8 @@ var HorizontalListComponent = (function () {
 HorizontalListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Component */])({
         selector: 'dnd-horizontal-list',
-        template: __webpack_require__(214),
-        styles: [__webpack_require__(207)]
+        template: __webpack_require__(217),
+        styles: [__webpack_require__(209)]
     }),
     __metadata("design:paramtypes", [])
 ], HorizontalListComponent);
@@ -187,7 +231,7 @@ HorizontalListComponent = __decorate([
 
 /***/ }),
 
-/***/ 144:
+/***/ 145:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -223,7 +267,7 @@ var ListComponent = (function () {
             },
             {
                 content: "Leftest",
-                effectAllowed: "copy",
+                effectAllowed: "copyMove",
                 disable: false,
                 handle: false
             },
@@ -278,8 +322,8 @@ var ListComponent = (function () {
 ListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Component */])({
         selector: "dnd-list",
-        template: __webpack_require__(215),
-        styles: [__webpack_require__(208)]
+        template: __webpack_require__(218),
+        styles: [__webpack_require__(210)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MdSnackBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MdSnackBar */]) === "function" && _a || Object])
 ], ListComponent);
@@ -289,7 +333,7 @@ var _a;
 
 /***/ }),
 
-/***/ 145:
+/***/ 146:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -315,8 +359,8 @@ var NativeComponent = (function () {
 NativeComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Component */])({
         selector: 'dnd-native',
-        template: __webpack_require__(216),
-        styles: [__webpack_require__(209)]
+        template: __webpack_require__(219),
+        styles: [__webpack_require__(211)]
     }),
     __metadata("design:paramtypes", [])
 ], NativeComponent);
@@ -325,7 +369,7 @@ NativeComponent = __decorate([
 
 /***/ }),
 
-/***/ 146:
+/***/ 147:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -351,8 +395,8 @@ var NestedComponent = (function () {
 NestedComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Component */])({
         selector: 'dnd-nested',
-        template: __webpack_require__(217),
-        styles: [__webpack_require__(210)]
+        template: __webpack_require__(220),
+        styles: [__webpack_require__(212)]
     }),
     __metadata("design:paramtypes", [])
 ], NestedComponent);
@@ -361,7 +405,7 @@ NestedComponent = __decorate([
 
 /***/ }),
 
-/***/ 147:
+/***/ 148:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -418,7 +462,7 @@ var SimpleComponent = (function () {
             data: "testdata",
             effectAllowed: "copy",
             disable: false,
-            handle: false
+            handle: true
         };
     }
     SimpleComponent.prototype.onDragStart = function (event) {
@@ -444,8 +488,8 @@ var SimpleComponent = (function () {
 SimpleComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Component */])({
         selector: "dnd-simple",
-        template: __webpack_require__(218),
-        styles: [__webpack_require__(211)]
+        template: __webpack_require__(221),
+        styles: [__webpack_require__(213)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MdSnackBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MdSnackBar */]) === "function" && _a || Object])
 ], SimpleComponent);
@@ -455,7 +499,7 @@ var _a;
 
 /***/ }),
 
-/***/ 148:
+/***/ 149:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -481,8 +525,8 @@ var TypedComponent = (function () {
 TypedComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Component */])({
         selector: 'dnd-typed',
-        template: __webpack_require__(219),
-        styles: [__webpack_require__(212)]
+        template: __webpack_require__(222),
+        styles: [__webpack_require__(214)]
     }),
     __metadata("design:paramtypes", [])
 ], TypedComponent);
@@ -491,7 +535,7 @@ TypedComponent = __decorate([
 
 /***/ }),
 
-/***/ 149:
+/***/ 150:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -553,7 +597,7 @@ DndModule = __decorate([
 
 /***/ }),
 
-/***/ 150:
+/***/ 151:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -570,10 +614,10 @@ var environment = {
 
 /***/ }),
 
-/***/ 206:
+/***/ 207:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(13)(false);
+exports = module.exports = __webpack_require__(10)(false);
 // imports
 
 
@@ -588,33 +632,15 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 207:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(13)(false);
-// imports
-
-
-// module
-exports.push([module.i, ":host {\n  display: block; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
 /***/ 208:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(13)(false);
+exports = module.exports = __webpack_require__(10)(false);
 // imports
 
 
 // module
-exports.push([module.i, ":host {\n  display: block; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -627,7 +653,7 @@ module.exports = module.exports.toString();
 /***/ 209:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(13)(false);
+exports = module.exports = __webpack_require__(10)(false);
 // imports
 
 
@@ -645,12 +671,12 @@ module.exports = module.exports.toString();
 /***/ 210:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(13)(false);
+exports = module.exports = __webpack_require__(10)(false);
 // imports
 
 
 // module
-exports.push([module.i, ":host {\n  display: block; }\n", ""]);
+exports.push([module.i, ":host {\n  display: block; }\n\npre {\n  text-align: center;\n  padding: 8px; }\n\n.mat-list-item {\n  margin: 2px;\n  border: 1px solid gray; }\n\n.dndList {\n  transition: all 300ms ease; }\n  .dndList.dndDragover {\n    padding-top: 12px;\n    padding-bottom: 12px; }\n\n.dndDragging {\n  border: 1px solid green; }\n\n.dndDraggingSource {\n  display: none; }\n\n.dndPlaceholder {\n  min-height: 72px;\n  border: 1px dashed green;\n  background-color: rgba(0, 0, 0, 0.1); }\n", ""]);
 
 // exports
 
@@ -663,7 +689,7 @@ module.exports = module.exports.toString();
 /***/ 211:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(13)(false);
+exports = module.exports = __webpack_require__(10)(false);
 // imports
 
 
@@ -681,7 +707,7 @@ module.exports = module.exports.toString();
 /***/ 212:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(13)(false);
+exports = module.exports = __webpack_require__(10)(false);
 // imports
 
 
@@ -697,55 +723,98 @@ module.exports = module.exports.toString();
 /***/ }),
 
 /***/ 213:
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<md-toolbar color=\"primary\"\n            class=\"mat-elevation-z4\">\n  <span>{{title}}</span>\n  <span fxFlex></span>\n  <a md-icon-button\n     href=\"https://github.com/reppners/ngx-drag-drop\">\n    <md-icon svgIcon=\"github\"></md-icon>\n  </a>\n</md-toolbar>\n\n<md-list fxFlex\n         fxLayout=\"column\"\n         class=\"scrollable layout-padding\">\n\n  <h1 class=\"mat-title\">Simple</h1>\n\n  <dnd-simple></dnd-simple>\n\n  <md-divider></md-divider>\n\n  <h1 class=\"mat-title\">Lists</h1>\n\n  <dnd-list></dnd-list>\n\n  <md-divider></md-divider>\n\n  <h1 class=\"mat-title\">Nested</h1>\n\n  <dnd-nested></dnd-nested>\n\n  <md-divider></md-divider>\n\n  <h1 class=\"mat-title\">Horizontal</h1>\n\n  <dnd-horizontal-list></dnd-horizontal-list>\n\n  <md-divider></md-divider>\n\n  <h1 class=\"mat-title\">Native</h1>\n\n  <dnd-native></dnd-native>\n\n  <md-divider></md-divider>\n\n  <h1 class=\"mat-title\">Typed</h1>\n\n  <dnd-typed></dnd-typed>\n\n  <md-divider></md-divider>\n\n</md-list>\n"
+exports = module.exports = __webpack_require__(10)(false);
+// imports
+
+
+// module
+exports.push([module.i, ":host {\n  display: block; }\n\nmd-card:not(:last-of-type):not(:first-of-type) {\n  margin: 8px 0; }\n\n.my-dropzone {\n  transition: all 300ms ease; }\n\n.custom-drag-over {\n  background-color: rgba(0, 0, 0, 0.3);\n  -webkit-transform: scale(1.05);\n          transform: scale(1.05); }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
 /***/ 214:
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<p>\n  horizontal-list works!\n</p>\n"
+exports = module.exports = __webpack_require__(10)(false);
+// imports
+
+
+// module
+exports.push([module.i, ":host {\n  display: block; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
 /***/ 215:
 /***/ (function(module, exports) {
 
-module.exports = "<div fxLayout=\"row\"\n     class=\"layout-padding\">\n\n  <md-list dndDropzone\n           (dndDrop)=\"onDrop($event, draggableListLeft)\">\n\n    <md-list-item dndPlaceholderRef>\n      placeholder\n    </md-list-item>\n\n    <md-list-item *ngFor=\"let item of draggableListLeft\"\n                  [dndDraggable]=\"item\"\n                  [dndEffectAllowed]=\"item.effectAllowed\"\n                  [dndDisableIf]=\"item.disable\"\n                  (dndStart)=\"onDragStart($event)\"\n                  (dndCopied)=\"onDragged(item, draggableListLeft, 'copy')\"\n                  (dndLinked)=\"onDragged(item, draggableListLeft, 'link')\"\n                  (dndMoved)=\"onDragged(item, draggableListLeft, 'move')\"\n                  (dndCanceled)=\"onDragged(item, draggableListLeft, 'none')\"\n                  (dndEnd)=\"onDragEnd($event)\">\n      <md-icon *ngIf=\"item.handle\"\n               md-list-icon\n               dndHandle>drag_handle\n      </md-icon>\n      <h1 md-line>{{item.content}}</h1>\n      <p md-line>effectAllowed: {{item.effectAllowed}}</p>\n    </md-list-item>\n\n  </md-list>\n\n  <md-list dndDropzone\n           (dndDrop)=\"onDrop($event, draggableListRight)\">\n\n    <md-list-item dndPlaceholderRef>\n      placeholder\n    </md-list-item>\n\n    <md-list-item *ngFor=\"let item of draggableListRight\"\n                  [dndDraggable]=\"item\"\n                  [dndEffectAllowed]=\"item.effectAllowed\"\n                  [dndDisableIf]=\"item.disable\"\n                  (dndStart)=\"onDragStart($event)\"\n                  (dndCopied)=\"onDragged(item, draggableListRight, 'copy')\"\n                  (dndLinked)=\"onDragged(item, draggableListRight, 'link')\"\n                  (dndMoved)=\"onDragged(item, draggableListRight, 'move')\"\n                  (dndCanceled)=\"onDragged(item, draggableListRight, 'none')\"\n                  (dndEnd)=\"onDragEnd($event)\">\n      <md-icon *ngIf=\"item.handle\"\n               md-list-icon\n               dndHandle>drag_handle\n      </md-icon>\n      <h1 md-line>{{item.content}}</h1>\n      <p md-line>effectAllowed: {{item.effectAllowed}}</p>\n    </md-list-item>\n\n  </md-list>\n\n</div>\n"
+module.exports = "<md-toolbar color=\"primary\"\n            class=\"mat-elevation-z4\">\n\n  <span>{{title}}</span>\n\n  <span fxFlex></span>\n\n  <a md-icon-button\n     href=\"https://github.com/reppners/ngx-drag-drop\">\n    <md-icon svgIcon=\"github\"></md-icon>\n  </a>\n\n</md-toolbar>\n\n<md-list fxFlex\n         fxLayout=\"column\"\n         class=\"scrollable layout-padding\">\n\n  <h1 class=\"mat-title\">Simple</h1>\n\n  <dnd-simple></dnd-simple>\n\n  <dnd-demo-link fxFlexAlign=\"end\"\n                 name=\"simple\"></dnd-demo-link>\n\n  <md-divider></md-divider>\n\n  <h1 class=\"mat-title\">Lists</h1>\n\n  <dnd-list></dnd-list>\n\n  <dnd-demo-link fxFlexAlign=\"end\"\n                 name=\"list\"></dnd-demo-link>\n\n  <md-divider></md-divider>\n\n  <h1 class=\"mat-title\">Nested</h1>\n\n  <dnd-nested></dnd-nested>\n\n  <dnd-demo-link fxFlexAlign=\"end\"\n                 name=\"nested\"></dnd-demo-link>\n\n  <md-divider></md-divider>\n\n  <h1 class=\"mat-title\">Horizontal</h1>\n\n  <dnd-horizontal-list></dnd-horizontal-list>\n\n  <dnd-demo-link fxFlexAlign=\"end\"\n                 name=\"horizontal-list\"></dnd-demo-link>\n\n  <md-divider></md-divider>\n\n  <h1 class=\"mat-title\">Native</h1>\n\n  <dnd-native></dnd-native>\n\n  <dnd-demo-link fxFlexAlign=\"end\"\n                 name=\"native\"></dnd-demo-link>\n\n  <md-divider></md-divider>\n\n  <h1 class=\"mat-title\">Typed</h1>\n\n  <dnd-typed></dnd-typed>\n\n  <dnd-demo-link fxFlexAlign=\"end\"\n                 name=\"typed\"></dnd-demo-link>\n\n  <md-divider></md-divider>\n\n</md-list>\n"
 
 /***/ }),
 
 /***/ 216:
 /***/ (function(module, exports) {
 
-module.exports = "<img src=\"https://i.imgflip.com/1quv8v.jpg\"/>\n\n<a href=\"https://imgflip.com/i/1quv8v\">Made with imgflip</a>\n\n<div><input value=\"just some text to select and drag\"/></div>\n"
+module.exports = "<a md-raised-button\n   color=\"accent\"\n   [href]=\"url\">go to sources</a>\n"
 
 /***/ }),
 
 /***/ 217:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  nested works!\n</p>\n"
+module.exports = "<p>\n  horizontal-list works!\n</p>\n"
 
 /***/ }),
 
 /***/ 218:
 /***/ (function(module, exports) {
 
-module.exports = "<div fxLayout=\"row\"\n     class=\"layout-padding\">\n\n  <section fxFlex\n           fxLayout=\"column\">\n\n    <md-card *ngFor=\"let draggable of draggables\"\n             [dndDraggable]=\"draggable.data\"\n             [dndEffectAllowed]=\"draggable.effectAllowed\"\n             [dndDisableIf]=\"draggable.disable\"\n             (dndStart)=\"onDragStart($event)\"\n             (dndCopied)=\"onDragged($event, 'copied')\"\n             (dndLinked)=\"onDragged($event, 'linked')\"\n             (dndMoved)=\"onDragged($event, 'moved')\"\n             (dndCanceled)=\"onDragged($event, 'none')\"\n             (dndEnd)=\"onDragEnd($event)\">\n\n      <md-icon *ngIf=\"draggable.handle\"\n               md-list-icon\n               dndHandle>drag_handle\n      </md-icon>\n\n      draggable ({{draggable.effectAllowed}})\n      <span [hidden]=\"!draggable.handle\"> only with handle</span>\n      <span [hidden]=\"!draggable.disable\"> DISABLED</span>\n\n    </md-card>\n\n    <md-card [dndDraggable]=\"draggableWithDragImage\"\n             [dndEffectAllowed]=\"draggableWithDragImage.effectAllowed\"\n             [dndDisableIf]=\"draggableWithDragImage.disable\"\n             (dndStart)=\"onDragStart($event)\"\n             (dndCopied)=\"onDragged($event, 'copied')\"\n             (dndLinked)=\"onDragged($event, 'linked')\"\n             (dndMoved)=\"onDragged($event, 'moved')\"\n             (dndCanceled)=\"onDragged($event, 'none')\"\n             (dndEnd)=\"onDragEnd($event)\">\n\n      <md-icon *ngIf=\"draggableWithDragImage.handle\"\n               md-list-icon\n               dndHandle>drag_handle\n      </md-icon>\n\n      draggable ({{draggableWithDragImage.effectAllowed}})\n      <span [hidden]=\"!draggableWithDragImage.handle\"> only with handle</span>\n      <span [hidden]=\"!draggableWithDragImage.disable\"> DISABLED</span>\n\n      <div dndDragImageRef>MY_CUSTOM_DRAG_IMAGE</div>\n\n    </md-card>\n\n  </section>\n\n  <section dndDropzone\n           (dndDragover)=\"dragover = $event\"\n           (dndDrop)=\"onDrop($event)\">\n\n    <div style=\"border: 1px orangered solid; border-radius: 5px; padding: 15px;\"\n         dndPlaceholderRef>placeholder\n    </div>\n\n  </section>\n\n</div>\n"
+module.exports = "<div fxLayout=\"row\"\n     class=\"layout-padding\">\n\n  <div>\n\n    <pre>dndEffectAllowed=\"copyMove\"</pre>\n\n    <md-list dndDropzone\n             dndEffectAllowed=\"copyMove\"\n             (dndDrop)=\"onDrop($event, draggableListLeft)\"\n             class=\"dndList\">\n\n\n      <md-list-item dndPlaceholderRef\n                    class=\"dndPlaceholder\">\n      </md-list-item>\n\n      <md-list-item *ngFor=\"let item of draggableListLeft\"\n                    [dndDraggable]=\"item\"\n                    [dndEffectAllowed]=\"item.effectAllowed\"\n                    [dndDisableIf]=\"item.disable\"\n                    (dndStart)=\"onDragStart($event)\"\n                    (dndCopied)=\"onDragged(item, draggableListLeft, 'copy')\"\n                    (dndLinked)=\"onDragged(item, draggableListLeft, 'link')\"\n                    (dndMoved)=\"onDragged(item, draggableListLeft, 'move')\"\n                    (dndCanceled)=\"onDragged(item, draggableListLeft, 'none')\"\n                    (dndEnd)=\"onDragEnd($event)\">\n        <md-icon *ngIf=\"item.handle\"\n                 md-list-icon\n                 dndHandle>drag_handle\n        </md-icon>\n        <h1 md-line>{{item.content}}</h1>\n        <p md-line>effectAllowed: {{item.effectAllowed}}</p>\n      </md-list-item>\n\n    </md-list>\n\n  </div>\n\n  <div>\n\n    <pre>dndEffectAllowed=\"copyMove\"</pre>\n\n    <md-list dndDropzone\n             dndEffectAllowed=\"copyMove\"\n             (dndDrop)=\"onDrop($event, draggableListRight)\"\n             class=\"dndList\">\n\n\n      <md-list-item dndPlaceholderRef\n                    class=\"dndPlaceholder\">\n      </md-list-item>\n\n      <md-list-item *ngFor=\"let item of draggableListRight\"\n                    [dndDraggable]=\"item\"\n                    [dndEffectAllowed]=\"item.effectAllowed\"\n                    [dndDisableIf]=\"item.disable\"\n                    (dndStart)=\"onDragStart($event)\"\n                    (dndCopied)=\"onDragged(item, draggableListRight, 'copy')\"\n                    (dndLinked)=\"onDragged(item, draggableListRight, 'link')\"\n                    (dndMoved)=\"onDragged(item, draggableListRight, 'move')\"\n                    (dndCanceled)=\"onDragged(item, draggableListRight, 'none')\"\n                    (dndEnd)=\"onDragEnd($event)\">\n        <md-icon *ngIf=\"item.handle\"\n                 md-list-icon\n                 dndHandle>drag_handle\n        </md-icon>\n        <h1 md-line>{{item.content}}</h1>\n        <p md-line>effectAllowed: {{item.effectAllowed}}</p>\n      </md-list-item>\n\n    </md-list>\n\n  </div>\n\n  <div>\n\n    <pre>dndEffectAllowed=\"move\"</pre>\n\n    <md-list dndDropzone\n             dndEffectAllowed=\"move\"\n             (dndDrop)=\"onDrop($event)\"\n             class=\"dndList\">\n\n\n    </md-list>\n\n  </div>\n\n</div>\n"
 
 /***/ }),
 
 /***/ 219:
 /***/ (function(module, exports) {
 
+module.exports = "<img src=\"https://i.imgflip.com/1quv8v.jpg\"/>\n\n<a href=\"https://imgflip.com/i/1quv8v\">Made with imgflip</a>\n\n<div><input value=\"just some text to select and drag\"/></div>\n"
+
+/***/ }),
+
+/***/ 220:
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  nested works!\n</p>\n"
+
+/***/ }),
+
+/***/ 221:
+/***/ (function(module, exports) {
+
+module.exports = "<div fxLayout=\"row\">\n\n  <section fxFlex\n           fxLayout=\"column\"\n           style=\"margin-right: 8px;\">\n\n    <md-card *ngFor=\"let draggable of draggables\"\n             [dndDraggable]=\"draggable.data\"\n             [dndEffectAllowed]=\"draggable.effectAllowed\"\n             [dndDisableIf]=\"draggable.disable\"\n             (dndStart)=\"onDragStart($event)\"\n             (dndCopied)=\"onDragged($event, 'copy')\"\n             (dndLinked)=\"onDragged($event, 'link')\"\n             (dndMoved)=\"onDragged($event, 'move')\"\n             (dndCanceled)=\"onDragged($event, 'none')\"\n             (dndEnd)=\"onDragEnd($event)\">\n\n      <md-icon *ngIf=\"draggable.handle\"\n               md-list-icon\n               dndHandle>drag_handle\n      </md-icon>\n\n      draggable ({{draggable.effectAllowed}})\n      <span [hidden]=\"!draggable.handle\"> only with handle</span>\n      <span [hidden]=\"!draggable.disable\"> DISABLED</span>\n\n    </md-card>\n\n    <md-card [dndDraggable]=\"draggableWithDragImage\"\n             [dndEffectAllowed]=\"draggableWithDragImage.effectAllowed\"\n             [dndDisableIf]=\"draggableWithDragImage.disable\"\n             (dndStart)=\"onDragStart($event)\"\n             (dndCopied)=\"onDragged($event, 'copy')\"\n             (dndLinked)=\"onDragged($event, 'link')\"\n             (dndMoved)=\"onDragged($event, 'move')\"\n             (dndCanceled)=\"onDragged($event, 'none')\"\n             (dndEnd)=\"onDragEnd($event)\">\n\n      <md-icon *ngIf=\"draggableWithDragImage.handle\"\n               md-list-icon\n               dndHandle>drag_handle\n      </md-icon>\n\n      draggable ({{draggableWithDragImage.effectAllowed}})\n      <span [hidden]=\"!draggableWithDragImage.handle\"> only with handle</span>\n      <span [hidden]=\"!draggableWithDragImage.disable\"> DISABLED</span>\n\n      <div dndDragImageRef>MY_CUSTOM_DRAG_IMAGE</div>\n\n    </md-card>\n\n  </section>\n\n  <section class=\"my-dropzone\"\n           dndDropzone\n           dndDragoverClass=\"custom-drag-over\"\n           (dndDragover)=\"dragover = $event\"\n           (dndDrop)=\"onDrop($event)\">\n  </section>\n\n</div>\n"
+
+/***/ }),
+
+/***/ 222:
+/***/ (function(module, exports) {
+
 module.exports = "<p>\n  typed works!\n</p>\n"
 
 /***/ }),
 
-/***/ 271:
+/***/ 274:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(118);
@@ -858,9 +927,32 @@ function shouldPositionPlaceholderBeforeElement(event, element, horizontal) {
     return (event.clientY < bounds.top + bounds.height / 2);
 }
 function setDragImage(event, dragImage) {
-    // TODO include dragImage padding/border into offset calculation?
-    var offX = event.offsetX;
-    var offY = event.offsetY;
+    var offX = 0;
+    var offY = 0;
+    var currentTargetElement = event.currentTarget;
+    if (dragImage === currentTargetElement) {
+        var dragImageComputedStyle = window.getComputedStyle(dragImage);
+        var paddingTop = parseFloat(dragImageComputedStyle.paddingTop) || 0;
+        var paddingLeft = parseFloat(dragImageComputedStyle.paddingLeft) || 0;
+        var borderTop = parseFloat(dragImageComputedStyle.borderTopWidth) || 0;
+        var borderLeft = parseFloat(dragImageComputedStyle.borderLeftWidth) || 0;
+        offX += event.offsetX + paddingLeft + borderLeft;
+        offY += event.offsetY + paddingTop + borderTop;
+    }
+    // TODO handle custom drag image child offset calculation?
+    // else {
+    // const dragImageComputedStyle = window.getComputedStyle( dragImage );
+    // const paddingTop = parseFloat( dragImageComputedStyle.paddingTop ) || 0;
+    // const paddingLeft = parseFloat( dragImageComputedStyle.paddingLeft ) || 0;
+    //
+    // offX += paddingLeft;
+    // offY += paddingTop;
+    // }
+    // console.log( `event offsetX: ${event.offsetX}` );
+    // console.log( `event offsetY: ${event.offsetY}` );
+    //
+    // console.log( `offsetX: ${offX}` );
+    // console.log( `offsetY: ${offY}` );
     event.dataTransfer.setDragImage(dragImage, offX, offY);
 }
 //# sourceMappingURL=dnd-utils.js.map
@@ -1511,5 +1603,5 @@ var dndState = _dndState;
 
 /***/ })
 
-},[271]);
+},[274]);
 //# sourceMappingURL=main.bundle.js.map
