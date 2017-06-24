@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { DndDropEvent } from "./dnd/dnd-dropzone.directive";
 import { MdIconRegistry } from "@angular/material";
 import { DomSanitizer } from "@angular/platform-browser";
 
@@ -11,11 +10,6 @@ import { DomSanitizer } from "@angular/platform-browser";
 export class AppComponent {
 
   title = "NgxDragDrop Demo";
-
-  dropEvent:DndDropEvent;
-  dropEventFiles:any[];
-  dropEventTypes:any[];
-  dropEventContent:any[];
 
   constructor( sanitizer:DomSanitizer,
                iconRegistry:MdIconRegistry ) {

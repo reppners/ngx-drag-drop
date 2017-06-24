@@ -5,7 +5,7 @@
            style="margin-right: 8px;">
 
     <md-card *ngFor="let draggable of draggables"
-             [dndDraggable]="draggable.data"
+             [dndDraggable]="draggable.content"
              [dndEffectAllowed]="draggable.effectAllowed"
              [dndDisableIf]="draggable.disable"
              (dndStart)="onDragStart($event)"
@@ -51,11 +51,23 @@
 
   </section>
 
-  <section class="my-dropzone"
-           dndDropzone
-           dndDragoverClass="custom-drag-over"
-           (dndDragover)="dragover = $event"
-           (dndDrop)="onDrop($event)">
-  </section>
+  <div fxLayout="column">
+
+    <md-slide-toggle [checked]="dropzoneEnabled"
+                     (change)="dropzoneEnabled = $event">Dropzone enabled
+    </md-slide-toggle>
+
+    <section fxFlex
+             fxLayoutAlign="center center"
+             class="my-dropzone"
+             dndDropzone
+             dndDragoverClass="custom-drag-over"
+             [dndDisableIf]="!dropzoneEnabled"
+             (dndDrop)="onDrop($event)">
+
+      <pre *ngIf="lastDropEvent">{{ lastDropEvent | json }}</pre>
+
+    </section>
+  </div>
 
 </div>
