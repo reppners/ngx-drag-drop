@@ -54,7 +54,7 @@
   <div fxLayout="column">
 
     <md-slide-toggle [checked]="dropzoneEnabled"
-                     (change)="dropzoneEnabled = $event">Dropzone enabled
+                     (change)="dropzoneEnabled = $event.checked">Dropzone enabled
     </md-slide-toggle>
 
     <section fxFlex
