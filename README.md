@@ -11,10 +11,10 @@ Set of Angular directives for declarative drag and drop using the HTML5 Drag-And
 * dropzones optionally support external/native draggables (img, txt, file)
 * conditional drag/drop
 * typed drag/drop
-* utilize EffectAllowed
+* utilize [EffectAllowed](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/effectAllowed)
 * custom CSS classes
 * touch support by using a [polyfill](https://github.com/timruffles/ios-html5-drag-drop-shim/tree/rewrite)
-* AOT compatible
+* [AOT](https://angular.io/guide/aot-compiler) compatible
 
 Install with `npm install ngx-drag-drop@next --save`
 
@@ -44,6 +44,9 @@ The idea is that the directive does not handle lists internally so the `dndDropz
     </div>
     
     draggable ({{draggable.effectAllowed}}) <span [hidden]="!draggable.disable">DISABLED</span>
+    
+    <!--optionally select a child element as drag image-->
+    <div dndDragImageRef>DRAG_IMAGE</div>
     
 </div>
 
@@ -157,10 +160,13 @@ export class AppModule {
 export type DropEffect = "move" | "copy" | "link" | "none";
 
 // https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/effectAllowed
-export type EffectAllowed = DropEffect | "move" | "copy" | "link" | "copyMove" | "copyLink" | "linkMove" | "all";
+export type EffectAllowed = DropEffect | "copyMove" | "copyLink" | "linkMove" | "all";
 ```
 
 ```TS
+@Directive( {
+  selector: "[dndDraggable]"
+} )
 export declare class DndDraggableDirective {
 
     // the data attached to the drag
@@ -180,6 +186,9 @@ export declare class DndDraggableDirective {
     
     // set a custom class that is applied to only the src element while dragging
     dndDraggingSourceClass: string = "dndDraggingSource";
+    
+    // set the class that is applied when draggable is disabled by [dndDisableIf]
+    dndDraggableDisabledClass = "dndDraggableDisabled";
     
     // emits on drag start
     readonly dndStart: EventEmitter<DragEvent>;
@@ -221,6 +230,9 @@ export interface DndDropEvent {
     index?: number;
 }
 
+@Directive( {
+  selector: "[dndDropzone]"
+} )
 export declare class DndDropzoneDirective {
 
     // optionally restrict the allowed types
@@ -243,6 +255,10 @@ export declare class DndDropzoneDirective {
     // set the class applied to the dropzone
     // when a draggable is dragged over it
     dndDragoverClass: string = "dndDragover";
+    
+    // set the class applied to the dropzone
+    // when the dropzone is disabled by [dndDisableIf] 
+    dndDropzoneDisabledClass = "dndDropzoneDisabled";
     
     // emits when a draggable is dragged over the dropzone
     readonly dndDragover: EventEmitter<DragEvent>;

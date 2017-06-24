@@ -40,9 +40,6 @@ export class DndDropzoneDirective implements AfterContentInit {
   public dndEffectAllowed:EffectAllowed;
 
   @Input()
-  public dndDisableIf:boolean = false;
-
-  @Input()
   public dndAllowExternal:boolean = false;
 
   @Input()
@@ -50,6 +47,9 @@ export class DndDropzoneDirective implements AfterContentInit {
 
   @Input()
   public dndDragoverClass:string = "dndDragover";
+
+  @Input()
+  public dndDropzoneDisabledClass = "dndDropzoneDisabled";
 
   @Output()
   public readonly dndDragover:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
@@ -61,6 +61,23 @@ export class DndDropzoneDirective implements AfterContentInit {
   private readonly dndPlaceholderRef?:DndElementRefDirective;
 
   private placeholder:Element | null = null;
+
+  private disabled:boolean = false;
+
+  @Input()
+  public set dndDisableIf( value:boolean ) {
+
+    this.disabled = !!value;
+
+    if( this.disabled ) {
+
+      this.renderer.addClass( this.elementRef.nativeElement, this.dndDropzoneDisabledClass );
+    }
+    else {
+
+      this.renderer.removeClass( this.elementRef.nativeElement, this.dndDropzoneDisabledClass );
+    }
+  }
 
   constructor( private elementRef:ElementRef,
                private renderer:Renderer2 ) {
@@ -78,7 +95,7 @@ export class DndDropzoneDirective implements AfterContentInit {
   private isDropAllowed( type?:string ):boolean {
 
     // dropzone is disabled -> deny it
-    if( this.dndDisableIf === true ) {
+    if( this.disabled === true ) {
 
       return false;
     }

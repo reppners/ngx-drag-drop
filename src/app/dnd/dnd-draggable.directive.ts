@@ -7,10 +7,8 @@ import {
   HostBinding,
   HostListener,
   Input,
-  OnChanges,
   Output,
-  Renderer2,
-  SimpleChanges
+  Renderer2
 } from "@angular/core";
 import { DndEvent, setDragData, setDragImage } from "./dnd-utils";
 import { DndHandleDirective } from "./dnd-handle.directive";
@@ -21,7 +19,7 @@ import { DndElementRefDirective } from "./dnd-element-ref.directive";
 @Directive( {
   selector: "[dndDraggable]"
 } )
-export class DndDraggableDirective implements AfterContentInit, OnChanges {
+export class DndDraggableDirective implements AfterContentInit {
 
   @Input()
   public dndDraggable:any;
@@ -33,13 +31,13 @@ export class DndDraggableDirective implements AfterContentInit, OnChanges {
   public dndType?:string;
 
   @Input()
-  public dndDisableIf:boolean = false;
-
-  @Input()
   public dndDraggingClass = "dndDragging";
 
   @Input()
   public dndDraggingSourceClass = "dndDraggingSource";
+
+  @Input()
+  public dndDraggableDisabledClass = "dndDraggableDisabled";
 
   @Output()
   public readonly dndStart:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
@@ -70,6 +68,21 @@ export class DndDraggableDirective implements AfterContentInit, OnChanges {
 
   private dragImage:Element;
 
+  @Input()
+  public set dndDisableIf( value:boolean ) {
+
+    this.draggable = !value;
+
+    if( this.draggable ) {
+
+      this.renderer.removeClass( this.elementRef.nativeElement, this.dndDraggableDisabledClass );
+    }
+    else {
+
+      this.renderer.addClass( this.elementRef.nativeElement, this.dndDraggableDisabledClass );
+    }
+  }
+
   constructor( private elementRef:ElementRef,
                private renderer:Renderer2 ) {
   }
@@ -84,15 +97,6 @@ export class DndDraggableDirective implements AfterContentInit, OnChanges {
     else {
 
       this.dragImage = this.elementRef.nativeElement;
-    }
-  }
-
-  public ngOnChanges( changes:SimpleChanges ):void {
-
-    // reevaluate dragability
-    if( changes.dndDisableIf ) {
-
-      this.draggable = !changes.dndDisableIf.currentValue;
     }
   }
 
