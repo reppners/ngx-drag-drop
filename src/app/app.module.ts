@@ -4,7 +4,14 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { HttpModule } from "@angular/http";
-import { MaterialModule } from "@angular/material";
+import {
+  MdCardModule,
+  MdIconModule,
+  MdListModule,
+  MdSlideToggleModule,
+  MdSnackBarModule,
+  MdToolbarModule
+} from "@angular/material";
 
 import { AppComponent } from "./app.component";
 import { DndModule } from "./dnd/index";
@@ -14,7 +21,7 @@ import { NativeComponent } from "./demo/native/native.component";
 import { HorizontalListComponent } from "./demo/horizontal-list/horizontal-list.component";
 import { TypedComponent } from "./demo/typed/typed.component";
 import { NestedComponent } from "./demo/nested/nested.component";
-import { DemoLinkComponent } from './demo-link/demo-link.component';
+import { DemoLinkComponent } from "./demo-link/demo-link.component";
 
 @NgModule( {
   declarations: [
@@ -34,7 +41,12 @@ import { DemoLinkComponent } from './demo-link/demo-link.component';
     DndModule,
     FlexLayoutModule,
     HttpModule,
-    MaterialModule
+    MdToolbarModule,
+    MdCardModule,
+    MdSnackBarModule,
+    MdSlideToggleModule,
+    MdIconModule,
+    MdListModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]

@@ -50,10 +50,10 @@ export class SimpleComponent {
   };
 
   public dropzoneEnabled:boolean = true;
+  public lastDropEvent:DndDropEvent | null = null;
 
   private currentDraggableEvent:DragEvent;
   private currentDragEffectMsg:string;
-  private lastDropEvent:DndDropEvent | null = null;
 
   constructor( private snackBarService:MdSnackBar ) {
   }

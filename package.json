@@ -27,7 +27,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "build:lib": "gulp build",
     "publish:stable": "npm publish dist",
     "publish:next": "npm publish dist --tag next",
