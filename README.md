@@ -164,6 +164,8 @@ export type EffectAllowed = DropEffect | "copyMove" | "copyLink" | "linkMove" | 
 ```
 
 ```TS
+export type DndDragImageOffsetFunction = ( event:DragEvent, dragImage:Element ) => { x:number, y:number };
+
 @Directive( {
   selector: "[dndDraggable]"
 } )
@@ -189,6 +191,9 @@ export declare class DndDraggableDirective {
     
     // set the class that is applied when draggable is disabled by [dndDisableIf]
     dndDraggableDisabledClass = "dndDraggableDisabled";
+    
+    // enables to set a function for calculating custom dragimage offset
+    dndDragImageOffsetFunction:DndDragImageOffsetFunction = calculateDragImageOffset;
     
     // emits on drag start
     readonly dndStart: EventEmitter<DragEvent>;

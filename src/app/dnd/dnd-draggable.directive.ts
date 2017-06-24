@@ -10,7 +10,7 @@ import {
   Output,
   Renderer2
 } from "@angular/core";
-import { DndEvent, setDragData, setDragImage } from "./dnd-utils";
+import { calculateDragImageOffset, DndDragImageOffsetFunction, DndEvent, setDragData, setDragImage } from "./dnd-utils";
 import { DndHandleDirective } from "./dnd-handle.directive";
 import { dndState, endDrag, startDrag } from "./dnd-state";
 import { EffectAllowed } from "./dnd-types";
@@ -38,6 +38,9 @@ export class DndDraggableDirective implements AfterContentInit {
 
   @Input()
   public dndDraggableDisabledClass = "dndDraggableDisabled";
+
+  @Input()
+  public dndDragImageOffsetFunction:DndDragImageOffsetFunction = calculateDragImageOffset;
 
   @Output()
   public readonly dndStart:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
@@ -135,7 +138,7 @@ export class DndDraggableDirective implements AfterContentInit {
     if( typeof this.dndDragImageRef !== "undefined"
       || typeof event._dndHandle !== "undefined" ) {
 
-      setDragImage( event, this.dragImage );
+      setDragImage( event, this.dragImage, this.dndDragImageOffsetFunction );
     }
 
     this.dndStart.emit( event );

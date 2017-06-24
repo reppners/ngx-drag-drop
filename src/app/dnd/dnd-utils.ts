@@ -10,6 +10,8 @@ export interface DndEvent extends DragEvent {
   _dndDropzoneActive?:true;
 }
 
+export type DndDragImageOffsetFunction = ( event:DragEvent, dragImage:Element ) => { x:number, y:number };
+
 export const DROP_EFFECTS = [ "move", "copy", "link" ] as DropEffect[];
 
 export const CUSTOM_MIME_TYPE = "application/x-dnd";
@@ -144,40 +146,23 @@ export function shouldPositionPlaceholderBeforeElement( event:DragEvent, element
   return ( event.clientY < bounds.top + bounds.height / 2 );
 }
 
-export function setDragImage( event:DragEvent, dragImage:Element ):void {
+export function calculateDragImageOffset( event:DragEvent, dragImage:Element ):{ x:number, y:number } {
 
-  let offX = 0;
-  let offY = 0;
+  const dragImageComputedStyle = window.getComputedStyle( dragImage );
+  const paddingTop = parseFloat( dragImageComputedStyle.paddingTop ) || 0;
+  const paddingLeft = parseFloat( dragImageComputedStyle.paddingLeft ) || 0;
+  const borderTop = parseFloat( dragImageComputedStyle.borderTopWidth ) || 0;
+  const borderLeft = parseFloat( dragImageComputedStyle.borderLeftWidth ) || 0;
 
-  const currentTargetElement:Element = event.currentTarget as Element;
+  return {
+    x: event.offsetX + paddingLeft + borderLeft,
+    y: event.offsetY + paddingTop + borderTop
+  };
+}
 
-  if( dragImage === currentTargetElement ) {
+export function setDragImage( event:DragEvent, dragImage:Element, offsetFunction:DndDragImageOffsetFunction ):void {
 
-    const dragImageComputedStyle = window.getComputedStyle( dragImage );
-    const paddingTop = parseFloat( dragImageComputedStyle.paddingTop ) || 0;
-    const paddingLeft = parseFloat( dragImageComputedStyle.paddingLeft ) || 0;
-    const borderTop = parseFloat( dragImageComputedStyle.borderTopWidth ) || 0;
-    const borderLeft = parseFloat( dragImageComputedStyle.borderLeftWidth ) || 0;
+  const offset = offsetFunction( event, dragImage ) || {x: 0, y: 0};
 
-    offX += event.offsetX + paddingLeft + borderLeft;
-    offY += event.offsetY + paddingTop + borderTop;
-  }
-  // TODO handle custom drag image child offset calculation?
-  // else {
-
-  // const dragImageComputedStyle = window.getComputedStyle( dragImage );
-  // const paddingTop = parseFloat( dragImageComputedStyle.paddingTop ) || 0;
-  // const paddingLeft = parseFloat( dragImageComputedStyle.paddingLeft ) || 0;
-  //
-  // offX += paddingLeft;
-  // offY += paddingTop;
-  // }
-
-  // console.log( `event offsetX: ${event.offsetX}` );
-  // console.log( `event offsetY: ${event.offsetY}` );
-  //
-  // console.log( `offsetX: ${offX}` );
-  // console.log( `offsetY: ${offY}` );
-
-  (event.dataTransfer as any).setDragImage( dragImage, offX, offY );
+  (event.dataTransfer as any).setDragImage( dragImage, offset.x, offset.y );
 }

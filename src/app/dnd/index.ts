@@ -10,6 +10,7 @@ export * from "./dnd-dropzone.directive";
 export * from "./dnd-handle.directive";
 export * from "./dnd-element-ref.directive";
 export * from "./dnd-types";
+export { DndDragImageOffsetFunction } from "./dnd-utils";
 
 @NgModule( {
   imports: [
