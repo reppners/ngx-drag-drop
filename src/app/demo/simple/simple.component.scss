@@ -2,6 +2,7 @@
 :host {
 
   display: block;
+  box-sizing: border-box;
 }
 
 md-card:not(:last-of-type):not(:first-of-type) {

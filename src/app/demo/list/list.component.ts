@@ -45,11 +45,29 @@ export class ListComponent {
       handle: false,
     }
   ];
-
+  layout:object;
   private currentDraggableEvent:DragEvent;
   private currentDragEffectMsg:string;
+  private horizontalLayoutActive:boolean = false;
+  private readonly verticalLayout = {
+    container: "row",
+    list: "column",
+    dndHorizontal: false
+  };
+  private readonly horizontalLayout = {
+    container: "row",
+    list: "row",
+    dndHorizontal: true
+  };
 
   constructor( private snackBarService:MdSnackBar ) {
+
+    this.setHorizontalLayout( this.horizontalLayoutActive );
+  }
+
+  setHorizontalLayout( horizontalLayoutActive:boolean ) {
+
+    this.layout = (horizontalLayoutActive) ? this.horizontalLayout : this.verticalLayout;
   }
 
   onDragStart( event:DragEvent ) {
@@ -80,9 +98,6 @@ export class ListComponent {
   }
 
   onDrop( event:DndDropEvent, list?:any[] ) {
-
-    this.snackBarService.dismiss();
-    this.snackBarService.open( `Something dropped O.O` );
 
     if( list
       && ( event.dropEffect === "copy"

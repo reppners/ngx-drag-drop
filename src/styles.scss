@@ -24,6 +24,13 @@ html, body {
   margin: 8px;
 }
 
+.scrollable {
+
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
 [draggable=true] {
 
   cursor: pointer;

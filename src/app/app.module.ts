@@ -5,8 +5,10 @@ import { CommonModule } from "@angular/common";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { HttpModule } from "@angular/http";
 import {
+  MdButtonModule,
   MdCardModule,
   MdIconModule,
+  MdInputModule,
   MdListModule,
   MdSlideToggleModule,
   MdSnackBarModule,
@@ -18,7 +20,6 @@ import { DndModule } from "./dnd/index";
 import { SimpleComponent } from "./demo/simple/simple.component";
 import { ListComponent } from "./demo/list/list.component";
 import { NativeComponent } from "./demo/native/native.component";
-import { HorizontalListComponent } from "./demo/horizontal-list/horizontal-list.component";
 import { TypedComponent } from "./demo/typed/typed.component";
 import { NestedComponent } from "./demo/nested/nested.component";
 import { DemoLinkComponent } from "./demo-link/demo-link.component";
@@ -29,7 +30,6 @@ import { DemoLinkComponent } from "./demo-link/demo-link.component";
     SimpleComponent,
     ListComponent,
     NativeComponent,
-    HorizontalListComponent,
     TypedComponent,
     NestedComponent,
     DemoLinkComponent
@@ -41,6 +41,8 @@ import { DemoLinkComponent } from "./demo-link/demo-link.component";
     DndModule,
     FlexLayoutModule,
     HttpModule,
+    MdButtonModule,
+    MdInputModule,
     MdToolbarModule,
     MdCardModule,
     MdSnackBarModule,

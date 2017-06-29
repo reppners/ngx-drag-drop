@@ -1,15 +1,21 @@
-<div fxLayout="row"
+<md-slide-toggle fxFlexAlign="end"
+                 [checked]="horizontalLayoutActive"
+                 (change)="horizontalLayoutActive = $event.checked; setHorizontalLayout($event.checked)">horizontal
+</md-slide-toggle>
+
+<div [fxLayout]="layout.container"
      class="layout-padding">
 
   <div>
 
     <pre>dndEffectAllowed="copyMove"</pre>
 
-    <md-list dndDropzone
+    <md-list [fxLayout]="layout.list"
+             dndDropzone
+             [dndHorizontal]="layout.dndHorizontal"
              dndEffectAllowed="copyMove"
              (dndDrop)="onDrop($event, draggableListLeft)"
              class="dndList">
-
 
       <md-list-item dndPlaceholderRef
                     class="dndPlaceholder">
@@ -41,7 +47,9 @@
 
     <pre>dndEffectAllowed="copyMove"</pre>
 
-    <md-list dndDropzone
+    <md-list [fxLayout]="layout.list"
+             dndDropzone
+             [dndHorizontal]="layout.dndHorizontal"
              dndEffectAllowed="copyMove"
              (dndDrop)="onDrop($event, draggableListRight)"
              class="dndList">
@@ -77,11 +85,12 @@
 
     <pre>dndEffectAllowed="move"</pre>
 
-    <md-list dndDropzone
+    <md-list [fxLayout]="layout.list"
+             dndDropzone
+             [dndHorizontal]="layout.dndHorizontal"
              dndEffectAllowed="move"
              (dndDrop)="onDrop($event)"
              class="dndList">
-
 
     </md-list>
 

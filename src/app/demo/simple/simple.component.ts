@@ -83,9 +83,6 @@ export class SimpleComponent {
 
   onDrop( event:DndDropEvent ) {
 
-    this.snackBarService.dismiss();
-    this.snackBarService.open( `Something dropped O.O` );
-
     this.lastDropEvent = event;
   }
 }

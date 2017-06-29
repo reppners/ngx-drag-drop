@@ -1,16 +1,53 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
+import { DndDropEvent } from "../../dnd/dnd-dropzone.directive";
+import { MdSnackBar } from "@angular/material";
 
 @Component( {
-  selector: 'dnd-native',
-  templateUrl: './native.component.html',
-  styleUrls: [ './native.component.scss' ]
+  selector: "dnd-native",
+  templateUrl: "./native.component.html",
+  styleUrls: [ "./native.component.scss" ]
 } )
-export class NativeComponent implements OnInit {
+export class NativeComponent {
 
-  constructor() {
+  public lastDropEvent:DndDropEvent | null = null;
+
+  public lastDropTypes:string[];
+  public lastDropFiles:object[];
+  public lastDropItems:object[];
+
+  constructor( private snackBarService:MdSnackBar ) {
   }
 
-  ngOnInit() {
-  }
+  onDrop( event:DndDropEvent ) {
 
+    this.snackBarService.dismiss();
+    this.snackBarService.open( `Something dropped O.O`, undefined, {duration: 2000} );
+
+    this.lastDropEvent = event;
+
+    this.lastDropTypes = this.lastDropEvent.event.dataTransfer.types;
+
+    this.lastDropFiles = [];
+    for( let i:number = 0; i < this.lastDropEvent.event.dataTransfer.files.length; i++ ) {
+
+      const file = this.lastDropEvent.event.dataTransfer.files[ i ];
+      this.lastDropFiles.push( {
+        lastModifiedDate: file.lastModifiedDate,
+        name: file.name,
+        type: file.type,
+        size: file.size,
+      } );
+    }
+
+    this.lastDropItems = [];
+    for( let i:number = 0; i < this.lastDropEvent.event.dataTransfer.items.length; i++ ) {
+
+      const item = this.lastDropEvent.event.dataTransfer.items[ i ];
+      this.lastDropItems.push( {
+        type: item.type,
+        kind: item.kind,
+        data: this.lastDropEvent.event.dataTransfer.getData( item.type )
+      } );
+    }
+  }
 }
