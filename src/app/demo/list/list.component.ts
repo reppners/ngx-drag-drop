@@ -45,10 +45,10 @@ export class ListComponent {
       handle: false,
     }
   ];
-  layout:object;
+  layout:any;
+  horizontalLayoutActive:boolean = false;
   private currentDraggableEvent:DragEvent;
   private currentDragEffectMsg:string;
-  private horizontalLayoutActive:boolean = false;
   private readonly verticalLayout = {
     container: "row",
     list: "column",
