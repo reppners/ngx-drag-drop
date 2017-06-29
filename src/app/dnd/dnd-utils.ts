@@ -116,7 +116,7 @@ export function filterEffects( effects:DropEffect[], allowed:EffectAllowed | Dro
 
 export function getDirectChildElement( parentElement:Element, childElement:Element ):Element | null {
 
-  let directChild:Node = childElement.parentNode;
+  let directChild:Node = childElement;
 
   while( directChild.parentNode !== parentElement ) {
 

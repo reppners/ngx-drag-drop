@@ -156,7 +156,6 @@ export class DndDropzoneDirective implements AfterContentInit {
 
         this.renderer.insertBefore( this.elementRef.nativeElement, this.placeholder, directChild );
       }
-
     }
     else {
 
