@@ -1,3 +1,11 @@
+<a name="v1.0.0-rc.0"></a>
+# [v1.0.0-rc.0](https://github.com/reppners/ngx-drag-drop/compare/v1.0.0-beta.2...v1.0.0-rc.0) (2017-06-29)
+
+### Bug Fixes
+
+* **DndDropzone:** fixes issue on placeholder positioning algorithm where direct child element was missed
+
+
 <a name="v1.0.0-beta.2"></a>
 # [v1.0.0-beta.2](https://github.com/reppners/ngx-drag-drop/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2017-06-22)
 
