@@ -15,8 +15,8 @@ import {
   MdToolbarModule
 } from "@angular/material";
 
+import { DndModule } from "ngx-drag-drop";
 import { AppComponent } from "./app.component";
-import { DndModule } from "./dnd/index";
 import { SimpleComponent } from "./demo/simple/simple.component";
 import { ListComponent } from "./demo/list/list.component";
 import { NativeComponent } from "./demo/native/native.component";

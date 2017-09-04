@@ -5,13 +5,6 @@ import { DndDropzoneDirective } from "./dnd-dropzone.directive";
 import { DndHandleDirective } from "./dnd-handle.directive";
 import { DndElementRefDirective } from "./dnd-element-ref.directive";
 
-export * from "./dnd-draggable.directive";
-export * from "./dnd-dropzone.directive";
-export * from "./dnd-handle.directive";
-export * from "./dnd-element-ref.directive";
-export * from "./dnd-types";
-export { DndDragImageOffsetFunction } from "./dnd-utils";
-
 @NgModule( {
   imports: [
     CommonModule

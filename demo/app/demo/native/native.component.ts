@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { DndDropEvent } from "../../dnd/dnd-dropzone.directive";
+import { DndDropEvent } from "ngx-drag-drop";
 import { MdSnackBar } from "@angular/material";
 
 @Component( {

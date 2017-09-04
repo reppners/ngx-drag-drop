@@ -71,10 +71,10 @@ import "zone.js/dist/zone";  // Included with Angular CLI.
  */
 // import 'intl/locale-data/jsonp/en';
 
-import {polyfill} from "drag-drop-polyfill/release/drag-drop-polyfill";
+import {polyfill} from "mobile-drag-drop";
 
 // optional import of scroll behaviour
-import {scrollBehaviourDragImageTranslateOverride} from "drag-drop-polyfill/release/drag-drop-polyfill-scroll-behaviour";
+import {scrollBehaviourDragImageTranslateOverride} from "mobile-drag-drop/scroll-behaviour";
 
 // options are optional ;)
 polyfill({
