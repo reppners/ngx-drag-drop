@@ -1,3 +1,12 @@
+<a name="v1.0.0-rc.1"></a>
+# [v1.0.0-rc.1](https://github.com/reppners/ngx-drag-drop/compare/v1.0.0-rc.0...v1.0.0-rc.1) (2017-09-04)
+
+Changes build process to use [ng-packagr](https://github.com/dherges/ng-packagr) for less manual AOT compatible
+library builds.
+
+Demo is updated to use latest dependencies.
+
+
 <a name="v1.0.0-rc.0"></a>
 # [v1.0.0-rc.0](https://github.com/reppners/ngx-drag-drop/compare/v1.0.0-beta.2...v1.0.0-rc.0) (2017-06-29)
 
