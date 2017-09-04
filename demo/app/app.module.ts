@@ -1,3 +1,4 @@
+import "hammerjs";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
@@ -12,7 +13,8 @@ import {
   MdListModule,
   MdSlideToggleModule,
   MdSnackBarModule,
-  MdToolbarModule
+  MdToolbarModule,
+  MdTabsModule
 } from "@angular/material";
 
 import { DndModule } from "ngx-drag-drop";
@@ -48,7 +50,8 @@ import { DemoLinkComponent } from "./demo-link/demo-link.component";
     MdSnackBarModule,
     MdSlideToggleModule,
     MdIconModule,
-    MdListModule
+    MdListModule,
+    MdTabsModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]

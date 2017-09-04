@@ -12,53 +12,83 @@
 
 </md-toolbar>
 
-<md-list fxFlex
+<md-tab-group fxFlex
+              fxLayout="column">
+
+  <md-tab label="Simple">
+
+    <div fxFlex
          fxLayout="column"
-         class="scrollable layout-padding">
+         class="demo-container">
 
-  <h1 class="mat-title">Simple</h1>
+      <dnd-simple></dnd-simple>
 
-  <dnd-simple></dnd-simple>
+      <dnd-demo-link fxFlexAlign="end"
+                     name="simple"></dnd-demo-link>
 
-  <dnd-demo-link fxFlexAlign="end"
-                 name="simple"></dnd-demo-link>
+    </div>
 
-  <md-divider></md-divider>
+  </md-tab>
 
-  <h1 class="mat-title">Lists</h1>
+  <md-tab label="Lists">
 
-  <dnd-list></dnd-list>
+    <div fxFlex
+         fxLayout="column"
+         fxLayoutAlign="center"
+         class="demo-container">
 
-  <dnd-demo-link fxFlexAlign="end"
-                 name="list"></dnd-demo-link>
+      <dnd-list></dnd-list>
 
-  <md-divider></md-divider>
+      <dnd-demo-link fxFlexAlign="end"
+                     name="list"></dnd-demo-link>
 
-  <h1 class="mat-title">Nested</h1>
+    </div>
 
-  <dnd-nested></dnd-nested>
+  </md-tab>
 
-  <dnd-demo-link fxFlexAlign="end"
-                 name="nested"></dnd-demo-link>
+  <md-tab label="Nested">
 
-  <md-divider></md-divider>
+    <div fxFlex
+         fxLayout="column"
+         class="demo-container">
 
-  <h1 class="mat-title">Native</h1>
+      <dnd-nested></dnd-nested>
 
-  <dnd-native></dnd-native>
+      <dnd-demo-link fxFlexAlign="end"
+                     name="nested"></dnd-demo-link>
 
-  <dnd-demo-link fxFlexAlign="end"
-                 name="native"></dnd-demo-link>
+    </div>
 
-  <md-divider></md-divider>
+  </md-tab>
 
-  <h1 class="mat-title">Typed</h1>
+  <md-tab label="Native">
 
-  <dnd-typed></dnd-typed>
+    <div fxFlex
+         fxLayout="column"
+         class="demo-container">
 
-  <dnd-demo-link fxFlexAlign="end"
-                 name="typed"></dnd-demo-link>
+      <dnd-native></dnd-native>
 
-  <md-divider></md-divider>
+      <dnd-demo-link fxFlexAlign="end"
+                     name="native"></dnd-demo-link>
 
-</md-list>
+    </div>
+
+  </md-tab>
+
+  <md-tab label="Typed">
+
+    <div fxFlex
+         fxLayout="column"
+         class="demo-container">
+
+      <dnd-typed></dnd-typed>
+
+      <dnd-demo-link fxFlexAlign="end"
+                     name="typed"></dnd-demo-link>
+
+    </div>
+
+  </md-tab>
+
+</md-tab-group>

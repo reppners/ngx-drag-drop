@@ -27,7 +27,7 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run build:lib && ng serve",
-    "build": "ng build --prod",
+    "build": "ng build --prod --build-optimizer",
     "build:lib": "ng-packagr -p ng-package.json",
     "publish:stable": "npm publish dist",
     "publish:next": "npm publish dist --tag next",
@@ -54,6 +54,7 @@
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
     "core-js": "^2.4.1",
+    "hammerjs": "^2.0.8",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
     "karma": "~1.4.1",
