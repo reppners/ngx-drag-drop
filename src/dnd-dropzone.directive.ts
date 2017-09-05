@@ -120,6 +120,11 @@ export class DndDropzoneDirective implements AfterContentInit {
       return true;
     }
 
+    if( Array.isArray( this.dndDropzone ) === false ) {
+
+      throw new Error( "dndDropzone: bound value to [dndDropzone] must be an array!" );
+    }
+
     // if dropzone contains type -> allow it
     return this.dndDropzone.indexOf( type ) !== -1;
   }

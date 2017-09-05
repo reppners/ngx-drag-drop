@@ -22,7 +22,7 @@ const _dndState:DndState = {
   type: undefined
 };
 
-export function startDrag( event:DragEvent, effectAllowed:EffectAllowed, type?:string ) {
+export function startDrag( event:DragEvent, effectAllowed:EffectAllowed, type:string | undefined ) {
 
   _dndState.isDragging = true;
   _dndState.dropEffect = "none";

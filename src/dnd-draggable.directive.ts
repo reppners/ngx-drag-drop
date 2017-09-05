@@ -119,7 +119,7 @@ export class DndDraggableDirective implements AfterContentInit {
     }
 
     // initialize global state
-    startDrag( event, this.dndEffectAllowed );
+    startDrag( event, this.dndEffectAllowed, this.dndType );
 
     setDragData( event, {data: this.dndDraggable, type: this.dndType}, dndState.effectAllowed );
 
