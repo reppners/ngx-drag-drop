@@ -1,3 +1,10 @@
+<a name="v1.0.0-rc.2"></a>
+# [v1.0.0-rc.2](https://github.com/reppners/ngx-drag-drop/compare/v1.0.0-rc.1...v1.0.0-rc.2) (2017-09-05)
+
+* adds demo for typed drag and drop
+* fixes issue with typed drag and drop not working
+
+
 <a name="v1.0.0-rc.1"></a>
 # [v1.0.0-rc.1](https://github.com/reppners/ngx-drag-drop/compare/v1.0.0-rc.0...v1.0.0-rc.1) (2017-09-04)
 
