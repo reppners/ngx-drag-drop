@@ -1,6 +1,6 @@
 {
   "name": "ngx-drag-drop",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.2",
   "description": "Angular directives using the native HTML Drag And Drop API",
   "repository": {
     "type": "git",
@@ -26,7 +26,8 @@
   "main": "./index.js",
   "scripts": {
     "ng": "ng",
-    "start": "npm run build:lib && ng serve",
+    "start": "npm run build:lib && npm run workaround && ng serve",
+    "workaround": "rm -rf node_modules/ngx-drag-drop && cp -R dist node_modules/ngx-drag-drop",
     "build": "ng build --prod --build-optimizer",
     "build:lib": "ng-packagr -p ng-package.json",
     "publish:stable": "npm publish dist",
