@@ -4,3 +4,49 @@
   display: block;
   box-sizing: border-box;
 }
+
+pre {
+
+  text-align: center;
+  padding: 8px;
+}
+
+.mat-list-item {
+
+  margin: 2px;
+  border: 1px solid gray;
+}
+
+.dndList {
+
+  transition: all 300ms ease;
+
+  border: 1px red solid;
+  min-width: 200px;
+  min-height: 200px;
+
+  &.dndDragover {
+
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    border-color: green;
+  }
+}
+
+.dndDragging {
+
+  border: 1px solid green;
+}
+
+.dndDraggingSource {
+
+  display: none;
+}
+
+.dndPlaceholder {
+
+  min-height: 48px;
+  border: 1px dashed green;
+  background-color: rgba(0, 0, 0, 0.1);
+}

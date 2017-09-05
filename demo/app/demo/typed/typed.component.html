@@ -1,3 +1,80 @@
-<p>
-  typed works!
-</p>
+<div class="layout-padding"
+     fxLayout="row">
+
+  <div fxLayout="column">
+
+    <pre>Fruits</pre>
+
+    <md-list dndDropzone
+             dndEffectAllowed="move"
+             (dndDrop)="onDrop($event, fruits)"
+             class="dndList">
+
+      <md-list-item dndPlaceholderRef
+                    class="dndPlaceholder">
+      </md-list-item>
+
+      <md-list-item *ngFor="let fruit of fruits"
+                    [dndDraggable]="fruit"
+                    [dndType]="fruit"
+                    dndEffectAllowed="move"
+                    (dndMoved)="onDragged(fruit, fruits)">
+        <h1 md-line>{{fruit}}</h1>
+      </md-list-item>
+
+    </md-list>
+
+  </div>
+
+  <div fxLayout="column">
+
+    <pre>Apples</pre>
+
+    <md-list [dndDropzone]="['apple']"
+             dndEffectAllowed="move"
+             (dndDrop)="onDrop($event, apples)"
+             class="dndList">
+
+
+      <md-list-item dndPlaceholderRef
+                    class="dndPlaceholder">
+      </md-list-item>
+
+      <md-list-item *ngFor="let apple of apples"
+                    [dndDraggable]="apple"
+                    [dndType]="apple"
+                    dndEffectAllowed="move"
+                    (dndMoved)="onDragged(apple, apples)">
+        <h1 md-line>{{apple}}</h1>
+      </md-list-item>
+
+    </md-list>
+
+  </div>
+
+  <div fxLayout="column">
+
+    <pre>Bananas</pre>
+
+    <md-list [dndDropzone]="['banana']"
+             dndEffectAllowed="move"
+             (dndDrop)="onDrop($event, bananas)"
+             class="dndList">
+
+      <md-list-item dndPlaceholderRef
+                    class="dndPlaceholder">
+      </md-list-item>
+
+      <md-list-item *ngFor="let banana of bananas"
+                    [dndDraggable]="banana"
+                    [dndType]="banana"
+                    dndEffectAllowed="move"
+                    (dndMoved)="onDragged(banana, draggableListRight)">
+        <h1 md-line>{{banana}}</h1>
+      </md-list-item>
+
+    </md-list>
+
+  </div>
+
+</div>

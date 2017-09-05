@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { MdSnackBar } from "@angular/material";
-import { DndDropEvent } from "ngx-drag-drop";
-import { DropEffect } from "ngx-drag-drop";
+import { DndDropEvent, DropEffect } from "ngx-drag-drop";
 
 @Component( {
   selector: "dnd-list",
