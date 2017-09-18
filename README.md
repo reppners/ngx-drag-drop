@@ -4,7 +4,7 @@
 
 # NgxDragDrop
 
-[_Demo_](https://github.com/reppners/ngx-drag-drop)
+[_Demo_](https://reppners.github.io/ngx-drag-drop/)
 
 **Angular directives for declarative drag and drop using the HTML5 Drag-And-Drop API**
 
