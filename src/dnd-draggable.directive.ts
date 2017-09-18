@@ -14,7 +14,15 @@ import { calculateDragImageOffset, DndDragImageOffsetFunction, DndEvent, setDrag
 import { DndHandleDirective } from "./dnd-handle.directive";
 import { dndState, endDrag, startDrag } from "./dnd-state";
 import { EffectAllowed } from "./dnd-types";
-import { DndElementRefDirective } from "./dnd-element-ref.directive";
+
+@Directive( {
+  selector: "[dndDragImageRef]"
+} )
+export class DndDragImageRefDirective {
+
+  constructor( public readonly elementRef:ElementRef ) {
+  }
+}
 
 @Directive( {
   selector: "[dndDraggable]"
@@ -66,8 +74,8 @@ export class DndDraggableDirective implements AfterContentInit {
   @ContentChild( DndHandleDirective )
   private readonly dndHandle?:DndHandleDirective;
 
-  @ContentChild( DndElementRefDirective )
-  private readonly dndDragImageRef?:DndElementRefDirective;
+  @ContentChild( DndDragImageRefDirective )
+  private readonly dndDragImageRef?:DndDragImageRefDirective;
 
   private dragImage:Element;
 

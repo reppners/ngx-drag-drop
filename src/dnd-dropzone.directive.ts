@@ -1,5 +1,5 @@
 import {
-  AfterContentInit,
+  AfterViewInit,
   ContentChild,
   Directive,
   ElementRef,
@@ -18,7 +18,6 @@ import {
 } from "./dnd-utils";
 import { getDndType, getDropEffect, isExternalDrag, setDropEffect } from "./dnd-state";
 import { DropEffect, EffectAllowed } from "./dnd-types";
-import { DndElementRefDirective } from "./dnd-element-ref.directive";
 
 export interface DndDropEvent {
   event:DragEvent;
@@ -29,9 +28,18 @@ export interface DndDropEvent {
 }
 
 @Directive( {
+  selector: "[dndPlaceholderRef]"
+} )
+export class DndPlaceholderRefDirective {
+
+  constructor( public readonly elementRef:ElementRef ) {
+  }
+}
+
+@Directive( {
   selector: "[dndDropzone]"
 } )
-export class DndDropzoneDirective implements AfterContentInit {
+export class DndDropzoneDirective implements AfterViewInit {
 
   @Input()
   public dndDropzone?:string[];
@@ -57,8 +65,8 @@ export class DndDropzoneDirective implements AfterContentInit {
   @Output()
   public readonly dndDrop:EventEmitter<DndDropEvent> = new EventEmitter<DndDropEvent>();
 
-  @ContentChild( DndElementRefDirective )
-  private readonly dndPlaceholderRef?:DndElementRefDirective;
+  @ContentChild( DndPlaceholderRefDirective )
+  private readonly dndPlaceholderRef?:DndPlaceholderRefDirective;
 
   private placeholder:Element | null = null;
 
@@ -83,13 +91,26 @@ export class DndDropzoneDirective implements AfterContentInit {
                private renderer:Renderer2 ) {
   }
 
-  public ngAfterContentInit():void {
+  public ngAfterViewInit():void {
+
+    this.placeholder = this.tryGetPlaceholder();
+
+    if( this.placeholder !== null ) {
+
+      this.placeholder.remove();
+    }
+  }
+
+  private tryGetPlaceholder():Element | null {
 
     if( typeof this.dndPlaceholderRef !== "undefined" ) {
 
-      this.placeholder = this.dndPlaceholderRef.elementRef.nativeElement as Element;
-      this.placeholder.remove();
+      return this.dndPlaceholderRef.elementRef.nativeElement as Element;
     }
+
+    // TODO nasty workaround needed because if ng-container / template is used @ContentChild() or DI will fail because of wrong context
+    // see angular bug https://github.com/angular/angular/issues/13517
+    return this.elementRef.nativeElement.querySelector( "[dndPlaceholderRef]" );
   }
 
   private isDropAllowed( type?:string ):boolean {
