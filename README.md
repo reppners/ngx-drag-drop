@@ -302,5 +302,5 @@ For the library build it uses [ng-packagr](https://github.com/dherges/ng-packagr
 
 #### Release Docs
 
-* build docs site with `npm run build`
+* build docs site with `npm run build:docs`
 * commit and push changes in `docs` to `master`
