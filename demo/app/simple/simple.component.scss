@@ -12,12 +12,13 @@ md-card:not(:last-of-type):not(:first-of-type) {
 
 .my-dropzone {
 
+  padding: 8px;
   transition: all 300ms ease;
 }
 
 .custom-drag-over {
 
   background-color: rgba(0, 0, 0, 0.3);
-
-  transform: scale(1.01);
+  border-color: limegreen;
+  transform: scale(1.05);
 }

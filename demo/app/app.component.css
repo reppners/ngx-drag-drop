@@ -6,7 +6,19 @@
   flex-direction: column;
 }
 
-.demo-container {
+.demo {
 
-  margin: 8px;
+  padding: 8px;
+}
+
+.scrollable {
+
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* workaround for fullsize tab content */
+md-tab-group ::ng-deep .mat-tab-body-wrapper {
+
+  height: 100%;
 }

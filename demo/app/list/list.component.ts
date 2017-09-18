@@ -99,8 +99,8 @@ export class ListComponent {
   onDrop( event:DndDropEvent, list?:any[] ) {
 
     if( list
-      && ( event.dropEffect === "copy"
-        || event.dropEffect === "move" ) ) {
+      && (event.dropEffect === "copy"
+        || event.dropEffect === "move") ) {
 
       let index = event.index;
 

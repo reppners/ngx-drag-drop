@@ -4,10 +4,12 @@
 
 # NgxDragDrop
 
-Set of Angular directives for declarative drag and drop using the HTML5 Drag-And-Drop API.
+[_Demo_](https://github.com/reppners/ngx-drag-drop)
 
-* nesting
+**Angular directives for declarative drag and drop using the HTML5 Drag-And-Drop API**
+
 * sortable lists by using placeholder element (vertical and horizontal)
+* nestable
 * dropzones optionally support external/native draggables (img, txt, file)
 * conditional drag/drop
 * typed drag/drop
@@ -283,16 +285,22 @@ Credits go to the author and contributors of [angular-drag-drop-lists](https://g
 
 ### Maintenance
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.6.
-For the library build it uses the workflow from [generator-angular2-library](https://github.com/jvandemo/generator-angular2-library).
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
 
-#### Library
+For the library build it uses [ng-packagr](https://github.com/dherges/ng-packagr).
+
+#### Edit Library
+
+* edit lib code
+* run `npm start` (currently needs to be re-run on every lib code change)
+
+#### Release Library
 
 * assure correct version is set in `package.json`
 * build library with `npm run build:lib`
 * publish library with `npm run publish:stable` (use `npm run publish:next` for pre-releases)
 
-#### Docs
+#### Release Docs
 
 * build docs site with `npm run build`
 * commit and push changes in `docs` to `master`

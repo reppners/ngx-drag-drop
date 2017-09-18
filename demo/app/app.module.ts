@@ -13,17 +13,17 @@ import {
   MdListModule,
   MdSlideToggleModule,
   MdSnackBarModule,
-  MdToolbarModule,
-  MdTabsModule
+  MdTabsModule,
+  MdToolbarModule
 } from "@angular/material";
 
 import { DndModule } from "ngx-drag-drop";
 import { AppComponent } from "./app.component";
-import { SimpleComponent } from "./demo/simple/simple.component";
-import { ListComponent } from "./demo/list/list.component";
-import { NativeComponent } from "./demo/native/native.component";
-import { TypedComponent } from "./demo/typed/typed.component";
-import { NestedComponent } from "./demo/nested/nested.component";
+import { SimpleComponent } from "./simple/simple.component";
+import { ListComponent } from "./list/list.component";
+import { NativeComponent } from "./native/native.component";
+import { TypedComponent } from "./typed/typed.component";
+import { NestedComponent } from "./nested/nested.component";
 import { DemoLinkComponent } from "./demo-link/demo-link.component";
 
 @NgModule( {

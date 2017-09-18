@@ -13,82 +13,47 @@
 </md-toolbar>
 
 <md-tab-group fxFlex
-              fxLayout="column">
+              fxLayout="column"
+              (selectChange)="onSelectedTabChange($event)">
 
   <md-tab label="Simple">
 
-    <div fxFlex
-         fxLayout="column"
-         class="demo-container">
-
-      <dnd-simple></dnd-simple>
-
-      <dnd-demo-link fxFlexAlign="end"
-                     name="simple"></dnd-demo-link>
-
-    </div>
+    <dnd-simple fxFlex
+                class="demo scrollable"></dnd-simple>
 
   </md-tab>
 
   <md-tab label="Lists">
 
-    <div fxFlex
-         fxLayout="column"
-         fxLayoutAlign="center"
-         class="demo-container">
-
-      <dnd-list></dnd-list>
-
-      <dnd-demo-link fxFlexAlign="end"
-                     name="list"></dnd-demo-link>
-
-    </div>
+    <dnd-list fxFlex
+              class="demo scrollable"></dnd-list>
 
   </md-tab>
 
   <md-tab label="Nested">
 
-    <div fxFlex
-         fxLayout="column"
-         class="demo-container">
-
-      <dnd-nested></dnd-nested>
-
-      <dnd-demo-link fxFlexAlign="end"
-                     name="nested"></dnd-demo-link>
-
-    </div>
+    <dnd-nested fxFlex
+                class="demo scrollable"></dnd-nested>
 
   </md-tab>
 
   <md-tab label="Native">
 
-    <div fxFlex
-         fxLayout="column"
-         class="demo-container">
-
-      <dnd-native></dnd-native>
-
-      <dnd-demo-link fxFlexAlign="end"
-                     name="native"></dnd-demo-link>
-
-    </div>
+    <dnd-native fxFlex
+                class="demo scrollable"></dnd-native>
 
   </md-tab>
 
   <md-tab label="Typed">
 
-    <div fxFlex
-         fxLayout="column"
-         class="demo-container">
-
-      <dnd-typed></dnd-typed>
-
-      <dnd-demo-link fxFlexAlign="end"
-                     name="typed"></dnd-demo-link>
-
-    </div>
+    <dnd-typed fxFlex
+               class="demo scrollable"></dnd-typed>
 
   </md-tab>
 
 </md-tab-group>
+
+<dnd-demo-link fxFlexAlign="end"
+               style="margin: 8px"
+               [name]="activeDemoName"></dnd-demo-link>
+

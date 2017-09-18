@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { DndDropEvent, DropEffect } from "ngx-drag-drop";
+import { DndDropEvent } from "ngx-drag-drop";
 
 @Component( {
   selector: "dnd-typed",
