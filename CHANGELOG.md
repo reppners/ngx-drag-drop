@@ -1,8 +1,15 @@
+<a name="v1.0.0"></a>
+# [v1.0.0](https://github.com/reppners/ngx-drag-drop/compare/v1.0.0-rc.3...v1.0.0) (2017-10-18)
+
+* stable release! 
+
+
 <a name="v1.0.0-rc.3"></a>
 # [v1.0.0-rc.3](https://github.com/reppners/ngx-drag-drop/compare/v1.0.0-rc.2...v1.0.0-rc.3) (2017-09-18)
 
 * adds demo for nested recursive drag and drop
 * fixes issue where [dndPlaceholderRef] was not working in nested context because of angular limitation
+
 
 <a name="v1.0.0-rc.2"></a>
 # [v1.0.0-rc.2](https://github.com/reppners/ngx-drag-drop/compare/v1.0.0-rc.1...v1.0.0-rc.2) (2017-09-05)
