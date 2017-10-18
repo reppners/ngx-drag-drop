@@ -6,6 +6,8 @@
 
 [_Demo_](https://reppners.github.io/ngx-drag-drop/)
 
+`npm install ngx-drag-drop --save`
+
 **Angular directives for declarative drag and drop using the HTML5 Drag-And-Drop API**
 
 * sortable lists by using placeholder element (vertical and horizontal)
@@ -15,10 +17,8 @@
 * typed drag/drop
 * utilize [EffectAllowed](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/effectAllowed)
 * custom CSS classes
-* touch support by using a [polyfill](https://github.com/timruffles/ios-html5-drag-drop-shim/tree/rewrite)
+* touch support by using a [polyfill](https://github.com/timruffles/ios-html5-drag-drop-shim)
 * [AOT](https://angular.io/guide/aot-compiler) compatible
-
-Install with `npm install ngx-drag-drop@next --save`
 
 Port of [angular-drag-drop-lists](https://github.com/marceljuenemann/angular-drag-and-drop-lists) but without the lists :wink:
 
