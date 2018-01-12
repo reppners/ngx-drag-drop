@@ -30,46 +30,46 @@ export class DndDragImageRefDirective {
 export class DndDraggableDirective implements AfterContentInit {
 
   @Input()
-  public dndDraggable:any;
+  dndDraggable:any;
 
   @Input()
-  public dndEffectAllowed:EffectAllowed = "copy";
+  dndEffectAllowed:EffectAllowed = "copy";
 
   @Input()
-  public dndType?:string;
+  dndType?:string;
 
   @Input()
-  public dndDraggingClass = "dndDragging";
+  dndDraggingClass = "dndDragging";
 
   @Input()
-  public dndDraggingSourceClass = "dndDraggingSource";
+  dndDraggingSourceClass = "dndDraggingSource";
 
   @Input()
-  public dndDraggableDisabledClass = "dndDraggableDisabled";
+  dndDraggableDisabledClass = "dndDraggableDisabled";
 
   @Input()
-  public dndDragImageOffsetFunction:DndDragImageOffsetFunction = calculateDragImageOffset;
+  dndDragImageOffsetFunction:DndDragImageOffsetFunction = calculateDragImageOffset;
 
   @Output()
-  public readonly dndStart:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndStart:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  public readonly dndEnd:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndEnd:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  public readonly dndMoved:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndMoved:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  public readonly dndCopied:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndCopied:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  public readonly dndLinked:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndLinked:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  public readonly dndCanceled:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndCanceled:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @HostBinding( "attr.draggable" )
-  private draggable = true;
+  draggable = true;
 
   @ContentChild( DndHandleDirective )
   private readonly dndHandle?:DndHandleDirective;
@@ -80,7 +80,7 @@ export class DndDraggableDirective implements AfterContentInit {
   private dragImage:Element;
 
   @Input()
-  public set dndDisableIf( value:boolean ) {
+  set dndDisableIf( value:boolean ) {
 
     this.draggable = !value;
 
@@ -98,7 +98,7 @@ export class DndDraggableDirective implements AfterContentInit {
                private renderer:Renderer2 ) {
   }
 
-  public ngAfterContentInit():void {
+  ngAfterContentInit():void {
 
     // evaluate custom drag image existence
     if( typeof this.dndDragImageRef !== "undefined" ) {
@@ -112,7 +112,7 @@ export class DndDraggableDirective implements AfterContentInit {
   }
 
   @HostListener( "dragstart", [ "$event" ] )
-  private onDragStart( event:DndEvent ) {
+  onDragStart( event:DndEvent ) {
 
     if( this.draggable === false ) {
 
@@ -155,7 +155,7 @@ export class DndDraggableDirective implements AfterContentInit {
   }
 
   @HostListener( "dragend", [ "$event" ] )
-  private onDragEnd( event:DragEvent ) {
+  onDragEnd( event:DragEvent ) {
 
     // get drop effect from custom stored state as its not reliable across browsers
     const dropEffect = dndState.dropEffect;

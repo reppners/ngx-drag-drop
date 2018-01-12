@@ -42,28 +42,28 @@ export class DndPlaceholderRefDirective {
 export class DndDropzoneDirective implements AfterViewInit {
 
   @Input()
-  public dndDropzone?:string[];
+  dndDropzone?:string[];
 
   @Input()
-  public dndEffectAllowed:EffectAllowed;
+  dndEffectAllowed:EffectAllowed;
 
   @Input()
-  public dndAllowExternal:boolean = false;
+  dndAllowExternal:boolean = false;
 
   @Input()
-  public dndHorizontal:boolean = false;
+  dndHorizontal:boolean = false;
 
   @Input()
-  public dndDragoverClass:string = "dndDragover";
+  dndDragoverClass:string = "dndDragover";
 
   @Input()
-  public dndDropzoneDisabledClass = "dndDropzoneDisabled";
+  dndDropzoneDisabledClass = "dndDropzoneDisabled";
 
   @Output()
-  public readonly dndDragover:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndDragover:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  public readonly dndDrop:EventEmitter<DndDropEvent> = new EventEmitter<DndDropEvent>();
+  readonly dndDrop:EventEmitter<DndDropEvent> = new EventEmitter<DndDropEvent>();
 
   @ContentChild( DndPlaceholderRefDirective )
   private readonly dndPlaceholderRef?:DndPlaceholderRefDirective;
@@ -73,7 +73,7 @@ export class DndDropzoneDirective implements AfterViewInit {
   private disabled:boolean = false;
 
   @Input()
-  public set dndDisableIf( value:boolean ) {
+  set dndDisableIf( value:boolean ) {
 
     this.disabled = !!value;
 
@@ -91,7 +91,7 @@ export class DndDropzoneDirective implements AfterViewInit {
                private renderer:Renderer2 ) {
   }
 
-  public ngAfterViewInit():void {
+  ngAfterViewInit():void {
 
     this.placeholder = this.tryGetPlaceholder();
 
@@ -216,7 +216,7 @@ export class DndDropzoneDirective implements AfterViewInit {
   }
 
   @HostListener( "dragenter", [ "$event" ] )
-  private onDragEnter( event:DndEvent ) {
+  onDragEnter( event:DndEvent ) {
 
     // check if another dropzone is activated
     if( event._dndDropzoneActive === true ) {
@@ -248,7 +248,7 @@ export class DndDropzoneDirective implements AfterViewInit {
   }
 
   @HostListener( "dragover", [ "$event" ] )
-  private onDragOver( event:DragEvent ) {
+  onDragOver( event:DragEvent ) {
 
     // check if this drag event is allowed to drop on this dropzone
     const type = getDndType( event );
@@ -281,7 +281,7 @@ export class DndDropzoneDirective implements AfterViewInit {
   }
 
   @HostListener( "drop", [ "$event" ] )
-  private onDrop( event:DragEvent ) {
+  onDrop( event:DragEvent ) {
 
     try {
 
@@ -330,7 +330,7 @@ export class DndDropzoneDirective implements AfterViewInit {
   }
 
   @HostListener( "dragleave", [ "$event" ] )
-  private onDragLeave( event:DndEvent ) {
+  onDragLeave( event:DndEvent ) {
 
     // check if still inside this dropzone and not yet handled by another dropzone
     if( typeof event._dndDropzoneActive === "undefined" ) {

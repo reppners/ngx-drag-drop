@@ -7,14 +7,14 @@ import { DndEvent } from "./dnd-utils";
 export class DndHandleDirective {
 
   @HostBinding( "attr.draggable" )
-  private draggable = true;
+  draggable = true;
 
   constructor( private elementRef:ElementRef ) {
   }
 
   @HostListener( "dragstart", [ "$event" ] )
   @HostListener( "dragend", [ "$event" ] )
-  public onDragEvent( event:DndEvent ) {
+  onDragEvent( event:DndEvent ) {
 
     event._dndHandle = this.elementRef.nativeElement as HTMLElement;
   }
