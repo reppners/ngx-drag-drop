@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { MdIconRegistry, MdTabChangeEvent } from "@angular/material";
+import { MatIconRegistry, MatTabChangeEvent } from "@angular/material";
 import { DomSanitizer } from "@angular/platform-browser";
 
 @Component( {
@@ -14,12 +14,12 @@ export class AppComponent {
   activeDemoName = "simple";
 
   constructor( sanitizer:DomSanitizer,
-               iconRegistry:MdIconRegistry ) {
+               iconRegistry:MatIconRegistry ) {
 
     iconRegistry.addSvgIcon( "github", sanitizer.bypassSecurityTrustResourceUrl( "assets/github.svg" ) );
   }
 
-  onSelectedTabChange( event:MdTabChangeEvent ) {
+  onSelectedTabChange( event:MatTabChangeEvent ) {
 
     this.activeDemoName = event.tab.textLabel.toLowerCase();
   }

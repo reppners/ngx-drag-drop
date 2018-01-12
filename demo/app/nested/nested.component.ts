@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { DndDropEvent, DropEffect } from "ngx-drag-drop";
-import { MdSnackBar } from "@angular/material";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 interface NestableListItem {
   content:string;
@@ -54,7 +54,7 @@ export class NestedComponent {
   private currentDraggableEvent:DragEvent;
   private currentDragEffectMsg:string;
 
-  constructor( private snackBarService:MdSnackBar ) {
+  constructor( private snackBarService:MatSnackBar ) {
   }
 
   onDragStart( event:DragEvent ) {

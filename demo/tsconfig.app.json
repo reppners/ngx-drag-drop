@@ -9,6 +9,11 @@
       "ngx-drag-drop": [ "../dist" ]
     }
   },
+  "angularCompilerOptions": {
+    "preserveWhitespaces": false,
+    "strictInjectionParameters": true,
+    "fullTemplateTypeCheck": true
+  },
   "exclude": [
     "test.ts",
     "**/*.spec.ts"

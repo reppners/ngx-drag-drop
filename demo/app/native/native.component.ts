@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { DndDropEvent } from "ngx-drag-drop";
-import { MdSnackBar } from "@angular/material";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component( {
   selector: "dnd-native",
@@ -15,7 +15,7 @@ export class NativeComponent {
   public lastDropFiles:object[];
   public lastDropItems:object[];
 
-  constructor( private snackBarService:MdSnackBar ) {
+  constructor( private snackBarService:MatSnackBar ) {
   }
 
   onDrop( event:DndDropEvent ) {

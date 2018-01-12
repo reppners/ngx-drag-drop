@@ -3,11 +3,11 @@
   <ng-template #recursiveList
                let-list>
 
-    <md-card dndPlaceholderRef
+    <mat-card dndPlaceholderRef
              class="dndPlaceholder">
-    </md-card>
+    </mat-card>
 
-    <md-card *ngFor="let item of list"
+    <mat-card *ngFor="let item of list"
              [dndDraggable]="item"
              dndEffectAllowed="move"
              [dndDisableIf]="item.disable"
@@ -18,10 +18,10 @@
              (dndCanceled)="onDragged(item, list, 'none')"
              (dndEnd)="onDragEnd($event)">
 
-      <md-icon *ngIf="item.handle"
-               md-list-icon
+      <mat-icon *ngIf="item.handle"
+               mat-list-icon
                dndHandle>drag_handle
-      </md-icon>
+      </mat-icon>
 
       {{item.content}}
 
@@ -38,7 +38,7 @@
 
       </div>
 
-    </md-card>
+    </mat-card>
 
   </ng-template>
 

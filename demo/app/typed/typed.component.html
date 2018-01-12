@@ -5,24 +5,24 @@
 
     <pre>Fruits</pre>
 
-    <md-list dndDropzone
+    <mat-list dndDropzone
              dndEffectAllowed="move"
              (dndDrop)="onDrop($event, fruits)"
              class="dndList">
 
-      <md-list-item dndPlaceholderRef
+      <mat-list-item dndPlaceholderRef
                     class="dndPlaceholder">
-      </md-list-item>
+      </mat-list-item>
 
-      <md-list-item *ngFor="let fruit of fruits"
+      <mat-list-item *ngFor="let fruit of fruits"
                     [dndDraggable]="fruit"
                     [dndType]="fruit"
                     dndEffectAllowed="move"
                     (dndMoved)="onDragged(fruit, fruits)">
-        <h1 md-line>{{fruit}}</h1>
-      </md-list-item>
+        <h1 mat-line>{{fruit}}</h1>
+      </mat-list-item>
 
-    </md-list>
+    </mat-list>
 
   </div>
 
@@ -30,25 +30,25 @@
 
     <pre>Apples</pre>
 
-    <md-list [dndDropzone]="['apple']"
+    <mat-list [dndDropzone]="['apple']"
              dndEffectAllowed="move"
              (dndDrop)="onDrop($event, apples)"
              class="dndList">
 
 
-      <md-list-item dndPlaceholderRef
+      <mat-list-item dndPlaceholderRef
                     class="dndPlaceholder">
-      </md-list-item>
+      </mat-list-item>
 
-      <md-list-item *ngFor="let apple of apples"
+      <mat-list-item *ngFor="let apple of apples"
                     [dndDraggable]="apple"
                     [dndType]="apple"
                     dndEffectAllowed="move"
                     (dndMoved)="onDragged(apple, apples)">
-        <h1 md-line>{{apple}}</h1>
-      </md-list-item>
+        <h1 mat-line>{{apple}}</h1>
+      </mat-list-item>
 
-    </md-list>
+    </mat-list>
 
   </div>
 
@@ -56,24 +56,24 @@
 
     <pre>Bananas</pre>
 
-    <md-list [dndDropzone]="['banana']"
+    <mat-list [dndDropzone]="['banana']"
              dndEffectAllowed="move"
              (dndDrop)="onDrop($event, bananas)"
              class="dndList">
 
-      <md-list-item dndPlaceholderRef
+      <mat-list-item dndPlaceholderRef
                     class="dndPlaceholder">
-      </md-list-item>
+      </mat-list-item>
 
-      <md-list-item *ngFor="let banana of bananas"
+      <mat-list-item *ngFor="let banana of bananas"
                     [dndDraggable]="banana"
                     [dndType]="banana"
                     dndEffectAllowed="move"
                     (dndMoved)="onDragged(banana, bananas)">
-        <h1 md-line>{{banana}}</h1>
-      </md-list-item>
+        <h1 mat-line>{{banana}}</h1>
+      </mat-list-item>
 
-    </md-list>
+    </mat-list>
 
   </div>
 

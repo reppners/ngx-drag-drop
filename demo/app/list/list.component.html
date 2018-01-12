@@ -8,18 +8,18 @@
 
       <pre>dndEffectAllowed="copyMove"</pre>
 
-      <md-list [fxLayout]="layout.list"
+      <mat-list [fxLayout]="layout.list"
                dndDropzone
                [dndHorizontal]="layout.dndHorizontal"
                dndEffectAllowed="copyMove"
                (dndDrop)="onDrop($event, draggableListLeft)"
                class="dndList">
 
-        <md-list-item dndPlaceholderRef
+        <mat-list-item dndPlaceholderRef
                       class="dndPlaceholder">
-        </md-list-item>
+        </mat-list-item>
 
-        <md-list-item *ngFor="let item of draggableListLeft"
+        <mat-list-item *ngFor="let item of draggableListLeft"
                       [dndDraggable]="item"
                       [dndEffectAllowed]="item.effectAllowed"
                       [dndDisableIf]="item.disable"
@@ -29,15 +29,15 @@
                       (dndMoved)="onDragged(item, draggableListLeft, 'move')"
                       (dndCanceled)="onDragged(item, draggableListLeft, 'none')"
                       (dndEnd)="onDragEnd($event)">
-          <md-icon *ngIf="item.handle"
-                   md-list-icon
+          <mat-icon *ngIf="item.handle"
+                   mat-list-icon
                    dndHandle>drag_handle
-          </md-icon>
-          <h1 md-line>{{item.content}}</h1>
-          <p md-line>effectAllowed: {{item.effectAllowed}}</p>
-        </md-list-item>
+          </mat-icon>
+          <h1 mat-line>{{item.content}}</h1>
+          <p mat-line>effectAllowed: {{item.effectAllowed}}</p>
+        </mat-list-item>
 
-      </md-list>
+      </mat-list>
 
     </div>
 
@@ -45,7 +45,7 @@
 
       <pre>dndEffectAllowed="copyMove"</pre>
 
-      <md-list [fxLayout]="layout.list"
+      <mat-list [fxLayout]="layout.list"
                dndDropzone
                [dndHorizontal]="layout.dndHorizontal"
                dndEffectAllowed="copyMove"
@@ -53,11 +53,11 @@
                class="dndList">
 
 
-        <md-list-item dndPlaceholderRef
+        <mat-list-item dndPlaceholderRef
                       class="dndPlaceholder">
-        </md-list-item>
+        </mat-list-item>
 
-        <md-list-item *ngFor="let item of draggableListRight"
+        <mat-list-item *ngFor="let item of draggableListRight"
                       [dndDraggable]="item"
                       [dndEffectAllowed]="item.effectAllowed"
                       [dndDisableIf]="item.disable"
@@ -67,15 +67,15 @@
                       (dndMoved)="onDragged(item, draggableListRight, 'move')"
                       (dndCanceled)="onDragged(item, draggableListRight, 'none')"
                       (dndEnd)="onDragEnd($event)">
-          <md-icon *ngIf="item.handle"
-                   md-list-icon
+          <mat-icon *ngIf="item.handle"
+                   mat-list-icon
                    dndHandle>drag_handle
-          </md-icon>
-          <h1 md-line>{{item.content}}</h1>
-          <p md-line>effectAllowed: {{item.effectAllowed}}</p>
-        </md-list-item>
+          </mat-icon>
+          <h1 mat-line>{{item.content}}</h1>
+          <p mat-line>effectAllowed: {{item.effectAllowed}}</p>
+        </mat-list-item>
 
-      </md-list>
+      </mat-list>
 
     </div>
 
@@ -83,14 +83,14 @@
 
       <pre>trash (dndEffectAllowed="move")</pre>
 
-      <md-list [fxLayout]="layout.list"
+      <mat-list [fxLayout]="layout.list"
                dndDropzone
                [dndHorizontal]="layout.dndHorizontal"
                dndEffectAllowed="move"
                (dndDrop)="onDrop($event)"
                class="dndList">
 
-      </md-list>
+      </mat-list>
 
     </div>
 
@@ -98,9 +98,9 @@
 
   <div class="layout-padding">
 
-    <md-slide-toggle [checked]="horizontalLayoutActive"
+    <mat-slide-toggle [checked]="horizontalLayoutActive"
                      (change)="horizontalLayoutActive = $event.checked; setHorizontalLayout($event.checked)">horizontal
-    </md-slide-toggle>
+    </mat-slide-toggle>
 
   </div>
 

@@ -4,7 +4,7 @@
            fxLayout="column"
            style="margin-right: 8px;">
 
-    <md-card *ngFor="let draggable of draggables"
+    <mat-card *ngFor="let draggable of draggables"
              [dndDraggable]="draggable.content"
              [dndEffectAllowed]="draggable.effectAllowed"
              [dndDisableIf]="draggable.disable"
@@ -15,18 +15,18 @@
              (dndCanceled)="onDragged($event, 'none')"
              (dndEnd)="onDragEnd($event)">
 
-      <md-icon *ngIf="draggable.handle"
-               md-list-icon
+      <mat-icon *ngIf="draggable.handle"
+               mat-list-icon
                dndHandle>drag_handle
-      </md-icon>
+      </mat-icon>
 
       draggable ({{draggable.effectAllowed}})
       <span [hidden]="!draggable.handle"> only with handle</span>
       <span [hidden]="!draggable.disable"> DISABLED</span>
 
-    </md-card>
+    </mat-card>
 
-    <md-card [dndDraggable]="draggableWithDragImage"
+    <mat-card [dndDraggable]="draggableWithDragImage"
              [dndEffectAllowed]="draggableWithDragImage.effectAllowed"
              [dndDisableIf]="draggableWithDragImage.disable"
              (dndStart)="onDragStart($event)"
@@ -36,10 +36,10 @@
              (dndCanceled)="onDragged($event, 'none')"
              (dndEnd)="onDragEnd($event)">
 
-      <md-icon *ngIf="draggableWithDragImage.handle"
-               md-list-icon
+      <mat-icon *ngIf="draggableWithDragImage.handle"
+               mat-list-icon
                dndHandle>drag_handle
-      </md-icon>
+      </mat-icon>
 
       draggable ({{draggableWithDragImage.effectAllowed}})
       <span [hidden]="!draggableWithDragImage.handle"> only with handle</span>
@@ -47,16 +47,16 @@
 
       <div dndDragImageRef>MY_CUSTOM_DRAG_IMAGE</div>
 
-    </md-card>
+    </mat-card>
 
   </section>
 
   <div fxLayout="column"
        class="layout-padding">
 
-    <md-slide-toggle [checked]="dropzoneEnabled"
+    <mat-slide-toggle [checked]="dropzoneEnabled"
                      (change)="dropzoneEnabled = $event.checked">Dropzone enabled
-    </md-slide-toggle>
+    </mat-slide-toggle>
 
     <section fxFlex
              fxLayoutAlign="center center"

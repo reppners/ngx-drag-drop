@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { MdSnackBar } from "@angular/material";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { DndDropEvent } from "ngx-drag-drop";
 
 @Component( {
@@ -55,7 +55,7 @@ export class SimpleComponent {
   private currentDraggableEvent:DragEvent;
   private currentDragEffectMsg:string;
 
-  constructor( private snackBarService:MdSnackBar ) {
+  constructor( private snackBarService:MatSnackBar ) {
   }
 
   onDragStart( event:DragEvent ) {

@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { MdSnackBar } from "@angular/material";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { DndDropEvent, DropEffect } from "ngx-drag-drop";
 
 @Component( {
@@ -59,7 +59,7 @@ export class ListComponent {
     dndHorizontal: true
   };
 
-  constructor( private snackBarService:MdSnackBar ) {
+  constructor( private snackBarService:MatSnackBar ) {
 
     this.setHorizontalLayout( this.horizontalLayoutActive );
   }
