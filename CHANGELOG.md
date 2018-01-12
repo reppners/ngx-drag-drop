@@ -1,7 +1,14 @@
+<a name="v1.0.2"></a>
+# [v1.0.2](https://github.com/reppners/ngx-drag-drop/compare/v1.0.1...v1.0.2) (2018-01-12)
+
+* compatibility with Angular compiler flag `fullTemplateTypeCheck` introduced in Angular v5.2
+
+
 <a name="v1.0.1"></a>
 # [v1.0.1](https://github.com/reppners/ngx-drag-drop/compare/v1.0.0...v1.0.1) (2017-12-01)
 
 * correct angular peer dependency to avoid warnings when using angular >4.x.x
+
 
 <a name="v1.0.0"></a>
 # [v1.0.0](https://github.com/reppners/ngx-drag-drop/compare/v1.0.0-rc.3...v1.0.0) (2017-10-18)
