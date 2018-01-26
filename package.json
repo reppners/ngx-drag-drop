@@ -26,7 +26,7 @@
   "main": "./index.js",
   "scripts": {
     "ng": "ng",
-    "start": "npm run build:lib && ng serve",
+    "start": "npm run build:lib && ng serve --disable-host-check --host 0.0.0.0",
     "workaround": "rm -rf node_modules/ngx-drag-drop && cp -R dist node_modules/ngx-drag-drop",
     "build:docs": "ng build --prod",
     "build:lib": "ng-packagr -p ng-package.json && npm run workaround",
