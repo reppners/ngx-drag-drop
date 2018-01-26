@@ -6,7 +6,7 @@ export interface DragDropData {
 }
 
 export interface DndEvent extends DragEvent {
-  _dndHandle?:HTMLElement;
+  _dndUsingHandle?:boolean;
   _dndDropzoneActive?:true;
 }
 

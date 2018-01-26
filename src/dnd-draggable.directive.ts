@@ -1,6 +1,4 @@
 import {
-  AfterContentInit,
-  ContentChild,
   Directive,
   ElementRef,
   EventEmitter,
@@ -20,14 +18,17 @@ import { EffectAllowed } from "./dnd-types";
 } )
 export class DndDragImageRefDirective {
 
-  constructor( public readonly elementRef:ElementRef ) {
+  constructor( parent:DndDraggableDirective,
+               elementRef:ElementRef ) {
+
+    parent.registerDragImage( elementRef );
   }
 }
 
 @Directive( {
   selector: "[dndDraggable]"
 } )
-export class DndDraggableDirective implements AfterContentInit {
+export class DndDraggableDirective {
 
   @Input()
   dndDraggable:any;
@@ -71,11 +72,9 @@ export class DndDraggableDirective implements AfterContentInit {
   @HostBinding( "attr.draggable" )
   draggable = true;
 
-  @ContentChild( DndHandleDirective )
-  private readonly dndHandle?:DndHandleDirective;
+  private dndHandle?:DndHandleDirective;
 
-  @ContentChild( DndDragImageRefDirective )
-  private readonly dndDragImageRef?:DndDragImageRefDirective;
+  private dndDragImageElementRef?:ElementRef;
 
   private dragImage:Element;
 
@@ -98,19 +97,6 @@ export class DndDraggableDirective implements AfterContentInit {
                private renderer:Renderer2 ) {
   }
 
-  ngAfterContentInit():void {
-
-    // evaluate custom drag image existence
-    if( typeof this.dndDragImageRef !== "undefined" ) {
-
-      this.dragImage = this.dndDragImageRef.elementRef.nativeElement as Element;
-    }
-    else {
-
-      this.dragImage = this.elementRef.nativeElement;
-    }
-  }
-
   @HostListener( "dragstart", [ "$event" ] )
   onDragStart( event:DndEvent ) {
 
@@ -121,7 +107,7 @@ export class DndDraggableDirective implements AfterContentInit {
 
     // check if there is dnd handle and if the dnd handle was used to start the drag
     if( typeof this.dndHandle !== "undefined"
-      && typeof event._dndHandle === "undefined" ) {
+      && typeof event._dndUsingHandle === "undefined" ) {
 
       return false;
     }
@@ -131,23 +117,26 @@ export class DndDraggableDirective implements AfterContentInit {
 
     setDragData( event, {data: this.dndDraggable, type: this.dndType}, dndState.effectAllowed );
 
+    this.determineDragImage();
+
+    // set dragging css class prior to setDragImage so styles are applied before
+    // TODO breaking change: add class to elementRef rather than drag image which could be another element
+    this.renderer.addClass( this.dragImage, this.dndDraggingClass );
+
+    // set custom dragimage if present
+    // set dragimage if drag is started from dndHandle
+    if( typeof this.dndDragImageElementRef !== "undefined"
+      || typeof event._dndUsingHandle !== "undefined" ) {
+
+      setDragImage( event, this.dragImage, this.dndDragImageOffsetFunction );
+    }
+
     // add dragging source css class on first drag event
     const unregister = this.renderer.listen( this.elementRef.nativeElement, "drag", () => {
 
       this.renderer.addClass( this.elementRef.nativeElement, this.dndDraggingSourceClass );
       unregister();
     } );
-
-    // set dragging css class prior to setDragImage so styles are applied before
-    this.renderer.addClass( this.dragImage, this.dndDraggingClass );
-
-    // set custom dragimage if present
-    // set dragimage if drag is started from dndHandle
-    if( typeof this.dndDragImageRef !== "undefined"
-      || typeof event._dndHandle !== "undefined" ) {
-
-      setDragImage( event, this.dragImage, this.dndDragImageOffsetFunction );
-    }
 
     this.dndStart.emit( event );
 
@@ -188,11 +177,35 @@ export class DndDraggableDirective implements AfterContentInit {
     endDrag();
 
     this.renderer.removeClass( this.dragImage, this.dndDraggingClass );
+
     // IE9 special hammering
     window.setTimeout( () => {
       this.renderer.removeClass( this.elementRef.nativeElement, this.dndDraggingSourceClass );
     }, 0 );
 
     event.stopPropagation();
+  }
+
+  registerDragHandle( handle:DndHandleDirective | undefined ) {
+
+    this.dndHandle = handle;
+  }
+
+  registerDragImage( elementRef:ElementRef | undefined ) {
+
+    this.dndDragImageElementRef = elementRef;
+  }
+
+  private determineDragImage() {
+
+    // evaluate custom drag image existence
+    if( typeof this.dndDragImageElementRef !== "undefined" ) {
+
+      this.dragImage = this.dndDragImageElementRef.nativeElement as Element;
+    }
+    else {
+
+      this.dragImage = this.elementRef.nativeElement;
+    }
   }
 }
