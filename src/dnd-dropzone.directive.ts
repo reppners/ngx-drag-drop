@@ -101,120 +101,6 @@ export class DndDropzoneDirective implements AfterViewInit {
     }
   }
 
-  private tryGetPlaceholder():Element | null {
-
-    if( typeof this.dndPlaceholderRef !== "undefined" ) {
-
-      return this.dndPlaceholderRef.elementRef.nativeElement as Element;
-    }
-
-    // TODO nasty workaround needed because if ng-container / template is used @ContentChild() or DI will fail because of wrong context
-    // see angular bug https://github.com/angular/angular/issues/13517
-    return this.elementRef.nativeElement.querySelector( "[dndPlaceholderRef]" );
-  }
-
-  private isDropAllowed( type?:string ):boolean {
-
-    // dropzone is disabled -> deny it
-    if( this.disabled === true ) {
-
-      return false;
-    }
-
-    // if drag did not start from our directive
-    // and external drag sources are not allowed -> deny it
-    if( isExternalDrag() === true
-      && this.dndAllowExternal === false ) {
-
-      return false;
-    }
-
-    // no filtering by types -> allow it
-    if( !this.dndDropzone ) {
-
-      return true;
-    }
-
-    // no type set -> allow it
-    if( !type ) {
-
-      return true;
-    }
-
-    if( Array.isArray( this.dndDropzone ) === false ) {
-
-      throw new Error( "dndDropzone: bound value to [dndDropzone] must be an array!" );
-    }
-
-    // if dropzone contains type -> allow it
-    return this.dndDropzone.indexOf( type ) !== -1;
-  }
-
-  private checkAndUpdatePlaceholderPosition( event:DragEvent ):void {
-
-    if( this.placeholder === null ) {
-
-      return;
-    }
-
-    // make sure the placeholder is in the DOM
-    if( this.placeholder.parentNode !== this.elementRef.nativeElement ) {
-
-      this.renderer.appendChild( this.elementRef.nativeElement, this.placeholder );
-    }
-
-    // update the position if the event originates from a child element of the dropzone
-    const directChild = getDirectChildElement( this.elementRef.nativeElement, event.target as Element );
-
-    // early exit if no direct child or direct child is placeholder
-    if( directChild === null
-      || directChild === this.placeholder ) {
-
-      return;
-    }
-
-    const positionPlaceholderBeforeDirectChild = shouldPositionPlaceholderBeforeElement( event, directChild, this.dndHorizontal );
-
-    if( positionPlaceholderBeforeDirectChild ) {
-
-      // do insert before only if necessary
-      if( directChild.previousSibling !== this.placeholder ) {
-
-        this.renderer.insertBefore( this.elementRef.nativeElement, this.placeholder, directChild );
-      }
-    }
-    else {
-
-      // do insert after only if necessary
-      if( directChild.nextSibling !== this.placeholder ) {
-
-        this.renderer.insertBefore( this.elementRef.nativeElement, this.placeholder, directChild.nextSibling );
-      }
-    }
-  }
-
-  private getPlaceholderIndex():number | undefined {
-
-    if( this.placeholder === null ) {
-
-      return undefined;
-    }
-
-    const element = this.elementRef.nativeElement as HTMLElement;
-
-    return Array.prototype.indexOf.call( element.children, this.placeholder );
-  }
-
-  private cleanupDragoverState() {
-
-    this.renderer.removeClass( this.elementRef.nativeElement, this.dndDragoverClass );
-
-    if( this.placeholder !== null ) {
-
-      this.placeholder.remove();
-    }
-  }
-
   @HostListener( "dragenter", [ "$event" ] )
   onDragEnter( event:DndEvent ) {
 
@@ -348,5 +234,119 @@ export class DndDropzoneDirective implements AfterViewInit {
 
     // cleanup drop effect when leaving dropzone
     setDropEffect( event, "none" );
+  }
+
+  private tryGetPlaceholder():Element | null {
+
+    if( typeof this.dndPlaceholderRef !== "undefined" ) {
+
+      return this.dndPlaceholderRef.elementRef.nativeElement as Element;
+    }
+
+    // TODO nasty workaround needed because if ng-container / template is used @ContentChild() or DI will fail because
+    // of wrong context see angular bug https://github.com/angular/angular/issues/13517
+    return this.elementRef.nativeElement.querySelector( "[dndPlaceholderRef]" );
+  }
+
+  private isDropAllowed( type?:string ):boolean {
+
+    // dropzone is disabled -> deny it
+    if( this.disabled === true ) {
+
+      return false;
+    }
+
+    // if drag did not start from our directive
+    // and external drag sources are not allowed -> deny it
+    if( isExternalDrag() === true
+      && this.dndAllowExternal === false ) {
+
+      return false;
+    }
+
+    // no filtering by types -> allow it
+    if( !this.dndDropzone ) {
+
+      return true;
+    }
+
+    // no type set -> allow it
+    if( !type ) {
+
+      return true;
+    }
+
+    if( Array.isArray( this.dndDropzone ) === false ) {
+
+      throw new Error( "dndDropzone: bound value to [dndDropzone] must be an array!" );
+    }
+
+    // if dropzone contains type -> allow it
+    return this.dndDropzone.indexOf( type ) !== -1;
+  }
+
+  private checkAndUpdatePlaceholderPosition( event:DragEvent ):void {
+
+    if( this.placeholder === null ) {
+
+      return;
+    }
+
+    // make sure the placeholder is in the DOM
+    if( this.placeholder.parentNode !== this.elementRef.nativeElement ) {
+
+      this.renderer.appendChild( this.elementRef.nativeElement, this.placeholder );
+    }
+
+    // update the position if the event originates from a child element of the dropzone
+    const directChild = getDirectChildElement( this.elementRef.nativeElement, event.target as Element );
+
+    // early exit if no direct child or direct child is placeholder
+    if( directChild === null
+      || directChild === this.placeholder ) {
+
+      return;
+    }
+
+    const positionPlaceholderBeforeDirectChild = shouldPositionPlaceholderBeforeElement( event, directChild, this.dndHorizontal );
+
+    if( positionPlaceholderBeforeDirectChild ) {
+
+      // do insert before only if necessary
+      if( directChild.previousSibling !== this.placeholder ) {
+
+        this.renderer.insertBefore( this.elementRef.nativeElement, this.placeholder, directChild );
+      }
+    }
+    else {
+
+      // do insert after only if necessary
+      if( directChild.nextSibling !== this.placeholder ) {
+
+        this.renderer.insertBefore( this.elementRef.nativeElement, this.placeholder, directChild.nextSibling );
+      }
+    }
+  }
+
+  private getPlaceholderIndex():number | undefined {
+
+    if( this.placeholder === null ) {
+
+      return undefined;
+    }
+
+    const element = this.elementRef.nativeElement as HTMLElement;
+
+    return Array.prototype.indexOf.call( element.children, this.placeholder );
+  }
+
+  private cleanupDragoverState() {
+
+    this.renderer.removeClass( this.elementRef.nativeElement, this.dndDragoverClass );
+
+    if( this.placeholder !== null ) {
+
+      this.placeholder.remove();
+    }
   }
 }

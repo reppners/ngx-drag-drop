@@ -58,14 +58,16 @@ export function setDragData( event:DragEvent, data:DragDropData, effectAllowed:E
 
     event.dataTransfer.setData( mimeType, dataString );
 
-  }catch( e ) {
+  }
+  catch( e ) {
 
     //   Setting a custom MIME type did not work, we are probably in IE or Edge.
     try {
 
       event.dataTransfer.setData( JSON_MIME_TYPE, dataString );
 
-    }catch( e ) {
+    }
+    catch( e ) {
 
       //   We are in Internet Explorer and can only use the Text MIME type. Also note that IE
       //   does not allow changing the cursor in the dragover event, therefore we have to choose
@@ -140,10 +142,10 @@ export function shouldPositionPlaceholderBeforeElement( event:DragEvent, element
   // we position the placeholder before the list item, otherwise after it.
   if( horizontal ) {
 
-    return ( event.clientX < bounds.left + bounds.width / 2 );
+    return (event.clientX < bounds.left + bounds.width / 2);
   }
 
-  return ( event.clientY < bounds.top + bounds.height / 2 );
+  return (event.clientY < bounds.top + bounds.height / 2);
 }
 
 export function calculateDragImageOffset( event:DragEvent, dragImage:Element ):{ x:number, y:number } {

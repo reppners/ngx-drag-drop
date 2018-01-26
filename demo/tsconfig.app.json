@@ -6,7 +6,9 @@
     "baseUrl": "",
     "types": [],
     "paths": {
-      "ngx-drag-drop": [ "../dist" ]
+      "ngx-drag-drop": [
+        "../dist"
+      ]
     }
   },
   "angularCompilerOptions": {

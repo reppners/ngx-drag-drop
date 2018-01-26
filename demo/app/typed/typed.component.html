@@ -6,19 +6,19 @@
     <pre>Fruits</pre>
 
     <mat-list dndDropzone
-             dndEffectAllowed="move"
-             (dndDrop)="onDrop($event, fruits)"
-             class="dndList">
+              dndEffectAllowed="move"
+              (dndDrop)="onDrop($event, fruits)"
+              class="dndList">
 
       <mat-list-item dndPlaceholderRef
-                    class="dndPlaceholder">
+                     class="dndPlaceholder">
       </mat-list-item>
 
       <mat-list-item *ngFor="let fruit of fruits"
-                    [dndDraggable]="fruit"
-                    [dndType]="fruit"
-                    dndEffectAllowed="move"
-                    (dndMoved)="onDragged(fruit, fruits)">
+                     [dndDraggable]="fruit"
+                     [dndType]="fruit"
+                     dndEffectAllowed="move"
+                     (dndMoved)="onDragged(fruit, fruits)">
         <h1 mat-line>{{fruit}}</h1>
       </mat-list-item>
 
@@ -31,20 +31,20 @@
     <pre>Apples</pre>
 
     <mat-list [dndDropzone]="['apple']"
-             dndEffectAllowed="move"
-             (dndDrop)="onDrop($event, apples)"
-             class="dndList">
+              dndEffectAllowed="move"
+              (dndDrop)="onDrop($event, apples)"
+              class="dndList">
 
 
       <mat-list-item dndPlaceholderRef
-                    class="dndPlaceholder">
+                     class="dndPlaceholder">
       </mat-list-item>
 
       <mat-list-item *ngFor="let apple of apples"
-                    [dndDraggable]="apple"
-                    [dndType]="apple"
-                    dndEffectAllowed="move"
-                    (dndMoved)="onDragged(apple, apples)">
+                     [dndDraggable]="apple"
+                     [dndType]="apple"
+                     dndEffectAllowed="move"
+                     (dndMoved)="onDragged(apple, apples)">
         <h1 mat-line>{{apple}}</h1>
       </mat-list-item>
 
@@ -57,19 +57,19 @@
     <pre>Bananas</pre>
 
     <mat-list [dndDropzone]="['banana']"
-             dndEffectAllowed="move"
-             (dndDrop)="onDrop($event, bananas)"
-             class="dndList">
+              dndEffectAllowed="move"
+              (dndDrop)="onDrop($event, bananas)"
+              class="dndList">
 
       <mat-list-item dndPlaceholderRef
-                    class="dndPlaceholder">
+                     class="dndPlaceholder">
       </mat-list-item>
 
       <mat-list-item *ngFor="let banana of bananas"
-                    [dndDraggable]="banana"
-                    [dndType]="banana"
-                    dndEffectAllowed="move"
-                    (dndMoved)="onDragged(banana, bananas)">
+                     [dndDraggable]="banana"
+                     [dndType]="banana"
+                     dndEffectAllowed="move"
+                     (dndMoved)="onDragged(banana, bananas)">
         <h1 mat-line>{{banana}}</h1>
       </mat-list-item>
 

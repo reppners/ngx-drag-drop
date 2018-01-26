@@ -4,23 +4,23 @@
                let-list>
 
     <mat-card dndPlaceholderRef
-             class="dndPlaceholder">
+              class="dndPlaceholder">
     </mat-card>
 
     <mat-card *ngFor="let item of list"
-             [dndDraggable]="item"
-             dndEffectAllowed="move"
-             [dndDisableIf]="item.disable"
-             (dndStart)="onDragStart($event)"
-             (dndCopied)="onDragged(item, list, 'copy')"
-             (dndLinked)="onDragged(item, list, 'link')"
-             (dndMoved)="onDragged(item, list, 'move')"
-             (dndCanceled)="onDragged(item, list, 'none')"
-             (dndEnd)="onDragEnd($event)">
+              [dndDraggable]="item"
+              dndEffectAllowed="move"
+              [dndDisableIf]="item.disable"
+              (dndStart)="onDragStart($event)"
+              (dndCopied)="onDragged(item, list, 'copy')"
+              (dndLinked)="onDragged(item, list, 'link')"
+              (dndMoved)="onDragged(item, list, 'move')"
+              (dndCanceled)="onDragged(item, list, 'none')"
+              (dndEnd)="onDragEnd($event)">
 
       <mat-icon *ngIf="item.handle"
-               mat-list-icon
-               dndHandle>drag_handle
+                mat-list-icon
+                dndHandle>drag_handle
       </mat-icon>
 
       {{item.content}}
