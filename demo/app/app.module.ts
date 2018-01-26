@@ -23,6 +23,8 @@ import { TypedComponent } from "./typed/typed.component";
 import { NestedComponent } from "./nested/nested.component";
 import { DemoLinkComponent } from "./demo-link/demo-link.component";
 import { HttpClientModule } from "@angular/common/http";
+import { IndirectDndHandleComponent } from './indirect-dnd-handle/indirect-dnd-handle.component';
+import { IndirectDragImageComponent } from './indirect-drag-image/indirect-drag-image.component';
 
 @NgModule( {
   declarations: [
@@ -32,7 +34,9 @@ import { HttpClientModule } from "@angular/common/http";
     NativeComponent,
     TypedComponent,
     NestedComponent,
-    DemoLinkComponent
+    DemoLinkComponent,
+    IndirectDndHandleComponent,
+    IndirectDragImageComponent
   ],
   imports: [
     BrowserModule,

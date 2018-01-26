@@ -1,23 +1,25 @@
-<div fxLayout="row">
+<div fxFlex
+     fxLayout="row">
 
   <section fxFlex
            fxLayout="column"
-           style="margin-right: 8px;">
+           class="scrollable"
+           style="padding: 8px; margin-right: 8px;">
 
     <mat-card *ngFor="let draggable of draggables"
-             [dndDraggable]="draggable.content"
-             [dndEffectAllowed]="draggable.effectAllowed"
-             [dndDisableIf]="draggable.disable"
-             (dndStart)="onDragStart($event)"
-             (dndCopied)="onDragged($event, 'copy')"
-             (dndLinked)="onDragged($event, 'link')"
-             (dndMoved)="onDragged($event, 'move')"
-             (dndCanceled)="onDragged($event, 'none')"
-             (dndEnd)="onDragEnd($event)">
+              [dndDraggable]="draggable.content"
+              [dndEffectAllowed]="draggable.effectAllowed"
+              [dndDisableIf]="draggable.disable"
+              (dndStart)="onDragStart($event)"
+              (dndCopied)="onDragged($event, 'copy')"
+              (dndLinked)="onDragged($event, 'link')"
+              (dndMoved)="onDragged($event, 'move')"
+              (dndCanceled)="onDragged($event, 'none')"
+              (dndEnd)="onDragEnd($event)">
 
       <mat-icon *ngIf="draggable.handle"
-               mat-list-icon
-               dndHandle>drag_handle
+                mat-list-icon
+                dndHandle>drag_handle
       </mat-icon>
 
       draggable ({{draggable.effectAllowed}})
@@ -27,18 +29,18 @@
     </mat-card>
 
     <mat-card [dndDraggable]="draggableWithDragImage"
-             [dndEffectAllowed]="draggableWithDragImage.effectAllowed"
-             [dndDisableIf]="draggableWithDragImage.disable"
-             (dndStart)="onDragStart($event)"
-             (dndCopied)="onDragged($event, 'copy')"
-             (dndLinked)="onDragged($event, 'link')"
-             (dndMoved)="onDragged($event, 'move')"
-             (dndCanceled)="onDragged($event, 'none')"
-             (dndEnd)="onDragEnd($event)">
+              [dndEffectAllowed]="draggableWithDragImage.effectAllowed"
+              [dndDisableIf]="draggableWithDragImage.disable"
+              (dndStart)="onDragStart($event)"
+              (dndCopied)="onDragged($event, 'copy')"
+              (dndLinked)="onDragged($event, 'link')"
+              (dndMoved)="onDragged($event, 'move')"
+              (dndCanceled)="onDragged($event, 'none')"
+              (dndEnd)="onDragEnd($event)">
 
       <mat-icon *ngIf="draggableWithDragImage.handle"
-               mat-list-icon
-               dndHandle>drag_handle
+                mat-list-icon
+                dndHandle>drag_handle
       </mat-icon>
 
       draggable ({{draggableWithDragImage.effectAllowed}})
@@ -49,13 +51,32 @@
 
     </mat-card>
 
+    <mat-card [dndDraggable]="draggableWithDragImage"
+              [dndEffectAllowed]="draggableWithDragImage.effectAllowed"
+              [dndDisableIf]="draggableWithDragImage.disable"
+              (dndStart)="onDragStart($event)"
+              (dndCopied)="onDragged($event, 'copy')"
+              (dndLinked)="onDragged($event, 'link')"
+              (dndMoved)="onDragged($event, 'move')"
+              (dndCanceled)="onDragged($event, 'none')"
+              (dndEnd)="onDragEnd($event)">
+
+      <dnd-indirect-handle></dnd-indirect-handle>
+
+      draggable ({{draggableWithDragImage.effectAllowed}})
+
+      <dnd-indirect-drag-image>I'm the drag image but pssst</dnd-indirect-drag-image>
+
+    </mat-card>
+
   </section>
 
-  <div fxLayout="column"
+  <div fxFlex="initial"
+       fxLayout="column"
        class="layout-padding">
 
     <mat-slide-toggle [checked]="dropzoneEnabled"
-                     (change)="dropzoneEnabled = $event.checked">Dropzone enabled
+                      (change)="dropzoneEnabled = $event.checked">Dropzone enabled
     </mat-slide-toggle>
 
     <section fxFlex

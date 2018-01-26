@@ -1,5 +1,5 @@
 <mat-toolbar color="primary"
-            class="mat-elevation-z4">
+             class="mat-elevation-z4">
 
   <span>{{title}}</span>
 
@@ -13,41 +13,46 @@
 </mat-toolbar>
 
 <mat-tab-group fxFlex
-              fxLayout="column"
-              (selectChange)="onSelectedTabChange($event)">
+               fxLayout="column"
+               (selectChange)="onSelectedTabChange($event)">
 
   <mat-tab label="Simple">
 
     <dnd-simple fxFlex
-                class="demo scrollable"></dnd-simple>
+                fxLayout="column"
+                class="container-padding scrollable"></dnd-simple>
 
   </mat-tab>
 
   <mat-tab label="Lists">
 
     <dnd-list fxFlex
-              class="demo scrollable"></dnd-list>
+              fxLayout="column"
+              class="container-padding scrollable"></dnd-list>
 
   </mat-tab>
 
   <mat-tab label="Nested">
 
     <dnd-nested fxFlex
-                class="demo scrollable"></dnd-nested>
+                fxLayout="column"
+                class="container-padding scrollable"></dnd-nested>
 
   </mat-tab>
 
   <mat-tab label="Native">
 
     <dnd-native fxFlex
-                class="demo scrollable"></dnd-native>
+                fxLayout="column"
+                class="container-padding scrollable"></dnd-native>
 
   </mat-tab>
 
   <mat-tab label="Typed">
 
     <dnd-typed fxFlex
-               class="demo scrollable"></dnd-typed>
+               fxLayout="column"
+               class="container-padding scrollable"></dnd-typed>
 
   </mat-tab>
 
