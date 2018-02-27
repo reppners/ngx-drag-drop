@@ -75,3 +75,7 @@ polyfill( {
   // use this to make use of the scroll behaviour
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride
 } );
+
+window.addEventListener( "touchmove", function() {
+  // workaround to make scroll prevent work in iOS Safari > 10
+} );

@@ -71,7 +71,9 @@
 
   </section>
 
-  <div fxFlex="initial"
+  <div fxFlex="25"
+       fxFlex.gt-xs="33"
+       fxFlex.lt-md="50"
        fxLayout="column"
        class="layout-padding">
 
@@ -80,8 +82,9 @@
     </mat-slide-toggle>
 
     <section fxFlex
+             fxLayout="column"
              fxLayoutAlign="center center"
-             class="my-dropzone"
+             class="my-dropzone scrollable"
              dndDropzone
              dndDragoverClass="custom-drag-over"
              [dndDisableIf]="!dropzoneEnabled"
