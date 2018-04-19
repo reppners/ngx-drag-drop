@@ -17,7 +17,7 @@
 * typed drag/drop
 * utilize [EffectAllowed](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/effectAllowed)
 * custom CSS classes
-* touch support by using a [polyfill](https://github.com/timruffles/ios-html5-drag-drop-shim)
+* touch support by using a [polyfill](#touch-support)
 * [AOT](https://angular.io/guide/aot-compiler) compatible
 
 Port of [angular-drag-drop-lists](https://github.com/marceljuenemann/angular-drag-and-drop-lists) but without the lists :wink:
@@ -274,6 +274,31 @@ export declare class DndDropzoneDirective {
     readonly dndDrop: EventEmitter<DndDropEvent>;
 }
 ```
+
+## Touch support
+
+Install the `mobile-drag-drop` module available on npm.
+
+Add the following lines to your js code
+```JS
+import { polyfill } from 'mobile-drag-drop';
+// optional import of scroll behaviour
+import { scrollBehaviourDragImageTranslateOverride } from "mobile-drag-drop/scroll-behaviour";
+
+polyfill( {
+  // use this to make use of the scroll behaviour
+  dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride
+} );
+
+// workaround to make scroll prevent work in iOS Safari > 10
+try {
+  window.addEventListener( "touchmove", function() { }, { passive: false } );
+}
+catch(e){}
+```
+
+For more info on the polyfill check it out on GitHub
+https://github.com/timruffles/mobile-drag-drop
 
 ### Why?
 
