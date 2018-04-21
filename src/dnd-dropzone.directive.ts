@@ -146,6 +146,15 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
   }
 
   onDragOver( event:DragEvent ) {
+    // With nested dropzones, we want to ignore this event if a child dropzone
+    // has already handled a dragover.  Historically, event.stopPropagation() was
+    // used to prevent this bubbling, but that prevents any dragovers outside the
+    // ngx-drag-drop component, and stops other use cases such as scrolling on drag.
+    // Instead, we can check if the event was already prevented by a child and bail early.
+    if( event.defaultPrevented ) {
+
+      return;
+    }
 
     // check if this drag event is allowed to drop on this dropzone
     const type = getDndType( event );
@@ -173,8 +182,6 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
     this.dndDragover.emit( event );
 
     this.renderer.addClass( this.elementRef.nativeElement, this.dndDragoverClass );
-
-    event.stopPropagation();
   }
 
   @HostListener( "drop", [ "$event" ] )
