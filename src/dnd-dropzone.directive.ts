@@ -6,6 +6,8 @@ import {
   EventEmitter,
   HostListener,
   Input,
+  NgZone,
+  OnDestroy,
   Output,
   Renderer2
 } from "@angular/core";
@@ -39,7 +41,7 @@ export class DndPlaceholderRefDirective {
 @Directive( {
   selector: "[dndDropzone]"
 } )
-export class DndDropzoneDirective implements AfterViewInit {
+export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
 
   @Input()
   dndDropzone?:string[];
@@ -72,6 +74,8 @@ export class DndDropzoneDirective implements AfterViewInit {
 
   private disabled:boolean = false;
 
+  private readonly dragEventHandler: (event: DragEvent) => void = (event: DragEvent) => this.onDragOver(event);
+
   @Input()
   set dndDisableIf( value:boolean ) {
 
@@ -87,7 +91,8 @@ export class DndDropzoneDirective implements AfterViewInit {
     }
   }
 
-  constructor( private elementRef:ElementRef,
+  constructor( private ngZone: NgZone,
+               private elementRef:ElementRef,
                private renderer:Renderer2 ) {
   }
 
@@ -99,6 +104,13 @@ export class DndDropzoneDirective implements AfterViewInit {
 
       this.placeholder.remove();
     }
+    this.ngZone.runOutsideAngular(() => {
+      this.elementRef.nativeElement.addEventListener("dragover", this.dragEventHandler)
+    } );
+  }
+
+  ngOnDestroy(): void {
+    this.elementRef.nativeElement.removeEventListener("dragover", this.dragEventHandler);
   }
 
   @HostListener( "dragenter", [ "$event" ] )
@@ -133,7 +145,6 @@ export class DndDropzoneDirective implements AfterViewInit {
     event.preventDefault();
   }
 
-  @HostListener( "dragover", [ "$event" ] )
   onDragOver( event:DragEvent ) {
 
     // check if this drag event is allowed to drop on this dropzone
