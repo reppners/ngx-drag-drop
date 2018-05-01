@@ -74,7 +74,7 @@ The idea is that the directive does not handle lists internally so the `dndDropz
 ```JS
 import { Component } from '@angular/core';
 
-import { DndDropEvent } from 'ngx-drag-drop';
+import { DndDragEvent, DndDropEvent } from 'ngx-drag-drop';
 
 @Component()
 export class AppComponent {
@@ -93,27 +93,27 @@ export class AppComponent {
     console.log("drag started", JSON.stringify(event, null, 2));
   }
   
-  onDragEnd(event:DragEvent) {
+  onDragEnd(event:DndDragEvent) {
     
     console.log("drag ended", JSON.stringify(event, null, 2));
   }
   
-  onDraggableCopied(event:DragEvent) {
+  onDraggableCopied(event:DndDragEvent) {
     
     console.log("draggable copied", JSON.stringify(event, null, 2));
   }
   
-  onDraggableLinked(event:DragEvent) {
+  onDraggableLinked(event:DndDragEvent) {
       
     console.log("draggable linked", JSON.stringify(event, null, 2));
   }
     
-  onDraggableMoved(event:DragEvent) {
+  onDraggableMoved(event:DndDragEvent) {
     
     console.log("draggable moved", JSON.stringify(event, null, 2));
   }
       
-  onDragCanceled(event:DragEvent) {
+  onDragCanceled(event:DndDragEvent) {
     
     console.log("drag cancelled", JSON.stringify(event, null, 2));
   }
@@ -168,6 +168,13 @@ export type EffectAllowed = DropEffect | "copyMove" | "copyLink" | "linkMove" | 
 ```TS
 export type DndDragImageOffsetFunction = ( event:DragEvent, dragImage:Element ) => { x:number, y:number };
 
+export interface DndDragEvent extends DragEvent {
+
+    // the initial index of the item being dragged
+    // set only when the dndDraggable has dndIndex set
+    initialIndex?: number;
+}
+
 @Directive( {
   selector: "[dndDraggable]"
 } )
@@ -181,6 +188,9 @@ export declare class DndDraggableDirective {
     
     // optionally set the type of dragged data to restrict dropping on compatible dropzones
     dndType?: string;
+    
+    // optionally set the index of the item being dragged, this is useful when dragging primitives
+    dndIndex?: number;
     
     // conditionally disable the draggability
     dndDisableIf: boolean;

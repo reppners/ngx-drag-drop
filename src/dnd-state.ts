@@ -13,21 +13,24 @@ export interface DndState {
   dropEffect?:DropEffect;
   effectAllowed?:EffectAllowed;
   type?:string;
+  initialIndex?: number;
 }
 
 const _dndState:DndState = {
   isDragging: false,
   dropEffect: "none",
   effectAllowed: "all",
-  type: undefined
+  type: undefined,
+  initialIndex: undefined
 };
 
-export function startDrag( event:DragEvent, effectAllowed:EffectAllowed, type:string | undefined ) {
+export function startDrag( event:DragEvent, effectAllowed:EffectAllowed, type:string | undefined, initialIndex:number | undefined ) {
 
   _dndState.isDragging = true;
   _dndState.dropEffect = "none";
   _dndState.effectAllowed = effectAllowed;
   _dndState.type = type;
+  _dndState.initialIndex = initialIndex;
 
   event.dataTransfer.effectAllowed = effectAllowed;
 }
@@ -38,6 +41,7 @@ export function endDrag() {
   _dndState.dropEffect = undefined;
   _dndState.effectAllowed = undefined;
   _dndState.type = undefined;
+  _dndState.initialIndex = undefined;
 }
 
 export function setDropEffect( event:DragEvent, dropEffect:DropEffect ) {
@@ -112,6 +116,11 @@ export function getDndType( event:DragEvent ):string | undefined {
 export function isExternalDrag():boolean {
 
   return _dndState.isDragging === false;
+}
+
+export function getDndInitialIndex (): number | undefined {
+
+  return _dndState.initialIndex;
 }
 
 export const dndState:Readonly<DndState> = _dndState as Readonly<DndState>;
