@@ -74,7 +74,9 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
 
   private disabled:boolean = false;
 
-  private readonly dragEventHandler: (event: DragEvent) => void = (event: DragEvent) => this.onDragOver(event);
+  private readonly dragEnterEventHandler: (event: DragEvent) => void = (event: DragEvent) => this.onDragEnter(event);
+  private readonly dragOverEventHandler: (event: DragEvent) => void = (event: DragEvent) => this.onDragOver(event);
+  private readonly dragLeaveEventHandler: (event: DragEvent) => void = (event: DragEvent) => this.onDragLeave(event);
 
   @Input()
   set dndDisableIf( value:boolean ) {
@@ -105,15 +107,18 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
       this.placeholder.remove();
     }
     this.ngZone.runOutsideAngular(() => {
-      this.elementRef.nativeElement.addEventListener("dragover", this.dragEventHandler)
+      this.elementRef.nativeElement.addEventListener("dragenter", this.dragEnterEventHandler);
+      this.elementRef.nativeElement.addEventListener("dragover", this.dragOverEventHandler);
+      this.elementRef.nativeElement.addEventListener("dragleave", this.dragLeaveEventHandler);
     } );
   }
 
   ngOnDestroy(): void {
-    this.elementRef.nativeElement.removeEventListener("dragover", this.dragEventHandler);
+    this.elementRef.nativeElement.removeEventListener("dragenter", this.dragEnterEventHandler);
+    this.elementRef.nativeElement.removeEventListener("dragover", this.dragOverEventHandler);
+    this.elementRef.nativeElement.removeEventListener("dragleave", this.dragLeaveEventHandler);
   }
 
-  @HostListener( "dragenter", [ "$event" ] )
   onDragEnter( event:DndEvent ) {
 
     // check if another dropzone is activated
@@ -226,7 +231,6 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
     }
   }
 
-  @HostListener( "dragleave", [ "$event" ] )
   onDragLeave( event:DndEvent ) {
 
     // check if still inside this dropzone and not yet handled by another dropzone
