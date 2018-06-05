@@ -1,9 +1,11 @@
-<a name="v1.0.3"></a>
-# [v2.0.0](https://github.com/reppners/ngx-drag-drop/compare/v1.0.3...v2.0.0) (2018-06-05)
+<a name="v2.0.0-rc.0"></a>
+# [v2.0.0-rc.0](https://github.com/reppners/ngx-drag-drop/compare/v1.0.3...v2.0.0-rc.0) (2018-06-05)
+
+Release candidate for next version!
 
 * Remove `rxjs` as peer dependency as this lib is not dependent on it.
 
-* Remove `zone.js` as peer dependency as this lib is not directly dependent on it.
+* Remove `zone.js` as peer dependency as this lib is not dependent on it.
 
 * Adjust `angular` peer dependency to support Angular v6 without warning.
 
@@ -12,7 +14,7 @@
 * Handle various drag events outside of Angular zone to improve performance.
   * I'm not entirely clear if this *could* be a **breaking change** to some users so I'm better safe than sorry and raise the major version with this release!
 
-Thanks to @mtraynham for this contributions!
+Thanks to @mtraynham for his contributions!
 
 
 <a name="v1.0.3"></a>
