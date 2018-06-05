@@ -1,6 +1,6 @@
 {
   "name": "ngx-drag-drop",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Angular directives using the native HTML Drag And Drop API",
   "repository": {
     "type": "git",
@@ -75,11 +75,9 @@
     "zone.js": "^0.8.20"
   },
   "peerDependencies": {
-    "@angular/core": "^4.0.0 || ^5.0.0",
-    "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4"
+    "@angular/core": "^4.0.0 || ^5.0.0 || ^6.0.0"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.9.0"
   }
 }
