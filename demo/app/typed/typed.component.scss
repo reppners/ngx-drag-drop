@@ -25,6 +25,8 @@ pre {
   min-width: 200px;
   min-height: 200px;
 
+  overflow-y: auto;
+
   &.dndDragover {
 
     padding-top: 12px;
