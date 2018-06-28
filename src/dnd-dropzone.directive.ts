@@ -103,8 +103,7 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
     this.placeholder = this.tryGetPlaceholder();
 
     if( this.placeholder !== null ) {
-
-      this.placeholder.remove();
+      this.placeholder.parentNode.removeChild(this.placeholder);
     }
     this.ngZone.runOutsideAngular(() => {
       this.elementRef.nativeElement.addEventListener("dragenter", this.dragEnterEventHandler);
@@ -367,8 +366,7 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
     this.renderer.removeClass( this.elementRef.nativeElement, this.dndDragoverClass );
 
     if( this.placeholder !== null ) {
-
-      this.placeholder.remove();
+      this.placeholder.parentNode.removeChild(this.placeholder);
     }
   }
 }
