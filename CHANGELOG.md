@@ -1,4 +1,12 @@
 <a name="v2.0.0-rc.0"></a>
+# [v2.0.0-rc.1](https://github.com/reppners/ngx-drag-drop/compare/v2.0.0-rc.0...v2.0.0-rc.1) (2018-06-28)
+
+* Changed .remove() => .parentNode.removeChild() for cross-browser compatibility (#27)
+
+Thanks to @gpaucot
+
+
+<a name="v2.0.0-rc.0"></a>
 # [v2.0.0-rc.0](https://github.com/reppners/ngx-drag-drop/compare/v1.0.3...v2.0.0-rc.0) (2018-06-05)
 
 Release candidate for next version!
