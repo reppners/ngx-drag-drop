@@ -1,3 +1,9 @@
+<a name="v1.0.4"></a>
+# [v1.0.4](https://github.com/reppners/ngx-drag-drop/compare/v1.0.3...v1.0.4) (2018-09-07)
+
+Strip rxjs and zone.js from peerDependencies and allow Angular v6 as peerDependency
+
+
 <a name="v1.0.3"></a>
 # [v1.0.3](https://github.com/reppners/ngx-drag-drop/compare/v1.0.2...v1.0.3) (2018-01-26)
 
