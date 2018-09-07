@@ -4,7 +4,7 @@
 
 # NgxDragDrop
 
-[_Demo_](https://reppners.github.io/ngx-drag-drop/)
+[_Demo_](https://reppners.github.io/ngx-drag-drop/) / [_StackBlitz Issue Template_](https://stackblitz.com/edit/ngx-drag-drop-issue-template)
 
 `npm install ngx-drag-drop --save`
 
