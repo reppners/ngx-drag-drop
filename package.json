@@ -75,9 +75,7 @@
     "zone.js": "^0.8.20"
   },
   "peerDependencies": {
-    "@angular/core": "^4.0.0 || ^5.0.0",
-    "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4"
+    "@angular/core": "^4.0.0 || ^5.0.0 || ^6.0.0"
   },
   "engines": {
     "node": ">=6.0.0"
