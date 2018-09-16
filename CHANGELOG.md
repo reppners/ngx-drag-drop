@@ -1,10 +1,16 @@
+<a name="v2.0.0-rc.2"></a>
+# [v2.0.0-rc.1](https://github.com/reppners/ngx-drag-drop/compare/v2.0.0-rc.1...v2.0.0-rc.2) (2018-09-16)
+
+* Assert placeholder is still attached before removing from DOM (#37)
+
+
 <a name="v1.0.4"></a>
 # [v1.0.4](https://github.com/reppners/ngx-drag-drop/compare/v1.0.3...v1.0.4) (2018-09-07)
 
 Strip rxjs and zone.js from peerDependencies and allow Angular v6 as peerDependency
 
 
-<a name="v2.0.0-rc.0"></a>
+<a name="v2.0.0-rc.1"></a>
 # [v2.0.0-rc.1](https://github.com/reppners/ngx-drag-drop/compare/v2.0.0-rc.0...v2.0.0-rc.1) (2018-06-28)
 
 * Changed .remove() => .parentNode.removeChild() for cross-browser compatibility (#27)
