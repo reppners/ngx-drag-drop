@@ -1,5 +1,5 @@
 <a name="v2.0.0-rc.2"></a>
-# [v2.0.0-rc.1](https://github.com/reppners/ngx-drag-drop/compare/v2.0.0-rc.1...v2.0.0-rc.2) (2018-09-16)
+# [v2.0.0-rc.2](https://github.com/reppners/ngx-drag-drop/compare/v2.0.0-rc.1...v2.0.0-rc.2) (2018-09-16)
 
 * Assert placeholder is still attached before removing from DOM (#37)
 
