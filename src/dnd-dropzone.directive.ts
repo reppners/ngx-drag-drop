@@ -25,6 +25,7 @@ export interface DndDropEvent {
   isExternal:boolean;
   data?:any;
   index?:number;
+  type?:any;
 }
 
 @Directive( {
@@ -203,7 +204,8 @@ export class DndDropzoneDirective implements AfterViewInit {
         dropEffect: dropEffect,
         isExternal: isExternalDrag(),
         data: data.data,
-        index: dropIndex
+        index: dropIndex,
+        type: type,
       } );
 
       event.stopPropagation();
