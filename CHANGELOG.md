@@ -1,3 +1,9 @@
+<a name="v1.1.0"></a>
+# [v1.1.0](https://github.com/reppners/ngx-drag-drop/compare/v1.0.4...v1.1.0) (2018-09-19)
+
+* Transport eventually set `dndDraggable.dndType` as `type` in `DndDropEvent` (#42) - thanks to @hordesalik
+
+
 <a name="v1.0.4"></a>
 # [v1.0.4](https://github.com/reppners/ngx-drag-drop/compare/v1.0.3...v1.0.4) (2018-09-07)
 

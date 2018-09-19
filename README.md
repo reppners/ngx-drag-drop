@@ -235,6 +235,10 @@ export interface DndDropEvent {
     // the index where the draggable was dropped in a dropzone
     // set only when using a placeholder
     index?: number;
+    
+    // if the dndType input on dndDraggable was set
+    // it will be transported here
+    type?: any;
 }
 
 @Directive( {
