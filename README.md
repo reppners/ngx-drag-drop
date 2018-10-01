@@ -343,3 +343,12 @@ For the library build it uses [ng-packagr](https://github.com/dherges/ng-packagr
 
 * build docs site with `npm run build:docs`
 * commit and push changes in `docs` to `master`
+
+
+---
+
+Made with :heart: &
+<a href="https://www.jetbrains.com/?from=ngx-drag-drop">
+  <img align="center" alt="jetbrains" src="jetbrains.svg" width="120px" />
+</a>
+& :coffee:
