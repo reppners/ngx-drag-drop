@@ -347,8 +347,10 @@ For the library build it uses [ng-packagr](https://github.com/dherges/ng-packagr
 
 ---
 
-Made with :heart: &
+<p align="center">
+Made with :heart: & 
 <a href="https://www.jetbrains.com/?from=ngx-drag-drop">
   <img align="center" alt="jetbrains" src="jetbrains.svg" width="120px" />
 </a>
 & :coffee:
+</p>
