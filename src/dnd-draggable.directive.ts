@@ -77,7 +77,7 @@ export class DndDraggableDirective {
   private dndDragImageElementRef?: ElementRef;
 
   private dragImage: Element;
-  
+
   @Input()
   set dndDisableIf(value: boolean) {
 
@@ -95,17 +95,7 @@ export class DndDraggableDirective {
 
   @Input()
   set dndDisableDragIf(value: boolean) {
-
-    this.draggable = !value;
-
-    if (this.draggable) {
-
-      this.renderer.removeClass(this.elementRef.nativeElement, this.dndDraggableDisabledClass);
-    }
-    else {
-
-      this.renderer.addClass(this.elementRef.nativeElement, this.dndDraggableDisabledClass);
-    }
+    this.dndDisableIf = value;
   }
 
   constructor(private elementRef: ElementRef,
