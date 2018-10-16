@@ -13,31 +13,31 @@ import { DndHandleDirective } from "./dnd-handle.directive";
 import { dndState, endDrag, startDrag } from "./dnd-state";
 import { EffectAllowed } from "./dnd-types";
 
-@Directive( {
+@Directive({
   selector: "[dndDragImageRef]"
-} )
+})
 export class DndDragImageRefDirective {
 
-  constructor( parent:DndDraggableDirective,
-               elementRef:ElementRef ) {
+  constructor(parent: DndDraggableDirective,
+    elementRef: ElementRef) {
 
-    parent.registerDragImage( elementRef );
+    parent.registerDragImage(elementRef);
   }
 }
 
-@Directive( {
+@Directive({
   selector: "[dndDraggable]"
-} )
+})
 export class DndDraggableDirective {
 
   @Input()
-  dndDraggable:any;
+  dndDraggable: any;
 
   @Input()
-  dndEffectAllowed:EffectAllowed = "copy";
+  dndEffectAllowed: EffectAllowed = "copy";
 
   @Input()
-  dndType?:string;
+  dndType?: string;
 
   @Input()
   dndDraggingClass = "dndDragging";
@@ -49,109 +49,124 @@ export class DndDraggableDirective {
   dndDraggableDisabledClass = "dndDraggableDisabled";
 
   @Input()
-  dndDragImageOffsetFunction:DndDragImageOffsetFunction = calculateDragImageOffset;
+  dndDragImageOffsetFunction: DndDragImageOffsetFunction = calculateDragImageOffset;
 
   @Output()
-  readonly dndStart:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndStart: EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  readonly dndEnd:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndEnd: EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  readonly dndMoved:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndMoved: EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  readonly dndCopied:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndCopied: EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  readonly dndLinked:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndLinked: EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  readonly dndCanceled:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndCanceled: EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
-  @HostBinding( "attr.draggable" )
+  @HostBinding("attr.draggable")
   draggable = true;
 
-  private dndHandle?:DndHandleDirective;
+  private dndHandle?: DndHandleDirective;
 
-  private dndDragImageElementRef?:ElementRef;
+  private dndDragImageElementRef?: ElementRef;
 
-  private dragImage:Element;
-
+  private dragImage: Element;
+  
   @Input()
-  set dndDisableIf( value:boolean ) {
+  set dndDisableIf(value: boolean) {
 
     this.draggable = !value;
 
-    if( this.draggable ) {
+    if (this.draggable) {
 
-      this.renderer.removeClass( this.elementRef.nativeElement, this.dndDraggableDisabledClass );
+      this.renderer.removeClass(this.elementRef.nativeElement, this.dndDraggableDisabledClass);
     }
     else {
 
-      this.renderer.addClass( this.elementRef.nativeElement, this.dndDraggableDisabledClass );
+      this.renderer.addClass(this.elementRef.nativeElement, this.dndDraggableDisabledClass);
     }
   }
 
-  constructor( private elementRef:ElementRef,
-               private renderer:Renderer2 ) {
+  @Input()
+  set dndDisableDragIf(value: boolean) {
+
+    this.draggable = !value;
+
+    if (this.draggable) {
+
+      this.renderer.removeClass(this.elementRef.nativeElement, this.dndDraggableDisabledClass);
+    }
+    else {
+
+      this.renderer.addClass(this.elementRef.nativeElement, this.dndDraggableDisabledClass);
+    }
   }
 
-  @HostListener( "dragstart", [ "$event" ] )
-  onDragStart( event:DndEvent ) {
+  constructor(private elementRef: ElementRef,
+    private renderer: Renderer2) {
+  }
 
-    if( this.draggable === false ) {
+  @HostListener("dragstart", ["$event"])
+  onDragStart(event: DndEvent) {
+
+    if (this.draggable === false) {
 
       return false;
     }
 
     // check if there is dnd handle and if the dnd handle was used to start the drag
-    if( typeof this.dndHandle !== "undefined"
-      && typeof event._dndUsingHandle === "undefined" ) {
+    if (typeof this.dndHandle !== "undefined"
+      && typeof event._dndUsingHandle === "undefined") {
 
       return false;
     }
 
     // initialize global state
-    startDrag( event, this.dndEffectAllowed, this.dndType );
+    startDrag(event, this.dndEffectAllowed, this.dndType);
 
-    setDragData( event, {data: this.dndDraggable, type: this.dndType}, dndState.effectAllowed );
+    setDragData(event, { data: this.dndDraggable, type: this.dndType }, dndState.effectAllowed);
 
     this.determineDragImage();
 
     // set dragging css class prior to setDragImage so styles are applied before
     // TODO breaking change: add class to elementRef rather than drag image which could be another element
-    this.renderer.addClass( this.dragImage, this.dndDraggingClass );
+    this.renderer.addClass(this.dragImage, this.dndDraggingClass);
 
     // set custom dragimage if present
     // set dragimage if drag is started from dndHandle
-    if( typeof this.dndDragImageElementRef !== "undefined"
-      || typeof event._dndUsingHandle !== "undefined" ) {
+    if (typeof this.dndDragImageElementRef !== "undefined"
+      || typeof event._dndUsingHandle !== "undefined") {
 
-      setDragImage( event, this.dragImage, this.dndDragImageOffsetFunction );
+      setDragImage(event, this.dragImage, this.dndDragImageOffsetFunction);
     }
 
     // add dragging source css class on first drag event
-    const unregister = this.renderer.listen( this.elementRef.nativeElement, "drag", () => {
+    const unregister = this.renderer.listen(this.elementRef.nativeElement, "drag", () => {
 
-      this.renderer.addClass( this.elementRef.nativeElement, this.dndDraggingSourceClass );
+      this.renderer.addClass(this.elementRef.nativeElement, this.dndDraggingSourceClass);
       unregister();
-    } );
+    });
 
-    this.dndStart.emit( event );
+    this.dndStart.emit(event);
 
     event.stopPropagation();
   }
 
-  @HostListener( "dragend", [ "$event" ] )
-  onDragEnd( event:DragEvent ) {
+  @HostListener("dragend", ["$event"])
+  onDragEnd(event: DragEvent) {
 
     // get drop effect from custom stored state as its not reliable across browsers
     const dropEffect = dndState.dropEffect;
 
-    let dropEffectEmitter:EventEmitter<DragEvent>;
+    let dropEffectEmitter: EventEmitter<DragEvent>;
 
-    switch( dropEffect ) {
+    switch (dropEffect) {
 
       case "copy":
         dropEffectEmitter = this.dndCopied;
@@ -170,28 +185,28 @@ export class DndDraggableDirective {
         break;
     }
 
-    dropEffectEmitter.emit( event );
-    this.dndEnd.emit( event );
+    dropEffectEmitter.emit(event);
+    this.dndEnd.emit(event);
 
     // reset global state
     endDrag();
 
-    this.renderer.removeClass( this.dragImage, this.dndDraggingClass );
+    this.renderer.removeClass(this.dragImage, this.dndDraggingClass);
 
     // IE9 special hammering
-    window.setTimeout( () => {
-      this.renderer.removeClass( this.elementRef.nativeElement, this.dndDraggingSourceClass );
-    }, 0 );
+    window.setTimeout(() => {
+      this.renderer.removeClass(this.elementRef.nativeElement, this.dndDraggingSourceClass);
+    }, 0);
 
     event.stopPropagation();
   }
 
-  registerDragHandle( handle:DndHandleDirective | undefined ) {
+  registerDragHandle(handle: DndHandleDirective | undefined) {
 
     this.dndHandle = handle;
   }
 
-  registerDragImage( elementRef:ElementRef | undefined ) {
+  registerDragImage(elementRef: ElementRef | undefined) {
 
     this.dndDragImageElementRef = elementRef;
   }
@@ -199,7 +214,7 @@ export class DndDraggableDirective {
   private determineDragImage() {
 
     // evaluate custom drag image existence
-    if( typeof this.dndDragImageElementRef !== "undefined" ) {
+    if (typeof this.dndDragImageElementRef !== "undefined") {
 
       this.dragImage = this.dndDragImageElementRef.nativeElement as Element;
     }
