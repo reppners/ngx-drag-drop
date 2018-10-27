@@ -314,7 +314,16 @@ catch(e){}
 For more info on the polyfill check it out on GitHub
 https://github.com/timruffles/mobile-drag-drop
 
-### Why?
+## Known issues
+
+### Firefox
+
+* Beware that Firefox does not support dragging on `<button>` elements.
+  * `<button [dndDraggable]>` and `<button [dndHandler]>` won't work. 
+  * See https://bugzilla.mozilla.org/show_bug.cgi?id=568313 
+
+
+## Why?
 
 HTML Drag-And-Drop API implementations are not behaving the same way across browsers.
 
@@ -322,7 +331,7 @@ The directives contained in this module enable declarative drag and drop that "j
 
 Credits go to the author and contributors of [angular-drag-drop-lists](https://github.com/marceljuenemann/angular-drag-and-drop-lists). 
 
-### Maintenance
+## Maintenance
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
 
