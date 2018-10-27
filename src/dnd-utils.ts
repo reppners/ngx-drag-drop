@@ -25,21 +25,24 @@ function mimeTypeIsCustom( mimeType:string ) {
 
 export function getWellKnownMimeType( event:DragEvent ):string | null {
 
-  const types = event.dataTransfer.types;
+  if( event.dataTransfer ) {
 
-  // IE 9 workaround.
-  if( !types ) {
+    const types = event.dataTransfer.types;
 
-    return MSIE_MIME_TYPE;
-  }
+    // IE 9 workaround.
+    if( !types ) {
 
-  for( let i = 0; i < types.length; i++ ) {
+      return MSIE_MIME_TYPE;
+    }
 
-    if( types[ i ] === MSIE_MIME_TYPE
-      || types[ i ] === JSON_MIME_TYPE
-      || mimeTypeIsCustom( types[ i ] ) ) {
+    for( let i = 0; i < types.length; i++ ) {
 
-      return types[ i ];
+      if( types[ i ] === MSIE_MIME_TYPE
+        || types[ i ] === JSON_MIME_TYPE
+        || mimeTypeIsCustom( types[ i ] ) ) {
+
+        return types[ i ];
+      }
     }
   }
 
@@ -105,7 +108,8 @@ export function getDropData( event:DragEvent, dragIsExternal:boolean ):DragDropD
 
 export function filterEffects( effects:DropEffect[], allowed:EffectAllowed | DropEffect ):DropEffect[] {
 
-  if( allowed === "all" ) {
+  if( allowed === "all"
+    || allowed === "uninitialized" ) {
 
     return effects;
   }
