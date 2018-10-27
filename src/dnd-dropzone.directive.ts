@@ -220,6 +220,15 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
       }
 
       const dropIndex = this.getPlaceholderIndex();
+
+      // if for whatever reason the placeholder is not present in the DOM but it should be there
+      // we don't allow/emit the drop event since it breaks the contract
+      // seems to only happen if drag and drop is executed faster than the DOM updates
+      if( dropIndex === -1 ) {
+
+        return;
+      }
+
       this.dndDrop.emit( {
         event: event,
         dropEffect: dropEffect,
