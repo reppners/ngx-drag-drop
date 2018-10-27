@@ -239,7 +239,8 @@ export interface DndDropEvent {
     // true if the drag did not origin from a [dndDraggable]
     isExternal:boolean;
     
-    // the data set on the draggable
+    // the data set on the [dndDraggable] that started the drag 
+    // for external drags use the event property which contains the original drop event as this will be undefined
     data?: any;
     
     // the index where the draggable was dropped in a dropzone
