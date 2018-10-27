@@ -22,3 +22,9 @@ mat-card:not(:last-of-type):not(:first-of-type) {
   border-color: limegreen;
   transform: scale(1.05);
 }
+
+pre {
+
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}

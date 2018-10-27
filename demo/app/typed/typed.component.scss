@@ -52,3 +52,9 @@ pre {
   border: 1px dashed green;
   background-color: rgba(0, 0, 0, 0.1);
 }
+
+pre {
+
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
