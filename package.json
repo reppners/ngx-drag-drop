@@ -11,7 +11,7 @@
     "name": "Stefan Steinhart",
     "email": "stefanreppner@googlemail.com"
   },
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "keywords": [
     "angular",
     "html",
