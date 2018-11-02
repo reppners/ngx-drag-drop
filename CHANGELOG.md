@@ -1,3 +1,9 @@
+<a name="v2.0.0-rc.4"></a>
+# [v2.0.0-rc.4](https://github.com/reppners/ngx-drag-drop/compare/v2.0.0-rc.3...v2.0.0-rc.4) (2018-10-27)
+
+* Handle DragEvent.dataTransfer being null for external drag items in Firefox (#35)
+
+
 <a name="v1.1.0"></a>
 # [v1.1.0](https://github.com/reppners/ngx-drag-drop/compare/v1.0.4...v1.1.0) / [v2.0.0-rc.3](https://github.com/reppners/ngx-drag-drop/compare/v2.0.0-rc.2...v2.0.0-rc.3) (2018-09-19)
 

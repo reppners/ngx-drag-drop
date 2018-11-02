@@ -52,9 +52,9 @@ export function setDropEffect( event:DragEvent, dropEffect:DropEffect ) {
 
 export function getDropEffect( event:DragEvent, effectAllowed?:EffectAllowed | DropEffect ):DropEffect {
 
-  let effects = DROP_EFFECTS;
+  const dataTransferEffectAllowed:EffectAllowed = (event.dataTransfer) ? event.dataTransfer.effectAllowed as EffectAllowed : "uninitialized";
 
-  effects = filterEffects( effects, event.dataTransfer.effectAllowed as EffectAllowed );
+  let effects = filterEffects( DROP_EFFECTS, dataTransferEffectAllowed );
 
   if( _dndState.isDragging === true ) {
 
