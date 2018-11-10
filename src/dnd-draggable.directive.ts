@@ -10,8 +10,12 @@ import {
 } from "@angular/core";
 import { calculateDragImageOffset, DndDragImageOffsetFunction, DndEvent, setDragData, setDragImage } from "./dnd-utils";
 import { DndHandleDirective } from "./dnd-handle.directive";
-import { dndState, endDrag, startDrag } from "./dnd-state";
+import { dndState, endDrag, getDndInitialIndex, startDrag } from "./dnd-state";
 import { EffectAllowed } from "./dnd-types";
+
+export interface DndDragEvent extends DragEvent {
+  initialIndex:number | undefined;
+}
 
 @Directive( {
   selector: "[dndDragImageRef]"
@@ -40,6 +44,9 @@ export class DndDraggableDirective {
   dndType?:string;
 
   @Input()
+  dndIndex?: number;
+
+  @Input()
   dndDraggingClass = "dndDragging";
 
   @Input()
@@ -55,19 +62,19 @@ export class DndDraggableDirective {
   readonly dndStart:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
-  readonly dndEnd:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndEnd:EventEmitter<DndDragEvent> = new EventEmitter<DndDragEvent>();
 
   @Output()
-  readonly dndMoved:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndMoved:EventEmitter<DndDragEvent> = new EventEmitter<DndDragEvent>();
 
   @Output()
-  readonly dndCopied:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndCopied:EventEmitter<DndDragEvent> = new EventEmitter<DndDragEvent>();
 
   @Output()
-  readonly dndLinked:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndLinked:EventEmitter<DndDragEvent> = new EventEmitter<DndDragEvent>();
 
   @Output()
-  readonly dndCanceled:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  readonly dndCanceled:EventEmitter<DndDragEvent> = new EventEmitter<DndDragEvent>();
 
   @HostBinding( "attr.draggable" )
   draggable = true;
@@ -113,7 +120,7 @@ export class DndDraggableDirective {
     }
 
     // initialize global state
-    startDrag( event, this.dndEffectAllowed, this.dndType );
+    startDrag( event, this.dndEffectAllowed, this.dndType, this.dndIndex );
 
     setDragData( event, {data: this.dndDraggable, type: this.dndType}, dndState.effectAllowed );
 
@@ -144,7 +151,12 @@ export class DndDraggableDirective {
   }
 
   @HostListener( "dragend", [ "$event" ] )
-  onDragEnd( event:DragEvent ) {
+  onDragEnd( event:DndDragEvent ) {
+
+    // Set the initial index of the item on the event, so users can get the
+    // correct index for drag source manipulation or removal
+    // https://github.com/reppners/ngx-drag-drop/issues/17
+    event.initialIndex = getDndInitialIndex();
 
     // get drop effect from custom stored state as its not reliable across browsers
     const dropEffect = dndState.dropEffect;

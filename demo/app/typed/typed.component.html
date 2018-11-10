@@ -14,11 +14,12 @@
                      class="dndPlaceholder">
       </mat-list-item>
 
-      <mat-list-item *ngFor="let fruit of fruits"
+      <mat-list-item *ngFor="let fruit of fruits; let i = index"
                      [dndDraggable]="fruit"
                      [dndType]="fruit"
+                     [dndIndex]="i"
                      dndEffectAllowed="move"
-                     (dndMoved)="onDragged(fruit, fruits)">
+                     (dndMoved)="onDragged($event.initialIndex, fruits)">
         <h1 mat-line>{{fruit}}</h1>
       </mat-list-item>
 
@@ -40,11 +41,12 @@
                      class="dndPlaceholder">
       </mat-list-item>
 
-      <mat-list-item *ngFor="let apple of apples"
+      <mat-list-item *ngFor="let apple of apples; let i = index"
                      [dndDraggable]="apple"
                      [dndType]="apple"
+                     [dndIndex]="i"
                      dndEffectAllowed="move"
-                     (dndMoved)="onDragged(apple, apples)">
+                     (dndMoved)="onDragged($event.initialIndex, apples)">
         <h1 mat-line>{{apple}}</h1>
       </mat-list-item>
 
@@ -65,11 +67,12 @@
                      class="dndPlaceholder">
       </mat-list-item>
 
-      <mat-list-item *ngFor="let banana of bananas"
+      <mat-list-item *ngFor="let banana of bananas; let i = index"
                      [dndDraggable]="banana"
                      [dndType]="banana"
+                     [dndIndex]="i"
                      dndEffectAllowed="move"
-                     (dndMoved)="onDragged(banana, bananas)">
+                     (dndMoved)="onDragged($event.initialIndex, bananas)">
         <h1 mat-line>{{banana}}</h1>
       </mat-list-item>
 

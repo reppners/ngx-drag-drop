@@ -30,10 +30,9 @@ export class TypedComponent {
     "banana"
   ];
 
-  onDragged( item:any, list:any[] ) {
+  onDragged( initialIndex: number, list:any[] ) {
 
-    const index = list.indexOf( item );
-    list.splice( index, 1 );
+    list.splice( initialIndex, 1 );
   }
 
   onDrop( event:DndDropEvent, list:any[] ) {
