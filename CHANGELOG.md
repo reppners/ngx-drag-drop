@@ -1,3 +1,11 @@
+<a name="v2.0.0-rc.5"></a>
+# [v2.0.0-rc.5](https://github.com/reppners/ngx-drag-drop/compare/v2.0.0-rc.4...v2.0.0-rc.5) (2019-03-01)
+
+* Updates to Angular v7 (for demo also updates CDK, Material, Flex)
+* adds dndDrag event to dndDraggable
+* adds demo for right hand side dndHandle with correct drag image offset
+
+
 <a name="v2.0.0-rc.4"></a>
 # [v2.0.0-rc.4](https://github.com/reppners/ngx-drag-drop/compare/v2.0.0-rc.3...v2.0.0-rc.4) (2018-10-27)
 
