@@ -1,10 +1,11 @@
 import {
+  AfterViewInit,
   Directive,
   ElementRef,
   EventEmitter,
   HostBinding,
   HostListener,
-  Input,
+  Input, NgZone, OnDestroy,
   Output,
   Renderer2
 } from "@angular/core";
@@ -28,7 +29,7 @@ export class DndDragImageRefDirective {
 @Directive( {
   selector: "[dndDraggable]"
 } )
-export class DndDraggableDirective {
+export class DndDraggableDirective implements AfterViewInit, OnDestroy {
 
   @Input()
   dndDraggable:any;
@@ -55,6 +56,9 @@ export class DndDraggableDirective {
   readonly dndStart:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
+  readonly dndDrag:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+
+  @Output()
   readonly dndEnd:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
 
   @Output()
@@ -78,6 +82,8 @@ export class DndDraggableDirective {
 
   private dragImage:Element;
 
+  private readonly dragEventHandler:( event:DragEvent ) => void = ( event:DragEvent ) => this.onDrag( event );
+
   @Input()
   set dndDisableIf( value:boolean ) {
 
@@ -94,7 +100,19 @@ export class DndDraggableDirective {
   }
 
   constructor( private elementRef:ElementRef,
-               private renderer:Renderer2 ) {
+               private renderer:Renderer2,
+               private ngZone:NgZone ) {
+  }
+
+  ngAfterViewInit():void {
+
+    this.ngZone.runOutsideAngular( () => {
+      this.elementRef.nativeElement.addEventListener( "drag", this.dragEventHandler );
+    } );
+  }
+
+  ngOnDestroy():void {
+    this.elementRef.nativeElement.removeEventListener( "drag", this.dragEventHandler );
   }
 
   @HostListener( "dragstart", [ "$event" ] )
@@ -117,7 +135,7 @@ export class DndDraggableDirective {
 
     setDragData( event, {data: this.dndDraggable, type: this.dndType}, dndState.effectAllowed );
 
-    this.determineDragImage();
+    this.dragImage = this.determineDragImage();
 
     // set dragging css class prior to setDragImage so styles are applied before
     // TODO breaking change: add class to elementRef rather than drag image which could be another element
@@ -141,6 +159,11 @@ export class DndDraggableDirective {
     this.dndStart.emit( event );
 
     event.stopPropagation();
+  }
+
+  onDrag( event:DragEvent ) {
+
+    this.dndDrag.emit( event );
   }
 
   @HostListener( "dragend", [ "$event" ] )
@@ -196,16 +219,16 @@ export class DndDraggableDirective {
     this.dndDragImageElementRef = elementRef;
   }
 
-  private determineDragImage() {
+  private determineDragImage():Element {
 
     // evaluate custom drag image existence
     if( typeof this.dndDragImageElementRef !== "undefined" ) {
 
-      this.dragImage = this.dndDragImageElementRef.nativeElement as Element;
+      return this.dndDragImageElementRef.nativeElement as Element;
     }
     else {
 
-      this.dragImage = this.elementRef.nativeElement;
+      return this.elementRef.nativeElement;
     }
   }
 }

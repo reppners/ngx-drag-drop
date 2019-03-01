@@ -212,6 +212,9 @@ export declare class DndDraggableDirective {
     // emits on drag start
     readonly dndStart: EventEmitter<DragEvent>;
     
+    // emits on drag
+    readonly dndDrag: EventEmitter<DragEvent>;
+    
     // emits on drag end
     readonly dndEnd: EventEmitter<DragEvent>;
     
