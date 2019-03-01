@@ -69,6 +69,25 @@
 
     </mat-card>
 
+    <mat-card [dndDraggable]="draggableWithDragImage"
+              [dndEffectAllowed]="draggableWithDragImage.effectAllowed"
+              [dndDisableIf]="draggableWithDragImage.disable"
+              [dndDragImageOffsetFunction]="dragImageOffsetRight"
+              (dndStart)="onDragStart($event)"
+              (dndCopied)="onDragged($event, 'copy')"
+              (dndLinked)="onDragged($event, 'link')"
+              (dndMoved)="onDragged($event, 'move')"
+              (dndCanceled)="onDragged($event, 'none')"
+              (dndEnd)="onDragEnd($event)">
+
+      <div fxFlex="100">
+        draggable ({{draggableWithDragImage.effectAllowed}})
+      </div>
+
+      <dnd-indirect-handle></dnd-indirect-handle>
+
+    </mat-card>
+
   </section>
 
   <div fxFlex="25"

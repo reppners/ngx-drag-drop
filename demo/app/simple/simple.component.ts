@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { DndDropEvent } from "ngx-drag-drop";
+import { DndDragImageOffsetFunction } from "ngx-drag-drop";
 
 @Component( {
   selector: "dnd-simple",
@@ -57,6 +58,21 @@ export class SimpleComponent {
 
   constructor( private snackBarService:MatSnackBar ) {
   }
+
+  dragImageOffsetRight:DndDragImageOffsetFunction = ( event:DragEvent, dragImage:Element ) => {
+
+    const dragImageComputedStyle = window.getComputedStyle( dragImage );
+    const paddingTop = parseFloat( dragImageComputedStyle.paddingTop ) || 0;
+    const paddingLeft = parseFloat( dragImageComputedStyle.paddingLeft ) || 0;
+    const borderTop = parseFloat( dragImageComputedStyle.borderTopWidth ) || 0;
+    const borderLeft = parseFloat( dragImageComputedStyle.borderLeftWidth ) || 0;
+
+    const x = dragImage.clientWidth - (event.offsetX + paddingLeft + borderLeft);
+    return {
+      x: x,
+      y: event.offsetY + paddingTop + borderTop
+    };
+  };
 
   onDragStart( event:DragEvent ) {
 
