@@ -11,7 +11,7 @@ export class NativeComponent {
 
   public lastDropEvent:DndDropEvent | null = null;
 
-  public lastDropTypes:string[];
+  public lastDropTypes:ReadonlyArray<string>;
   public lastDropFiles:object[];
   public lastDropItems:object[];
 
@@ -32,7 +32,7 @@ export class NativeComponent {
 
       const file = this.lastDropEvent.event.dataTransfer.files[ i ];
       this.lastDropFiles.push( {
-        lastModifiedDate: file.lastModifiedDate,
+        lastModifiedDate: file.lastModified,
         name: file.name,
         type: file.type,
         size: file.size,
