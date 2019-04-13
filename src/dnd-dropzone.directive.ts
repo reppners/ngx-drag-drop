@@ -95,7 +95,7 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
   }
 
   @Input()
-  set dndDisableDropIf(value:boolean) {
+  set dndDisableDropIf( value:boolean ) {
     this.dndDisableIf = value;
   }
 

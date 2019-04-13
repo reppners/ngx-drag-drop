@@ -5,7 +5,9 @@ import {
   EventEmitter,
   HostBinding,
   HostListener,
-  Input, NgZone, OnDestroy,
+  Input,
+  NgZone,
+  OnDestroy,
   Output,
   Renderer2
 } from "@angular/core";
@@ -100,7 +102,7 @@ export class DndDraggableDirective implements AfterViewInit, OnDestroy {
   }
 
   @Input()
-  set dndDisableDragIf(value: boolean) {
+  set dndDisableDragIf( value:boolean ) {
     this.dndDisableIf = value;
   }
 
