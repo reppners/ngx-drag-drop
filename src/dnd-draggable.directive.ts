@@ -99,6 +99,11 @@ export class DndDraggableDirective implements AfterViewInit, OnDestroy {
     }
   }
 
+  @Input()
+  set dndDisableDragIf(value: boolean) {
+    this.dndDisableIf = value;
+  }
+
   constructor( private elementRef:ElementRef,
                private renderer:Renderer2,
                private ngZone:NgZone ) {
