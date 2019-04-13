@@ -94,6 +94,11 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
     }
   }
 
+  @Input()
+  set dndDisableDropIf(value:boolean) {
+    this.dndDisableIf = value;
+  }
+
   constructor( private ngZone:NgZone,
                private elementRef:ElementRef,
                private renderer:Renderer2 ) {
