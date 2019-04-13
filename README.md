@@ -196,6 +196,7 @@ export declare class DndDraggableDirective {
     
     // conditionally disable the draggability
     dndDisableIf: boolean;
+    dndDisableDragIf: boolean;
     
     // set a custom class that is applied while dragging
     dndDraggingClass: string = "dndDragging";
@@ -270,6 +271,7 @@ export declare class DndDropzoneDirective {
     
     // conditionally disable the dropzone
     dndDisableIf: boolean;
+    dndDisableDropIf: boolean;
     
     // if draggables that are not [dndDraggable] are allowed to be dropped
     // set to true if dragged text, images or files should be handled
