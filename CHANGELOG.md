@@ -1,7 +1,7 @@
 <a name="v2.0.0-rc.6"></a>
 # [v2.0.0-rc.6](https://github.com/reppners/ngx-drag-drop/compare/v2.0.0-rc.5...v2.0.0-rc.6) (2019-04-13)
 
-* Merges #46 to enable separate disabling of drag/drop when an element is a dropzone that is itself draggable. Thanks @VijaySutariaJCD
+* Merges #46 to allow separate disabling of drag/drop when an element is a dropzone that is itself draggable. Thanks @VijaySutariaJCD
 
 
 <a name="v2.0.0-rc.5"></a>
