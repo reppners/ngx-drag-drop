@@ -84,6 +84,8 @@ export class DndDraggableDirective implements AfterViewInit, OnDestroy {
 
   private dragImage:Element;
 
+  private isDragStarted:boolean = false;
+
   private readonly dragEventHandler:( event:DragEvent ) => void = ( event:DragEvent ) => this.onDrag( event );
 
   @Input()
@@ -112,7 +114,6 @@ export class DndDraggableDirective implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit():void {
-
     this.ngZone.runOutsideAngular( () => {
       this.elementRef.nativeElement.addEventListener( "drag", this.dragEventHandler );
     } );
@@ -120,6 +121,9 @@ export class DndDraggableDirective implements AfterViewInit, OnDestroy {
 
   ngOnDestroy():void {
     this.elementRef.nativeElement.removeEventListener( "drag", this.dragEventHandler );
+    if(this.isDragStarted === true) {
+      endDrag()
+    }
   }
 
   @HostListener( "dragstart", [ "$event" ] )
@@ -139,6 +143,8 @@ export class DndDraggableDirective implements AfterViewInit, OnDestroy {
 
     // initialize global state
     startDrag( event, this.dndEffectAllowed, this.dndType );
+
+    this.isDragStarted = true;
 
     setDragData( event, {data: this.dndDraggable, type: this.dndType}, dndState.effectAllowed );
 
@@ -205,6 +211,8 @@ export class DndDraggableDirective implements AfterViewInit, OnDestroy {
 
     // reset global state
     endDrag();
+
+    this.isDragStarted = false;
 
     this.renderer.removeClass( this.dragImage, this.dndDraggingClass );
 
