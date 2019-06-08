@@ -1,3 +1,9 @@
+<a name="v2.0.0"></a>
+# [v2.0.0](https://github.com/reppners/ngx-drag-drop/compare/v2.0.0-rc.7...v2.0.0) (2019-06-08)
+
+About time to declare it stable after months of rc's.
+
+
 <a name="v2.0.0-rc.7"></a>
 # [v2.0.0-rc.7](https://github.com/reppners/ngx-drag-drop/compare/v2.0.0-rc.6...v2.0.0-rc.7) (2019-06-08)
 
