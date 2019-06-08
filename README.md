@@ -28,15 +28,6 @@ This has `dropzones` though :+1:
 The idea is that the directive does not handle lists internally so the `dndDropzone` can be general purpose.
 
 
-**Upcoming version release**
-
-Currently the next version including some performance optimizations is pending. See the [CHANGELOG](https://github.com/reppners/ngx-drag-drop/blob/master/CHANGELOG.md) for details.
-
-You can try it out by installing the `next` version.
-
-`npm install ngx-drag-drop@next --save`
-
-
 ## Usage
 
 `app.component.html`
