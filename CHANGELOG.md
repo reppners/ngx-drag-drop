@@ -1,3 +1,9 @@
+<a name="v1.1.1"></a>
+# [v1.1.1](https://github.com/reppners/ngx-drag-drop/compare/v1.1.0...v1.1.1) (2019-06-08)
+
+* Fixes #67. Thanks @andreroggeri
+
+
 <a name="v1.1.0"></a>
 # [v1.1.0](https://github.com/reppners/ngx-drag-drop/compare/v1.0.4...v1.1.0) (2018-09-19)
 
