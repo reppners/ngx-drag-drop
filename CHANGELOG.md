@@ -1,3 +1,9 @@
+<a name="v2.0.0-rc.7"></a>
+# [v2.0.0-rc.7](https://github.com/reppners/ngx-drag-drop/compare/v2.0.0-rc.6...v2.0.0-rc.7) (2019-06-08)
+
+* Fixes #67. Thanks @andreroggeri
+
+
 <a name="v2.0.0-rc.6"></a>
 # [v2.0.0-rc.6](https://github.com/reppners/ngx-drag-drop/compare/v2.0.0-rc.5...v2.0.0-rc.6) (2019-04-13)
 
