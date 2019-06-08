@@ -5,6 +5,7 @@ import {
   HostBinding,
   HostListener,
   Input,
+  OnDestroy,
   Output,
   Renderer2
 } from "@angular/core";
@@ -28,7 +29,7 @@ export class DndDragImageRefDirective {
 @Directive( {
   selector: "[dndDraggable]"
 } )
-export class DndDraggableDirective {
+export class DndDraggableDirective implements OnDestroy {
 
   @Input()
   dndDraggable:any;
@@ -78,6 +79,8 @@ export class DndDraggableDirective {
 
   private dragImage:Element;
 
+  private isDragStarted:boolean = false;
+
   @Input()
   set dndDisableIf( value:boolean ) {
 
@@ -97,6 +100,12 @@ export class DndDraggableDirective {
                private renderer:Renderer2 ) {
   }
 
+  ngOnDestroy():void {
+    if(this.isDragStarted === true) {
+      endDrag()
+    }
+  }
+
   @HostListener( "dragstart", [ "$event" ] )
   onDragStart( event:DndEvent ) {
 
@@ -114,6 +123,8 @@ export class DndDraggableDirective {
 
     // initialize global state
     startDrag( event, this.dndEffectAllowed, this.dndType );
+
+    this.isDragStarted = true;
 
     setDragData( event, {data: this.dndDraggable, type: this.dndType}, dndState.effectAllowed );
 
@@ -175,6 +186,8 @@ export class DndDraggableDirective {
 
     // reset global state
     endDrag();
+
+    this.isDragStarted = false;
 
     this.renderer.removeClass( this.dragImage, this.dndDraggingClass );
 
