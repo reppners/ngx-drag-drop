@@ -338,14 +338,17 @@ See https://angular.io/guide/creating-libraries
 
 #### Edit Library
 
-* edit lib code
-* run `npm start` (currently needs to be re-run on every lib code change)
+* run `npm run watch:lib` for hacking on library
 
 #### Release Library
 
 * assure correct version is set in `projects/dnd/package.json`
 * build library with `npm run build:lib`
 * publish library with `npm run publish:stable` (use `npm run publish:next` for pre-releases)
+
+#### Edit Docs
+
+* run `npm run start:docs`
 
 #### Release Docs
 

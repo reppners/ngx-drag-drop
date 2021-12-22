@@ -6,11 +6,12 @@
     "start": "ng serve demo",
     "start:docs": "ng serve demo",
     "build:lib": "ng build dnd",
+    "watch:lib": "ng build dnd --watch --configuration development",
     "build:docs": "ng build demo --configuration production",
     "watch:docs": "ng build demo --watch --configuration development",
     "test": "ng test",
-    "publish:stable": "npm publish dist/ngx-drag-drop",
-    "publish:next": "npm publish dist/ngx-drag-drop --tag next"
+    "publish:stable": "npm publish ./dist/ngx-drag-drop",
+    "publish:next": "npm publish ./dist/ngx-drag-drop --tag next"
   },
   "private": true,
   "dependencies": {
