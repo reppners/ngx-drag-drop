@@ -334,7 +334,7 @@ Credits go to the author and contributors of [angular-drag-drop-lists](https://g
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
 
-For the library build it uses [ng-packagr](https://github.com/dherges/ng-packagr).
+See https://angular.io/guide/creating-libraries
 
 #### Edit Library
 
@@ -343,7 +343,7 @@ For the library build it uses [ng-packagr](https://github.com/dherges/ng-packagr
 
 #### Release Library
 
-* assure correct version is set in `package.json`
+* assure correct version is set in `projects/dnd/package.json`
 * build library with `npm run build:lib`
 * publish library with `npm run publish:stable` (use `npm run publish:next` for pre-releases)
 
@@ -358,7 +358,7 @@ For the library build it uses [ng-packagr](https://github.com/dherges/ng-packagr
 <p align="center">
 Made with :heart: & 
 <a href="https://www.jetbrains.com/?from=ngx-drag-drop">
-  <img align="center" alt="jetbrains" src="jetbrains.svg" width="120px" />
+  <img align="center" alt="jetbrains" src="jetbrains.svg" width="120px">
 </a>
 & :coffee:
 </p>

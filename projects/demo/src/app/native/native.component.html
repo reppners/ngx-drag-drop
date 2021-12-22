@@ -1,0 +1,45 @@
+<div fxLayout="row">
+
+  <div fxLayout="column"
+       fxLayoutAlign="space-between"
+       class="layout-padding">
+
+    <div>
+      <img src="https://i.imgflip.com/1quv8v.jpg">
+    </div>
+
+    <div>
+      <a href="https://imgflip.com/i/1quv8v">Made with imgflip</a>
+    </div>
+
+    <mat-form-field>
+      <input matInput
+             placeholder="Enter your draggable content here"
+             value="just some text to select and drag">
+    </mat-form-field>
+
+  </div>
+
+  <div fxFlex="100"
+       fxLayout="column"
+       fxLayoutAlign="center center"
+       class="scrollable"
+       dndDropzone
+       [dndAllowExternal]="true"
+       (dndDrop)="onDrop($event)">
+
+    <div>
+
+      <pre *ngIf="lastDropEvent">Event: {{ lastDropEvent | json }}</pre>
+
+      <pre *ngIf="lastDropTypes && lastDropTypes.length">Types: {{ lastDropTypes | json }}</pre>
+
+      <pre *ngIf="lastDropFiles && lastDropFiles.length">Files: {{ lastDropFiles | json }}</pre>
+
+      <pre *ngIf="lastDropItems && lastDropItems.length">Items: {{ lastDropItems | json }}</pre>
+
+    </div>
+
+  </div>
+
+</div>

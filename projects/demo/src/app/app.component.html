@@ -1,0 +1,68 @@
+<mat-toolbar fxFlex="none"
+             color="primary"
+             class="mat-elevation-z4">
+
+  <span>{{title}}</span>
+
+  <span fxFlex="100"></span>
+
+  <a mat-icon-button
+     href="https://github.com/reppners/ngx-drag-drop">
+    <mat-icon svgIcon="github"></mat-icon>
+  </a>
+
+</mat-toolbar>
+
+<mat-tab-group fxFlex="shrink"
+               fxLayout="column"
+               (selectedTabChange)="onSelectedTabChange($event)">
+
+  <mat-tab label="Simple">
+
+    <dnd-simple fxFlex="100"
+                fxLayout="column"
+                class="container-padding scrollable"></dnd-simple>
+
+  </mat-tab>
+
+  <mat-tab label="List">
+
+    <dnd-list fxFlex="100"
+              fxLayout="column"
+              class="container-padding scrollable"></dnd-list>
+
+  </mat-tab>
+
+  <mat-tab label="Nested">
+
+    <dnd-nested fxFlex="100"
+                fxLayout="column"
+                class="container-padding scrollable"></dnd-nested>
+
+  </mat-tab>
+
+  <mat-tab label="Native">
+
+    <dnd-native fxFlex="100"
+                fxLayout="column"
+                class="container-padding scrollable"></dnd-native>
+
+  </mat-tab>
+
+  <mat-tab label="Typed">
+
+    <dnd-typed fxFlex="100"
+               fxLayout="column"
+               class="container-padding scrollable"></dnd-typed>
+
+  </mat-tab>
+
+</mat-tab-group>
+
+<mat-divider fxFlex="none"></mat-divider>
+
+<dnd-demo-link fxFlex="none"
+               fxFlexAlign="end"
+               style="margin: 8px"
+               [name]="activeDemoName"></dnd-demo-link>
+
