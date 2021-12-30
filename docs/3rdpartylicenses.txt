@@ -66,6 +66,12 @@ THE SOFTWARE.
 @angular/platform-browser
 MIT
 
+@angular/router
+MIT
+
+mobile-drag-drop
+MIT
+
 ngx-drag-drop
 BSD-3-Clause
 
