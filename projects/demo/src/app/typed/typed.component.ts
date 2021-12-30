@@ -1,50 +1,67 @@
-import { Component } from "@angular/core";
-import { DndDropEvent } from "ngx-drag-drop";
+import {Component} from "@angular/core";
+import {DndDropEvent} from "ngx-drag-drop";
 
-@Component( {
+type Apple = "apple";
+type Banana = "banana";
+type FruitType = Apple | Banana;
+
+interface Fruit {
+  id: number;
+  type: FruitType
+}
+
+let id = 0;
+
+function createFruit(type: FruitType) {
+  return {
+    id: id++,
+    type: type
+  };
+}
+
+function range(start: number, end: number) {
+  return Array.from({ length: end - start + 1 }, (_, i) => i)
+}
+
+@Component({
   selector: "dnd-typed",
   templateUrl: "./typed.component.html",
-  styleUrls: [ "./typed.component.scss" ]
-} )
+  styleUrls: ["./typed.component.scss"]
+})
 export class TypedComponent {
 
-  public fruits:string[] = [
-    "apple",
-    "apple",
-    "banana",
-    "apple",
-    "banana",
-    "banana",
-    "apple",
-    "banana",
-    "apple",
-  ];
+  public fruits: Fruit[] = range(0, 100)
+    .map(_ => {
+      const randomFruitType: FruitType = Math.random() < 0.5 ? "apple" : "banana";
+      return createFruit(randomFruitType);
+    })
 
-  public apples:string[] = [
-    "apple",
-    "apple"
-  ];
+  public apples: Fruit[] = range(0, 12)
+    .map(_ => {
+      return createFruit("apple");
+    });
 
-  public bananas:string[] = [
-    "banana",
-    "banana"
-  ];
+  public bananas: Fruit[] = range(0, 10)
+    .map(_ => {
+      return createFruit("banana");
+    });
 
-  onDragged( item:any, list:any[] ) {
-
-    const index = list.indexOf( item );
-    list.splice( index, 1 );
+  trackByFruit(index: number, fruit: Fruit) {
+    return fruit;
   }
 
-  onDrop( event:DndDropEvent, list:any[] ) {
+  onDragged(index: number, fruit: Fruit, list: Fruit[]) {
+    const removeIndex = list.indexOf(fruit)
+    console.log(`onDragged ngFor-index=${index}, item=${fruit}, removeIndex=${removeIndex}, list=${list.length}`)
+    list.splice(removeIndex, 1);
+  }
 
+  onDrop(event: DndDropEvent, list: Fruit[]) {
+    console.log("onDrop", event, list.length);
     let index = event.index;
-
-    if( typeof index === "undefined" ) {
-
+    if (typeof index === "undefined") {
       index = list.length;
     }
-
-    list.splice( index, 0, event.data );
+    list.splice(index, 0, event.data);
   }
 }

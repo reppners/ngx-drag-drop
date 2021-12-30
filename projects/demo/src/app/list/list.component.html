@@ -4,21 +4,18 @@
        [fxLayout]="layout.container"
        class="layout-padding">
 
-    <div>
-
+    <div fxFlex="grow">
       <pre>dndEffectAllowed="copyMove"</pre>
-
       <mat-list [fxLayout]="layout.list"
                 dndDropzone
                 [dndHorizontal]="layout.dndHorizontal"
                 dndEffectAllowed="copyMove"
                 (dndDrop)="onDrop($event, draggableListLeft)"
-                class="dndList">
-
+                class="dndList"
+                [class.horizontal]="layout.dndHorizontal">
         <mat-list-item dndPlaceholderRef
                        class="dndPlaceholder">
         </mat-list-item>
-
         <mat-list-item *ngFor="let item of draggableListLeft"
                        [dndDraggable]="item"
                        [dndEffectAllowed]="item.effectAllowed"
@@ -36,27 +33,21 @@
           <h1 mat-line>{{item.content}}</h1>
           <p mat-line>effectAllowed: {{item.effectAllowed}}</p>
         </mat-list-item>
-
       </mat-list>
-
     </div>
 
-    <div>
-
+    <div fxFlex="grow">
       <pre>dndEffectAllowed="copyMove"</pre>
-
       <mat-list [fxLayout]="layout.list"
                 dndDropzone
                 [dndHorizontal]="layout.dndHorizontal"
                 dndEffectAllowed="copyMove"
                 (dndDrop)="onDrop($event, draggableListRight)"
-                class="dndList">
-
-
+                class="dndList"
+                [class.horizontal]="layout.dndHorizontal">
         <mat-list-item dndPlaceholderRef
                        class="dndPlaceholder">
         </mat-list-item>
-
         <mat-list-item *ngFor="let item of draggableListRight"
                        [dndDraggable]="item"
                        [dndEffectAllowed]="item.effectAllowed"
@@ -74,15 +65,11 @@
           <h1 mat-line>{{item.content}}</h1>
           <p mat-line>effectAllowed: {{item.effectAllowed}}</p>
         </mat-list-item>
-
       </mat-list>
-
     </div>
 
     <div>
-
       <pre>trash (dndEffectAllowed="move")</pre>
-
       <mat-list [fxLayout]="layout.list"
                 dndDropzone
                 [dndHorizontal]="layout.dndHorizontal"
@@ -91,17 +78,13 @@
                 class="dndList">
 
       </mat-list>
-
     </div>
-
   </div>
 
   <div class="layout-padding">
-
     <mat-slide-toggle [checked]="horizontalLayoutActive"
                       (change)="horizontalLayoutActive = $event.checked; setHorizontalLayout($event.checked)">horizontal
     </mat-slide-toggle>
-
   </div>
 
 </div>

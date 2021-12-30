@@ -8,7 +8,7 @@ import { Component, Input } from "@angular/core";
 export class DemoLinkComponent {
 
   @Input()
-  name?:string;
+  name:string | null = null;
 
   public get url():string {
 

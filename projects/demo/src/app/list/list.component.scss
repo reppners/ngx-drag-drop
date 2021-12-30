@@ -9,24 +9,37 @@ pre {
 
   text-align: center;
   padding: 8px;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+  //white-space: pre-wrap;
+  //word-wrap: break-word;
 }
 
 .mat-list-item {
 
-  margin: 2px;
+  margin: 2px 0;
   border: 1px solid gray;
 }
 
 .dndList {
 
   transition: all 300ms ease;
+  padding: 5px;
 
-  &.dndDragover {
+  &:not(.horizontal).dndDragover {
 
     padding-top: 12px;
     padding-bottom: 12px;
+  }
+
+  &.horizontal {
+    &.dndDragover {
+      padding-left: 12px;
+      padding-right: 12px;
+      padding-bottom: 12px;
+    }
+    .mat-list-item {
+      max-width: 120px;
+      margin: 2px;
+    }
   }
 }
 

@@ -13,56 +13,24 @@
 
 </mat-toolbar>
 
-<mat-tab-group fxFlex="shrink"
-               fxLayout="column"
-               (selectedTabChange)="onSelectedTabChange($event)">
+<ng-container *ngIf="activeTab$ | async as activeTab">
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link *ngFor="let tab of tabs"
+       (click)="onTabLinkClick(tab)"
+       [active]="activeTab === tab"> {{tab}} </a>
+  </nav>
+</ng-container>
 
-  <mat-tab label="Simple">
-
-    <dnd-simple fxFlex="100"
-                fxLayout="column"
-                class="container-padding scrollable"></dnd-simple>
-
-  </mat-tab>
-
-  <mat-tab label="List">
-
-    <dnd-list fxFlex="100"
-              fxLayout="column"
-              class="container-padding scrollable"></dnd-list>
-
-  </mat-tab>
-
-  <mat-tab label="Nested">
-
-    <dnd-nested fxFlex="100"
-                fxLayout="column"
-                class="container-padding scrollable"></dnd-nested>
-
-  </mat-tab>
-
-  <mat-tab label="Native">
-
-    <dnd-native fxFlex="100"
-                fxLayout="column"
-                class="container-padding scrollable"></dnd-native>
-
-  </mat-tab>
-
-  <mat-tab label="Typed">
-
-    <dnd-typed fxFlex="100"
-               fxLayout="column"
-               class="container-padding scrollable"></dnd-typed>
-
-  </mat-tab>
-
-</mat-tab-group>
+<div fxFlex="100"
+     fxLayout="column"
+     class="container-padding scrollable">
+  <router-outlet></router-outlet>
+</div>
 
 <mat-divider fxFlex="none"></mat-divider>
 
 <dnd-demo-link fxFlex="none"
                fxFlexAlign="end"
                style="margin: 8px"
-               [name]="activeDemoName"></dnd-demo-link>
+               [name]="activeTab$ | async"></dnd-demo-link>
 

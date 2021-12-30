@@ -1,7 +1,18 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {DomSanitizer} from "@angular/platform-browser";
 import {MatIconRegistry} from "@angular/material/icon";
-import {MatTabChangeEvent} from "@angular/material/tabs";
+import {ActivatedRoute, ActivationEnd, Router} from "@angular/router";
+import {filter, map, Observable, shareReplay, startWith} from "rxjs";
+
+const TABS: string[] = [
+  "simple",
+  "list",
+  "nested",
+  "native",
+  "typed"
+];
+
+const DEFAULT_TAB = TABS[0];
 
 @Component({
   selector: 'dnd-root',
@@ -9,18 +20,34 @@ import {MatTabChangeEvent} from "@angular/material/tabs";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = "NgxDragDrop Demo";
+  readonly title = "NgxDragDrop Demo";
 
-  activeDemoName = "simple";
+  readonly tabs: string[] = TABS;
+  readonly activeTab$: Observable<string>;
 
-  constructor( sanitizer:DomSanitizer,
-               iconRegistry:MatIconRegistry ) {
+  constructor(sanitizer: DomSanitizer,
+              iconRegistry: MatIconRegistry,
+              activatedRoute: ActivatedRoute,
+              private router: Router) {
 
-    iconRegistry.addSvgIcon( "github", sanitizer.bypassSecurityTrustResourceUrl( "assets/github.svg" ) );
+    iconRegistry.addSvgIcon("github", sanitizer.bypassSecurityTrustResourceUrl("assets/github.svg"));
+
+    this.activeTab$ = this.router.events
+      .pipe(
+        filter(event => event instanceof ActivationEnd ),
+        map(event => {
+          const activationEnd = event as ActivationEnd;
+          if (!!activationEnd?.snapshot?.url?.length) {
+            return activationEnd?.snapshot?.url[0]?.path ?? DEFAULT_TAB;
+          }
+          return DEFAULT_TAB;
+        }),
+        startWith(DEFAULT_TAB),
+        shareReplay(1)
+      );
   }
 
-  onSelectedTabChange( event:MatTabChangeEvent ) {
-
-    this.activeDemoName = event.tab.textLabel.toLowerCase();
+  onTabLinkClick(tab: string) {
+    this.router.navigate([tab]);
   }
 }

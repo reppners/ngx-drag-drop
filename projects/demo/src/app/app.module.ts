@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatButtonModule} from "@angular/material/button";
@@ -23,6 +23,23 @@ import {SimpleComponent} from "./simple/simple.component";
 import {ListComponent} from "./list/list.component";
 import {TypedComponent} from "./typed/typed.component";
 import {DemoLinkComponent} from "./demo-link/demo-link.component";
+import {RouterModule, Routes} from "@angular/router";
+
+const routes: Routes = [
+  {path: 'simple', component: SimpleComponent},
+  {path: 'list', component: ListComponent},
+  {path: 'nested', component: NestedComponent},
+  {path: 'native', component: NativeComponent},
+  {path: 'typed', component: TypedComponent},
+  {path: '**', component: SimpleComponent}
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {
+}
 
 @NgModule({
   declarations: [
@@ -50,9 +67,11 @@ import {DemoLinkComponent} from "./demo-link/demo-link.component";
     MatSlideToggleModule,
     MatIconModule,
     MatListModule,
-    MatTabsModule
+    MatTabsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

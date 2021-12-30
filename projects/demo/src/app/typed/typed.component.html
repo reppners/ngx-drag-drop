@@ -2,79 +2,60 @@
      fxLayout="row">
 
   <div fxLayout="column">
-
     <pre>Fruits</pre>
-
     <mat-list dndDropzone
               dndEffectAllowed="move"
               (dndDrop)="onDrop($event, fruits)"
               class="dndList">
-
       <mat-list-item dndPlaceholderRef
                      class="dndPlaceholder">
       </mat-list-item>
-
-      <mat-list-item *ngFor="let fruit of fruits"
+      <mat-list-item *ngFor="let fruit of fruits; let i = index; trackBy: trackByFruit"
                      [dndDraggable]="fruit"
-                     [dndType]="fruit"
+                     [dndType]="fruit.type"
                      dndEffectAllowed="move"
-                     (dndMoved)="onDragged(fruit, fruits)">
-        <h1 mat-line>{{fruit}}</h1>
+                     (dndMoved)="onDragged(i, fruit, fruits)">
+        <h1 mat-line>{{fruit.type}} {{fruit.id}}</h1>
       </mat-list-item>
-
     </mat-list>
-
   </div>
 
   <div fxLayout="column">
-
     <pre>Apples</pre>
-
     <mat-list [dndDropzone]="['apple']"
               dndEffectAllowed="move"
               (dndDrop)="onDrop($event, apples)"
               class="dndList">
-
-
       <mat-list-item dndPlaceholderRef
                      class="dndPlaceholder">
       </mat-list-item>
-
-      <mat-list-item *ngFor="let apple of apples"
+      <mat-list-item *ngFor="let apple of apples; let i = index; trackBy: trackByFruit"
                      [dndDraggable]="apple"
-                     [dndType]="apple"
+                     [dndType]="apple.type"
                      dndEffectAllowed="move"
-                     (dndMoved)="onDragged(apple, apples)">
-        <h1 mat-line>{{apple}}</h1>
+                     (dndMoved)="onDragged(i, apple, apples)">
+        <h1 mat-line>{{apple.type}} {{apple.id}}</h1>
       </mat-list-item>
-
     </mat-list>
-
   </div>
 
   <div fxLayout="column">
-
     <pre>Bananas</pre>
-
     <mat-list [dndDropzone]="['banana']"
               dndEffectAllowed="move"
               (dndDrop)="onDrop($event, bananas)"
               class="dndList">
-
       <mat-list-item dndPlaceholderRef
                      class="dndPlaceholder">
       </mat-list-item>
-
-      <mat-list-item *ngFor="let banana of bananas"
+      <mat-list-item *ngFor="let banana of bananas; let i = index; trackBy: trackByFruit"
                      [dndDraggable]="banana"
-                     [dndType]="banana"
+                     [dndType]="banana.type"
                      dndEffectAllowed="move"
-                     (dndMoved)="onDragged(banana, bananas)">
-        <h1 mat-line>{{banana}}</h1>
+                     (dndMoved)="onDragged(i, banana, bananas)">
+        <h1 mat-line>{{banana.type}} {{banana.id}}</h1>
       </mat-list-item>
-
     </mat-list>
-
   </div>
 
 </div>

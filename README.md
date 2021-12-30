@@ -303,7 +303,7 @@ polyfill( {
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride
 } );
 
-// workaround to make scroll prevent work in iOS Safari > 10
+// workaround to make scroll prevent work in iOS Safari >= 10
 try {
   window.addEventListener( "touchmove", function() { }, { passive: false } );
 }
@@ -348,6 +348,7 @@ See https://angular.io/guide/creating-libraries
 
 #### Edit Docs
 
+* initially and on lib changes run `npm run build:lib` to current version of lib available to the demo
 * run `npm run start:docs`
 
 #### Release Docs

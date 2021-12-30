@@ -47,6 +47,54 @@ export class ListComponent {
       effectAllowed: "move",
       disable: false,
       handle: true,
+    },
+    {
+      content: "Left",
+      effectAllowed: "move",
+      disable: false,
+      handle: false,
+    },
+    {
+      content: "Lefter",
+      effectAllowed: "move",
+      disable: false,
+      handle: false,
+    },
+    {
+      content: "Leftest",
+      effectAllowed: "copyMove",
+      disable: false,
+      handle: false
+    },
+    {
+      content: "Lefty",
+      effectAllowed: "move",
+      disable: false,
+      handle: true,
+    },
+    {
+      content: "Left",
+      effectAllowed: "move",
+      disable: false,
+      handle: false,
+    },
+    {
+      content: "Lefter",
+      effectAllowed: "move",
+      disable: false,
+      handle: false,
+    },
+    {
+      content: "Leftest",
+      effectAllowed: "copyMove",
+      disable: false,
+      handle: false
+    },
+    {
+      content: "Lefty",
+      effectAllowed: "move",
+      disable: false,
+      handle: true,
     }
   ];
 
@@ -68,7 +116,7 @@ export class ListComponent {
   };
   private readonly horizontalLayout: DropzoneLayout = {
     container: "row",
-    list: "row",
+    list: "row wrap",
     dndHorizontal: true
   };
 
