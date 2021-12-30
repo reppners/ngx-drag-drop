@@ -1,3 +1,9 @@
+<a name="v13.0.0"></a>
+# [v13.0.0](https://github.com/reppners/ngx-drag-drop/compare/v2.0.0...v13.0.0) (2021-12-30)
+
+Refactored and released for Angular v13.0.0 with some updates in the demos.
+
+
 <a name="v2.0.0"></a>
 # [v2.0.0](https://github.com/reppners/ngx-drag-drop/compare/v2.0.0-rc.7...v2.0.0) (2019-06-08)
 
