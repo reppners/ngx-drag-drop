@@ -3,8 +3,10 @@ import {
   Directive,
   ElementRef,
   EventEmitter,
+  forwardRef,
   HostBinding,
   HostListener,
+  Inject,
   Input,
   NgZone,
   OnDestroy,
@@ -21,9 +23,7 @@ import { EffectAllowed } from "./dnd-types";
 } )
 export class DndDragImageRefDirective {
 
-  constructor( parent:DndDraggableDirective,
-               elementRef:ElementRef ) {
-
+  constructor(@Inject(forwardRef(() => DndDraggableDirective)) parent: DndDraggableDirective, elementRef:ElementRef ) {
     parent.registerDragImage( elementRef );
   }
 }
