@@ -12,6 +12,6 @@ export class DemoLinkComponent {
 
   public get url():string {
 
-    return `https://github.com/reppners/ngx-drag-drop/tree/master/demo/app/${this.name}`;
+    return `https://github.com/reppners/ngx-drag-drop/tree/master/projects/demo/src/app/${this.name}`;
   }
 }
