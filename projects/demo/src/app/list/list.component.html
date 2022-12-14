@@ -1,90 +1,96 @@
-<div fxLayout="row">
-
-  <div fxFlex="100"
-       [fxLayout]="layout.container"
-       class="layout-padding">
-
-    <div fxFlex="grow">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
       <pre>dndEffectAllowed="copyMove"</pre>
-      <mat-list [fxLayout]="layout.list"
-                dndDropzone
+
+      <mat-list [class.horizontal]="layout.dndHorizontal"
                 [dndHorizontal]="layout.dndHorizontal"
-                dndEffectAllowed="copyMove"
                 (dndDrop)="onDrop($event, draggableListLeft)"
-                class="dndList"
-                [class.horizontal]="layout.dndHorizontal">
-        <mat-list-item dndPlaceholderRef
-                       class="dndPlaceholder">
+                class="dndList gap-1 d-flex flex-column bg-light rounded-1 shadow-sm"
+                dndDropzone
+                dndEffectAllowed="copyMove">
+
+        <mat-list-item class="dndPlaceholder border rounded-1 bg-opacity-25"
+                       dndPlaceholderRef>
         </mat-list-item>
+
         <mat-list-item *ngFor="let item of draggableListLeft"
+                       class="border rounded-1 bg-white"
+                       [dndDisableIf]="item.disable"
                        [dndDraggable]="item"
                        [dndEffectAllowed]="item.effectAllowed"
-                       [dndDisableIf]="item.disable"
-                       (dndStart)="onDragStart($event)"
+                       (dndCanceled)="onDragged(item, draggableListLeft, 'none')"
                        (dndCopied)="onDragged(item, draggableListLeft, 'copy')"
+                       (dndEnd)="onDragEnd($event)"
                        (dndLinked)="onDragged(item, draggableListLeft, 'link')"
                        (dndMoved)="onDragged(item, draggableListLeft, 'move')"
-                       (dndCanceled)="onDragged(item, draggableListLeft, 'none')"
-                       (dndEnd)="onDragEnd($event)">
-          <mat-icon *ngIf="item.handle"
-                    mat-list-icon
-                    dndHandle>drag_handle
-          </mat-icon>
-          <h1 mat-line>{{item.content}}</h1>
-          <p mat-line>effectAllowed: {{item.effectAllowed}}</p>
+                       (dndStart)="onDragStart($event)">
+          <div *ngIf="item.handle"
+               matListItemIcon
+               dndHandle
+               class="drag-handle align-self-center mx-3 my-0">
+            <mat-icon fontIcon="drag_handle"></mat-icon>
+          </div>
+          <span matListItemTitle>{{item.content}}</span>
+          <span matListItemLine>effectAllowed: {{item.effectAllowed}}</span>
         </mat-list-item>
+
       </mat-list>
     </div>
 
-    <div fxFlex="grow">
+    <div class="col d-flex flex-column">
       <pre>dndEffectAllowed="copyMove"</pre>
-      <mat-list [fxLayout]="layout.list"
-                dndDropzone
+
+      <mat-list [class.horizontal]="layout.dndHorizontal"
                 [dndHorizontal]="layout.dndHorizontal"
-                dndEffectAllowed="copyMove"
                 (dndDrop)="onDrop($event, draggableListRight)"
-                class="dndList"
-                [class.horizontal]="layout.dndHorizontal">
-        <mat-list-item dndPlaceholderRef
-                       class="dndPlaceholder">
+                class="dndList gap-1 flex-grow-1 d-flex flex-column bg-light rounded-1 shadow-sm"
+                dndDropzone
+                dndEffectAllowed="copyMove">
+        <mat-list-item class="dndPlaceholder border rounded-1 bg-white bg-opacity-25"
+                       dndPlaceholderRef>
         </mat-list-item>
         <mat-list-item *ngFor="let item of draggableListRight"
+                       class="border rounded-1 bg-white"
+                       [dndDisableIf]="item.disable"
                        [dndDraggable]="item"
                        [dndEffectAllowed]="item.effectAllowed"
-                       [dndDisableIf]="item.disable"
-                       (dndStart)="onDragStart($event)"
+                       (dndCanceled)="onDragged(item, draggableListRight, 'none')"
                        (dndCopied)="onDragged(item, draggableListRight, 'copy')"
+                       (dndEnd)="onDragEnd($event)"
                        (dndLinked)="onDragged(item, draggableListRight, 'link')"
                        (dndMoved)="onDragged(item, draggableListRight, 'move')"
-                       (dndCanceled)="onDragged(item, draggableListRight, 'none')"
-                       (dndEnd)="onDragEnd($event)">
-          <mat-icon *ngIf="item.handle"
-                    mat-list-icon
-                    dndHandle>drag_handle
-          </mat-icon>
-          <h1 mat-line>{{item.content}}</h1>
-          <p mat-line>effectAllowed: {{item.effectAllowed}}</p>
+                       (dndStart)="onDragStart($event)">
+          <div *ngIf="item.handle"
+               matListItemIcon
+               dndHandle
+               class="drag-handle align-self-center mx-3 my-0">
+            <mat-icon fontIcon="drag_handle"></mat-icon>
+          </div>
+          <span matListItemTitle>{{item.content}}</span>
+          <span matListItemLine>effectAllowed: {{item.effectAllowed}}</span>
         </mat-list-item>
       </mat-list>
     </div>
 
-    <div>
+    <div class="col d-flex flex-column">
       <pre>trash (dndEffectAllowed="move")</pre>
-      <mat-list [fxLayout]="layout.list"
-                dndDropzone
-                [dndHorizontal]="layout.dndHorizontal"
-                dndEffectAllowed="move"
+
+      <mat-list [dndHorizontal]="layout.dndHorizontal"
                 (dndDrop)="onDrop($event)"
-                class="dndList">
+                class="dndList gap-1 flex-grow-1 d-flex flex-column bg-light rounded-1 shadow-sm"
+                dndDropzone
+                dndEffectAllowed="move">
 
       </mat-list>
     </div>
   </div>
-
-  <div class="layout-padding">
-    <mat-slide-toggle [checked]="horizontalLayoutActive"
-                      (change)="horizontalLayoutActive = $event.checked; setHorizontalLayout($event.checked)">horizontal
-    </mat-slide-toggle>
-  </div>
-
 </div>
+
+<!-- TODO: @reppners I have no idea what the horizontal layout once was supposed to be. Sadly the existing demo has stopped working so I can't look it up -->
+<!-- <div class="layout-padding"> -->
+<!--   <mat-slide-toggle [checked]="horizontalLayoutActive" -->
+<!--                     (change)="horizontalLayoutActive = $event.checked; setHorizontalLayout($event.checked)">horizontal -->
+<!--   </mat-slide-toggle> -->
+<!-- </div> -->
+

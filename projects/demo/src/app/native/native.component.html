@@ -1,45 +1,54 @@
-<div fxLayout="row">
+<div class="container-fluid">
 
-  <div fxLayout="column"
-       fxLayoutAlign="space-between"
-       class="layout-padding">
+  <div class="row">
+    <div class="col">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Draggable stuff</mat-card-title>
+          <mat-card-subtitle>
+            Drag the image or a text selection onto the dropzone and see what happens
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="d-flex flex-column gap-3">
+          <div>
+            <img src="https://i.imgflip.com/1quv8v.jpg">
+          </div>
 
-    <div>
-      <img src="https://i.imgflip.com/1quv8v.jpg">
+          <div>
+            <a href="https://imgflip.com/i/1quv8v">Made with imgflip</a>
+          </div>
+
+          <a href="#">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          </a>
+        </mat-card-content>
+      </mat-card>
     </div>
 
-    <div>
-      <a href="https://imgflip.com/i/1quv8v">Made with imgflip</a>
+    <div class="col">
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Dropzone</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div dndDropzone
+               class="mt-2 p-2 border rounded"
+               [dndAllowExternal]="true"
+               (dndDrop)="onDrop($event)">
+
+            <div>
+              <pre *ngIf="lastDropEvent">Event: {{ lastDropEvent | json }}</pre>
+
+              <pre *ngIf="lastDropTypes && lastDropTypes.length">Types: {{ lastDropTypes | json }}</pre>
+
+              <pre *ngIf="lastDropFiles && lastDropFiles.length">Files: {{ lastDropFiles | json }}</pre>
+
+              <pre *ngIf="lastDropItems && lastDropItems.length">Items: {{ lastDropItems | json }}</pre>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
     </div>
-
-    <mat-form-field>
-      <input matInput
-             placeholder="Enter your draggable content here"
-             value="just some text to select and drag">
-    </mat-form-field>
-
   </div>
-
-  <div fxFlex="100"
-       fxLayout="column"
-       fxLayoutAlign="center center"
-       class="scrollable"
-       dndDropzone
-       [dndAllowExternal]="true"
-       (dndDrop)="onDrop($event)">
-
-    <div>
-
-      <pre *ngIf="lastDropEvent">Event: {{ lastDropEvent | json }}</pre>
-
-      <pre *ngIf="lastDropTypes && lastDropTypes.length">Types: {{ lastDropTypes | json }}</pre>
-
-      <pre *ngIf="lastDropFiles && lastDropFiles.length">Files: {{ lastDropFiles | json }}</pre>
-
-      <pre *ngIf="lastDropItems && lastDropItems.length">Items: {{ lastDropItems | json }}</pre>
-
-    </div>
-
-  </div>
-
 </div>

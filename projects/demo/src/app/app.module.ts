@@ -4,7 +4,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
-import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -12,7 +11,6 @@ import {MatCardModule} from "@angular/material/card";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatIconModule} from "@angular/material/icon";
-import {MatListModule} from "@angular/material/list";
 import {MatTabsModule} from "@angular/material/tabs";
 import {DndModule} from "ngx-drag-drop";
 import {NativeComponent} from "./native/native.component";
@@ -24,6 +22,8 @@ import {ListComponent} from "./list/list.component";
 import {TypedComponent} from "./typed/typed.component";
 import {DemoLinkComponent} from "./demo-link/demo-link.component";
 import {RouterModule, Routes} from "@angular/router";
+import {MatLineModule} from '@angular/material/core';
+import {MatListModule} from '@angular/material/list';
 
 const routes: Routes = [
   {path: 'simple', component: SimpleComponent},
@@ -57,7 +57,6 @@ export class AppRoutingModule {
     BrowserModule,
     BrowserAnimationsModule,
     DndModule,
-    FlexLayoutModule,
     HttpClientModule,
     MatButtonModule,
     MatInputModule,
@@ -66,9 +65,10 @@ export class AppRoutingModule {
     MatSnackBarModule,
     MatSlideToggleModule,
     MatIconModule,
-    MatListModule,
     MatTabsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatLineModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

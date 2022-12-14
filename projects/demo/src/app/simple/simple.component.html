@@ -1,117 +1,122 @@
-<div fxFlex="100"
-     fxLayout="row">
+<div class="container-fluid">
+  <div class="row gap-3 gap-sm-0">
 
-  <section fxFlex="100"
-           fxLayout="column"
-           class="scrollable"
-           style="padding: 8px; margin-right: 8px;">
+    <div class="d-flex flex-column col gap-2">
+      <mat-card *ngFor="let draggable of draggables"
+                [dndDisableIf]="draggable.disable"
+                [dndDraggable]="draggable.content"
+                [dndEffectAllowed]="draggable.effectAllowed"
+                (dndCanceled)="onDragged($event, 'none')"
+                (dndCopied)="onDragged($event, 'copy')"
+                (dndEnd)="onDragEnd($event)"
+                (dndLinked)="onDragged($event, 'link')"
+                (dndMoved)="onDragged($event, 'move')"
+                (dndStart)="onDragStart($event)">
 
-    <mat-card *ngFor="let draggable of draggables"
-              [dndDraggable]="draggable.content"
-              [dndEffectAllowed]="draggable.effectAllowed"
-              [dndDisableIf]="draggable.disable"
-              (dndStart)="onDragStart($event)"
-              (dndCopied)="onDragged($event, 'copy')"
-              (dndLinked)="onDragged($event, 'link')"
-              (dndMoved)="onDragged($event, 'move')"
-              (dndCanceled)="onDragged($event, 'none')"
-              (dndEnd)="onDragEnd($event)">
+        <mat-card-content class="d-flex flex-column gap-2">
+          <div *ngIf="draggable.handle" dndHandle class="drag-handle">
+            <mat-icon fontIcon="drag_handle"
+                      mat-list-icon>
+            </mat-icon>
+          </div>
 
-      <mat-icon *ngIf="draggable.handle"
-                mat-list-icon
-                dndHandle>drag_handle
-      </mat-icon>
+          draggable ({{draggable.effectAllowed}})
+          <span [hidden]="!draggable.handle"> only with handle</span>
+          <span [hidden]="!draggable.disable"> DISABLED</span>
+        </mat-card-content>
 
-      draggable ({{draggable.effectAllowed}})
-      <span [hidden]="!draggable.handle"> only with handle</span>
-      <span [hidden]="!draggable.disable"> DISABLED</span>
+      </mat-card>
 
-    </mat-card>
+      <mat-card [dndDisableIf]="draggableWithDragImage.disable" [dndDraggable]="draggableWithDragImage"
+                [dndEffectAllowed]="draggableWithDragImage.effectAllowed"
+                (dndCanceled)="onDragged($event, 'none')"
+                (dndCopied)="onDragged($event, 'copy')"
+                (dndEnd)="onDragEnd($event)"
+                (dndLinked)="onDragged($event, 'link')"
+                (dndMoved)="onDragged($event, 'move')"
+                (dndStart)="onDragStart($event)">
 
-    <mat-card [dndDraggable]="draggableWithDragImage"
-              [dndEffectAllowed]="draggableWithDragImage.effectAllowed"
-              [dndDisableIf]="draggableWithDragImage.disable"
-              (dndStart)="onDragStart($event)"
-              (dndCopied)="onDragged($event, 'copy')"
-              (dndLinked)="onDragged($event, 'link')"
-              (dndMoved)="onDragged($event, 'move')"
-              (dndCanceled)="onDragged($event, 'none')"
-              (dndEnd)="onDragEnd($event)">
+        <mat-card-content class="d-flex flex-column gap-2">
+          <div *ngIf="draggableWithDragImage.handle" class="drag-handle">
+            <mat-icon dndHandle
+                      fontIcon="drag_handle"
+                      mat-list-icon>
+            </mat-icon>
+          </div>
 
-      <mat-icon *ngIf="draggableWithDragImage.handle"
-                mat-list-icon
-                dndHandle>drag_handle
-      </mat-icon>
+          draggable ({{draggableWithDragImage.effectAllowed}})
+          <span [hidden]="!draggableWithDragImage.handle"> only with handle</span>
+          <span [hidden]="!draggableWithDragImage.disable"> DISABLED</span>
 
-      draggable ({{draggableWithDragImage.effectAllowed}})
-      <span [hidden]="!draggableWithDragImage.handle"> only with handle</span>
-      <span [hidden]="!draggableWithDragImage.disable"> DISABLED</span>
+          <div dndDragImageRef>MY_CUSTOM_DRAG_IMAGE</div>
+        </mat-card-content>
 
-      <div dndDragImageRef>MY_CUSTOM_DRAG_IMAGE</div>
+      </mat-card>
 
-    </mat-card>
+      <mat-card [dndDisableIf]="draggableWithDragImage.disable" [dndDraggable]="draggableWithDragImage"
+                [dndEffectAllowed]="draggableWithDragImage.effectAllowed"
+                (dndCanceled)="onDragged($event, 'none')"
+                (dndCopied)="onDragged($event, 'copy')"
+                (dndEnd)="onDragEnd($event)"
+                (dndLinked)="onDragged($event, 'link')"
+                (dndMoved)="onDragged($event, 'move')"
+                (dndStart)="onDragStart($event)">
 
-    <mat-card [dndDraggable]="draggableWithDragImage"
-              [dndEffectAllowed]="draggableWithDragImage.effectAllowed"
-              [dndDisableIf]="draggableWithDragImage.disable"
-              (dndStart)="onDragStart($event)"
-              (dndCopied)="onDragged($event, 'copy')"
-              (dndLinked)="onDragged($event, 'link')"
-              (dndMoved)="onDragged($event, 'move')"
-              (dndCanceled)="onDragged($event, 'none')"
-              (dndEnd)="onDragEnd($event)">
+        <mat-card-content class="d-flex flex-column gap-2">
+          <dnd-indirect-handle></dnd-indirect-handle>
 
-      <dnd-indirect-handle></dnd-indirect-handle>
+          draggable ({{draggableWithDragImage.effectAllowed}})
 
-      draggable ({{draggableWithDragImage.effectAllowed}})
+          <dnd-indirect-drag-image>I'm the drag image but pssst</dnd-indirect-drag-image>
+        </mat-card-content>
 
-      <dnd-indirect-drag-image>I'm the drag image but pssst</dnd-indirect-drag-image>
+      </mat-card>
 
-    </mat-card>
+      <mat-card [dndDisableIf]="draggableWithDragImage.disable" [dndDragImageOffsetFunction]="dragImageOffsetRight"
+                [dndDraggable]="draggableWithDragImage"
+                [dndEffectAllowed]="draggableWithDragImage.effectAllowed"
+                (dndCanceled)="onDragged($event, 'none')"
+                (dndCopied)="onDragged($event, 'copy')"
+                (dndEnd)="onDragEnd($event)"
+                (dndLinked)="onDragged($event, 'link')"
+                (dndMoved)="onDragged($event, 'move')"
+                (dndStart)="onDragStart($event)">
 
-    <mat-card [dndDraggable]="draggableWithDragImage"
-              [dndEffectAllowed]="draggableWithDragImage.effectAllowed"
-              [dndDisableIf]="draggableWithDragImage.disable"
-              [dndDragImageOffsetFunction]="dragImageOffsetRight"
-              (dndStart)="onDragStart($event)"
-              (dndCopied)="onDragged($event, 'copy')"
-              (dndLinked)="onDragged($event, 'link')"
-              (dndMoved)="onDragged($event, 'move')"
-              (dndCanceled)="onDragged($event, 'none')"
-              (dndEnd)="onDragEnd($event)">
+        <mat-card-content class="d-flex flex-column gap-2">
+          <div>
+            draggable ({{draggableWithDragImage.effectAllowed}})
+          </div>
 
-      <div fxFlex="100">
-        draggable ({{draggableWithDragImage.effectAllowed}})
-      </div>
+          <dnd-indirect-handle></dnd-indirect-handle>
+        </mat-card-content>
 
-      <dnd-indirect-handle></dnd-indirect-handle>
+      </mat-card>
+    </div>
 
-    </mat-card>
+    <div class="col">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Dropzone</mat-card-title>
+          <mat-card-subtitle>
+            <mat-slide-toggle [checked]="dropzoneEnabled"
+                              (change)="dropzoneEnabled = $event.checked">Enabled
+            </mat-slide-toggle>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
 
-  </section>
+          <section [dndDisableIf]="!dropzoneEnabled"
+                   (dndDrop)="onDrop($event)"
+                   class="my-dropzone mt-3 p-2 border rounded"
+                   dndDragoverClass="custom-drag-over"
+                   dndDropzone>
 
-  <div fxFlex="25"
-       fxFlex.gt-xs="33"
-       fxFlex.lt-md="50"
-       fxLayout="column"
-       class="layout-padding">
+            <pre *ngIf="lastDropEvent">{{ lastDropEvent | json }}</pre>
 
-    <mat-slide-toggle [checked]="dropzoneEnabled"
-                      (change)="dropzoneEnabled = $event.checked">Dropzone enabled
-    </mat-slide-toggle>
+          </section>
+        </mat-card-content>
+      </mat-card>
+    </div>
 
-    <section fxFlex="100"
-             fxLayout="column"
-             fxLayoutAlign="center center"
-             class="my-dropzone scrollable"
-             dndDropzone
-             dndDragoverClass="custom-drag-over"
-             [dndDisableIf]="!dropzoneEnabled"
-             (dndDrop)="onDrop($event)">
-
-      <pre *ngIf="lastDropEvent">{{ lastDropEvent | json }}</pre>
-
-    </section>
   </div>
-
 </div>
