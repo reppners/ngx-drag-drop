@@ -12,6 +12,12 @@
 npm install ngx-drag-drop --save
 ```
 
+Angular 15 pre-release version:
+
+```sh
+npm install ngx-drag-drop@next --save
+```
+
 **Angular directives for declarative drag and drop using the HTML5 Drag-And-Drop API**
 
 * sortable lists by using placeholder element (vertical and horizontal)
