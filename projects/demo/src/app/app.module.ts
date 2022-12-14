@@ -23,7 +23,7 @@ import {TypedComponent} from "./typed/typed.component";
 import {DemoLinkComponent} from "./demo-link/demo-link.component";
 import {RouterModule, Routes} from "@angular/router";
 import {MatLineModule} from '@angular/material/core';
-import {MatLegacyListModule} from '@angular/material/legacy-list';
+import {MatListModule} from '@angular/material/list';
 
 const routes: Routes = [
   {path: 'simple', component: SimpleComponent},
@@ -68,7 +68,7 @@ export class AppRoutingModule {
     MatTabsModule,
     AppRoutingModule,
     MatLineModule,
-    MatLegacyListModule
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

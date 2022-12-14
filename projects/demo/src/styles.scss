@@ -31,8 +31,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+
+  // Important because the material design would overwrite it in the mat-list
+  width: 28px !important;
+  height: 28px !important;
 }
 
 /* You can add global styles to this file, and also import other style files */
@@ -75,8 +77,7 @@ html, body {
 }
 
 [dndDropzone] {
-
-  border: 1px red solid;
+  // border: 1px red solid;
   min-width: 200px;
   min-height: 200px;
 }
