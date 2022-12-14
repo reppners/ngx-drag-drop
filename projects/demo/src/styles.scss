@@ -36,9 +36,7 @@
 }
 
 /* You can add global styles to this file, and also import other style files */
-
 html, body {
-
   margin: 0;
 
   height: 100%;
@@ -56,12 +54,10 @@ html, body {
 }
 
 .layout-padding > * {
-
   margin: 8px;
 }
 
 .scrollable {
-
   -webkit-overflow-scrolling: touch;
   overflow-x: auto;
   overflow-y: auto;
@@ -76,14 +72,6 @@ html, body {
 
   cursor: not-allowed;
   opacity: .7;
-}
-
-[dndHandle] {
-
-  display: inline-block;
-  padding: 4px;
-  border: 1px solid darkgray;
-  border-radius: 50%;
 }
 
 [dndDropzone] {
