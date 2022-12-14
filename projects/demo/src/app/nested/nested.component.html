@@ -1,13 +1,14 @@
-<div class="layout-padding">
+<div class="container-fluid">
 
   <ng-template #recursiveList
                let-list>
 
     <mat-card dndPlaceholderRef
-              class="dndPlaceholder">
+              class="dndPlaceholder bg-light bg-gradient">
     </mat-card>
 
     <mat-card *ngFor="let item of list"
+              class="flex-fill"
               [dndDraggable]="item"
               dndEffectAllowed="move"
               [dndDisableIf]="item.disable"
@@ -18,36 +19,40 @@
               (dndCanceled)="onDragged(item, list, 'none')"
               (dndEnd)="onDragEnd($event)">
 
-      <mat-icon *ngIf="item.handle"
-                mat-list-icon
-                dndHandle>drag_handle
-      </mat-icon>
+      <mat-card-content class="d-flex align-items-center gap-2">
+        <div class="drag-handle" *ngIf="item.handle">
+          <mat-icon mat-list-icon
+                    dndHandle>drag_handle
+          </mat-icon>
+        </div>
 
-      {{item.content}}
+        <div>
+          {{item.content}}
 
-      <div *ngIf="item.customDragImage"
-           dndDragImageRef>MY_CUSTOM_DRAG_IMAGE
-      </div>
+          <div *ngIf="item.customDragImage"
+               dndDragImageRef>MY_CUSTOM_DRAG_IMAGE
+          </div>
 
-      <div *ngIf="item.children"
-           class="layout-padding"
-           dndDropzone
-           (dndDrop)="onDrop($event, item.children)">
+          <div *ngIf="item.children"
+               class="layout-padding"
+               dndDropzone
+               (dndDrop)="onDrop($event, item.children)">
 
-        <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.children }"></ng-container>
+            <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.children }"></ng-container>
 
-      </div>
+          </div>
+        </div>
+      </mat-card-content>
 
     </mat-card>
 
   </ng-template>
 
-  <div class="layout-padding"
+  <div class="d-flex gap-3 "
        dndDropzone
        (dndDrop)="onDrop($event, nestableList)">
 
     <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: nestableList }"></ng-container>
 
   </div>
-
 </div>

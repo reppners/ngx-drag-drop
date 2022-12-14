@@ -1,12 +1,10 @@
 
 :host {
-
   display: block;
   box-sizing: border-box;
 }
 
 mat-card {
-
   transition: transform 200ms, opacity 200ms;
 }
 
@@ -14,4 +12,8 @@ mat-card {
 
   opacity: .5;
   transform: scale(.98);
+}
+
+.dndPlaceholder {
+  min-height: 52px;
 }
