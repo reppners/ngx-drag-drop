@@ -1,21 +1,21 @@
-<div fxLayout="row">
+<div>
 
-  <div fxFlex="100"
-       [fxLayout]="layout.container"
-       class="layout-padding">
+  <div class="layout-padding">
 
-    <div fxFlex="grow">
+    <div>
       <pre>dndEffectAllowed="copyMove"</pre>
-      <mat-list [fxLayout]="layout.list"
-                dndDropzone
+
+      <mat-list dndDropzone
                 [dndHorizontal]="layout.dndHorizontal"
                 dndEffectAllowed="copyMove"
                 (dndDrop)="onDrop($event, draggableListLeft)"
                 class="dndList"
                 [class.horizontal]="layout.dndHorizontal">
+
         <mat-list-item dndPlaceholderRef
                        class="dndPlaceholder">
         </mat-list-item>
+
         <mat-list-item *ngFor="let item of draggableListLeft"
                        [dndDraggable]="item"
                        [dndEffectAllowed]="item.effectAllowed"
@@ -33,13 +33,13 @@
           <h1 mat-line>{{item.content}}</h1>
           <p mat-line>effectAllowed: {{item.effectAllowed}}</p>
         </mat-list-item>
+
       </mat-list>
     </div>
 
-    <div fxFlex="grow">
+    <div>
       <pre>dndEffectAllowed="copyMove"</pre>
-      <mat-list [fxLayout]="layout.list"
-                dndDropzone
+      <mat-list dndDropzone
                 [dndHorizontal]="layout.dndHorizontal"
                 dndEffectAllowed="copyMove"
                 (dndDrop)="onDrop($event, draggableListRight)"
@@ -70,8 +70,7 @@
 
     <div>
       <pre>trash (dndEffectAllowed="move")</pre>
-      <mat-list [fxLayout]="layout.list"
-                dndDropzone
+      <mat-list dndDropzone
                 [dndHorizontal]="layout.dndHorizontal"
                 dndEffectAllowed="move"
                 (dndDrop)="onDrop($event)"

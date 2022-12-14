@@ -1,8 +1,6 @@
-<div fxLayout="row">
+<div>
 
-  <div fxLayout="column"
-       fxLayoutAlign="space-between"
-       class="layout-padding">
+  <div class="layout-padding">
 
     <div>
       <img src="https://i.imgflip.com/1quv8v.jpg">
@@ -20,10 +18,7 @@
 
   </div>
 
-  <div fxFlex="100"
-       fxLayout="column"
-       fxLayoutAlign="center center"
-       class="scrollable"
+  <div class="scrollable"
        dndDropzone
        [dndAllowExternal]="true"
        (dndDrop)="onDrop($event)">
