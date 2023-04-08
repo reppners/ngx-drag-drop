@@ -1,29 +1,27 @@
-
-@import "node_modules/bootstrap/scss/functions";
+@import 'node_modules/bootstrap/scss/functions';
 
 // 2. Include any default variable overrides here
 
 // 3. Include remainder of required Bootstrap stylesheets
-@import "node_modules/bootstrap/scss/variables";
+@import 'node_modules/bootstrap/scss/variables';
 
 // 4. Include any default map overrides here
 
 // 5. Include remainder of required parts
-@import "node_modules/bootstrap/scss/maps";
-@import "node_modules/bootstrap/scss/mixins";
-@import "node_modules/bootstrap/scss/root";
+@import 'node_modules/bootstrap/scss/maps';
+@import 'node_modules/bootstrap/scss/mixins';
+@import 'node_modules/bootstrap/scss/root';
 
 // 6. Optionally include any other parts as needed
-@import "node_modules/bootstrap/scss/utilities";
-@import "node_modules/bootstrap/scss/reboot";
-@import "node_modules/bootstrap/scss/type";
-@import "node_modules/bootstrap/scss/containers";
-@import "node_modules/bootstrap/scss/grid";
-@import "node_modules/bootstrap/scss/helpers";
+@import 'node_modules/bootstrap/scss/utilities';
+@import 'node_modules/bootstrap/scss/reboot';
+@import 'node_modules/bootstrap/scss/type';
+@import 'node_modules/bootstrap/scss/containers';
+@import 'node_modules/bootstrap/scss/grid';
+@import 'node_modules/bootstrap/scss/helpers';
 
 // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
-@import "node_modules/bootstrap/scss/utilities/api";
-
+@import 'node_modules/bootstrap/scss/utilities/api';
 
 .drag-handle {
   border: 1px solid #ddd;
@@ -38,7 +36,8 @@
 }
 
 /* You can add global styles to this file, and also import other style files */
-html, body {
+html,
+body {
   margin: 0;
 
   height: 100%;
@@ -48,10 +47,11 @@ html, body {
 
   display: flex;
   flex: 1;
+
+  background: #fafafa;
 }
 
 .layout-padding {
-
   padding: 8px;
 }
 
@@ -65,15 +65,14 @@ html, body {
   overflow-y: auto;
 }
 
-[draggable=true] {
-
+[dndHandle],
+[draggable='true']:not(:has([dndHandle])) {
   cursor: pointer;
 }
 
 [draggable].dndDraggableDisabled {
-
   cursor: not-allowed;
-  opacity: .7;
+  opacity: 0.7;
 }
 
 [dndDropzone] {
@@ -83,16 +82,21 @@ html, body {
 }
 
 [dndDropzone].dndDropzoneDisabled {
-
   cursor: no-drop;
-  opacity: .7;
+  opacity: 0.7;
   border-color: gray;
 }
 
 [dndDropzone].dndDragover {
-
   border-color: green;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}

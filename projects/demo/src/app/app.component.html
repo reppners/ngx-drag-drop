@@ -1,20 +1,20 @@
-<mat-toolbar class="mat-elevation-z4 flex-shrink-0"
-             color="primary">
+<mat-toolbar class="mat-elevation-z4 flex-shrink-0" color="primary">
+  <span>{{ title }}</span>
 
-  <span>{{title}}</span>
-
-  <a href="https://github.com/reppners/ngx-drag-drop"
-     mat-icon-button>
+  <a href="https://github.com/reppners/ngx-drag-drop" mat-icon-button>
     <mat-icon svgIcon="github"></mat-icon>
   </a>
-
 </mat-toolbar>
 
 <ng-container *ngIf="activeTab$ | async as activeTab">
-  <nav mat-tab-nav-bar [tabPanel]="tabPanel">
-    <a *ngFor="let tab of tabs" [active]="activeTab === tab"
-       (click)="onTabLinkClick(tab)"
-       mat-tab-link> {{tab}} </a>
+  <nav [tabPanel]="tabPanel" mat-tab-nav-bar>
+    <a
+      *ngFor="let tab of tabs"
+      [active]="activeTab === tab"
+      (click)="onTabLinkClick(tab)"
+      mat-tab-link>
+      {{ tab }}
+    </a>
   </nav>
 </ng-container>
 
@@ -24,7 +24,4 @@
 
 <mat-divider></mat-divider>
 
-<dnd-demo-link [name]="activeTab$ | async"
-               style="margin: 8px">
-</dnd-demo-link>
-
+<dnd-demo-link [name]="activeTab$ | async" style="margin: 8px"> </dnd-demo-link>

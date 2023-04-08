@@ -1,13 +1,13 @@
-import {Component} from "@angular/core";
-import {DndDropEvent} from "ngx-drag-drop";
+import { Component } from '@angular/core';
+import { DndDropEvent } from 'ngx-drag-drop';
 
-type Apple = "apple";
-type Banana = "banana";
+type Apple = 'apple';
+type Banana = 'banana';
 type FruitType = Apple | Banana;
 
 interface Fruit {
   id: number;
-  type: FruitType
+  type: FruitType;
 }
 
 let id = 0;
@@ -15,51 +15,49 @@ let id = 0;
 function createFruit(type: FruitType) {
   return {
     id: id++,
-    type: type
+    type: type,
   };
 }
 
 function range(start: number, end: number) {
-  return Array.from({ length: end - start + 1 }, (_, i) => i)
+  return Array.from({ length: end - start + 1 }, (_, i) => i);
 }
 
 @Component({
-  selector: "dnd-typed",
-  templateUrl: "./typed.component.html",
-  styleUrls: ["./typed.component.scss"]
+  selector: 'dnd-typed',
+  templateUrl: './typed.component.html',
+  styleUrls: ['./typed.component.scss'],
 })
 export class TypedComponent {
+  public fruits: Fruit[] = range(0, 100).map(_ => {
+    const randomFruitType: FruitType = Math.random() < 0.5 ? 'apple' : 'banana';
+    return createFruit(randomFruitType);
+  });
 
-  public fruits: Fruit[] = range(0, 100)
-    .map(_ => {
-      const randomFruitType: FruitType = Math.random() < 0.5 ? "apple" : "banana";
-      return createFruit(randomFruitType);
-    })
+  public apples: Fruit[] = range(0, 12).map(_ => {
+    return createFruit('apple');
+  });
 
-  public apples: Fruit[] = range(0, 12)
-    .map(_ => {
-      return createFruit("apple");
-    });
-
-  public bananas: Fruit[] = range(0, 10)
-    .map(_ => {
-      return createFruit("banana");
-    });
+  public bananas: Fruit[] = range(0, 10).map(_ => {
+    return createFruit('banana');
+  });
 
   trackByFruit(index: number, fruit: Fruit) {
     return fruit;
   }
 
   onDragged(index: number, fruit: Fruit, list: Fruit[]) {
-    const removeIndex = list.indexOf(fruit)
-    console.log(`onDragged ngFor-index=${index}, item=${fruit}, removeIndex=${removeIndex}, list=${list.length}`)
+    const removeIndex = list.indexOf(fruit);
+    console.log(
+      `onDragged ngFor-index=${index}, item=${fruit}, removeIndex=${removeIndex}, list=${list.length}`
+    );
     list.splice(removeIndex, 1);
   }
 
   onDrop(event: DndDropEvent, list: Fruit[]) {
-    console.log("onDrop", event, list.length);
+    console.log('onDrop', event, list.length);
     let index = event.index;
-    if (typeof index === "undefined") {
+    if (typeof index === 'undefined') {
       index = list.length;
     }
     list.splice(index, 0, event.data);
