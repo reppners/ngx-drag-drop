@@ -1,92 +1,103 @@
 import {
-  AfterViewInit, ContentChild, Directive, ElementRef, EventEmitter, HostListener, Input, NgZone, OnDestroy, OnInit, Output, Renderer2
-} from "@angular/core";
+  AfterViewInit,
+  ContentChild,
+  Directive,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  NgZone,
+  OnDestroy,
+  OnInit,
+  Output,
+  Renderer2,
+} from '@angular/core';
+import {
+  getDndType,
+  getDropEffect,
+  isExternalDrag,
+  setDropEffect,
+} from './dnd-state';
+import { DropEffect, EffectAllowed } from './dnd-types';
 import {
   DndEvent,
   DragDropData,
   getDirectChildElement,
   getDropData,
-  shouldPositionPlaceholderBeforeElement
-} from "./dnd-utils";
-import { getDndType, getDropEffect, isExternalDrag, setDropEffect } from "./dnd-state";
-import { DropEffect, EffectAllowed } from "./dnd-types";
+  shouldPositionPlaceholderBeforeElement,
+} from './dnd-utils';
 
 export interface DndDropEvent {
-  event:DragEvent;
-  dropEffect:DropEffect;
-  isExternal:boolean;
-  data?:any;
-  index?:number;
-  type?:any;
+  event: DragEvent;
+  dropEffect: DropEffect;
+  isExternal: boolean;
+  data?: any;
+  index?: number;
+  type?: any;
 }
 
-@Directive({selector: "[dndPlaceholderRef]"})
+@Directive({ selector: '[dndPlaceholderRef]' })
 export class DndPlaceholderRefDirective implements OnInit {
   constructor(public readonly elementRef: ElementRef<HTMLElement>) {}
-  
+
   ngOnInit() {
     // placeholder has to be "invisible" to the cursor, or it would interfere with the dragover detection for the same dropzone
     this.elementRef.nativeElement.style.pointerEvents = 'none';
   }
 }
 
-@Directive({selector: "[dndDropzone]"})
+@Directive({ selector: '[dndDropzone]' })
 export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
-  @Input()
-  dndDropzone?:string[] | "" = "";
+  @Input() dndDropzone?: string[] | '' = '';
 
-  @Input()
-  dndEffectAllowed:EffectAllowed = "uninitialized";
+  @Input() dndEffectAllowed: EffectAllowed = 'uninitialized';
 
-  @Input()
-  dndAllowExternal:boolean = false;
+  @Input() dndAllowExternal: boolean = false;
 
-  @Input()
-  dndHorizontal:boolean = false;
+  @Input() dndHorizontal: boolean = false;
 
-  @Input()
-  dndDragoverClass:string = "dndDragover";
+  @Input() dndDragoverClass: string = 'dndDragover';
 
-  @Input()
-  dndDropzoneDisabledClass = "dndDropzoneDisabled";
+  @Input() dndDropzoneDisabledClass = 'dndDropzoneDisabled';
 
-  @Output()
-  readonly dndDragover:EventEmitter<DragEvent> = new EventEmitter<DragEvent>();
+  @Output() readonly dndDragover: EventEmitter<DragEvent> =
+    new EventEmitter<DragEvent>();
 
-  @Output()
-  readonly dndDrop:EventEmitter<DndDropEvent> = new EventEmitter<DndDropEvent>();
+  @Output() readonly dndDrop: EventEmitter<DndDropEvent> =
+    new EventEmitter<DndDropEvent>();
 
   @ContentChild(DndPlaceholderRefDirective)
   private readonly dndPlaceholderRef?: DndPlaceholderRefDirective;
 
-  private placeholder:Element | null = null;
+  private placeholder: Element | null = null;
 
-  private disabled:boolean = false;
+  private disabled: boolean = false;
 
-  private readonly dragEnterEventHandler:(event:DragEvent) => void = (event:DragEvent) => this.onDragEnter(event);
-  private readonly dragOverEventHandler:(event:DragEvent) => void = (event:DragEvent) => this.onDragOver(event);
-  private readonly dragLeaveEventHandler:(event:DragEvent) => void = (event:DragEvent) => this.onDragLeave(event);
+  constructor(
+    private ngZone: NgZone,
+    private elementRef: ElementRef,
+    private renderer: Renderer2
+  ) {}
 
-  @Input()
-  set dndDisableIf(value:boolean) {
+  @Input() set dndDisableIf(value: boolean) {
     this.disabled = value;
 
     if (this.disabled) {
-      this.renderer.addClass(this.elementRef.nativeElement, this.dndDropzoneDisabledClass);
-    }
-    else {
-      this.renderer.removeClass(this.elementRef.nativeElement, this.dndDropzoneDisabledClass);
+      this.renderer.addClass(
+        this.elementRef.nativeElement,
+        this.dndDropzoneDisabledClass
+      );
+    } else {
+      this.renderer.removeClass(
+        this.elementRef.nativeElement,
+        this.dndDropzoneDisabledClass
+      );
     }
   }
 
-  @Input()
-  set dndDisableDropIf(value:boolean) {
+  @Input() set dndDisableDropIf(value: boolean) {
     this.dndDisableIf = value;
   }
-
-  constructor(private ngZone:NgZone,
-    private elementRef:ElementRef,
-    private renderer:Renderer2) {}
 
   ngAfterViewInit(): void {
     this.placeholder = this.tryGetPlaceholder();
@@ -94,16 +105,34 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
     this.removePlaceholderFromDOM();
 
     this.ngZone.runOutsideAngular(() => {
-      this.elementRef.nativeElement.addEventListener("dragenter", this.dragEnterEventHandler);
-      this.elementRef.nativeElement.addEventListener("dragover", this.dragOverEventHandler);
-      this.elementRef.nativeElement.addEventListener("dragleave", this.dragLeaveEventHandler);
+      this.elementRef.nativeElement.addEventListener(
+        'dragenter',
+        this.dragEnterEventHandler
+      );
+      this.elementRef.nativeElement.addEventListener(
+        'dragover',
+        this.dragOverEventHandler
+      );
+      this.elementRef.nativeElement.addEventListener(
+        'dragleave',
+        this.dragLeaveEventHandler
+      );
     });
   }
 
   ngOnDestroy(): void {
-    this.elementRef.nativeElement.removeEventListener("dragenter", this.dragEnterEventHandler);
-    this.elementRef.nativeElement.removeEventListener("dragover", this.dragOverEventHandler);
-    this.elementRef.nativeElement.removeEventListener("dragleave", this.dragLeaveEventHandler);
+    this.elementRef.nativeElement.removeEventListener(
+      'dragenter',
+      this.dragEnterEventHandler
+    );
+    this.elementRef.nativeElement.removeEventListener(
+      'dragover',
+      this.dragOverEventHandler
+    );
+    this.elementRef.nativeElement.removeEventListener(
+      'dragleave',
+      this.dragLeaveEventHandler
+    );
   }
 
   onDragEnter(event: DndEvent) {
@@ -115,7 +144,7 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
 
     // set as active if the target element is inside this dropzone
     if (event._dndDropzoneActive == null) {
-      const newTarget = document.elementFromPoint( event.clientX, event.clientY );
+      const newTarget = document.elementFromPoint(event.clientX, event.clientY);
 
       if (this.elementRef.nativeElement.contains(newTarget)) {
         event._dndDropzoneActive = true;
@@ -152,7 +181,7 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
 
     const dropEffect = getDropEffect(event, this.dndEffectAllowed);
 
-    if (dropEffect === "none") {
+    if (dropEffect === 'none') {
       this.cleanupDragoverState();
       return;
     }
@@ -165,11 +194,13 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
 
     this.dndDragover.emit(event);
 
-    this.renderer.addClass(this.elementRef.nativeElement, this.dndDragoverClass);
+    this.renderer.addClass(
+      this.elementRef.nativeElement,
+      this.dndDragoverClass
+    );
   }
 
-  @HostListener("drop", [ "$event" ])
-  onDrop(event: DragEvent) {
+  @HostListener('drop', ['$event']) onDrop(event: DragEvent) {
     try {
       // check if this drag event is allowed to drop on this dropzone
       const type = getDndType(event);
@@ -177,7 +208,7 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
         return;
       }
 
-      const data:DragDropData = getDropData(event, isExternalDrag());
+      const data: DragDropData = getDropData(event, isExternalDrag());
 
       if (!this.isDropAllowed(data.type)) {
         return;
@@ -190,7 +221,7 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
 
       setDropEffect(event, dropEffect);
 
-      if (dropEffect === "none") {
+      if (dropEffect === 'none') {
         return;
       }
 
@@ -213,8 +244,7 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
       });
 
       event.stopPropagation();
-    }
-    finally {
+    } finally {
       this.cleanupDragoverState();
     }
   }
@@ -226,7 +256,7 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
     // check if still inside this dropzone and not yet handled by another dropzone
     if (event._dndDropzoneActive == null) {
       const newTarget = document.elementFromPoint(event.clientX, event.clientY);
-      
+
       if (this.elementRef.nativeElement.contains(newTarget)) {
         event._dndDropzoneActive = true;
         return;
@@ -236,8 +266,20 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
     this.cleanupDragoverState();
 
     // cleanup drop effect when leaving dropzone
-    setDropEffect(event, "none");
+    setDropEffect(event, 'none');
   }
+
+  private readonly dragEnterEventHandler: (event: DragEvent) => void = (
+    event: DragEvent
+  ) => this.onDragEnter(event);
+
+  private readonly dragOverEventHandler: (event: DragEvent) => void = (
+    event: DragEvent
+  ) => this.onDragOver(event);
+
+  private readonly dragLeaveEventHandler: (event: DragEvent) => void = (
+    event: DragEvent
+  ) => this.onDragLeave(event);
 
   private isDropAllowed(type?: string): boolean {
     // dropzone is disabled -> deny it
@@ -262,7 +304,9 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
     }
 
     if (!Array.isArray(this.dndDropzone)) {
-      throw new Error ("dndDropzone: bound value to [dndDropzone] must be an array!");
+      throw new Error(
+        'dndDropzone: bound value to [dndDropzone] must be an array!'
+      );
     }
 
     // if dropzone contains type -> allow it
@@ -270,53 +314,69 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
   }
 
   private tryGetPlaceholder(): Element | null {
-    if (typeof this.dndPlaceholderRef !== "undefined") {
+    if (typeof this.dndPlaceholderRef !== 'undefined') {
       return this.dndPlaceholderRef.elementRef.nativeElement as Element;
     }
 
     // TODO nasty workaround needed because if ng-container / template is used @ContentChild() or DI will fail because
     // of wrong context see angular bug https://github.com/angular/angular/issues/13517
-    return this.elementRef.nativeElement.querySelector("[dndPlaceholderRef]");
+    return this.elementRef.nativeElement.querySelector('[dndPlaceholderRef]');
   }
 
   private removePlaceholderFromDOM() {
-    if(this.placeholder !== null
-      && this.placeholder.parentNode !== null) {
+    if (this.placeholder !== null && this.placeholder.parentNode !== null) {
       this.placeholder.parentNode.removeChild(this.placeholder);
     }
   }
 
-  private checkAndUpdatePlaceholderPosition(event:DragEvent): void {
+  private checkAndUpdatePlaceholderPosition(event: DragEvent): void {
     if (this.placeholder === null) {
       return;
     }
 
     // make sure the placeholder is in the DOM
-    if(this.placeholder.parentNode !== this.elementRef.nativeElement) {
-      this.renderer.appendChild(this.elementRef.nativeElement, this.placeholder);
+    if (this.placeholder.parentNode !== this.elementRef.nativeElement) {
+      this.renderer.appendChild(
+        this.elementRef.nativeElement,
+        this.placeholder
+      );
     }
 
     // update the position if the event originates from a child element of the dropzone
-    const directChild = getDirectChildElement(this.elementRef.nativeElement, event.target as Element);
+    const directChild = getDirectChildElement(
+      this.elementRef.nativeElement,
+      event.target as Element
+    );
 
     // early exit if no direct child or direct child is placeholder
-    if (directChild === null
-      || directChild === this.placeholder) {
+    if (directChild === null || directChild === this.placeholder) {
       return;
     }
 
-    const positionPlaceholderBeforeDirectChild = shouldPositionPlaceholderBeforeElement(event, directChild, this.dndHorizontal);
+    const positionPlaceholderBeforeDirectChild =
+      shouldPositionPlaceholderBeforeElement(
+        event,
+        directChild,
+        this.dndHorizontal
+      );
 
     if (positionPlaceholderBeforeDirectChild) {
       // do insert before only if necessary
       if (directChild.previousSibling !== this.placeholder) {
-        this.renderer.insertBefore(this.elementRef.nativeElement, this.placeholder, directChild);
+        this.renderer.insertBefore(
+          this.elementRef.nativeElement,
+          this.placeholder,
+          directChild
+        );
       }
-    }
-    else {
+    } else {
       // do insert after only if necessary
       if (directChild.nextSibling !== this.placeholder) {
-        this.renderer.insertBefore(this.elementRef.nativeElement, this.placeholder, directChild.nextSibling);
+        this.renderer.insertBefore(
+          this.elementRef.nativeElement,
+          this.placeholder,
+          directChild.nextSibling
+        );
       }
     }
   }
@@ -332,7 +392,10 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
   }
 
   private cleanupDragoverState() {
-    this.renderer.removeClass(this.elementRef.nativeElement, this.dndDragoverClass);
+    this.renderer.removeClass(
+      this.elementRef.nativeElement,
+      this.dndDragoverClass
+    );
 
     this.removePlaceholderFromDOM();
   }

@@ -3,72 +3,78 @@
     <div class="col">
       <pre>dndEffectAllowed="copyMove"</pre>
 
-      <mat-list [class.horizontal]="layout.dndHorizontal"
-                [dndHorizontal]="layout.dndHorizontal"
-                (dndDrop)="onDrop($event, draggableListLeft)"
-                class="dndList gap-1 d-flex flex-column bg-light rounded-1 shadow-sm"
-                dndDropzone
-                dndEffectAllowed="copyMove">
-
-        <mat-list-item class="dndPlaceholder border rounded-1 bg-opacity-25"
-                       dndPlaceholderRef>
+      <mat-list
+        [class.horizontal]="layout.dndHorizontal"
+        [dndHorizontal]="layout.dndHorizontal"
+        (dndDrop)="onDrop($event, draggableListLeft)"
+        class="dndList gap-1 d-flex flex-column bg-light rounded-1 shadow-sm"
+        dndDropzone
+        dndEffectAllowed="copyMove">
+        <mat-list-item
+          class="dndPlaceholder border rounded-1 bg-opacity-25"
+          dndPlaceholderRef>
         </mat-list-item>
 
-        <mat-list-item *ngFor="let item of draggableListLeft"
-                       class="border rounded-1 bg-white"
-                       [dndDisableIf]="item.disable"
-                       [dndDraggable]="item"
-                       [dndEffectAllowed]="item.effectAllowed"
-                       (dndCanceled)="onDragged(item, draggableListLeft, 'none')"
-                       (dndCopied)="onDragged(item, draggableListLeft, 'copy')"
-                       (dndEnd)="onDragEnd($event)"
-                       (dndLinked)="onDragged(item, draggableListLeft, 'link')"
-                       (dndMoved)="onDragged(item, draggableListLeft, 'move')"
-                       (dndStart)="onDragStart($event)">
-          <div *ngIf="item.handle"
-               matListItemIcon
-               dndHandle
-               class="drag-handle align-self-center mx-3 my-0">
+        <mat-list-item
+          *ngFor="let item of draggableListLeft"
+          [dndDisableIf]="item.disable"
+          [dndDraggable]="item"
+          [dndEffectAllowed]="item.effectAllowed"
+          (dndCanceled)="onDragged(item, draggableListLeft, 'none')"
+          (dndCopied)="onDragged(item, draggableListLeft, 'copy')"
+          (dndEnd)="onDragEnd($event)"
+          (dndLinked)="onDragged(item, draggableListLeft, 'link')"
+          (dndMoved)="onDragged(item, draggableListLeft, 'move')"
+          (dndStart)="onDragStart($event)"
+          class="border rounded-1 bg-white">
+          <div
+            *ngIf="item.handle"
+            class="drag-handle align-self-center mx-3 my-0"
+            dndHandle
+            matListItemIcon>
             <mat-icon fontIcon="drag_handle"></mat-icon>
           </div>
-          <span matListItemTitle>{{item.content}}</span>
-          <span matListItemLine>effectAllowed: {{item.effectAllowed}}</span>
+          <span matListItemTitle>{{ item.content }}</span>
+          <span matListItemLine>effectAllowed: {{ item.effectAllowed }}</span>
         </mat-list-item>
-
       </mat-list>
     </div>
 
     <div class="col d-flex flex-column">
       <pre>dndEffectAllowed="copyMove"</pre>
 
-      <mat-list [class.horizontal]="layout.dndHorizontal"
-                [dndHorizontal]="layout.dndHorizontal"
-                (dndDrop)="onDrop($event, draggableListRight)"
-                class="dndList gap-1 flex-grow-1 d-flex flex-column bg-light rounded-1 shadow-sm"
-                dndDropzone
-                dndEffectAllowed="copyMove">
-        <mat-list-item class="dndPlaceholder border rounded-1 bg-white bg-opacity-25"
-                       dndPlaceholderRef>
+      <mat-list
+        [class.horizontal]="layout.dndHorizontal"
+        [dndHorizontal]="layout.dndHorizontal"
+        (dndDrop)="onDrop($event, draggableListRight)"
+        class="dndList gap-1 flex-grow-1 d-flex flex-column bg-light rounded-1 shadow-sm"
+        dndDropzone
+        dndEffectAllowed="copyMove">
+        <mat-list-item
+          class="dndPlaceholder border rounded-1 bg-white bg-opacity-25"
+          dndPlaceholderRef>
         </mat-list-item>
-        <mat-list-item *ngFor="let item of draggableListRight"
-                       class="border rounded-1 bg-white"
-                       [dndDisableIf]="item.disable"
-                       [dndDraggable]="item"
-                       [dndEffectAllowed]="item.effectAllowed"
-                       (dndCanceled)="onDragged(item, draggableListRight, 'none')"
-                       (dndCopied)="onDragged(item, draggableListRight, 'copy')"
-                       (dndEnd)="onDragEnd($event)"
-                       (dndLinked)="onDragged(item, draggableListRight, 'link')"
-                       (dndMoved)="onDragged(item, draggableListRight, 'move')"
-                       (dndStart)="onDragStart($event)">
-          <div *ngIf="item.handle"
-               matListItemIcon
-               dndHandle
-               class="drag-handle align-self-center mx-3 my-0">
+        <mat-list-item
+          *ngFor="let item of draggableListRight"
+          [dndDisableIf]="item.disable"
+          [dndDraggable]="item"
+          [dndEffectAllowed]="item.effectAllowed"
+          (dndCanceled)="onDragged(item, draggableListRight, 'none')"
+          (dndCopied)="onDragged(item, draggableListRight, 'copy')"
+          (dndEnd)="onDragEnd($event)"
+          (dndLinked)="onDragged(item, draggableListRight, 'link')"
+          (dndMoved)="onDragged(item, draggableListRight, 'move')"
+          (dndStart)="onDragStart($event)"
+          class="border rounded-1 bg-white">
+          <div
+            *ngIf="item.handle"
+            class="drag-handle align-self-center mx-3 my-0"
+            dndHandle
+            matListItemIcon>
             <mat-icon fontIcon="drag_handle"></mat-icon>
           </div>
-          <span matListItemTitle>{{item.content}}</span>
-          <span matListItemLine>effectAllowed: {{item.effectAllowed}}</span>
+          <span matListItemTitle>{{ item.content }}</span>
+          <span matListItemLine>effectAllowed: {{ item.effectAllowed }}</span>
         </mat-list-item>
       </mat-list>
     </div>
@@ -76,12 +82,12 @@
     <div class="col d-flex flex-column">
       <pre>trash (dndEffectAllowed="move")</pre>
 
-      <mat-list [dndHorizontal]="layout.dndHorizontal"
-                (dndDrop)="onDrop($event)"
-                class="dndList gap-1 flex-grow-1 d-flex flex-column bg-light rounded-1 shadow-sm"
-                dndDropzone
-                dndEffectAllowed="move">
-
+      <mat-list
+        [dndHorizontal]="layout.dndHorizontal"
+        (dndDrop)="onDrop($event)"
+        class="dndList gap-1 flex-grow-1 d-flex flex-column bg-light rounded-1 shadow-sm"
+        dndDropzone
+        dndEffectAllowed="move">
       </mat-list>
     </div>
   </div>
@@ -93,4 +99,3 @@
 <!--                     (change)="horizontalLayoutActive = $event.checked; setHorizontalLayout($event.checked)">horizontal -->
 <!--   </mat-slide-toggle> -->
 <!-- </div> -->
-

@@ -1,53 +1,54 @@
 <div class="container-fluid">
-  <ng-template #recursiveList
-               let-list>
+  <ng-template #recursiveList let-list>
+    <mat-card class="dndPlaceholder" dndPlaceholderRef> </mat-card>
 
-    <mat-card dndPlaceholderRef
-              class="dndPlaceholder">
-    </mat-card>
-
-    <mat-card *ngFor="let item of list"
-              [dndDraggable]="item"
-              dndEffectAllowed="move"
-              [dndDisableIf]="item.disable"
-              (dndStart)="onDragStart($event)"
-              (dndCopied)="onDragged(item, list, 'copy')"
-              (dndLinked)="onDragged(item, list, 'link')"
-              (dndMoved)="onDragged(item, list, 'move')"
-              (dndCanceled)="onDragged(item, list, 'none')"
-              (dndEnd)="onDragEnd($event)">
-
+    <mat-card
+      *ngFor="let item of list"
+      [dndDisableIf]="item.disable"
+      [dndDraggable]="item"
+      (dndCanceled)="onDragged(item, list, 'none')"
+      (dndCopied)="onDragged(item, list, 'copy')"
+      (dndEnd)="onDragEnd($event)"
+      (dndLinked)="onDragged(item, list, 'link')"
+      (dndMoved)="onDragged(item, list, 'move')"
+      (dndStart)="onDragStart($event)"
+      dndEffectAllowed="move">
       <mat-card-header class="p-2">
-        <div class="drag-handle me-2 text-muted" *ngIf="item.handle">
-          <mat-icon mat-list-icon
-                    dndHandle>drag_handle
-          </mat-icon>
+        <div *ngIf="item.handle" class="drag-handle me-2 text-muted">
+          <mat-icon dndHandle mat-list-icon>drag_handle </mat-icon>
         </div>
 
-        {{item.content}}
+        {{ item.content }}
       </mat-card-header>
 
       <mat-card-content class="d-flex align-items-start gap-2 flex-column p-2">
-        <div *ngIf="item.customDragImage"
-             dndDragImageRef>MY_CUSTOM_DRAG_IMAGE
+        <div *ngIf="item.customDragImage" dndDragImageRef>
+          MY_CUSTOM_DRAG_IMAGE
         </div>
 
-        <div *ngIf="item.children"
-             class="flex-column p-2 gap-2 rounded-2"
-             dndDropzone
-             (dndDrop)="onDrop($event, item.children)">
-
-          <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.children }"></ng-container>
+        <div
+          *ngIf="item.children"
+          (dndDrop)="onDrop($event, item.children)"
+          class="flex-column p-2 gap-2 rounded-2"
+          dndDropzone>
+          <ng-container
+            *ngTemplateOutlet="
+              recursiveList;
+              context: { $implicit: item.children }
+            "></ng-container>
         </div>
       </mat-card-content>
     </mat-card>
   </ng-template>
 
-  <div class="d-flex gap-3 p-3 rounded-2"
-       dndDropzone
-       (dndDrop)="onDrop($event, nestableList)">
-
-    <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: nestableList }"></ng-container>
-
+  <div
+    (dndDrop)="onDrop($event, nestableList)"
+    class="d-flex gap-3 p-3 rounded-2"
+    dndDropzone>
+    <ng-container
+      *ngTemplateOutlet="
+        recursiveList;
+        context: { $implicit: nestableList }
+      "></ng-container>
   </div>
 </div>
