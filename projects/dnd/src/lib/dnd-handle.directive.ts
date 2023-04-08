@@ -1,24 +1,21 @@
-import { Directive, HostBinding, HostListener } from "@angular/core";
-import { DndEvent } from "./dnd-utils";
-import { DndDraggableDirective } from "./dnd-draggable.directive";
+import {Directive, HostBinding, HostListener, inject, OnInit} from "@angular/core";
+import {DndEvent} from "./dnd-utils";
+import {DndDraggableDirective} from "./dnd-draggable.directive";
 
-@Directive( {
-  selector: "[dndHandle]"
-} )
-export class DndHandleDirective {
-
-  @HostBinding( "attr.draggable" )
+@Directive({selector: "[dndHandle]"})
+export class DndHandleDirective implements OnInit {
+  @HostBinding("attr.draggable")
   draggable = true;
 
-  constructor( parent:DndDraggableDirective ) {
+  dndDraggableDirective = inject(DndDraggableDirective);
 
-    parent.registerDragHandle( this );
+  ngOnInit() {
+    this.dndDraggableDirective.registerDragHandle(this);
   }
 
-  @HostListener( "dragstart", [ "$event" ] )
-  @HostListener( "dragend", [ "$event" ] )
-  onDragEvent( event:DndEvent ) {
-
+  @HostListener("dragstart", ["$event"])
+  @HostListener("dragend", ["$event"])
+  onDragEvent(event: DndEvent) {
     event._dndUsingHandle = true;
   }
 }
