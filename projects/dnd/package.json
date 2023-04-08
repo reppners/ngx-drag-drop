@@ -11,6 +11,12 @@
     "name": "Stefan Steinhart",
     "email": "stefanreppner@googlemail.com"
   },
+  "contributors": [
+    {
+      "name": "Christof Fritz",
+      "email": "npm@christof.me"
+    }
+  ],
   "license": "BSD-3-Clause",
   "keywords": [
     "angular",
