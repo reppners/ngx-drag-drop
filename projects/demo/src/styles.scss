@@ -48,10 +48,11 @@ html, body {
 
   display: flex;
   flex: 1;
+
+  background: #fafafa;
 }
 
 .layout-padding {
-
   padding: 8px;
 }
 
@@ -65,13 +66,11 @@ html, body {
   overflow-y: auto;
 }
 
-[draggable=true] {
-
+[dndHandle], [draggable=true]:not(:has([dndHandle])) {
   cursor: pointer;
 }
 
 [draggable].dndDraggableDisabled {
-
   cursor: not-allowed;
   opacity: .7;
 }
@@ -83,14 +82,12 @@ html, body {
 }
 
 [dndDropzone].dndDropzoneDisabled {
-
   cursor: no-drop;
   opacity: .7;
   border-color: gray;
 }
 
 [dndDropzone].dndDragover {
-
   border-color: green;
 }
 

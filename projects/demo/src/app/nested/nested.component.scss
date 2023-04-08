@@ -8,12 +8,26 @@ mat-card {
   transition: transform 200ms, opacity 200ms;
 }
 
-.dndDraggingSource {
+mat-card-header {
+  border-bottom: 2px solid rgba(0, 0, 0, .04);
+  align-items: center;
+  min-height: 46px;
+}
 
+.dndDraggingSource {
   opacity: .5;
   transform: scale(.98);
 }
 
 .dndPlaceholder {
-  min-height: 52px;
+  background: #fff;
+  min-height: 46px;
+  min-width: 46px;
+}
+
+[dnddropzone] {
+  background: #fafafa;
+  min-height: 60px;
+  display: flex;
+  outline: 2px solid rgba(0, 0, 0, .04);
 }

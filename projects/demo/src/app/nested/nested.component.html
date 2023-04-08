@@ -1,14 +1,12 @@
 <div class="container-fluid">
-
   <ng-template #recursiveList
                let-list>
 
     <mat-card dndPlaceholderRef
-              class="dndPlaceholder bg-light bg-gradient">
+              class="dndPlaceholder">
     </mat-card>
 
     <mat-card *ngFor="let item of list"
-              class="flex-fill"
               [dndDraggable]="item"
               dndEffectAllowed="move"
               [dndDisableIf]="item.disable"
@@ -19,36 +17,33 @@
               (dndCanceled)="onDragged(item, list, 'none')"
               (dndEnd)="onDragEnd($event)">
 
-      <mat-card-content class="d-flex align-items-center gap-2">
-        <div class="drag-handle" *ngIf="item.handle">
+      <mat-card-header class="p-2">
+        <div class="drag-handle me-2 text-muted" *ngIf="item.handle">
           <mat-icon mat-list-icon
                     dndHandle>drag_handle
           </mat-icon>
         </div>
 
-        <div>
-          {{item.content}}
+        {{item.content}}
+      </mat-card-header>
 
-          <div *ngIf="item.customDragImage"
-               dndDragImageRef>MY_CUSTOM_DRAG_IMAGE
-          </div>
+      <mat-card-content class="d-flex align-items-start gap-2 flex-column p-2">
+        <div *ngIf="item.customDragImage"
+             dndDragImageRef>MY_CUSTOM_DRAG_IMAGE
+        </div>
 
-          <div *ngIf="item.children"
-               class="layout-padding"
-               dndDropzone
-               (dndDrop)="onDrop($event, item.children)">
+        <div *ngIf="item.children"
+             class="flex-column p-2 gap-2 rounded-2"
+             dndDropzone
+             (dndDrop)="onDrop($event, item.children)">
 
-            <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.children }"></ng-container>
-
-          </div>
+          <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.children }"></ng-container>
         </div>
       </mat-card-content>
-
     </mat-card>
-
   </ng-template>
 
-  <div class="d-flex gap-3 "
+  <div class="d-flex gap-3 p-3 rounded-2"
        dndDropzone
        (dndDrop)="onDrop($event, nestableList)">
 

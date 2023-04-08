@@ -23,7 +23,8 @@ export class NestedComponent {
       children: [
         {
           content: "Nested",
-          customDragImage: true
+          customDragImage: true,
+          children: []
         }
       ]
     },
@@ -35,13 +36,16 @@ export class NestedComponent {
       children: [
         {
           content: "Nested 1",
-          handle: true
+          handle: true,
+          children: []
         },
         {
-          content: "Nested 2"
+          content: "Nested 2",
+          children: []
         },
         {
-          content: "Nested 3"
+          content: "Nested 3",
+          children: []
         }
       ]
     },
@@ -51,14 +55,12 @@ export class NestedComponent {
     }
   ];
 
-  private currentDraggableEvent?:DragEvent;
-  private currentDragEffectMsg?:string;
+  private currentDraggableEvent?: DragEvent;
+  private currentDragEffectMsg?: string;
 
-  constructor( private snackBarService:MatSnackBar ) {
-  }
+  constructor( private snackBarService:MatSnackBar ) {}
 
   onDragStart( event:DragEvent ) {
-
     this.currentDragEffectMsg = "";
     this.currentDraggableEvent = event;
 
@@ -67,25 +69,21 @@ export class NestedComponent {
   }
 
   onDragged( item:any, list:any[], effect:DropEffect ) {
-
     this.currentDragEffectMsg = `Drag ended with effect "${effect}"!`;
 
     if( effect === "move" ) {
-
       const index = list.indexOf( item );
       list.splice( index, 1 );
     }
   }
 
   onDragEnd( event:DragEvent ) {
-
     this.currentDraggableEvent = event;
     this.snackBarService.dismiss();
     this.snackBarService.open( this.currentDragEffectMsg || `Drag ended!`, undefined, {duration: 2000} );
   }
 
   onDrop( event:DndDropEvent, list?:any[] ) {
-
     if( list
       && (event.dropEffect === "copy"
         || event.dropEffect === "move") ) {
@@ -93,7 +91,6 @@ export class NestedComponent {
       let index = event.index;
 
       if( typeof index === "undefined" ) {
-
         index = list.length;
       }
 
