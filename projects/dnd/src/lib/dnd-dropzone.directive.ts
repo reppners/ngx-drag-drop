@@ -30,12 +30,13 @@ export interface DndDropEvent {
   type?:any;
 }
 
-@Directive( {
-  selector: "[dndPlaceholderRef]"
-} )
-export class DndPlaceholderRefDirective {
-
-  constructor( public readonly elementRef:ElementRef ) {
+@Directive({selector: "[dndPlaceholderRef]"})
+export class DndPlaceholderRefDirective implements OnInit {
+  constructor(public readonly elementRef: ElementRef<HTMLElement>) {}
+  
+  ngOnInit() {
+    // placeholder has to be "invisible" to the cursor, or it would interfere with the dragover detection for the same dropzone
+    this.elementRef.nativeElement.style.pointerEvents = 'none';
   }
 }
 
