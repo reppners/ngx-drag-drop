@@ -18,21 +18,15 @@ import { DndHandleDirective } from "./dnd-handle.directive";
 import { dndState, endDrag, startDrag } from "./dnd-state";
 import { EffectAllowed } from "./dnd-types";
 
-@Directive( {
-  selector: "[dndDragImageRef]"
-} )
+@Directive({selector: "[dndDragImageRef]"})
 export class DndDragImageRefDirective {
-
-  constructor(@Inject(forwardRef(() => DndDraggableDirective)) parent: DndDraggableDirective, elementRef:ElementRef ) {
-    parent.registerDragImage( elementRef );
+  constructor(@Inject(forwardRef(() => DndDraggableDirective)) parent: DndDraggableDirective, elementRef:ElementRef) {
+    parent.registerDragImage(elementRef);
   }
 }
 
-@Directive( {
-  selector: "[dndDraggable]"
-} )
+@Directive({selector: "[dndDraggable]"})
 export class DndDraggableDirective implements AfterViewInit, OnDestroy {
-
   @Input()
   dndDraggable:any;
 
@@ -86,110 +80,105 @@ export class DndDraggableDirective implements AfterViewInit, OnDestroy {
 
   private isDragStarted:boolean = false;
 
-  private readonly dragEventHandler:( event:DragEvent ) => void = ( event:DragEvent ) => this.onDrag( event );
+  private readonly dragEventHandler: (event: DragEvent) => void = (event: DragEvent) => this.onDrag(event);
 
   @Input()
-  set dndDisableIf( value:boolean ) {
-
+  set dndDisableIf(value: boolean) {
     this.draggable = !value;
 
-    if( this.draggable ) {
-
-      this.renderer.removeClass( this.elementRef.nativeElement, this.dndDraggableDisabledClass );
+    if (this.draggable) {
+      this.renderer.removeClass(this.elementRef.nativeElement, this.dndDraggableDisabledClass);
     }
     else {
-
-      this.renderer.addClass( this.elementRef.nativeElement, this.dndDraggableDisabledClass );
+      this.renderer.addClass(this.elementRef.nativeElement, this.dndDraggableDisabledClass);
     }
   }
 
   @Input()
-  set dndDisableDragIf( value:boolean ) {
+  set dndDisableDragIf(value: boolean) {
     this.dndDisableIf = value;
   }
 
-  constructor( private elementRef:ElementRef,
-               private renderer:Renderer2,
-               private ngZone:NgZone ) {
+  constructor(private elementRef: ElementRef,
+              private renderer: Renderer2,
+              private ngZone: NgZone) {
   }
 
-  ngAfterViewInit():void {
-    this.ngZone.runOutsideAngular( () => {
-      this.elementRef.nativeElement.addEventListener( "drag", this.dragEventHandler );
-    } );
+  ngAfterViewInit(): void {
+    this.ngZone.runOutsideAngular(() => {
+      this.elementRef.nativeElement.addEventListener("drag", this.dragEventHandler);
+    });
   }
 
-  ngOnDestroy():void {
-    this.elementRef.nativeElement.removeEventListener( "drag", this.dragEventHandler );
-    if(this.isDragStarted === true) {
+  ngOnDestroy(): void {
+    this.elementRef.nativeElement.removeEventListener("drag", this.dragEventHandler);
+    if (this.isDragStarted) {
       endDrag()
     }
   }
 
-  @HostListener( "dragstart", [ "$event" ] )
-  onDragStart( event:DndEvent ): boolean {
-
-    if( this.draggable === false ) {
-
+  @HostListener("dragstart", ["$event"])
+  onDragStart(event: DndEvent): boolean {
+    if (!this.draggable) {
       return false;
     }
-
+    
     // check if there is dnd handle and if the dnd handle was used to start the drag
-    if( typeof this.dndHandle !== "undefined"
-      && typeof event._dndUsingHandle === "undefined" ) {
-
+    if (this.dndHandle != null && event._dndUsingHandle == null) {
+      event.stopPropagation();
       return false;
     }
 
     // initialize global state
-    startDrag( event, this.dndEffectAllowed, this.dndType );
+    startDrag(event, this.dndEffectAllowed, this.dndType);
 
     this.isDragStarted = true;
 
-    setDragData( event, {data: this.dndDraggable, type: this.dndType}, dndState.effectAllowed! );
+    setDragData(event, {data: this.dndDraggable, type: this.dndType}, dndState.effectAllowed!);
 
     this.dragImage = this.determineDragImage();
 
     // set dragging css class prior to setDragImage so styles are applied before
     // TODO breaking change: add class to elementRef rather than drag image which could be another element
-    this.renderer.addClass( this.dragImage, this.dndDraggingClass );
+    this.renderer.addClass(this.dragImage, this.dndDraggingClass);
 
     // set custom dragimage if present
     // set dragimage if drag is started from dndHandle
-    if( typeof this.dndDragImageElementRef !== "undefined"
-      || typeof event._dndUsingHandle !== "undefined" ) {
-
-      setDragImage( event, this.dragImage, this.dndDragImageOffsetFunction );
+    if (this.dndDragImageElementRef != null || event._dndUsingHandle != null) {
+      setDragImage(event, this.dragImage, this.dndDragImageOffsetFunction);
     }
 
     // add dragging source css class on first drag event
-    const unregister = this.renderer.listen( this.elementRef.nativeElement, "drag", () => {
-
-      this.renderer.addClass( this.elementRef.nativeElement, this.dndDraggingSourceClass );
+    const unregister = this.renderer.listen(this.elementRef.nativeElement, "drag", () => {
+      this.renderer.addClass(this.elementRef.nativeElement, this.dndDraggingSourceClass);
       unregister();
-    } );
+    });
 
-    this.dndStart.emit( event );
+    this.dndStart.emit(event);
 
     event.stopPropagation();
+    
+    setTimeout(() => {
+      this.renderer.setStyle(this.dragImage, 'pointer-events', 'none');
+    }, 100);
+    
     return true;
   }
 
-  onDrag( event:DragEvent ) {
-
-    this.dndDrag.emit( event );
+  onDrag(event: DragEvent) {
+    this.dndDrag.emit(event);
   }
 
-  @HostListener( "dragend", [ "$event" ] )
-  onDragEnd( event:DragEvent ) {
-
+  @HostListener("dragend", ["$event"])
+  onDragEnd(event: DragEvent) {
     // get drop effect from custom stored state as its not reliable across browsers
     const dropEffect = dndState.dropEffect;
-
+    
+    this.renderer.setStyle(this.dragImage, 'pointer-events', 'unset');
+    
     let dropEffectEmitter:EventEmitter<DragEvent>;
 
-    switch( dropEffect ) {
-
+    switch(dropEffect) {
       case "copy":
         dropEffectEmitter = this.dndCopied;
         break;
@@ -207,43 +196,38 @@ export class DndDraggableDirective implements AfterViewInit, OnDestroy {
         break;
     }
 
-    dropEffectEmitter.emit( event );
-    this.dndEnd.emit( event );
+    dropEffectEmitter.emit(event);
+    this.dndEnd.emit(event);
 
     // reset global state
     endDrag();
 
     this.isDragStarted = false;
 
-    this.renderer.removeClass( this.dragImage, this.dndDraggingClass );
+    this.renderer.removeClass(this.dragImage, this.dndDraggingClass);
 
     // IE9 special hammering
-    window.setTimeout( () => {
+    window.setTimeout(() => {
       this.renderer.removeClass( this.elementRef.nativeElement, this.dndDraggingSourceClass );
-    }, 0 );
+    }, 0);
 
     event.stopPropagation();
   }
 
-  registerDragHandle( handle:DndHandleDirective | undefined ) {
-
+  registerDragHandle(handle:DndHandleDirective | undefined) {
     this.dndHandle = handle;
   }
 
-  registerDragImage( elementRef:ElementRef | undefined ) {
-
+  registerDragImage(elementRef:ElementRef | undefined) {
     this.dndDragImageElementRef = elementRef;
   }
 
   private determineDragImage():Element {
-
     // evaluate custom drag image existence
-    if( typeof this.dndDragImageElementRef !== "undefined" ) {
-
+    if ( typeof this.dndDragImageElementRef !== "undefined" ) {
       return this.dndDragImageElementRef.nativeElement as Element;
     }
     else {
-
       return this.elementRef.nativeElement;
     }
   }
