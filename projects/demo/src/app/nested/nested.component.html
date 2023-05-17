@@ -1,8 +1,9 @@
 <div class="container-fluid">
   <ng-template #recursiveList let-list>
-    <mat-card class="dndPlaceholder" dndPlaceholderRef> </mat-card>
+    <mat-card appearance="raised" class="dndPlaceholder" dndPlaceholderRef> </mat-card>
 
     <mat-card
+      appearance="raised"
       *ngFor="let item of list"
       [dndDisableIf]="item.disable"
       [dndDraggable]="item"
