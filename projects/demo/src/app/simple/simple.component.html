@@ -2,6 +2,7 @@
   <div class="row gap-3 gap-sm-0">
     <div class="d-flex flex-column col gap-2">
       <mat-card
+        appearance="raised"
         *ngFor="let draggable of draggables"
         [dndDisableIf]="draggable.disable"
         [dndDraggable]="draggable.content"
@@ -24,6 +25,7 @@
       </mat-card>
 
       <mat-card
+        appearance="raised"
         [dndDisableIf]="draggableWithDragImage.disable"
         [dndDraggable]="draggableWithDragImage"
         [dndEffectAllowed]="draggableWithDragImage.effectAllowed"
@@ -50,6 +52,7 @@
       </mat-card>
 
       <mat-card
+        appearance="raised"
         [dndDisableIf]="draggableWithDragImage.disable"
         [dndDraggable]="draggableWithDragImage"
         [dndEffectAllowed]="draggableWithDragImage.effectAllowed"
@@ -71,6 +74,7 @@
       </mat-card>
 
       <mat-card
+        appearance="raised"
         [dndDisableIf]="draggableWithDragImage.disable"
         [dndDragImageOffsetFunction]="dragImageOffsetRight"
         [dndDraggable]="draggableWithDragImage"
@@ -90,7 +94,7 @@
     </div>
 
     <div class="col">
-      <mat-card>
+      <mat-card appearance="raised">
         <mat-card-header>
           <mat-card-title>Dropzone</mat-card-title>
           <mat-card-subtitle>
