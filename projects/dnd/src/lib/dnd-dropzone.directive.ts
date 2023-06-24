@@ -255,9 +255,7 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
 
     // check if still inside this dropzone and not yet handled by another dropzone
     if (event._dndDropzoneActive == null) {
-      const newTarget = document.elementFromPoint(event.clientX, event.clientY);
-
-      if (this.elementRef.nativeElement.contains(newTarget)) {
+      if (this.elementRef.nativeElement.contains(event.relatedTarget)) {
         event._dndDropzoneActive = true;
         return;
       }
