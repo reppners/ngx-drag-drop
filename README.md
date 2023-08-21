@@ -3,18 +3,6 @@
 [![NpmLicense](https://img.shields.io/npm/l/ngx-drag-drop.svg)](https://www.npmjs.com/package/ngx-drag-drop)
 [![GitHub issues](https://img.shields.io/github/issues/reppners/ngx-drag-drop.svg)](https://github.com/reppners/ngx-drag-drop/issues)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/reppners/ngx-drag-drop.svg?style=social)](https://twitter.com/intent/tweet?text=Angular%20drag%20and%20drop%20with%20ease:&url=https://github.com/reppners/ngx-drag-drop)
-# Angular Compatibility Table
-
-- Angular 16 support 🥳🥳🥳🥳
-
-Use appropriate version based on your Angular version.
-
-| Angular Version | Compatible Versions |
-|-----------------|---------------------|
-| 16.x            | 16.0.2              |
-| 15.x            | 15.0.1              |
-| 14.x            | 14.0.0              |
-| 13.x            | 13.1.1              |
 
 # NgxDragDrop
 
@@ -40,7 +28,18 @@ Port of [angular-drag-drop-lists](https://github.com/marceljuenemann/angular-dra
 
 This has `dropzones` though :+1:
 The idea is that the directive does not handle lists internally so the `dndDropzone` can be general purpose.
+# Angular Compatibility Table
 
+- Angular 16 support 🥳🥳🥳🥳
+
+Use appropriate version based on your Angular version.
+
+| Angular Version | Compatible Versions |
+|-----------------|---------------------|
+| 16.x            | 16.0.2              |
+| 15.x            | 15.0.1              |
+| 14.x            | 14.0.0              |
+| 13.x            | 13.1.1              |
 ## Usage
 
 `app.component.html`
