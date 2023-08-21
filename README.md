@@ -5,33 +5,17 @@
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/reppners/ngx-drag-drop.svg?style=social)](https://twitter.com/intent/tweet?text=Angular%20drag%20and%20drop%20with%20ease:&url=https://github.com/reppners/ngx-drag-drop)
 # Angular Compatibility Table
 
-This table provides information about compatibility between different versions of Angular and other commonly used libraries or dependencies.
+- Angular 16 support 🥳🥳🥳🥳
 
-| Angular Version | Library/Dependency  | Compatible Versions |
-|-----------------|---------------------|---------------------|
-| 12.x            | RxJS                | 7.x, 6.x            |
-|                 | TypeScript          | 4.3+                |
-|                 | NgRx                | 12.x                |
-|                 | Angular Material    | 12.x                |
-|                 | Angular CLI         | 12.x                |
-| 11.x            | RxJS                | 6.x                 |
-|                 | TypeScript          | 4.0+                |
-|                 | NgRx                | 11.x                |
-|                 | Angular Material    | 11.x                |
-|                 | Angular CLI         | 11.x                |
-| 10.x            | RxJS                | 6.x                 |
-|                 | TypeScript          | 3.9+                |
-|                 | NgRx                | 10.x                |
-|                 | Angular Material    | 10.x                |
-|                 | Angular CLI         | 10.x                |
-| 9.x             | RxJS                | 6.x                 |
-|                 | TypeScript          | 3.6+                |
-|                 | NgRx                | 9.x                 |
-|                 | Angular Material    | 9.x                 |
-|                 | Angular CLI         | 9.x                 |
+Use appropriate version based on your Angular version.
 
-Please note that this table provides a general guideline and compatibility may vary based on specific features or APIs used. It's recommended to check the official documentation of each library for the most accurate compatibility information.
-
+| Angular Version | Compatible Versions |
+|-----------------|---------------------|
+| 16.x            | 16.0.2              |
+| 15.x            | 15.0.1              |
+| 14.x            | 14.0.0              |
+| 13.x            | 13.1.1              |
+| 12.x<           | 12.0.0              |
 
 # NgxDragDrop
 
