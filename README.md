@@ -15,7 +15,6 @@ Use appropriate version based on your Angular version.
 | 15.x            | 15.0.1              |
 | 14.x            | 14.0.0              |
 | 13.x            | 13.1.1              |
-| 12.x<           | 12.0.0              |
 
 # NgxDragDrop
 
