@@ -11,13 +11,7 @@ import {
 import { DndHandleDirective } from './dnd-handle.directive';
 
 @NgModule({
-  declarations: [
-    DndDraggableDirective,
-    DndDropzoneDirective,
-    DndHandleDirective,
-    DndPlaceholderRefDirective,
-    DndDragImageRefDirective,
-  ],
+
   exports: [
     DndDraggableDirective,
     DndDropzoneDirective,
@@ -25,6 +19,13 @@ import { DndHandleDirective } from './dnd-handle.directive';
     DndPlaceholderRefDirective,
     DndDragImageRefDirective,
   ],
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    DndDragImageRefDirective,
+    DndDropzoneDirective,
+    DndHandleDirective,
+    DndPlaceholderRefDirective,
+    DndDraggableDirective,
+  ],
 })
 export class DndModule {}

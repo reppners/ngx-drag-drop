@@ -36,7 +36,7 @@ export interface DndDropEvent {
   type?: any;
 }
 
-@Directive({ selector: '[dndPlaceholderRef]' })
+@Directive({ selector: '[dndPlaceholderRef]', standalone: true })
 export class DndPlaceholderRefDirective implements OnInit {
   constructor(public readonly elementRef: ElementRef<HTMLElement>) {}
 
@@ -46,7 +46,7 @@ export class DndPlaceholderRefDirective implements OnInit {
   }
 }
 
-@Directive({ selector: '[dndDropzone]' })
+@Directive({ selector: '[dndDropzone]', standalone: true })
 export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
   @Input() dndDropzone?: string[] | '' = '';
 
