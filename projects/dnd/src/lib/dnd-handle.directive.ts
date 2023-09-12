@@ -8,7 +8,7 @@ import {
 import { DndDraggableDirective } from './dnd-draggable.directive';
 import { DndEvent } from './dnd-utils';
 
-@Directive({ selector: '[dndHandle]' })
+@Directive({ selector: '[dndHandle]', standalone: true })
 export class DndHandleDirective implements OnInit {
   @HostBinding('attr.draggable') draggable = true;
 

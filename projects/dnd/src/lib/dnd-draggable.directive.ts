@@ -25,7 +25,7 @@ import {
   setDragImage,
 } from './dnd-utils';
 
-@Directive({ selector: '[dndDragImageRef]' })
+@Directive({ selector: '[dndDragImageRef]', standalone: true })
 export class DndDragImageRefDirective implements OnInit {
   dndDraggableDirective = inject(forwardRef(() => DndDraggableDirective));
   elementRef: ElementRef<HTMLElement> = inject(ElementRef);
@@ -35,7 +35,7 @@ export class DndDragImageRefDirective implements OnInit {
   }
 }
 
-@Directive({ selector: '[dndDraggable]' })
+@Directive({ selector: '[dndDraggable]', standalone: true })
 export class DndDraggableDirective implements AfterViewInit, OnDestroy {
   @Input() dndDraggable: any;
   @Input() dndEffectAllowed: EffectAllowed = 'copy';
