@@ -1,10 +1,21 @@
+import { JsonPipe, NgForOf, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatLegacyListModule } from '@angular/material/legacy-list';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {
+  DndDraggableDirective,
   DndDragImageOffsetFunction,
+  DndDragImageRefDirective,
   DndDropEvent,
+  DndDropzoneDirective,
+  DndHandleDirective,
   EffectAllowed,
 } from 'ngx-drag-drop';
+import { IndirectDndHandleComponent } from '../indirect-dnd-handle/indirect-dnd-handle.component';
+import { IndirectDragImageComponent } from '../indirect-drag-image/indirect-drag-image.component';
 
 interface DraggableItem {
   content: string;
@@ -17,8 +28,24 @@ interface DraggableItem {
   selector: 'dnd-simple',
   templateUrl: './simple.component.html',
   styleUrls: ['./simple.component.scss'],
+  standalone: true,
+  imports: [
+    MatCardModule,
+    NgForOf,
+    DndDraggableDirective,
+    NgIf,
+    DndHandleDirective,
+    MatIconModule,
+    MatLegacyListModule,
+    DndDragImageRefDirective,
+    IndirectDndHandleComponent,
+    IndirectDragImageComponent,
+    MatSlideToggleModule,
+    DndDropzoneDirective,
+    JsonPipe,
+  ],
 })
-export class SimpleComponent {
+export default class SimpleComponent {
   draggables: DraggableItem[] = [
     {
       content: 'testdata',

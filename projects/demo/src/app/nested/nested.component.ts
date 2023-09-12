@@ -1,6 +1,18 @@
+import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatLegacyListModule } from '@angular/material/legacy-list';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DndDropEvent, DropEffect } from 'ngx-drag-drop';
+import {
+  DndDraggableDirective,
+  DndDragImageRefDirective,
+  DndDropEvent,
+  DndDropzoneDirective,
+  DndHandleDirective,
+  DndPlaceholderRefDirective,
+  DropEffect,
+} from 'ngx-drag-drop';
 
 interface NestableListItem {
   content: string;
@@ -14,8 +26,22 @@ interface NestableListItem {
   selector: 'dnd-nested',
   templateUrl: './nested.component.html',
   styleUrls: ['./nested.component.scss'],
+  standalone: true,
+  imports: [
+    MatCardModule,
+    DndPlaceholderRefDirective,
+    NgForOf,
+    DndDraggableDirective,
+    NgIf,
+    MatIconModule,
+    DndHandleDirective,
+    MatLegacyListModule,
+    DndDragImageRefDirective,
+    DndDropzoneDirective,
+    NgTemplateOutlet,
+  ],
 })
-export class NestedComponent {
+export default class NestedComponent {
   nestableList: NestableListItem[] = [
     {
       content: 'Got something nested',

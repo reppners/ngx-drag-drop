@@ -5,7 +5,7 @@
     <mat-card
       appearance="raised"
       *ngFor="let item of list"
-      [dndDisableIf]="item.disable"
+      [dndDisableIf]="!!item.disable"
       [dndDraggable]="item"
       (dndCanceled)="onDragged(item, list, 'none')"
       (dndCopied)="onDragged(item, list, 'copy')"
@@ -23,7 +23,7 @@
       </mat-card-header>
 
       <mat-card-content class="d-flex align-items-start gap-2 flex-column p-2">
-        <div *ngIf="item.customDragImage" dndDragImageRef>
+        <div *ngIf="!!item.customDragImage" dndDragImageRef>
           MY_CUSTOM_DRAG_IMAGE
         </div>
 

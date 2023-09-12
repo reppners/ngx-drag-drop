@@ -42,9 +42,7 @@
           </div>
 
           draggable ({{ draggableWithDragImage.effectAllowed }})
-          <span [hidden]="!draggableWithDragImage.handle">
-            only with handle</span
-          >
+          <span [hidden]="!draggableWithDragImage.handle">only with handle</span>
           <span [hidden]="!draggableWithDragImage.disable"> DISABLED</span>
 
           <div dndDragImageRef>MY_CUSTOM_DRAG_IMAGE</div>
@@ -67,9 +65,7 @@
 
           draggable ({{ draggableWithDragImage.effectAllowed }})
 
-          <dnd-indirect-drag-image
-            >I'm the drag image but pssst</dnd-indirect-drag-image
-          >
+          <dnd-indirect-drag-image>I'm the drag image but pssst</dnd-indirect-drag-image>
         </mat-card-content>
       </mat-card>
 
@@ -100,8 +96,8 @@
           <mat-card-subtitle>
             <mat-slide-toggle
               [checked]="dropzoneEnabled"
-              (change)="dropzoneEnabled = $event.checked"
-              >Enabled
+              (change)="dropzoneEnabled = $event.checked">
+              Enabled
             </mat-slide-toggle>
           </mat-card-subtitle>
         </mat-card-header>

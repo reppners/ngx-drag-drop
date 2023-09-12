@@ -1,13 +1,17 @@
+import { JsonPipe, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DndDropEvent } from 'ngx-drag-drop';
+import { DndDropEvent, DndDropzoneDirective } from 'ngx-drag-drop';
 
 @Component({
   selector: 'dnd-native',
   templateUrl: './native.component.html',
   styleUrls: ['./native.component.scss'],
+  standalone: true,
+  imports: [MatCardModule, DndDropzoneDirective, NgIf, JsonPipe],
 })
-export class NativeComponent {
+export default class NativeComponent {
   public lastDropEvent: DndDropEvent | null = null;
 
   public lastDropTypes?: ReadonlyArray<string>;

@@ -1,5 +1,12 @@
+import { NgForOf } from '@angular/common';
 import { Component } from '@angular/core';
-import { DndDropEvent } from 'ngx-drag-drop';
+import { MatListModule } from '@angular/material/list';
+import {
+  DndDraggableDirective,
+  DndDropEvent,
+  DndDropzoneDirective,
+  DndPlaceholderRefDirective,
+} from 'ngx-drag-drop';
 
 type Apple = 'apple';
 type Banana = 'banana';
@@ -27,8 +34,16 @@ function range(start: number, end: number) {
   selector: 'dnd-typed',
   templateUrl: './typed.component.html',
   styleUrls: ['./typed.component.scss'],
+  standalone: true,
+  imports: [
+    MatListModule,
+    DndDropzoneDirective,
+    DndPlaceholderRefDirective,
+    NgForOf,
+    DndDraggableDirective,
+  ],
 })
-export class TypedComponent {
+export default class TypedComponent {
   public fruits: Fruit[] = range(0, 100).map(_ => {
     const randomFruitType: FruitType = Math.random() < 0.5 ? 'apple' : 'banana';
     return createFruit(randomFruitType);

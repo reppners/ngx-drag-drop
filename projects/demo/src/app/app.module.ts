@@ -14,24 +14,35 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { DndModule } from 'ngx-drag-drop';
-
 import { AppComponent } from './app.component';
 import { DemoLinkComponent } from './demo-link/demo-link.component';
-import { IndirectDndHandleComponent } from './indirect-dnd-handle/indirect-dnd-handle.component';
-import { IndirectDragImageComponent } from './indirect-drag-image/indirect-drag-image.component';
-import { ListComponent } from './list/list.component';
-import { NativeComponent } from './native/native.component';
-import { NestedComponent } from './nested/nested.component';
-import { SimpleComponent } from './simple/simple.component';
-import { TypedComponent } from './typed/typed.component';
 
 const routes: Routes = [
-  { path: 'simple', component: SimpleComponent },
-  { path: 'list', component: ListComponent },
-  { path: 'nested', component: NestedComponent },
-  { path: 'native', component: NativeComponent },
-  { path: 'typed', component: TypedComponent },
-  { path: '**', component: SimpleComponent },
+  {
+    path: 'simple',
+    loadComponent: () => import('./simple/simple.component'),
+  },
+  {
+    path: 'list',
+    loadComponent: () => import('./list/list.component'),
+  },
+  {
+    path: 'nested',
+    loadComponent: () => import('./nested/nested.component'),
+  },
+  {
+    path: 'native',
+    loadComponent: () => import('./native/native.component'),
+  },
+  {
+    path: 'typed',
+    loadComponent: () => import('./typed/typed.component'),
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: 'simple',
+  },
 ];
 
 @NgModule({
@@ -41,17 +52,7 @@ const routes: Routes = [
 export class AppRoutingModule {}
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SimpleComponent,
-    ListComponent,
-    NativeComponent,
-    TypedComponent,
-    NestedComponent,
-    DemoLinkComponent,
-    IndirectDndHandleComponent,
-    IndirectDragImageComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -68,6 +69,7 @@ export class AppRoutingModule {}
     AppRoutingModule,
     MatLineModule,
     MatListModule,
+    DemoLinkComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

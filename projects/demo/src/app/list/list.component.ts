@@ -1,6 +1,17 @@
+import { NgForOf, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DndDropEvent, DropEffect, EffectAllowed } from 'ngx-drag-drop';
+import {
+  DndDraggableDirective,
+  DndDropEvent,
+  DndDropzoneDirective,
+  DndHandleDirective,
+  DndPlaceholderRefDirective,
+  DropEffect,
+  EffectAllowed,
+} from 'ngx-drag-drop';
 
 interface DraggableItem {
   content: string;
@@ -19,8 +30,19 @@ interface DropzoneLayout {
   selector: 'dnd-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
+  standalone: true,
+  imports: [
+    MatListModule,
+    DndDropzoneDirective,
+    DndPlaceholderRefDirective,
+    NgForOf,
+    DndDraggableDirective,
+    NgIf,
+    DndHandleDirective,
+    MatIconModule,
+  ],
 })
-export class ListComponent {
+export default class ListComponent {
   draggableListLeft: DraggableItem[] = [
     {
       content: 'Left',
