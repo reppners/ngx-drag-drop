@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import {
   DndDraggableDirective,
@@ -11,7 +10,6 @@ import {
 import { DndHandleDirective } from './dnd-handle.directive';
 
 @NgModule({
-
   exports: [
     DndDraggableDirective,
     DndDropzoneDirective,
@@ -20,7 +18,6 @@ import { DndHandleDirective } from './dnd-handle.directive';
     DndDragImageRefDirective,
   ],
   imports: [
-    CommonModule,
     DndDragImageRefDirective,
     DndDropzoneDirective,
     DndHandleDirective,
