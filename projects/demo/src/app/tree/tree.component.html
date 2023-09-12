@@ -1,0 +1,45 @@
+<div class="container-fluid">
+
+  <ng-template #recursiveList let-list>
+    <mat-list-item
+      class="dndPlaceholder border bg-opacity-25 mb-1"
+      dndPlaceholderRef />
+
+    <div *ngFor="let item of list" class="">
+      <mat-list-item
+        [dndDraggable]="item"
+        dndEffectAllowed="move"
+        (dndMoved)="onDragged(item, list, 'move')"
+        class="border bg-white ms-n3">
+        <span matListItemTitle>{{ item.content }}</span>
+      </mat-list-item>
+
+      <mat-list
+        *ngIf="item.children"
+        (dndDrop)="onDrop($event, item.children)"
+        class="d-flex flex-column bg-light pt-2 pb-0 ps-2"
+        style="min-height: unset"
+        dndDropzone
+        dndEffectAllowed="move">
+
+        <ng-container *ngTemplateOutlet="recursiveList; context: { $implicit: item.children }" />
+      </mat-list>
+    </div>
+  </ng-template>
+
+  <div class="row">
+    <div class="col-12 offset-lg-2 col-lg-4">
+      <mat-list
+        (dndDrop)="onDrop($event, draggableList)"
+        class="d-flex flex-column bg-light gap-1"
+        dndDropzone
+        dndEffectAllowed="move">
+
+        <ng-container *ngTemplateOutlet="recursiveList; context: { $implicit: draggableList }" />
+      </mat-list>
+    </div>
+    <div class="col-12 col-lg-4">
+      <pre>{{draggableList | json}}</pre>
+    </div>
+  </div>
+</div>

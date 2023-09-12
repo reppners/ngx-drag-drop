@@ -31,6 +31,10 @@ const routes: Routes = [
     loadComponent: () => import('./nested/nested.component'),
   },
   {
+    path: 'tree',
+    loadComponent: () => import('./tree/tree.component'),
+  },
+  {
     path: 'native',
     loadComponent: () => import('./native/native.component'),
   },

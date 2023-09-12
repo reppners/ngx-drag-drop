@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, ActivationEnd, Router } from '@angular/router';
 import { filter, map, Observable, shareReplay, startWith } from 'rxjs';
 
-const TABS: string[] = ['simple', 'list', 'nested', 'native', 'typed'];
+const TABS: string[] = ['simple', 'list', 'nested', 'tree', 'native', 'typed'];
 
 const DEFAULT_TAB = TABS[0];
 
