@@ -6,9 +6,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./demo-link.component.scss'],
 })
 export class DemoLinkComponent {
-  @Input() name: string | null = null;
+  @Input()
+  name:string | null = null;
 
-  public get url(): string {
-    return `https://github.com/reppners/ngx-drag-drop/tree/master/demo/app/${this.name}`;
+  public get url():string {
+    return `https://github.com/reppners/ngx-drag-drop/tree/master/projects/demo/src/app/${this.name}`;
   }
 }
