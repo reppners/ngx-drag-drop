@@ -1,17 +1,32 @@
-
 :host {
-
   display: block;
   box-sizing: border-box;
 }
 
 mat-card {
-
   transition: transform 200ms, opacity 200ms;
 }
 
-.dndDraggingSource {
+mat-card-header {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.04);
+  align-items: center;
+  min-height: 46px;
+}
 
-  opacity: .5;
-  transform: scale(.98);
+.dndDraggingSource {
+  opacity: 0.5;
+  transform: scale(0.98);
+}
+
+.dndPlaceholder {
+  background: #fff;
+  min-height: 46px;
+  min-width: 46px;
+}
+
+[dnddropzone] {
+  background: #fafafa;
+  min-height: 60px;
+  display: flex;
+  outline: 2px solid rgba(0, 0, 0, 0.04);
 }

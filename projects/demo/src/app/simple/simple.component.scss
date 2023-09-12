@@ -1,30 +1,17 @@
-
 :host {
-
   display: block;
-  box-sizing: border-box;
-}
-
-mat-card:not(:last-of-type):not(:first-of-type) {
-
-  margin: 8px 0;
+  height: 100%;
 }
 
 .my-dropzone {
-
-  padding: 8px;
   transition: all 300ms ease;
 }
 
 .custom-drag-over {
-
-  background-color: rgba(0, 0, 0, 0.3);
-  border-color: limegreen;
-  transform: scale(1.05);
+  background-color: rgba(0, 0, 0, 0.06);
 }
 
 pre {
-
   white-space: pre-wrap;
   word-wrap: break-word;
 }

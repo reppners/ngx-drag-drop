@@ -1,6 +1,4 @@
-
 :host {
-
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
@@ -11,25 +9,23 @@
 }
 
 .container-padding {
-
   padding: 8px;
 }
 
 .scrollable {
-
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
 
 /* workaround for flex tab content */
+/* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version. */
 mat-tab-group ::ng-deep .mat-tab-body-wrapper {
-
   height: 100%;
   flex: 1 1 auto;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version. */
 mat-tab-group ::ng-deep .mat-tab-body-wrapper .mat-tab-body-content {
-
   display: flex;
   height: 100%;
   flex: 1 1 auto;

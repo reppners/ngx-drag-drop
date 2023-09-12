@@ -11,30 +11,31 @@
     "watch:docs": "ng build demo --watch --configuration development",
     "test": "ng test",
     "publish:stable": "npm publish ./dist/ngx-drag-drop",
-    "publish:next": "npm publish ./dist/ngx-drag-drop --tag next"
+    "publish:next": "npm publish ./dist/ngx-drag-drop --tag next",
+    "prettier": "npx prettier --write ."
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^14.2.0",
-    "@angular/cdk": "^14.2.0",
-    "@angular/common": "^14.2.0",
-    "@angular/compiler": "^14.2.0",
-    "@angular/core": "^14.2.0",
-    "@angular/flex-layout": "^14.0.0-beta.40",
-    "@angular/forms": "^14.2.0",
-    "@angular/material": "^14.2.0",
-    "@angular/platform-browser": "^14.2.0",
-    "@angular/platform-browser-dynamic": "^14.2.0",
-    "@angular/router": "^14.2.0",
+    "@angular/animations": "^16.0.1",
+    "@angular/cdk": "^16.0.1",
+    "@angular/common": "^16.0.1",
+    "@angular/compiler": "^16.0.1",
+    "@angular/core": "^16.0.1",
+    "@angular/forms": "^16.0.1",
+    "@angular/material": "^16.0.1",
+    "@angular/platform-browser": "^16.0.1",
+    "@angular/platform-browser-dynamic": "^16.0.1",
+    "@angular/router": "^16.0.1",
+    "bootstrap": "^5.2.3",
     "mobile-drag-drop": "^3.0.0-beta.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.13.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^14.2.0",
-    "@angular/cli": "^14.2.0",
-    "@angular/compiler-cli": "^14.2.0",
+    "@angular-devkit/build-angular": "^16.0.1",
+    "@angular/cli": "^16.0.1",
+    "@angular/compiler-cli": "^16.0.1",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.10.0",
@@ -43,7 +44,8 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "ng-packagr": "^14.3.0",
-    "typescript": "~4.8.2"
+    "ng-packagr": "^16.0.1",
+    "prettier": "^2.8.7",
+    "typescript": "~5.0.4"
   }
 }

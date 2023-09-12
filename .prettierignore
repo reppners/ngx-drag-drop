@@ -2,11 +2,13 @@
 
 # compiled output
 /dist
+/docs
 /tmp
 /out-tsc
 # Only exists if Bazel was run
 /bazel-out
 /.ng_build
+/.github
 
 # dependencies
 /node_modules
