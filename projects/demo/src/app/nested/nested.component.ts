@@ -2,7 +2,6 @@ import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyListModule } from '@angular/material/legacy-list';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   DndDraggableDirective,
@@ -35,7 +34,6 @@ interface NestableListItem {
     NgIf,
     MatIconModule,
     DndHandleDirective,
-    MatLegacyListModule,
     DndDragImageRefDirective,
     DndDropzoneDirective,
     NgTemplateOutlet,

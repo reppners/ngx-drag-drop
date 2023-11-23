@@ -2,7 +2,6 @@ import { JsonPipe, NgForOf, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyListModule } from '@angular/material/legacy-list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {
@@ -36,7 +35,6 @@ interface DraggableItem {
     NgIf,
     DndHandleDirective,
     MatIconModule,
-    MatLegacyListModule,
     DndDragImageRefDirective,
     IndirectDndHandleComponent,
     IndirectDragImageComponent,
