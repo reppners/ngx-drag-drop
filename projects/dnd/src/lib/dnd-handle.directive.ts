@@ -3,13 +3,14 @@ import {
   HostBinding,
   HostListener,
   inject,
+  OnDestroy,
   OnInit,
 } from '@angular/core';
 import { DndDraggableDirective } from './dnd-draggable.directive';
 import { DndEvent } from './dnd-utils';
 
 @Directive({ selector: '[dndHandle]', standalone: true })
-export class DndHandleDirective  implements OnInit, OnDestroy {
+export class DndHandleDirective implements OnInit, OnDestroy {
   @HostBinding('attr.draggable') draggable = true;
 
   dndDraggableDirective = inject(DndDraggableDirective);
