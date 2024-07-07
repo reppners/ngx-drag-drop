@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -55,27 +55,20 @@ const routes: Routes = [
 })
 export class AppRoutingModule {}
 
-@NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    DndModule,
-    HttpClientModule,
-    MatButtonModule,
-    MatInputModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatSnackBarModule,
-    MatSlideToggleModule,
-    MatIconModule,
-    MatTabsModule,
-    AppRoutingModule,
-    MatLineModule,
-    MatListModule,
-    DemoLinkComponent,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [AppComponent],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        BrowserAnimationsModule,
+        DndModule,
+        MatButtonModule,
+        MatInputModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatSnackBarModule,
+        MatSlideToggleModule,
+        MatIconModule,
+        MatTabsModule,
+        AppRoutingModule,
+        MatLineModule,
+        MatListModule,
+        DemoLinkComponent], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}
