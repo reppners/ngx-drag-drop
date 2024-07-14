@@ -1,6 +1,6 @@
 {
   "name": "ngx-drag-drop",
-  "version": "18.0.1",
+  "version": "18.0.2",
   "description": "Angular directives using the native HTML Drag And Drop API",
   "repository": {
     "type": "git",
