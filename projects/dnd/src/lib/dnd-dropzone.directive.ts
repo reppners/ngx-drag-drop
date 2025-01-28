@@ -144,8 +144,10 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
 
     // set as active if the target element is inside this dropzone
     if (event._dndDropzoneActive == null) {
-      const newTarget = document.elementFromPoint(event.clientX, event.clientY);
-
+      let targetDocument = this.elementRef.nativeElement.getRootNode() instanceof ShadowRoot ?
+        this.elementRef.nativeElement.getRootNode() as Document :
+        document;
+      const newTarget = targetDocument.elementFromPoint(event.clientX, event.clientY);
       if (this.elementRef.nativeElement.contains(newTarget)) {
         event._dndDropzoneActive = true;
       }
