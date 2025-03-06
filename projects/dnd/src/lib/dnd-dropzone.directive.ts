@@ -143,9 +143,15 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
     }
 
     // set as active if the target element is inside this dropzone
+    // Set as active if the target element is inside this dropzone
     if (event._dndDropzoneActive == null) {
-      const newTarget = document.elementFromPoint(event.clientX, event.clientY);
+      event._dndDropzoneActive = true;
 
+      // Determine the root node and fetch the element at the drop point
+      const rootNode = this.elementRef.nativeElement.getRootNode();
+      const newTarget = (rootNode instanceof ShadowRoot ? rootNode : document).elementFromPoint(event.clientX, event.clientY);
+
+      // Verify if the new target is within this dropzone
       if (this.elementRef.nativeElement.contains(newTarget)) {
         event._dndDropzoneActive = true;
       }
@@ -255,7 +261,15 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
 
     // check if still inside this dropzone and not yet handled by another dropzone
     if (event._dndDropzoneActive == null) {
-      if (this.elementRef.nativeElement.contains(event.relatedTarget)) {
+      const path = event.composedPath(); // Get the full event path
+
+      if (
+        path.some(
+          (eventTarget) =>
+            eventTarget instanceof HTMLElement &&
+            (<HTMLElement>this.elementRef.nativeElement).contains(eventTarget)
+        )
+      ) {
         event._dndDropzoneActive = true;
         return;
       }
