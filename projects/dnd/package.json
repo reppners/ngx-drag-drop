@@ -1,6 +1,6 @@
 {
   "name": "ngx-drag-drop",
-  "version": "18.0.2",
+  "version": "19.0.0",
   "description": "Angular directives using the native HTML Drag And Drop API",
   "repository": {
     "type": "git",
@@ -30,8 +30,8 @@
     "touch"
   ],
   "peerDependencies": {
-    "@angular/common": "^18.0.0",
-    "@angular/core": "^18.0.0"
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

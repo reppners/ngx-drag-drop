@@ -6,7 +6,6 @@ import {
   DndDraggableDirective,
   DndDropEvent,
   DndDropzoneDirective,
-  DndHandleDirective,
   DndPlaceholderRefDirective,
   DropEffect,
 } from 'ngx-drag-drop';
@@ -22,7 +21,6 @@ interface DraggableItem {
   imports: [
     CommonModule,
     DndDropzoneDirective,
-    DndHandleDirective,
     DndPlaceholderRefDirective,
     MatIconModule,
     MatListModule,
