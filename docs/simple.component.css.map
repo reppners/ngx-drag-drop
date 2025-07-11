@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/demo/src/app/simple/simple.component.scss"],
-  "sourcesContent": [":host {\n  display: block;\n  height: 100%;\n}\n\n.my-dropzone {\n  transition: all 300ms ease;\n}\n\n.custom-drag-over {\n  background-color: rgba(0, 0, 0, 0.06);\n}\n\npre {\n  white-space: pre-wrap;\n  word-wrap: break-word;\n}\n"],
-  "mappings": ";AAAA;AACE,WAAA;AACA,UAAA;;AAGF,CAAA;AACE,cAAA,IAAA,MAAA;;AAGF,CAAA;AACE,oBAAA,KAAA,CAAA,EAAA,CAAA,EAAA,CAAA,EAAA;;AAGF;AACE,eAAA;AACA,aAAA;;",
-  "names": []
-}

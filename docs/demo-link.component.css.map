@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/demo/src/app/demo-link/demo-link.component.scss"],
-  "sourcesContent": [":host {\n  margin: 8px 0;\n}\n"],
-  "mappings": ";AAAA;AACE,UAAA,IAAA;;",
-  "names": []
-}

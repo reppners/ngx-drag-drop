@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/demo/src/app/list/list.component.scss"],
-  "sourcesContent": [":host {\n  display: block;\n}\n\npre {\n  text-align: center;\n  padding: 8px;\n}\n\n.dndList {\n  transition: all 300ms ease;\n  padding: 5px;\n\n  &:not(.horizontal).dndDragover {\n    padding-top: 12px;\n    padding-bottom: 12px;\n  }\n\n  &.horizontal {\n    &.dndDragover {\n      padding-left: 12px;\n      padding-right: 12px;\n      padding-bottom: 12px;\n    }\n\n    .mat-mdc-list-item {\n      max-width: 120px;\n      margin: 2px;\n    }\n  }\n}\n\n.dndDragging {\n  border: 1px solid green;\n}\n\n.dndDraggingSource {\n  display: none;\n}\n\n.dndPlaceholder {\n  min-height: 72px;\n}\n"],
-  "mappings": ";AAAA;AACE,WAAA;;AAGF;AACE,cAAA;AACA,WAAA;;AAGF,CAAA;AACE,cAAA,IAAA,MAAA;AACA,WAAA;;AAEA,CAJF,OAIE,KAAA,CAAA,WAAA,CAAA;AACE,eAAA;AACA,kBAAA;;AAIA,CAVJ,OAUI,CANF,UAME,CANF;AAOI,gBAAA;AACA,iBAAA;AACA,kBAAA;;AAGF,CAhBJ,OAgBI,CAZF,WAYE,CAAA;AACE,aAAA;AACA,UAAA;;AAKN,CAAA;AACE,UAAA,IAAA,MAAA;;AAGF,CAAA;AACE,WAAA;;AAGF,CAAA;AACE,cAAA;;",
-  "names": []
-}
