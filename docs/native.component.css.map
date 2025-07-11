@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/native/native.component.scss"],
+  "sourcesContent": [":host {\n  display: block;\n  box-sizing: border-box;\n}\n\npre {\n  white-space: pre-wrap;\n  word-wrap: break-word;\n}\n"],
+  "mappings": ";AAAA;AACE,WAAA;AACA,cAAA;;AAGF;AACE,eAAA;AACA,aAAA;;",
+  "names": []
+}

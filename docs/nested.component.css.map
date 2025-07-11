@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/nested/nested.component.scss"],
+  "sourcesContent": [":host {\n  display: block;\n  box-sizing: border-box;\n}\n\nmat-card {\n  transition: transform 200ms, opacity 200ms;\n}\n\nmat-card-header {\n  border-bottom: 2px solid rgba(0, 0, 0, 0.04);\n  align-items: center;\n  min-height: 46px;\n}\n\n.dndDraggingSource {\n  opacity: 0.5;\n  transform: scale(0.98);\n}\n\n.dndPlaceholder {\n  background: #fff;\n  min-height: 46px;\n  min-width: 46px;\n}\n\n[dnddropzone] {\n  background: #fafafa;\n  min-height: 60px;\n  display: flex;\n  outline: 2px solid rgba(0, 0, 0, 0.04);\n}\n"],
+  "mappings": ";AAAA;AACE,WAAA;AACA,cAAA;;AAGF;AACE,cAAA,UAAA,KAAA,EAAA,QAAA;;AAGF;AACE,iBAAA,IAAA,MAAA,KAAA,CAAA,EAAA,CAAA,EAAA,CAAA,EAAA;AACA,eAAA;AACA,cAAA;;AAGF,CAAA;AACE,WAAA;AACA,aAAA,MAAA;;AAGF,CAAA;AACE,cAAA;AACA,cAAA;AACA,aAAA;;AAGF,CAAA;AACE,cAAA;AACA,cAAA;AACA,WAAA;AACA,WAAA,IAAA,MAAA,KAAA,CAAA,EAAA,CAAA,EAAA,CAAA,EAAA;;",
+  "names": []
+}

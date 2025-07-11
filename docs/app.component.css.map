@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/app.component.scss"],
+  "sourcesContent": [":host {\n  display: flex;\n  flex: 1 1 auto;\n  flex-direction: column;\n  max-height: 100vh;\n  max-width: 100vw;\n  height: 100%;\n  width: 100%;\n}\n\n.container-padding {\n  padding: 8px;\n}\n\n.scrollable {\n  overflow: auto;\n  -webkit-overflow-scrolling: touch;\n}\n\n/* workaround for flex tab content */\n/* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version. */\nmat-tab-group ::ng-deep .mat-tab-body-wrapper {\n  height: 100%;\n  flex: 1 1 auto;\n}\n\n/* TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version. */\nmat-tab-group ::ng-deep .mat-tab-body-wrapper .mat-tab-body-content {\n  display: flex;\n  height: 100%;\n  flex: 1 1 auto;\n}\n"],
+  "mappings": ";AAAA;AACE,WAAA;AACA,QAAA,EAAA,EAAA;AACA,kBAAA;AACA,cAAA;AACA,aAAA;AACA,UAAA;AACA,SAAA;;AAGF,CAAA;AACE,WAAA;;AAGF,CAAA;AACE,YAAA;AACA,8BAAA;;AAKF,cAAA,UAAA,CAAA;AACE,UAAA;AACA,QAAA,EAAA,EAAA;;AAIF,cAAA,UAAA,CANA,qBAMA,CAAA;AACE,WAAA;AACA,UAAA;AACA,QAAA,EAAA,EAAA;;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["projects/demo/src/app/tree/tree.component.scss"],
+  "sourcesContent": ["\n\n.dndDraggingSource {\n  opacity: 0.5;\n  transform: scale(0.98);\n  pointer-events: none;\n\n  &>* {\n    pointer-events: none;\n  }\n}\n"],
+  "mappings": ";AAEA,CAAA;AACE,WAAA;AACA,aAAA,MAAA;AACA,kBAAA;;AAEA,CALF,kBAKE,EAAA;AACE,kBAAA;;",
+  "names": []
+}
