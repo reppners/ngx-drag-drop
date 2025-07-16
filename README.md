@@ -28,7 +28,18 @@ Port of [angular-drag-drop-lists](https://github.com/marceljuenemann/angular-dra
 
 This has `dropzones` though :+1:
 The idea is that the directive does not handle lists internally so the `dndDropzone` can be general purpose.
+# Angular Compatibility Table
 
+- Angular 16 support 🥳🥳🥳🥳
+
+Use appropriate version based on your Angular version.
+
+| Angular Version | Compatible Versions |
+|-----------------|---------------------|
+| 16.x            | 16.0.2              |
+| 15.x            | 15.0.1              |
+| 14.x            | 14.0.0              |
+| 13.x            | 13.1.1              |
 ## Usage
 
 `app.component.html`
