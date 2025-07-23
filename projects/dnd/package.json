@@ -1,5 +1,5 @@
 {
-  "name": "@oncehub/ngx-drag-drop",
+  "name": "@oncehub/once-drag-drop",
   "version": "1.0.0",
   "description": "Angular directives using the native HTML Drag And Drop API",
   "repository": {
