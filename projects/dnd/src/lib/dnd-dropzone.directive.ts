@@ -261,9 +261,19 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
 
     // check if still inside this dropzone and not yet handled by another dropzone
     if (event._dndDropzoneActive == null) {
-      if (this.enterCount !== 0) {
-        event._dndDropzoneActive = true;
-        return;
+      if (this.isSafari()) {
+        // Safari-specific condition
+        // Add your Safari-specific logic here
+        if (this.enterCount !== 0) {
+          event._dndDropzoneActive = true;
+          return;
+        }
+      } else {
+        // Non-Safari browsers
+        if (this.elementRef.nativeElement.contains(event.relatedTarget)) {
+          event._dndDropzoneActive = true;
+          return;
+        }
       }
     }
 
@@ -271,6 +281,10 @@ export class DndDropzoneDirective implements AfterViewInit, OnDestroy {
 
     // cleanup drop effect when leaving dropzone
     setDropEffect(event, 'none');
+  }
+
+  private isSafari(): boolean {
+    return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
   }
 
   private readonly dragEnterEventHandler: (event: DragEvent) => void = (

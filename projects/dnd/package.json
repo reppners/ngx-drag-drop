@@ -1,14 +1,14 @@
 {
   "name": "@oncehub/once-drag-drop",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Angular directives using the native HTML Drag And Drop API",
   "repository": {
     "type": "git",
     "url": "https://github.com/scheduleonce/reppners-ngx-drag-drop"
   },
   "peerDependencies": {
-    "@angular/common": "19.0.0",
-    "@angular/core": "19.0.0"
+    "@angular/common": "19.2.2",
+    "@angular/core": "19.2.2"
   },
   "dependencies": {
     "tslib": "^2.3.0"
