@@ -50,13 +50,21 @@
             class="mt-2 p-2 border rounded"
             dndDropzone>
             <div>
-              <pre *ngIf="lastDropEvent">Event: {{ lastDropEvent | json }}</pre>
+              @if (lastDropEvent) {
+                <pre>Event: {{ lastDropEvent | json }}</pre>
+              }
 
-              <pre *ngIf="lastDropTypes && lastDropTypes.length">Types: {{ lastDropTypes | json }}</pre>
+              @if (lastDropTypes && lastDropTypes.length) {
+                <pre>Types: {{ lastDropTypes | json }}</pre>
+              }
 
-              <pre *ngIf="lastDropFiles && lastDropFiles.length">Files: {{ lastDropFiles | json }}</pre>
+              @if (lastDropFiles && lastDropFiles.length) {
+                <pre>Files: {{ lastDropFiles | json }}</pre>
+              }
 
-              <pre *ngIf="lastDropItems && lastDropItems.length">Items: {{ lastDropItems | json }}</pre>
+              @if (lastDropItems && lastDropItems.length) {
+                <pre>Items: {{ lastDropItems | json }}</pre>
+              }
             </div>
           </div>
         </mat-card-content>

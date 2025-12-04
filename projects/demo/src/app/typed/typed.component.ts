@@ -1,4 +1,4 @@
-import { NgForOf } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import {
@@ -39,9 +39,8 @@ function range(start: number, end: number) {
     MatListModule,
     DndDropzoneDirective,
     DndPlaceholderRefDirective,
-    NgForOf,
-    DndDraggableDirective,
-  ],
+    DndDraggableDirective
+],
 })
 export default class TypedComponent {
   public fruits: Fruit[] = range(0, 100).map(_ => {
