@@ -6,17 +6,15 @@
   </a>
 </mat-toolbar>
 
-<ng-container *ngIf="activeTab$ | async as activeTab">
-  <nav [tabPanel]="tabPanel" mat-tab-nav-bar>
-    <a
-      *ngFor="let tab of tabs"
-      [active]="activeTab === tab"
-      (click)="onTabLinkClick(tab)"
-      mat-tab-link>
-      {{ tab }}
-    </a>
-  </nav>
-</ng-container>
+@if (activeTab$ | async; as activeTab) {
+<nav [tabPanel]="tabPanel" mat-tab-nav-bar>
+  @for (tab of tabs; track tab) {
+  <a [active]="activeTab === tab" (click)="onTabLinkClick(tab)" mat-tab-link>
+    {{ tab }}
+  </a>
+  }
+</nav>
+}
 
 <mat-tab-nav-panel #tabPanel class="flex-grow-1 pt-3 overflow-auto">
   <router-outlet></router-outlet>

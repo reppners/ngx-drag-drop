@@ -1,4 +1,4 @@
-import { JsonPipe, NgForOf, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -30,9 +30,7 @@ interface DraggableItem {
   standalone: true,
   imports: [
     MatCardModule,
-    NgForOf,
     DndDraggableDirective,
-    NgIf,
     DndHandleDirective,
     MatIconModule,
     DndDragImageRefDirective,

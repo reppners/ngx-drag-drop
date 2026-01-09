@@ -59,9 +59,7 @@
               "browser": ""
             },
             "index": "projects/demo/src/index.html",
-            "polyfills": [
-              "projects/demo/src/polyfills.ts"
-            ],
+            "polyfills": ["projects/demo/src/polyfills.ts"],
             "tsConfig": "projects/demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [

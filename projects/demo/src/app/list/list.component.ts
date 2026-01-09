@@ -1,4 +1,3 @@
-import { NgForOf, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -35,9 +34,7 @@ interface DropzoneLayout {
     MatListModule,
     DndDropzoneDirective,
     DndPlaceholderRefDirective,
-    NgForOf,
     DndDraggableDirective,
-    NgIf,
     DndHandleDirective,
     MatIconModule,
   ],

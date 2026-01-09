@@ -1,10 +1,11 @@
 <div class="container-fluid">
   <ng-template #recursiveList let-list>
-    <mat-card appearance="raised" class="dndPlaceholder" dndPlaceholderRef> </mat-card>
+    <mat-card appearance="raised" class="dndPlaceholder" dndPlaceholderRef>
+    </mat-card>
 
+    @for (item of list; track item) {
     <mat-card
       appearance="raised"
-      *ngFor="let item of list"
       [dndDisableIf]="!!item.disable"
       [dndDraggable]="item"
       (dndCanceled)="onDragged(item, list, 'none')"
@@ -15,20 +16,18 @@
       (dndStart)="onDragStart($event)"
       dndEffectAllowed="move">
       <mat-card-header class="p-2">
-        <div *ngIf="item.handle" class="drag-handle me-2 text-muted">
+        @if (item.handle) {
+        <div class="drag-handle me-2 text-muted">
           <mat-icon dndHandle mat-list-icon>drag_handle </mat-icon>
         </div>
-
+        }
         {{ item.content }}
       </mat-card-header>
-
       <mat-card-content class="d-flex align-items-start gap-2 flex-column p-2">
-        <div *ngIf="!!item.customDragImage" dndDragImageRef>
-          MY_CUSTOM_DRAG_IMAGE
-        </div>
-
+        @if (!!item.customDragImage) {
+        <div dndDragImageRef>MY_CUSTOM_DRAG_IMAGE</div>
+        } @if (item.children) {
         <div
-          *ngIf="item.children"
           (dndDrop)="onDrop($event, item.children)"
           class="flex-column p-2 gap-2 rounded-2"
           dndDropzone>
@@ -38,8 +37,10 @@
               context: { $implicit: item.children }
             "></ng-container>
         </div>
+        }
       </mat-card-content>
     </mat-card>
+    }
   </ng-template>
 
   <div

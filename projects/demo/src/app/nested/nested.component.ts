@@ -1,4 +1,4 @@
-import { NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,9 +29,7 @@ interface NestableListItem {
   imports: [
     MatCardModule,
     DndPlaceholderRefDirective,
-    NgForOf,
     DndDraggableDirective,
-    NgIf,
     MatIconModule,
     DndHandleDirective,
     DndDragImageRefDirective,

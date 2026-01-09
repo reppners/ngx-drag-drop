@@ -1,4 +1,3 @@
-import { NgForOf } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import {
@@ -39,7 +38,6 @@ function range(start: number, end: number) {
     MatListModule,
     DndDropzoneDirective,
     DndPlaceholderRefDirective,
-    NgForOf,
     DndDraggableDirective,
   ],
 })
