@@ -26,14 +26,6 @@
             }
           },
           "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "main": "projects/dnd/src/test.ts",
-            "tsConfig": "projects/dnd/tsconfig.spec.json",
-            "karmaConfig": "projects/dnd/karma.conf.js"
-          }
         }
       }
     },
@@ -120,25 +112,6 @@
           "builder": "@angular/build:extract-i18n",
           "options": {
             "buildTarget": "demo:build"
-          }
-        },
-        "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "main": "projects/demo/src/test.ts",
-            "polyfills": "projects/demo/src/polyfills.ts",
-            "tsConfig": "projects/demo/tsconfig.spec.json",
-            "karmaConfig": "projects/demo/karma.conf.js",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/demo/src/favicon.ico",
-              "projects/demo/src/assets"
-            ],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "projects/demo/src/styles.scss"
-            ],
-            "scripts": []
           }
         }
       }
